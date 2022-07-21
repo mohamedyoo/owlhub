@@ -79,7 +79,9 @@ end)
 Mainz:Slider('FOV', 0, 2500, function(num)
 settings.FOV = num
 end)
-
+GM:Keybind("Toggle",Enum.KeyCode.V,function()
+    Library:Toggle()
+end)
 GM:Button("Fast Fire", function()
 for _,v in ipairs(game:GetService("ReplicatedStorage").Weapons.Guns:GetChildren()) do
     for _,v2 in pairs(v:GetChildren()) do
