@@ -361,7 +361,9 @@ end)
 PlayerW:Slider('Fly Config',1,15,function(Value)
     iyflyspeed = Value
 end)
-
+PlayerW:Keybind("Toggle",Enum.KeyCode.V,function()
+    Library:Toggle()
+end)
 --[[Misc Tab]]--
 
 MiscW:Button("Remove Barriers", function() 
