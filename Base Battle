@@ -73,7 +73,6 @@ Mainz:Label("New Ui")
 Mainz:Toggle("Silent-Aim", function(state)
 settings.silent = state
 end)
-`
 Mainz:Toggle("Draw FOV", function(state)
 settings.DrawFOV = state
 end)
