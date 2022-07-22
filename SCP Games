@@ -67,7 +67,7 @@ end
        
     MainWindow:Textbox("Kill Player", false, function(Text)
             if Text then
-                Damage(Text, 100)
+                Damage(Text, 100000)
             end
     end)
     
