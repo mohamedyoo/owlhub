@@ -1,0 +1,126 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Mapple7777/UI-Librarys/main/UI-1/UI.lua"))()
+
+local main = Library:Create("Script-Hub","Base Battle")
+local house =  main:Tab('Bakon Estase')
+local c4 =  main:Tab('Chapter 4')
+local credits =  main:Tab('Credits')
+credits:Label("Credits\nInori: Dragging\nwally: UI\nVzltex : Script Hub")
+
+house:Button("Green Book", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Green Book"].Bounds.PickUp)
+end)
+
+house:Button("Blue Book", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Blue Book"].Bounds.PickUp)
+end)
+
+house:Button("White Key", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["White Key"].Bounds.PickUp)
+end)
+
+house:Button("Crowbar", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Crowbar"].Bounds.PickUp)
+end)
+
+house:Button("Taser", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Taser"].Bounds.PickUp)
+end)
+
+house:Button("Yellow Key", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Yellow Key"].Bounds.PickUp)
+end)
+
+house:Button("Green Key", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Green Key"].Bounds.PickUp)
+end)
+
+house:Button("Red Key", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Red Key"].Bounds.PickUp)
+end)
+
+house:Button("Orange Key", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Orange Key"].Bounds.PickUp)
+end)
+
+house:Button("Blue Key", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Blue Key"].Bounds.PickUp)
+end)
+
+house:Button("Truss", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Truss"].Bounds.PickUp)
+end)
+
+house:Button("Purple Key", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Purple Key"].Bounds.PickUp)
+end)
+
+house:Button("USB", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["USB"].Bounds.PickUp)
+end)
+
+house:Button("Wrench", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Wrench"].Bounds.PickUp)
+end)
+
+c4:Button("Blue Key", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Blue Key"].Bounds.PickUp)
+end)
+
+c4:Button("Pink Key", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Pink Key"].Bounds.PickUp)
+end)
+
+c4:Button("Red Wire", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Red Wire"].Bounds.PickUp)
+end)
+
+c4:Button("Green Wire", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Green Wire"].Bounds.PickUp)
+end)
+
+c4:Button("Chair", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Chair"].Bounds.PickUp)
+end)
+
+c4:Button("Fire Extinguisher", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["FireExtinguisher"].Bounds.PickUp)
+end)
+
+c4:Button("Taser", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Taser"].Bounds.PickUp)
+end)
+
+c4:Button("Textbook", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Textbook"].Bounds.PickUp)
+end)
+
+c4:Button("White Key", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["White Key"].Bounds.PickUp)
+end)
+
+c4:Button("Crowbar", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Crowbar"].Bounds.PickUp)
+end)
+
+house:Button("Red Book", function()
+  fireclickdetector(game.Workspace.CurrentMap:FindFirstChildOfClass("Folder").Utilities["Red Book"].Bounds.PickUp)
+end)
+
+credits:Button("ESP BOX", function()
+ loadstring(game:HttpGet("https://pastebin.com/raw/zKjj0TQD",true))()
+end)
+credits:Keybind("Toggle",Enum.KeyCode.V,function()
+    Library:Toggle()
+end)
+ credits:Slider("Walkspeed",500, 16, function(s)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+    end)
+
+    credits:Slider("Jumppower",350, 50, function(s)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+    end)
+
+    credits:Button("Reset WS/JP",function()
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    end)
