@@ -4,8 +4,7 @@ local settings = {
     Delay = 5
     
 }
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Mapple7777/UI-Librarys/main/UI-1/UI.lua"))()
-
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Mapple7777/UI-Librarys/main/UI-1/UI.lua"))() 
 local main = Library:Create("Script-Hub","Legends of speed ")
 Mainz = main:Tab('Main')
 
@@ -69,8 +68,8 @@ else
 end
 end)
 
-Mainz:Button('+ 500 Skip',function()
-local Goal = game:GetService("Players").LocalPlayer.leaderstats.Stage.Value + 500
+Mainz:Button('+ 5 Skip',function()
+local Goal = game:GetService("Players").LocalPlayer.leaderstats.Stage.Value + 5
 repeat
     if game:GetService("Workspace").Gifts:FindFirstChild("Gift") then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Gifts.Gift.Position)
