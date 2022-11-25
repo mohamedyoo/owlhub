@@ -1,12 +1,11 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Bye mohamed", "Ocean")
+local Window = Library.CreateLib("Bye mohamed", "DarkTheme")
     -- MAIN
     local Main = Window:NewTab("Main")
-    local MainSection = Main:NewSection("Main")
+    local Section = Main:NewSection("Main")
 
-
-      MainSection:NewToggle("auto sell", "Make your player auto click", function(state)
-    getgenv().autoclicker= state
+      Section:NewToggle("auto sell", "Make your player auto click", function(v)
+    getgenv().autoclicker= v
       while getgenv().autoclicker== true do
 game:GetService("ReplicatedStorage").RemoteEvents.SellTP:FireServer()
   game:GetService("RunService").Heartbeat:wait();
@@ -14,8 +13,8 @@ game:GetService("ReplicatedStorage").RemoteEvents.SellTP:FireServer()
    end)
    
  
-      MainSection:NewToggle("auto farm", "Make your player auto click", function(state)
-    getgenv().autoFarm= state
+      Section:NewToggle("auto farm", "Make your player auto click", function(v)
+    getgenv().autoFarm= v
       while getgenv().autoFarm== true do
 game:GetService("ReplicatedStorage").RemoteEvents.Stomp:FireServer()
 game:GetService("ReplicatedStorage").RemoteEvents.Punch:FireServer()
@@ -23,16 +22,16 @@ game:GetService("ReplicatedStorage").RemoteEvents.Punch:FireServer()
   end
    end)
    
-     MainSection:NewToggle("auto rebirth", "Make your player auto click", function(v)
+     Section:NewToggle("auto rebirth", "Make your player auto click", function(v)
     getgenv().autorebirth= v
       while getgenv().autorebirth== true do
-game:GetService("ReplicatedStorage").RemoteEvents.Rebirth:FireServer()
+game:GetService("ReplicatedStorage").RemoteEvents.Rebirth:InvokeServer()
   game:GetService("RunService").Heartbeat:wait();
   end
    end)
    
-   MainSection:NewToggle("auto max upgrade", "Make your player auto click", function(state)
-    getgenv().autorebirth= state
+   Section:NewToggle("auto max upgrade", "Make your player auto click", function(v)
+    getgenv().autorebirth= v
       while getgenv().autorebirth== true do
 game:GetService("ReplicatedStorage").RemoteEvents.UpgradeMax:InvokeServer("StrengthCap")
 game:GetService("ReplicatedStorage").RemoteEvents.UpgradeMax:InvokeServer("Damage")
@@ -41,7 +40,53 @@ game:GetService("ReplicatedStorage").RemoteEvents.UpgradeMax:InvokeServer("Healt
   end
    end)
    
-   MainSection:NewKeybind("Toggle", "LOL", Enum.KeyCode.V,function()
+Section:NewToggle("auto spam chat", "Make your player auto click", function(v)
+    getgenv().autoclicker= v
+      while getgenv().autoclicker== true do
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("it's EZ Boy Get good", "All")
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+   local Player = Window:NewTab("Player")
+    local PlayerSection = Player:NewSection("Player")
+
+    PlayerSection:NewSlider("Walkspeed", "SPEED!!", 500, 16, function(s)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+    end)
+
+    PlayerSection:NewSlider("Jumppower", "JUMP HIGH!!", 350, 50, function(s)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+    end)
+
+    PlayerSection:NewButton("Reset WS/JP", "Resets to all defaults", function()
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    end)
+
+PlayerSection:NewButton("Infinte jump", "ButtonInfo", function()
+  loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Infinite%20Jump.txt"))()
+end)
+
+PlayerSection:NewButton("Flashlight", "ButtonInfo", function()
+loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Human%20Flashlight.txt"))()
+end)
+
+  local Other = Window:NewTab("Other")
+    local OtherSection = Other:NewSection("Other")
+
+    OtherSection:NewButton("Chat Spoofer", "Lets you chat for other people", function()
+        loadstring(game:HttpGet(('https://pastebin.com/raw/djBfk8Li'),true))()
+    end)
+
+OtherSection:NewKeybind("Keybind", "KeybindInfo", Enum.KeyCode.P, function()
     Library:ToggleUI()
 end)
-   
+
+     OtherSection:NewButton("Fly", "bird mode", function()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/Nicuse/RobloxScripts/main/BypassedFly.lua"))() 
+end)
+
+OtherSection:NewButton("Rejoin", "Rejoins you to the same server", function()
+ game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+end)
