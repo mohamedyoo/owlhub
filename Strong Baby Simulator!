@@ -1,0 +1,47 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Bye mohamed", "Ocean")
+    -- MAIN
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+
+
+      MainSection:NewToggle("auto sell", "Make your player auto click", function(state)
+    getgenv().autoclicker= state
+      while getgenv().autoclicker== true do
+game:GetService("ReplicatedStorage").RemoteEvents.SellTP:FireServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+ 
+      MainSection:NewToggle("auto farm", "Make your player auto click", function(state)
+    getgenv().autoFarm= state
+      while getgenv().autoFarm== true do
+game:GetService("ReplicatedStorage").RemoteEvents.Stomp:FireServer()
+game:GetService("ReplicatedStorage").RemoteEvents.Punch:FireServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+     MainSection:NewToggle("auto rebirth", "Make your player auto click", function(v)
+    getgenv().autorebirth= v
+      while getgenv().autorebirth== true do
+game:GetService("ReplicatedStorage").RemoteEvents.Rebirth:FireServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+   MainSection:NewToggle("auto max upgrade", "Make your player auto click", function(state)
+    getgenv().autorebirth= state
+      while getgenv().autorebirth== true do
+game:GetService("ReplicatedStorage").RemoteEvents.UpgradeMax:InvokeServer("StrengthCap")
+game:GetService("ReplicatedStorage").RemoteEvents.UpgradeMax:InvokeServer("Damage")
+game:GetService("ReplicatedStorage").RemoteEvents.UpgradeMax:InvokeServer("Health")
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+   MainSection:NewKeybind("Toggle", "LOL", Enum.KeyCode.V,function()
+    Library:ToggleUI()
+end)
+   
