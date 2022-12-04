@@ -1,5 +1,6 @@
-    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-    local Window = Library.CreateLib("LUCKY BLOCKS Battlegrounds", "BloodTheme")--[[u can change the theme:
+   if game.PlaceId == 662417684 then
+   local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("LUCKY BLOCKS Battlegrounds", "Synapse")--[[u can change the theme:
     LightTheme
     DarkTheme
     GrapeTheme
