@@ -362,6 +362,7 @@ opengui.TextWrapped = true
 		Main.Visible = false
 		end
 	end)
+	
 	coroutine.wrap(function()
 		while wait() do
 			Main.BackgroundColor3 = themeList.Background
