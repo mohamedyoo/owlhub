@@ -356,19 +356,10 @@ opengui.TextScaled = true
 opengui.TextSize = 14.000
 opengui.TextWrapped = true
 	opengui.MouseButton1Down:connect(function()
-		local function MFDPA_fake_script() -- opengui.Script 
-			local script = Instance.new('Script', opengui)
-
-			script.Parent.MouseButton1Click:connect(function()
-				dabumps = script.Parent.Parent.Main
-				if dabumps.Visible == false then
-					dabumps.Visible = true
-					script.Parent.Text = "Close Gui"
-				else
-					dabumps.Visible = false
-					script.Parent.Text = "Open Gui"
-				end
-			end)
+		if Main.Visible == false then
+		Main.Visible = true
+		else
+		Main.Visible = false
 		end
 	end)
 	coroutine.wrap(function()
