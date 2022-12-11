@@ -98,6 +98,13 @@ local themeStyles = {
 		TextColor = Color3.fromRGB(255, 255, 255),
 		ElementColor = Color3.fromRGB(52, 74, 95)
 	},
+	yooTheme = {
+		SchemeColor = Color3.fromRGB(0, 0, 0),
+		Background = Color3.fromRGB(0, 0, 0),
+		Header = Color3.fromRGB(85, 255, 255),
+		TextColor = Color3.fromRGB(255, 255, 255),
+		ElementColor = Color3.fromRGB(255, 255, 255)
+	},
 	Sentinel = {
 		SchemeColor = Color3.fromRGB(230, 35, 69),
 		Background = Color3.fromRGB(32, 32, 32),
@@ -200,6 +207,7 @@ function Kavo.CreateLib(kavName, themeList)
 	local coverup = Instance.new("Frame")
 	local title = Instance.new("TextLabel")
 	local opengui = Instance.new("TextButton")
+	local close = Instance.new("ImageButton")
 	local MainSide = Instance.new("Frame")
 	local sideCorner = Instance.new("UICorner")
 	local coverup_2 = Instance.new("Frame")
@@ -271,6 +279,28 @@ Main.Visible = false
 	title.TextSize = 16.000
 	title.TextXAlignment = Enum.TextXAlignment.Left
 	
+	close.Name = "close"
+	close.Parent = MainHeader
+	close.BackgroundTransparency = 1.000
+	close.Position = UDim2.new(0.949999988, 0, 0.137999997, 0)
+	close.Size = UDim2.new(0, 21, 0, 21)
+	close.ZIndex = 2
+	close.Image = "rbxassetid://3926305904"
+	close.ImageRectOffset = Vector2.new(284, 4)
+	close.ImageRectSize = Vector2.new(24, 24)
+	close.MouseButton1Click:Connect(function()
+		game.TweenService:Create(close, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+			ImageTransparency = 1
+		}):Play()
+		wait()
+		game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+			Size = UDim2.new(0,0,0,0),
+			Position = UDim2.new(0, Main.AbsolutePosition.X + (Main.AbsoluteSize.X / 2), 0, Main.AbsolutePosition.Y + (Main.AbsoluteSize.Y / 2))
+		}):Play()
+		wait(1)
+		ScreenGui:Destroy()
+	end)
+
 	MainSide.Name = "MainSide"
 	MainSide.Parent = Main
 	MainSide.BackgroundColor3 = themeList.Header
@@ -298,8 +328,8 @@ TabFrame.Position = UDim2.new(0, 0, -0.00066378375, 0)
 TabFrame.Size = UDim2.new(0, 135, 0, 283)
 
 tabListing.Name = "tabListing"
-    tabListing.Parent = tabFrames
-    tabListing.SortOrder = Enum.SortOrder.LayoutOrder
+tabListing.Parent = TabFrame
+tabListing.SortOrder = Enum.SortOrder.LayoutOrder
 
 	pages.Name = "pages"
 	pages.Parent = Main
@@ -329,17 +359,26 @@ opengui.Size = UDim2.new(0, 65, 0, 56)
 opengui.Font = Enum.Font.SourceSans
 opengui.Text = "Open"
 opengui.TextColor3 = Color3.fromRGB(0, 0, 0)
-opengui.TextScaled = true 
+opengui.TextScaled = true
 opengui.TextSize = 14.000
 opengui.TextWrapped = true
-	opengui.MouseButton1Down:connect(function()
-		if Main.Visible == false then
-		Main.Visible = true
-		else
-		Main.Visible = false
+	
+	opengui.MouseButton1Down:Connect(function()
+		local function MFDPA_fake_script() -- opengui.Script 
+			local script = Instance.new('Script', opengui)
+
+			script.Parent.MouseButton1Click:connect(function()
+				dabumps = script.Parent.Parent.Main
+				if dabumps.Visible == false then
+					dabumps.Visible = true
+					script.Parent.Text = "Close Gui"
+				else
+					dabumps.Visible = false
+					script.Parent.Text = "Open Gui"
+				end
+			end)
 		end
 	end)
-	
 	coroutine.wrap(function()
 		while wait() do
 			Main.BackgroundColor3 = themeList.Background
@@ -399,7 +438,7 @@ opengui.TextWrapped = true
 		pageListing.Padding = UDim.new(0, 5)
 
 		tabButton.Name = tabName.."TabButton"
-		tabButton.Parent = tabFrames
+		tabButton.Parent = TabFrame
 		tabButton.BackgroundColor3 = themeList.SchemeColor
 		Objects[tabButton] = "SchemeColor"
 		tabButton.Size = UDim2.new(0, 135, 0, 28)
@@ -2641,3 +2680,5 @@ opengui.TextWrapped = true
 	return Tabs
 end
 return Kavo
+-- Scripts:
+
