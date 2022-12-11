@@ -355,7 +355,6 @@ opengui.TextColor3 = Color3.fromRGB(0, 0, 0)
 opengui.TextScaled = true
 opengui.TextSize = 14.000
 opengui.TextWrapped = true
-	
 	opengui.MouseButton1Down:Connect(function()
 		local function MFDPA_fake_script() -- opengui.Script 
 			local script = Instance.new('Script', opengui)
