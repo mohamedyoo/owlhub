@@ -1,7 +1,6 @@
 if game.PlaceId == 6677985923 then
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-    local Window = Library.CreateLib(" Millionaire Empire Tycoon", "Synapse")
-    local Cash = Window:NewTab("Cash")
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/New%20ui"))()    
+local Cash = Window:NewTab("Cash")
     local CashSection = Cash:NewSection("Give Cash [[In Collector]]")
     CashSection:NewButton("Gives 1 Cash", "ButtonInfo", function()
     local A_1 = 1
