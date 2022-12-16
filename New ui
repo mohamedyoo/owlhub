@@ -199,7 +199,7 @@ function Kavo.CreateLib(kavName, themeList)
 	local headerCover = Instance.new("UICorner")
 	local coverup = Instance.new("Frame")
 	local title = Instance.new("TextLabel")
-	local opengui = Instance.new("TextButton")
+	local opengui = Instance.new("ImageButton")
 	local MainSide = Instance.new("Frame")
 	local sideCorner = Instance.new("UICorner")
 	local coverup_2 = Instance.new("Frame")
@@ -234,7 +234,7 @@ function Kavo.CreateLib(kavName, themeList)
 	Main.ClipsDescendants = true
 	Main.Position = UDim2.new(0.336503863, 0, 0.275485456, 0)
 Main.Size = UDim2.new(0, 525, 0, 318)
-Main.Visible = false
+Main.Visible = true
 
 	MainCorner.CornerRadius = UDim.new(0, 4)
 	MainCorner.Name = "MainCorner"
@@ -270,7 +270,7 @@ Main.Visible = false
 	title.TextColor3 = Color3.fromRGB(245, 245, 245)
 	title.TextSize = 16.000
 	title.TextXAlignment = Enum.TextXAlignment.Left
-
+	
 	MainSide.Name = "MainSide"
 	MainSide.Parent = Main
 	MainSide.BackgroundColor3 = themeList.Header
@@ -321,24 +321,23 @@ Pages.Parent = pages
 	infoContainer.Position = UDim2.new(0.299047619, 0, 0.874213815, 0)
 	infoContainer.Size = UDim2.new(0, 368, 0, 33)
 	
-opengui.Name = "open gui"
-opengui.Parent = ScreenGui
-opengui.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-opengui.Position = UDim2.new(0.912751675, 0, 0.324489802, 0)
-opengui.Size = UDim2.new(0, 65, 0, 56)
-opengui.Font = Enum.Font.SourceSans
-opengui.Text = "Open"
-opengui.TextColor3 = Color3.fromRGB(0, 0, 0)
-opengui.TextScaled = true 
-opengui.TextSize = 14.000
-opengui.TextWrapped = true
-	opengui.MouseButton1Down:connect(function()
+ opengui.Name = "opengui"
+    opengui.Parent = ScreenGui
+    opengui.BackgroundTransparency = 1.000
+    opengui.Position = UDim2.new(0.949999988, 0, 0.137999997, 0)
+    opengui.Size = UDim2.new(0, 21, 0, 21)
+    opengui.ZIndex = 2
+    opengui.Image = "rbxassetid://3926305904"
+    opengui.ImageRectOffset = Vector2.new(284, 4)
+    opengui.ImageRectSize = Vector2.new(24, 24)
+    opengui.MouseButton1Click:Connect(function()
+     opengui.MouseButton1Down:connect(function()
 		if Main.Visible == false then
 		Main.Visible = true
 		else
 		Main.Visible = false
 		end
-	end)
+    end)
 	
 	coroutine.wrap(function()
 		while wait() do
@@ -399,7 +398,7 @@ opengui.TextWrapped = true
 		pageListing.Padding = UDim.new(0, 5)
 
 		tabButton.Name = tabName.."TabButton"
-		tabButton.Parent = tabFrames
+		tabButton.Parent = TabFrame
 		tabButton.BackgroundColor3 = themeList.SchemeColor
 		Objects[tabButton] = "SchemeColor"
 		tabButton.Size = UDim2.new(0, 135, 0, 28)
