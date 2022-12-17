@@ -241,7 +241,7 @@ function Kavo.CreateLib(kavName, themeList)
 	Main.ClipsDescendants = true
 	Main.Position = UDim2.new(0.336503863, 0, 0.275485456, 0)
 Main.Size = UDim2.new(0, 525, 0, 318)
-Main.Visible = false
+Main.Visible = true
 
 	MainCorner.CornerRadius = UDim.new(0, 4)
 	MainCorner.Name = "MainCorner"
@@ -339,23 +339,13 @@ opengui.TextColor3 = Color3.fromRGB(0, 0, 0)
 opengui.TextScaled = true
 opengui.TextSize = 14.000
 opengui.TextWrapped = true
-	
-	opengui.MouseButton1Down:Connect(function()
-		local function MFDPA_fake_script() -- opengui.Script 
-			local script = Instance.new('Script', opengui)
-
-			script.Parent.MouseButton1Click:connect(function()
-				dabumps = script.Parent.Parent.Main
-				if dabumps.Visible == false then
-					dabumps.Visible = true
-					script.Parent.Text = "Close Gui"
-				else
-					dabumps.Visible = false
-					script.Parent.Text = "Open Gui"
-				end
-			end)
-		end
-	end)
+opengui.MouseButton1Click:Connect(function()
+if Main.Visible == false then
+Main.Visible = false
+else
+Main.Visible = false
+end
+end)
 	coroutine.wrap(function()
 		while wait() do
 			Main.BackgroundColor3 = themeList.Background
