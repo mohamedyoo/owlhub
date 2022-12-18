@@ -341,7 +341,7 @@ opengui.TextSize = 14.000
 opengui.TextWrapped = true
 opengui.MouseButton1Click:Connect(function()
 if Main.Visible == false then
-Main.Visible = false
+Main.Visible = true
 else
 Main.Visible = false
 end
