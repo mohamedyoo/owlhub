@@ -1,0 +1,73 @@
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Mapple7777/UI-Librarys/main/UI-1/UI.lua"))()
+
+local Window = Library:Create("Script-Hub","Base Battle")
+    -- MAIN
+    local Main = Window:Tab("Main")
+    local gun = Window:Tab("gun")
+
+Main:Toggle("auto sell",function(v)
+    getgenv().autoclicker= v
+      while getgenv().autoclicker== true do
+game:GetService("ReplicatedStorage").RemoteEvents.SellTP:FireServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+   Main:Button("Netural",function()
+	workspace.Remote.TeamEvent:FireServer("Medium stone grey");
+end)
+
+Main:Button("Prisoner",function()
+	workspace.Remote.TeamEvent:FireServer("Bright orange");
+end)
+
+Main:Button("Police",function()
+	workspace.Remote.TeamEvent:FireServer("Bright blue");
+end)
+
+Main:Button("Criminal",function()
+	local LP = game.Players.LocalPlayer;
+	local RE = LP.Character.HumanoidRootPart.Position;
+	LP.Character.HumanoidRootPart.CFrame = CFrame.new(-919.958, 95.327, 2138.189);
+	wait(0.075);
+	LP.Character.HumanoidRootPart.CFrame = CFrame.new(RE);
+end)
+
+Main:Button("Kill All",function()
+	local e = game.ReplicatedStorage.meleeEvent;
+	local oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame;
+	workspace.Remote.TeamEvent:FireServer("Medium stone grey");
+
+	for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+		if v ~= game.Players.LocalPlayer then
+			repeat wait()
+				local start = tick();
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame;
+				e:FireServer(v);
+				game.Players.LocalPlayer.Character.Humanoid.Sit = false;
+			until v.Character.Humanoid.Health == 0 or tick() - start >= 6
+		end
+	end
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldpos;
+end)
+
+gun:Button("Give M4A1",function()
+	workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["M4A1"].ITEMPICKUP);
+end)
+
+gun:Button("Give AK-47",function()
+	workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["AK-47"].ITEMPICKUP);
+end)
+
+gun:Button("Give Remington 870", function()
+	workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP);
+end)
+
+gun:Button("Give M9",function()
+	workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["M9"].ITEMPICKUP);
+end)
+
+gun:Button("Give Riot Shield",function()
+	workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Riot Shield"].ITEMPICKUP);
+end)
