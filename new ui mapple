@@ -134,6 +134,7 @@ opengui.Name = "open gui"
 	opengui.TextScaled = true
 	opengui.TextSize = 14.000
 	opengui.TextWrapped = true
+	opengui.Visible = false
 	opengui.MouseButton1Click:Connect(function()
 		if Main.Visible == false then
 			Main.Visible = true
@@ -177,6 +178,7 @@ TextBox.Name = "KeyBox"
 		keysystem.Visible = false
 		wait(0.5)
 			Main.Visible = true
+			opengui.Visible = true
 			end
 	end)
 	
@@ -192,7 +194,7 @@ TextBox.Name = "KeyBox"
 	Getkey.TextSize = 14.000
 	Getkey.TextWrapped = true
 		Getkey.MouseButton1Click:Connect(function()
-			game:GetService("StarterGui"):SetCore("SendNotification", {title = "copied"; Text = "Link Successfully Copied!"; Icon = "rbxassetid://9327507243"; Duration = 4})
+			game:GetService("StarterGui"):SetCore("SendNotification", {title = "copied"; Text = "Link Successfully Copied!"; Icon = "rbxassetid://9327507243";})
 			wait(0.7)
 			setclipboard("https://pastebin.com/raw/3caDghrg")
 		end)
