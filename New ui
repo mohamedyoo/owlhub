@@ -334,6 +334,7 @@ function Kavo.CreateLib(kavName, themeList)
 	keysystem.Position = UDim2.new(0.237265423, 0, 0.240816325, 0)
 	keysystem.Size = UDim2.new(0, 284, 0, 274)
 
+TextBox.Name = "KeyBox"
 	TextBox.Parent = keysystem
 	TextBox.BackgroundColor3 = Color3.fromRGB(85, 255, 255)
 	TextBox.Position = UDim2.new(0, 0, 0.120437957, 0)
@@ -361,7 +362,8 @@ function Kavo.CreateLib(kavName, themeList)
 		keysystem.Visible = false
 		wait(0.5)
 			Main.Visible = true
-	end
+			end
+	end)
 	
 	Getkey.Name = "Getkey"
 	Getkey.Parent = keysystem
