@@ -20,7 +20,7 @@ for i,v in pairs(getgc(true)) do
     end
 end
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Mapple7777/UI-Librarys/main/UI-1/UI.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
 
 local main = Library:Create("Script-Hub","AceOfSpadez ")
 CombatW = main:Tab('Combat')
