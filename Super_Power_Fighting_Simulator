@@ -4,7 +4,7 @@
 ]] 
 
 --[[Tabs and Uilib]]--
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Mapple7777/UI-Librarys/main/UI-1/UI.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
 
 local main = Library:Create("Script-Hub","Super Power Fighting")
 local FarmW = main:Tab("Auto Farm")
