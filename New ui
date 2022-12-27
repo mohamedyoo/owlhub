@@ -359,20 +359,12 @@ TextBox.Name = "KeyBox"
 	Enter.TextSize = 14.000
 	Enter.TextWrapped = true
 	Enter.MouseButton1Click:Connect(function()
-	if TextBox.Text == "FirstKey" then
+	if TextBox.Text == "bhvihbvfeievfbhibevfhibibgrihb" then
 		keysystem.Visible = false
 		wait(0.5)
 			Main.Visible = true
 			opengui.Visible = true
 			
-			else
-			
-			game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title = "incorrect",
-    Text = "Key incorrect try again",
-    Button1 = "Ok",
-    Duration = 4
-    })	
 			end
 	end)
 	
