@@ -123,6 +123,25 @@ Main.Visible = false
     HubName.TextColor3 = Color3.fromRGB(255, 255, 255)
     HubName.TextSize = 16.000
 
+opengui.Name = "open gui"
+	opengui.Parent = ScreenGui
+	opengui.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	opengui.Position = UDim2.new(0.912751675, 0, 0.324489802, 0)
+	opengui.Size = UDim2.new(0, 65, 0, 56)
+	opengui.Font = Enum.Font.SourceSans
+	opengui.Text = "Open"
+	opengui.TextColor3 = Color3.fromRGB(0, 0, 0)
+	opengui.TextScaled = true
+	opengui.TextSize = 14.000
+	opengui.TextWrapped = true
+	opengui.MouseButton1Click:Connect(function()
+		if Main.Visible == false then
+			Main.Visible = true
+		else
+			Main.Visible = false
+		end
+	end)
+
 keysystem.Name = "keysystem"
 	keysystem.Parent = ScreenGui
 	keysystem.BackgroundColor3 = Color3.fromRGB(85, 0, 255)
