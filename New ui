@@ -363,6 +363,7 @@ TextBox.Name = "KeyBox"
 		keysystem.Visible = false
 		wait(0.5)
 			Main.Visible = true
+			opengui.Visible = true
 			end
 	end)
 	
@@ -403,6 +404,7 @@ TextBox.Name = "KeyBox"
 	opengui.TextScaled = true
 	opengui.TextSize = 14.000
 	opengui.TextWrapped = true
+	opengui.Visible = false
 	opengui.MouseButton1Click:Connect(function()
 		if Main.Visible == false then
 			Main.Visible = true
