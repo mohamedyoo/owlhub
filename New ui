@@ -333,7 +333,8 @@ function Kavo.CreateLib(kavName, themeList)
 	keysystem.BackgroundColor3 = Color3.fromRGB(85, 0, 255)
 	keysystem.Position = UDim2.new(0.237265423, 0, 0.240816325, 0)
 	keysystem.Size = UDim2.new(0, 284, 0, 274)
-
+	UICorner.Parent = keysystem
+	
 TextBox.Name = "KeyBox"
 	TextBox.Parent = keysystem
 	TextBox.BackgroundColor3 = Color3.fromRGB(85, 255, 255)
@@ -377,12 +378,11 @@ TextBox.Name = "KeyBox"
 	Getkey.TextSize = 14.000
 	Getkey.TextWrapped = true
 		Getkey.MouseButton1Click:Connect(function()
-			game.StarterGui:SetCore("SendNotification", {title = "copied", Text = "Link Successfully Copied!", Icon = "", Duration = 4})
-			wait(1)
+			game:GetService("StarterGui"):SetCore("SendNotification", {title = "copied"; Text = "Link Successfully Copied!"; Icon = "rbxassetid://9327507243"; Duration = 4})
+			wait(0.7)
 			setclipboard("https://pastebin.com/raw/3caDghrg")
 		end)
-	UICorner.Parent = keysystem
-	
+			
 	infoContainer.Name = "infoContainer"
 	infoContainer.Parent = Main
 	infoContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
