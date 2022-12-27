@@ -364,6 +364,15 @@ TextBox.Name = "KeyBox"
 		wait(0.5)
 			Main.Visible = true
 			opengui.Visible = true
+			
+			else
+			
+			game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "incorrect",
+    Text = "Key incorrect try again",
+    Button1 = "Ok",
+    Duration = 4
+    })	
 			end
 	end)
 	
@@ -383,7 +392,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "Copied",
     Text = "Succcesfully Copied",
     Button1 = "Ok",
-    Duration = 5
+    Duration = 4
     })			
     wait(0.7)
 setclipboard("https://pastebin.com/raw/hgsxEFK4")
