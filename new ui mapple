@@ -194,9 +194,15 @@ TextBox.Name = "KeyBox"
 	Getkey.TextSize = 14.000
 	Getkey.TextWrapped = true
 		Getkey.MouseButton1Click:Connect(function()
-			game:GetService("StarterGui"):SetCore("SendNotification", {title = "copied"; Text = "Link Successfully Copied!"; Icon = "rbxassetid://9327507243"; Duration = 4})
-			wait(0.7)
-			setclipboard("https://pastebin.com/raw/3caDghrg")
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Copied",
+    Text = "Succcesfully Copied",
+    Button1 = "Ok",
+    Duration = 4
+    })			
+    wait(0.7)
+setclipboard("https://pastebin.com/raw/hgsxEFK4")
+end
 		end)
 
     Line.Name = "Line"
