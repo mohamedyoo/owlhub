@@ -198,7 +198,7 @@ function Kavo.CreateLib(kavName, themeList)
 		if v:IsA("ScreenGui") and v.Name == kavName then
 			v:Destroy()
 		end
-		end
+	end
 	local ScreenGui = Instance.new("ScreenGui")
 	local Main = Instance.new("Frame")
 	local MainCorner = Instance.new("UICorner")
@@ -206,7 +206,7 @@ function Kavo.CreateLib(kavName, themeList)
 	local headerCover = Instance.new("UICorner")
 	local coverup = Instance.new("Frame")
 	local title = Instance.new("TextLabel")
-	local opengui = Instance.new("TextButton")
+	local close = Instance.new("ImageButton")
 	local MainSide = Instance.new("Frame")
 	local sideCorner = Instance.new("UICorner")
 	local coverup_2 = Instance.new("Frame")
@@ -215,6 +215,15 @@ function Kavo.CreateLib(kavName, themeList)
 	local pages = Instance.new("Frame")
 	local Pages = Instance.new("Folder")
 	local infoContainer = Instance.new("Frame")
+	local opengui = Instance.new("TextButton")
+	local ScreenGui = Instance.new("ScreenGui")
+	local keysystem = Instance.new("Frame")
+	local TextBox = Instance.new("TextBox")
+	local Enter = Instance.new("TextButton")
+	local Getkey = Instance.new("TextButton")
+	local UICorner = Instance.new("UICorner")
+
+
 
 	local blurFrame = Instance.new("Frame")
 
@@ -233,15 +242,15 @@ function Kavo.CreateLib(kavName, themeList)
 	ScreenGui.Name = LibName
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
-	
-	
-    Main.Name = "Main"
+
+
+	Main.Name = "Main"
 	Main.Parent = ScreenGui
 	Main.BackgroundColor3 = themeList.Background
 	Main.ClipsDescendants = true
 	Main.Position = UDim2.new(0.336503863, 0, 0.275485456, 0)
-Main.Size = UDim2.new(0, 525, 0, 318)
-Main.Visible = true
+	Main.Size = UDim2.new(0, 525, 0, 318)
+	Main.Visible = false
 
 	MainCorner.CornerRadius = UDim.new(0, 4)
 	MainCorner.Name = "MainCorner"
@@ -296,17 +305,17 @@ Main.Visible = true
 	coverup_2.BorderSizePixel = 0
 	coverup_2.Position = UDim2.new(0.949939311, 0, 0, 0)
 	coverup_2.Size = UDim2.new(0, 7, 0, 289)
+	
+	TabFrame.Name = "TabFrame"
+	TabFrame.Parent = MainSide
+	TabFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TabFrame.BackgroundTransparency = 1.000
+	TabFrame.Position = UDim2.new(0, 0, -0.00066378375, 0)
+	TabFrame.Size = UDim2.new(0, 135, 0, 283)
 
-TabFrame.Name = "TabFrame"
-TabFrame.Parent = MainSide
-TabFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TabFrame.BackgroundTransparency = 1.000
-TabFrame.Position = UDim2.new(0, 0, -0.00066378375, 0)
-TabFrame.Size = UDim2.new(0, 135, 0, 283)
-
-tabListing.Name = "tabListing"
-tabListing.Parent = TabFrame
-tabListing.SortOrder = Enum.SortOrder.LayoutOrder
+	tabListing.Name = "tabListing"
+	tabListing.Parent = TabFrame
+	tabListing.SortOrder = Enum.SortOrder.LayoutOrder
 
 	pages.Name = "pages"
 	pages.Parent = Main
@@ -316,9 +325,62 @@ tabListing.SortOrder = Enum.SortOrder.LayoutOrder
 	pages.Position = UDim2.new(0.299047589, 0, 0.122641519, 0)
 	pages.Size = UDim2.new(0, 360, 0, 269)
 
-Pages.Name = "Pages"
-Pages.Parent = pages
+	Pages.Name = "Pages"
+	Pages.Parent = pages
+	
+	keysystem.Name = "keysystem"
+	keysystem.Parent = ScreenGui
+	keysystem.BackgroundColor3 = Color3.fromRGB(85, 0, 255)
+	keysystem.Position = UDim2.new(0.237265423, 0, 0.240816325, 0)
+	keysystem.Size = UDim2.new(0, 284, 0, 274)
 
+	TextBox.Parent = keysystem
+	TextBox.BackgroundColor3 = Color3.fromRGB(85, 255, 255)
+	TextBox.Position = UDim2.new(0, 0, 0.120437957, 0)
+	TextBox.Size = UDim2.new(0, 284, 0, 74)
+	TextBox.Font = Enum.Font.SourceSans
+	TextBox.Text = "Key goes here"
+	TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TextBox.TextScaled = true
+	TextBox.TextSize = 14.000
+	TextBox.TextWrapped = true
+
+	Enter.Name = "Enter"
+	Enter.Parent = keysystem
+	Enter.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Enter.Position = UDim2.new(0.0821938589, 0, 0.452554733, 0)
+	Enter.Size = UDim2.new(0, 218, 0, 63)
+	Enter.Font = Enum.Font.SourceSans
+	Enter.Text = "Enter"
+	Enter.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Enter.TextScaled = true
+	Enter.TextSize = 14.000
+	Enter.TextWrapped = true
+	Enter.MouseButton1Click:Connect(function()
+	if TextBox.Text == "FirstKey" then
+		keysystem.Visible = false
+		wait(0.5)
+			Main.Visible = true
+	end
+	
+	Getkey.Name = "Getkey"
+	Getkey.Parent = keysystem
+	Getkey.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Getkey.Position = UDim2.new(0.0821938589, 0, 0.7591241, 0)
+	Getkey.Size = UDim2.new(0, 231, 0, 66)
+	Getkey.Font = Enum.Font.SourceSans
+	Getkey.Text = "GetKey"
+	Getkey.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Getkey.TextScaled = true
+	Getkey.TextSize = 14.000
+	Getkey.TextWrapped = true
+		Getkey.MouseButton1Click:Connect(function()
+			game.StarterGui:SetCore("SendNotification", {title = "copied", Text = "Link Successfully Copied!", Icon = "", Duration = 4})
+			wait(1)
+			setclipboard(" ")
+		end)
+	UICorner.Parent = keysystem
+	
 	infoContainer.Name = "infoContainer"
 	infoContainer.Parent = Main
 	infoContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -327,25 +389,25 @@ Pages.Parent = pages
 	infoContainer.ClipsDescendants = true
 	infoContainer.Position = UDim2.new(0.299047619, 0, 0.874213815, 0)
 	infoContainer.Size = UDim2.new(0, 368, 0, 33)
-	
-opengui.Name = "open gui"
-opengui.Parent = ScreenGui
-opengui.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-opengui.Position = UDim2.new(0.912751675, 0, 0.324489802, 0)
-opengui.Size = UDim2.new(0, 65, 0, 56)
-opengui.Font = Enum.Font.SourceSans
-opengui.Text = "Open"
-opengui.TextColor3 = Color3.fromRGB(0, 0, 0)
-opengui.TextScaled = true
-opengui.TextSize = 14.000
-opengui.TextWrapped = true
-opengui.MouseButton1Click:Connect(function()
-if Main.Visible == false then
-Main.Visible = true
-else
-Main.Visible = false
-end
-end)
+
+	opengui.Name = "open gui"
+	opengui.Parent = ScreenGui
+	opengui.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	opengui.Position = UDim2.new(0.912751675, 0, 0.324489802, 0)
+	opengui.Size = UDim2.new(0, 65, 0, 56)
+	opengui.Font = Enum.Font.SourceSans
+	opengui.Text = "Open"
+	opengui.TextColor3 = Color3.fromRGB(0, 0, 0)
+	opengui.TextScaled = true
+	opengui.TextSize = 14.000
+	opengui.TextWrapped = true
+	opengui.MouseButton1Click:Connect(function()
+		if Main.Visible == false then
+			Main.Visible = false
+		else
+			Main.Visible = false
+		end
+	end)
 	coroutine.wrap(function()
 		while wait() do
 			Main.BackgroundColor3 = themeList.Background
@@ -881,7 +943,7 @@ end)
 				if themeList.SchemeColor == Color3.fromRGB(0,0,0) then
 					Utility:TweenObject(moreInfo, {TextColor3 = Color3.fromRGB(255,255,255)}, 0.2)
 				end 
-				
+
 				UICorner.CornerRadius = UDim.new(0, 4)
 				UICorner.Parent = moreInfo
 
@@ -2647,5 +2709,3 @@ end)
 	return Tabs
 end
 return Kavo
--- Scripts:
-
