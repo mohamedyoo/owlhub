@@ -3,7 +3,19 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/moham
 local Window = Library.CreateLib("Tower Of Hell", "Synapse")
     local Main = Window:NewTab("Main")
     local MainSection = Main:NewSection("Main")
-    MainSection:NewButton("Give all gears", "Gives Gears", function()
+    MainSection:NewButton("inf jumps", "inf", function()
+    loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Infinite%20Jump.txt"))()
+    end)
+    
+     MainSection:NewButton("Fly", "fly ", function()
+     loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Fly.txt"))()
+     end)
+    
+    MainSection:NewButton("anti afk", "fly ", function()
+    loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/anti-afk%20via%20autofocus.txt"))()
+    end)
+    
+   MainSection:NewButton("Give all gears", "Gives Gears", function()
     for i, v in pairs (game:GetService("ReplicatedStorage").Gear:GetChildren()) do
 if v:IsA("Tool") then
 poop = v:Clone()
