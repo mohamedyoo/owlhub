@@ -54,8 +54,8 @@ local function Tween(part, endpos, speed)
     end
 end
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Mapple7777/UI-Librarys/main/UI-1/UI.lua"))() 
-local main = Library:Create("Script-Hub","KOK ")
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))() 
+local main = Library:Create("Emptyness hub","MM2 ")
 Mainz = main:Tab('Combat')
 Character = main:Tab('Character')
 Visual = main:Tab('Visuals')
