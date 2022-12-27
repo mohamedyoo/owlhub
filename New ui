@@ -379,7 +379,7 @@ TextBox.Name = "KeyBox"
 		Getkey.MouseButton1Click:Connect(function()
 			game.StarterGui:SetCore("SendNotification", {title = "copied", Text = "Link Successfully Copied!", Icon = "", Duration = 4})
 			wait(1)
-			setclipboard(" ")
+			setclipboard("https://pastebin.com/raw/3caDghrg")
 		end)
 	UICorner.Parent = keysystem
 	
