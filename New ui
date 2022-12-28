@@ -358,10 +358,9 @@ function Kavo.CreateLib(kavName, themeList)
 	Enter.TextWrapped = true
 	Enter.MouseButton1Click:Connect(function()
 	if TextBox.Text == "FirstKey" then
-		keysystem:Destroy
+		keysystem.Visible = false
 		wait(0.5)
 			Main.Visible = true
-			opengui.Visible = true
 	end
 	
 	Getkey.Name = "Getkey"
