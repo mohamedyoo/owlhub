@@ -92,7 +92,7 @@ MT.__namecall = newcclosure(function(self, ...)
 
         local CP = ClosestPlayer()
 
-        if CP and CP.Character and CP.Character.FindFirstChild(CP.Character, "Head") then
+        if CP and CP.Character and CP.Character.FindFirstChild(CP.Character, "Torso") then
 
             Args[1] = Ray.new(CurrentCamera.CFrame.Position, (CP.Character.Head.Position - CurrentCamera.CFrame.Position).Unit * 1000)
 
@@ -194,7 +194,7 @@ getgenv().Options = {
 
     Smoothness = true,
 
-    AimPart = "Head",
+    AimPart = "Torso",
 
     FOV = 150
 
@@ -280,7 +280,7 @@ curc = Circle()
 
 UserInputService.InputBegan:Connect(function( input )
 
-    if input.UserInputType == Enum.UserInputType.MouseButton2 then
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or if input.UserInputType == Enum.UserInputType.Touch then
 
         Down = true
 
@@ -290,7 +290,7 @@ end)
 
 UserInputService.InputEnded:Connect(function( input )
 
-    if input.UserInputType == Enum.UserInputType.MouseButton2 then
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or if input.UserInputType == Enum.UserInputType.Touch then
 
         Down = false
 
