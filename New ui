@@ -333,7 +333,9 @@ function Kavo.CreateLib(kavName, themeList)
 	keysystem.BackgroundColor3 = Color3.fromRGB(85, 0, 255)
 	keysystem.Position = UDim2.new(0.237265423, 0, 0.240816325, 0)
 	keysystem.Size = UDim2.new(0, 284, 0, 274)
-
+	UICorner.Parent = keysystem
+	
+TextBox.Name = "KeyBox"
 	TextBox.Parent = keysystem
 	TextBox.BackgroundColor3 = Color3.fromRGB(85, 255, 255)
 	TextBox.Position = UDim2.new(0, 0, 0.120437957, 0)
@@ -357,12 +359,13 @@ function Kavo.CreateLib(kavName, themeList)
 	Enter.TextSize = 14.000
 	Enter.TextWrapped = true
 	Enter.MouseButton1Click:Connect(function()
-	if TextBox.Text == "FirstKey" then
+	if TextBox.Text == "bhvihbvfeievfbhibevfhibibgrihb" then
 		keysystem.Visible = false
 		wait(0.5)
 			Main.Visible = true
 			opengui.Visible = true
-	end
+			end
+	end)
 	
 	Getkey.Name = "Getkey"
 	Getkey.Parent = keysystem
