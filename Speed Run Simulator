@@ -1,0 +1,86 @@
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/New%20ui"))()
+local Window = Library.CreateLib("Speed run sim", "DarkTheme")
+  
+ local Main = Window:NewTab("Main")
+    local Section = Main:NewSection("Main")
+
+      Section:NewToggle("auto Clicker", "Make your player auto click", function(state)
+getgenv().speed = state
+        if state then
+            click()
+            end
+end)
+
+      Section:NewToggle("auto Rebirth", "Make your player auto click", function(state)
+getgenv().rebirth = state
+        if state then
+            rebirth()
+            end
+end)
+
+      Section:NewToggle("auto Orbs", "Make your player auto click", function(state)
+getgenv().orb = state
+        if state then
+            fire()
+            end
+end)
+
+
+      Section:NewToggle("auto ring", "Make your player auto click", function(state)
+getgenv().ring = state
+        if state then
+           ring()
+            end
+end)
+
+
+      Section:NewButton("Win Race", "Make your player auto click", function()
+            race()
+end)
+
+
+
+function click()
+while getgenv().speed == true do
+game:GetService("ReplicatedStorage").Remotes.AddSpeed:FireServer()
+wait(0.2)
+end
+end
+
+function rebirth()
+    while getgenv().rebirth == true do
+        game:GetService("ReplicatedStorage").Remotes.Rebirth:FireServer()
+    wait(1)
+    end
+    end
+
+function fire()
+    while getgenv().orb == true do
+    for i, v in pairs(game:GetService("Workspace").OrbSpawns:GetDescendants()) do
+        if v.Name == "TouchInterest" and v.Parent then
+            firetouchinterest(game:GetService('Players').LocalPlayer.Character.HumanoidRootPart, v.Parent, 0)
+        end
+    end
+    wait()
+    end
+end
+
+function ring()
+while getgenv().ring == true do
+for i, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+        if v.Name == "TouchInterest" and v.Parent:IsA("MeshPart") and v.Parent then
+            firetouchinterest(game:GetService('Players').LocalPlayer.Character.HumanoidRootPart, v.Parent, 0)
+        end
+    end
+    wait()
+end
+end
+
+function race()
+    for i, v in pairs(game:GetService("Workspace").RaceEnd:GetChildren()) do
+        if v.Name == "TouchInterest" and v.Parent then
+            firetouchinterest(game:GetService('Players').LocalPlayer.Character.HumanoidRootPart, v.Parent, 0)
+        end
+    end
+end
