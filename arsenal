@@ -1,4 +1,4 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/New%20ui"))()
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
 
 local Window = Library.CreateLib("Arsenal | Mobile", "BloodTheme")
 
@@ -8,15 +8,15 @@ local gunmods = Window:NewTab("GunMods")
 
 local player = Window:NewTab("Player")
 
-local Combat = combat:NewSection("Combat ")
+local Combat = combat:NewSection("Combat LoL")
 
-local GunMods = gunmods:NewSection("GunMods ")
+local GunMods = gunmods:NewSection("GunMods LoL")
 
-local Player = player:NewSection("Player ")
+local Player = player:NewSection("Player LoL")
 
 local misc = Window:NewTab("Misc")
 
-local Misc = misc:NewSection("Misc ")
+local Misc = misc:NewSection("Misc LoL")
 
 Combat:NewButton("Silent Aim", "idk what to put here", function()
 
@@ -92,7 +92,7 @@ MT.__namecall = newcclosure(function(self, ...)
 
         local CP = ClosestPlayer()
 
-        if CP and CP.Character and CP.Character.FindFirstChild(CP.Character, "Torso") then
+        if CP and CP.Character and CP.Character.FindFirstChild(CP.Character, "Head") then
 
             Args[1] = Ray.new(CurrentCamera.CFrame.Position, (CP.Character.Head.Position - CurrentCamera.CFrame.Position).Unit * 1000)
 
@@ -194,7 +194,7 @@ getgenv().Options = {
 
     Smoothness = true,
 
-    AimPart = "Torso",
+    AimPart = "Head",
 
     FOV = 150
 
@@ -280,7 +280,7 @@ curc = Circle()
 
 UserInputService.InputBegan:Connect(function( input )
 
-    if input.UserInputType == Enum.UserInputType.MouseButton1 or if input.UserInputType == Enum.UserInputType.Touch then
+    if input.UserInputType == Enum.UserInputType.MouseButton2 then
 
         Down = true
 
@@ -290,7 +290,7 @@ end)
 
 UserInputService.InputEnded:Connect(function( input )
 
-    if input.UserInputType == Enum.UserInputType.MouseButton1 or if input.UserInputType == Enum.UserInputType.Touch then
+    if input.UserInputType == Enum.UserInputType.MouseButton2 then
 
         Down = false
 
@@ -624,6 +624,6 @@ Misc:NewButton("Lean Hub", "Lean", function()
 
 end)
 
-Player:NewButton("Esp", "See people through the wall", function()
-loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/WRD%20ESP.txt"))()
+Misc:NewButton("ESp", "LOL", function()
+loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Dex%20Explorer.txt"))()
 end)
