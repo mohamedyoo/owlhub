@@ -361,6 +361,7 @@ function Kavo.CreateLib(kavName, themeList)
 		keysystem.Visible = false
 		wait(0.5)
 			Main.Visible = true
+			opengui.Visible = true
 	end
 	
 	Getkey.Name = "Getkey"
@@ -376,12 +377,14 @@ function Kavo.CreateLib(kavName, themeList)
 	Getkey.TextWrapped = true
 		Getkey.MouseButton1Click:Connect(function()
 game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title = "Correct key"...PlayerName,
-    Text = "you have entered the correct key",
+    Title = "Copied",
+    Text = "Succcesfully Copied",
     Button1 = "Ok",
-    Duration = 5
-    })			wait(1)
-			setclipboard("https://pastebin.com/raw/hgsxEFK4")
+    Duration = 4
+    })			
+    wait(0.7)
+setclipboard("https://pastebin.com/raw/hgsxEFK4")
+end
 		end)
 	UICorner.Parent = keysystem
 	
@@ -405,6 +408,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 	opengui.TextScaled = true
 	opengui.TextSize = 14.000
 	opengui.TextWrapped = true
+	opengui.Visible = false
 	opengui.MouseButton1Click:Connect(function()
 		if Main.Visible == false then
 			Main.Visible = false
