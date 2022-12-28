@@ -366,9 +366,12 @@ TextBox.Name = "KeyBox"
 			opengui.Visible = true
 			keysystem:Destroy
 			else
-			local kickhandler = game.Players.LocalPlayers
-			kickhandler:Kick("Wornge key please make sure you have the rights one next time")
-			warn('imainge putting in the wrong key lol')
+			game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Wrong Key",
+    Text = "Check Key",
+    Button1 = "Ok",
+    Duration = 4
+    })	
 			end
 	end)
 	
