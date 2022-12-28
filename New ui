@@ -333,6 +333,7 @@ function Kavo.CreateLib(kavName, themeList)
 	keysystem.BackgroundColor3 = Color3.fromRGB(85, 0, 255)
 	keysystem.Position = UDim2.new(0.237265423, 0, 0.240816325, 0)
 	keysystem.Size = UDim2.new(0, 284, 0, 274)
+	keysystem.Visible = true
 	UICorner.Parent = keysystem
 	
 TextBox.Name = "KeyBox"
@@ -385,11 +386,10 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
     Button1 = "Ok",
     Duration = 4
     })			
-    wait(0.7)
+    wait(0.5)
 setclipboard("https://pastebin.com/raw/hgsxEFK4")
 end
 		end)
-	UICorner.Parent = keysystem
 	
 	infoContainer.Name = "infoContainer"
 	infoContainer.Parent = Main
@@ -414,7 +414,7 @@ end
 	opengui.Visible = false
 	opengui.MouseButton1Click:Connect(function()
 		if Main.Visible == false then
-			Main.Visible = false
+			Main.Visible = true
 		else
 			Main.Visible = false
 		end
