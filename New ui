@@ -342,6 +342,7 @@ keysystem.Name = "keysystem"
 	keysystem.Position = UDim2.new(0.237265423, 0, 0.240816325, 0)
 	keysystem.Size = UDim2.new(0, 284, 0, 274)
 
+TextBox.Name = "Keybox"
 	TextBox.Parent = keysystem
 	TextBox.BackgroundColor3 = Color3.fromRGB(85, 255, 255)
 	TextBox.Position = UDim2.new(0, 0, 0.120437957, 0)
@@ -365,10 +366,11 @@ keysystem.Name = "keysystem"
 	Enter.TextSize = 14.000
 	Enter.TextWrapped = true
 	Enter.MouseButton1Click:Connect(function()
-	if TextBox.Text == "FirstKey" then
+	if TextBox.Text == "bhvihbvfeievfbhibevfhibibgrihb" then
 		keysystem.Visible = false
-		wait(0.5)
+		wait(0.7)
 			Main.Visible = true
+			opengui.Visible = true
 	end
 	
 	Getkey.Name = "Getkey"
@@ -385,7 +387,7 @@ keysystem.Name = "keysystem"
 		Getkey.MouseButton1Click:Connect(function()
 			game.StarterGui:SetCore("SendNotification", {title = "copied", Text = "Link Successfully Copied!", Icon = "", Duration = 4})
 			wait(1)
-			setclipboard(" ")
+			setclipboard("https://pastebin.com/raw/hgsxEFK4")
 		end)
 	UICorner.Parent = keysystem
 
@@ -399,6 +401,7 @@ keysystem.Name = "keysystem"
 	opengui.TextColor3 = Color3.fromRGB(0, 0, 0)
 	opengui.TextScaled = true
 	opengui.TextSize = 14.000
+	opengui.Visible = false
 	opengui.TextWrapped = true
 	opengui.MouseButton1Click:Connect(function()
 		if Main.Visible == false then
