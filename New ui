@@ -347,6 +347,7 @@ function Kavo.CreateLib(kavName, themeList)
 			Main.Visible = false
 		end
 	end)
+	
 	coroutine.wrap(function()
         while wait() do
             Main.BackgroundColor3 = themeList.Background
@@ -406,7 +407,7 @@ function Kavo.CreateLib(kavName, themeList)
         pageListing.Padding = UDim.new(0, 5)
 
         tabButton.Name = tabName.."TabButton"
-        tabButton.Parent = tabFrames
+        tabButton.Parent = TabFrame
         tabButton.BackgroundColor3 = themeList.SchemeColor
         Objects[tabButton] = "SchemeColor"
         tabButton.Size = UDim2.new(0, 135, 0, 28)
@@ -442,7 +443,7 @@ function Kavo.CreateLib(kavName, themeList)
                 v.Visible = false
             end
             page.Visible = true
-            for i,v in next, tabFrames:GetChildren() do
+            for i,v in next, TabFrame:GetChildren() do
                 if v:IsA("TextButton") then
                     if themeList.SchemeColor == Color3.fromRGB(255,255,255) then
                         Utility:TweenObject(v, {TextColor3 = Color3.fromRGB(255,255,255)}, 0.2)
