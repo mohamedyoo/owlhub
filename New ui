@@ -206,7 +206,7 @@ function Kavo.CreateLib(kavName, themeList)
 	local headerCover = Instance.new("UICorner")
 	local coverup = Instance.new("Frame")
 	local title = Instance.new("TextLabel")
-	local close = Instance.new("ImageButton")
+	local close = Instance.new("TextButton")
 	local MainSide = Instance.new("Frame")
 	local sideCorner = Instance.new("UICorner")
 	local coverup_2 = Instance.new("Frame")
@@ -352,6 +352,8 @@ TextBox.Name = "Keybox"
 	TextBox.TextScaled = true
 	TextBox.TextSize = 14.000
 	TextBox.TextWrapped = true
+Main.Visible = true
+			opengui.Visible = true
 
 	Enter.Name = "Enter"
 	Enter.Parent = keysystem
@@ -366,11 +368,12 @@ TextBox.Name = "Keybox"
 	Enter.TextWrapped = true
 	Enter.MouseButton1Click:Connect(function()
 	if TextBox.Text == "bhvihbvfeievfbhibevfhibibgrihb" then
-		keysystem.Visible = false
+		keysystem:Destroy()
 		wait(0.7)
 			Main.Visible = true
 			opengui.Visible = true
 	end
+	end)
 	
 	Getkey.Name = "Getkey"
 	Getkey.Parent = keysystem
@@ -383,12 +386,33 @@ TextBox.Name = "Keybox"
 	Getkey.TextScaled = true
 	Getkey.TextSize = 14.000
 	Getkey.TextWrapped = true
-		Getkey.MouseButton1Click:Connect(function()
-			game.StarterGui:SetCore("SendNotification", {title = "copied", Text = "Link Successfully Copied!", Icon = "", Duration = 4})
-			wait(1)
+	Getkey.MouseButton1Click:Connect(function()
+	game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Copied",
+    Text = "you have copied the link pastebin",
+    Button1 = "Ok",
+    Duration = 4
+    })
+    wait(0.5)
 			setclipboard("https://pastebin.com/raw/hgsxEFK4")
 		end)
+		
 	UICorner.Parent = keysystem
+
+ close.Name = "close"
+	close.Parent = keysystem
+	close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	close.Position = UDim2.new(0.848591566, 0, 0, 0)
+	close.Size = UDim2.new(0, 43, 0, 33)
+	close.Font = Enum.Font.SourceSans
+	close.Text = "X"
+	close.TextColor3 = Color3.fromRGB(0, 0, 0)
+	close.TextScaled = true
+	close.TextSize = 14.000
+	close.TextWrapped = true
+	close.MouseButton1Click:Connect(function()
+        keysystem:Destroy()
+    end)
 
 	opengui.Name = "open gui"
 	opengui.Parent = ScreenGui
