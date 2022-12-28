@@ -360,18 +360,10 @@ TextBox.Name = "KeyBox"
 	Enter.TextWrapped = true
 	Enter.MouseButton1Click:Connect(function()
 	if TextBox.Text == "bhvihbvfeievfbhibevfhibibgrihb" then
-		keysystem.Visible = false
+		keysystem:Destroy
 		wait(0.5)
 			Main.Visible = true
 			opengui.Visible = true
-			keysystem:Destroy
-			else
-			game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title = "Wrong Key",
-    Text = "Check Key",
-    Button1 = "Ok",
-    Duration = 4
-    })	
 			end
 	end)
 	
