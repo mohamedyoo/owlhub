@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/New%20ui"))()
-local Window = Library.CreateLib("Bye mohamed", "DarkTheme")
+local Window = Library.CreateLib("Strong Baby Simulator!", "DarkTheme")
     -- MAIN
     local Main = Window:NewTab("Main")
     local Section = Main:NewSection("Main")
