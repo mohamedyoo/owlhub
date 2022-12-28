@@ -375,9 +375,13 @@ function Kavo.CreateLib(kavName, themeList)
 	Getkey.TextSize = 14.000
 	Getkey.TextWrapped = true
 		Getkey.MouseButton1Click:Connect(function()
-			game.StarterGui:SetCore("SendNotification", {title = "copied", Text = "Link Successfully Copied!", Icon = "", Duration = 4})
-			wait(1)
-			setclipboard(" ")
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Correct key"...PlayerName,
+    Text = "you have entered the correct key",
+    Button1 = "Ok",
+    Duration = 5
+    })			wait(1)
+			setclipboard("https://pastebin.com/raw/hgsxEFK4")
 		end)
 	UICorner.Parent = keysystem
 	
