@@ -39,7 +39,48 @@ end)
             race()
 end)
 
+local Player = Window:NewTab("Player")
+    local PlayerSection = Player:NewSection("Player")
 
+    PlayerSection:NewSlider("Walkspeed", "SPEED!!", 500, 16, function(s)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+    end)
+
+    PlayerSection:NewSlider("Jumppower", "JUMP HIGH!!", 350, 50, function(s)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+    end)
+
+    PlayerSection:NewButton("Reset WS/JP", "Resets to all defaults", function()
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    end)
+
+PlayerSection:NewButton("Infinte jump", "ButtonInfo", function()
+  loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Infinite%20Jump.txt"))()
+end)
+
+PlayerSection:NewButton("Flashlight", "ButtonInfo", function()
+loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Human%20Flashlight.txt"))()
+end)
+
+  local Other = Window:NewTab("Other")
+    local OtherSection = Other:NewSection("Other")
+
+    OtherSection:NewButton("Chat Spoofer", "Lets you chat for other people", function()
+        loadstring(game:HttpGet(('https://pastebin.com/raw/djBfk8Li'),true))()
+    end)
+
+OtherSection:NewKeybind("Keybind", "KeybindInfo", Enum.KeyCode.P, function()
+    Library:ToggleUI()
+end)
+
+     OtherSection:NewButton("Fly", "bird mode", function()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/Nicuse/RobloxScripts/main/BypassedFly.lua"))() 
+end)
+
+OtherSection:NewButton("Rejoin", "Rejoins you to the same server", function()
+ game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+end)
 
 function click()
 while getgenv().speed == true do
