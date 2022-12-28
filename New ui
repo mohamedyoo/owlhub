@@ -216,6 +216,13 @@ function Kavo.CreateLib(kavName, themeList)
 	local Pages = Instance.new("Folder")
 	local infoContainer = Instance.new("Frame")
 	local opengui = Instance.new("TextButton")
+	local ScreenGui = Instance.new("ScreenGui")
+	local keysystem = Instance.new("Frame")
+	local TextBox = Instance.new("TextBox")
+	local Enter = Instance.new("TextButton")
+	local Getkey = Instance.new("TextButton")
+	local UICorner = Instance.new("UICorner")
+	
 
 	local blurFrame = Instance.new("Frame")
 
@@ -328,6 +335,59 @@ function Kavo.CreateLib(kavName, themeList)
 	infoContainer.ClipsDescendants = true
 	infoContainer.Position = UDim2.new(0.299047619, 0, 0.874213815, 0)
 	infoContainer.Size = UDim2.new(0, 368, 0, 33)
+
+keysystem.Name = "keysystem"
+	keysystem.Parent = ScreenGui
+	keysystem.BackgroundColor3 = Color3.fromRGB(85, 0, 255)
+	keysystem.Position = UDim2.new(0.237265423, 0, 0.240816325, 0)
+	keysystem.Size = UDim2.new(0, 284, 0, 274)
+
+	TextBox.Parent = keysystem
+	TextBox.BackgroundColor3 = Color3.fromRGB(85, 255, 255)
+	TextBox.Position = UDim2.new(0, 0, 0.120437957, 0)
+	TextBox.Size = UDim2.new(0, 284, 0, 74)
+	TextBox.Font = Enum.Font.SourceSans
+	TextBox.Text = "Key goes here"
+	TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TextBox.TextScaled = true
+	TextBox.TextSize = 14.000
+	TextBox.TextWrapped = true
+
+	Enter.Name = "Enter"
+	Enter.Parent = keysystem
+	Enter.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Enter.Position = UDim2.new(0.0821938589, 0, 0.452554733, 0)
+	Enter.Size = UDim2.new(0, 218, 0, 63)
+	Enter.Font = Enum.Font.SourceSans
+	Enter.Text = "Enter"
+	Enter.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Enter.TextScaled = true
+	Enter.TextSize = 14.000
+	Enter.TextWrapped = true
+	Enter.MouseButton1Click:Connect(function()
+	if TextBox.Text == "FirstKey" then
+		keysystem.Visible = false
+		wait(0.5)
+			Main.Visible = true
+	end
+	
+	Getkey.Name = "Getkey"
+	Getkey.Parent = keysystem
+	Getkey.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Getkey.Position = UDim2.new(0.0821938589, 0, 0.7591241, 0)
+	Getkey.Size = UDim2.new(0, 231, 0, 66)
+	Getkey.Font = Enum.Font.SourceSans
+	Getkey.Text = "GetKey"
+	Getkey.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Getkey.TextScaled = true
+	Getkey.TextSize = 14.000
+	Getkey.TextWrapped = true
+		Getkey.MouseButton1Click:Connect(function()
+			game.StarterGui:SetCore("SendNotification", {title = "copied", Text = "Link Successfully Copied!", Icon = "", Duration = 4})
+			wait(1)
+			setclipboard(" ")
+		end)
+	UICorner.Parent = keysystem
 
 	opengui.Name = "open gui"
 	opengui.Parent = ScreenGui
