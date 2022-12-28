@@ -364,7 +364,11 @@ TextBox.Name = "KeyBox"
 		wait(0.5)
 			Main.Visible = true
 			opengui.Visible = true
-			
+			keysystem:Destroy
+			else
+			local kickhandler = game.Players.LocalPlayers
+			kickhandler:Kick("Wornge key please make sure you have the rights one next time")
+			warn('imainge putting in the wrong key lol')
 			end
 	end)
 	
