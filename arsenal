@@ -50,11 +50,11 @@ function ClosestPlayer()
 
         if not V.Character then continue end
 
-        local Head = V.Character.FindFirstChild(V.Character, "Head")
+        local Torso = V.Character.FindFirstChild(V.Character, "Torso")
 
-        if not Head then continue end
+        if not Torso then continue end
 
-        local Pos, Vis = CurrentCamera.WorldToScreenPoint(CurrentCamera, Head.Position)
+        local Pos, Vis = CurrentCamera.WorldToScreenPoint(CurrentCamera, Torso.Position)
 
         if not Vis then continue end
 
@@ -194,7 +194,7 @@ getgenv().Options = {
 
     Smoothness = true,
 
-    AimPart = "Head",
+    AimPart = "Torso",
 
     FOV = 150
 
@@ -442,7 +442,6 @@ end)
 
 Player:NewButton("Inf Jump", "jump infinitely", function()
 
--- Created By Zorkel
 
 -- Instances:
 
@@ -519,6 +518,12 @@ end)
 Player:NewButton("Invisible", "lol milk", function()
 
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/Cesare0328/my-scripts/main/arsenal%20updated%20invis.lua'),true))()
+
+end)
+
+Player:NewButton("Teleport To Player", "Teleports your player's character to the selected player's character", function()
+
+loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Teleport%20To%20Player.txt"))()
 
 end)
 
