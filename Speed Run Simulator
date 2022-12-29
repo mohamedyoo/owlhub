@@ -5,6 +5,22 @@ local Window = Library.CreateLib("Speed run sim", "DarkTheme")
  local Main = Window:NewTab("Main")
     local Section = Main:NewSection("Main")
 
+
+ local SCPNames = {}
+    for _,v in pairs(workspace.Teleports:GetChildren()) do
+if v:IsA('Part') or v:IsA("SpawnLocation") then
+        if not table.find(SCPNames, v.Name) then
+       table.insert(SCPNames, v.Name)
+        end
+    end
+end
+
+
+    Section:NewDropdown("Teleport To SCP's", "LOL", SCPNames, function(c) -- drop down for multiple options that go under the same catagory, ex. Aimbone (Head, UpperTorso, Legs)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Teleports[c].CFrame
+    end)
+    
+
       Section:NewToggle("auto Clicker", "Make your player auto click", function(state)
 getgenv().speed = state
         if state then
