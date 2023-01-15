@@ -2681,7 +2681,7 @@ TextBox.Name = "Keybox"
                 end)
                 setcolor({h,s,v})
             end
-            
+	
             function Elements:NewLabel(title)
             	local labelFunctions = {}
             	local label = Instance.new("TextLabel")
