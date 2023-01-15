@@ -2002,8 +2002,11 @@ TextBox.Name = "Keybox"
                 return DropFunction
             end
 	    
-	    function Elements:NewKeybind(text, key, callback)
-			local Key = key.Name
+	    function Elements:NewKey(keytext, keyinf, key, callback)
+keytext = keytext or "Keysystem"
+                keyinf = keyinf or "KeysystemInfo"
+                callback = callback or function() end
+		local Key = key.Name
 
 			local Bind = Instance.new("TextButton")
 			local BindUICorner = Instance.new("UICorner")
