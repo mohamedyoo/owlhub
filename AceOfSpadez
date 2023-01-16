@@ -20,9 +20,8 @@ for i,v in pairs(getgc(true)) do
     end
 end
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
-
-local main = Library:Create("Script-Hub","AceOfSpadez ")
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
+main = lib:Window()
 CombatW = main:Tab('Combat')
 local FOVCircle = Drawing.new("Circle")
 FOVCircle.Thickness = 2
