@@ -4,9 +4,8 @@
 ]] 
 
 --[[Tabs and Uilib]]--
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
-
-local main = Library:Create("Script-Hub","Super Power Fighting")
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
+main = lib:Window()
 local FarmW = main:Tab("Auto Farm")
 local BuyW = main:Tab("Auto Buy")
 local TeleW = main:Tab("Teleports")
