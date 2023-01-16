@@ -61,14 +61,11 @@ text.Center = true
 return text
 end
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
-
-local main = Library:Create("Script-Hub","Base Battle")
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
+main = lib:Window()
 Mainz = main:Tab('Combat')
 Esp = main:Tab('Visuals')
 GM = main:Tab('Gun Mods')
-
-Mainz:Label("New Ui")
 
 Mainz:Toggle("Silent-Aim", function(state)
 settings.silent = state
@@ -79,23 +76,6 @@ end)
 Mainz:Slider('FOV', 0, 2500, function(num)
 settings.FOV = num
 end)
-GM:Keybind("Toggle",Enum.KeyCode.V,function()
-    Library:Toggle()
-end)
-GM:Button("Fast Fire", function()
-for _,v in ipairs(game:GetService("ReplicatedStorage").Weapons.Guns:GetChildren()) do
-    for _,v2 in pairs(v:GetChildren()) do
-        if v2.ClassName == "Folder" then
-            v2:SetAttribute("Automatic", true)
-            v2:SetAttribute("ProjectileVelocity", 5000)
-            v:SetAttribute("Firerate", 50000)
-
-        end
-    end
-end
-
-end)
-
 Mainz:Slider('Silent-Aim Accuracy', 0, 100, function(num)
 settings.Acc = num
 end)
@@ -141,16 +121,6 @@ end)
 
 Esp:Toggle("BoxEsp", function(state)
 settings.boxesp = state
-end)
-
-GM:Button("No Spread", function()
-for _,v in ipairs(game:GetService("ReplicatedStorage").Weapons.Guns:GetChildren()) do
-    for _,v2 in pairs(v:GetChildren()) do
-        if v2.ClassName == "Folder" then
-            v2:SetAttribute("bloomFactor", 0)
-        end
-    end
-end
 end)
 
 Esp:Colorpicker("Enemy Color", Color3.fromRGB(225,0,0), function(Color)
@@ -264,3 +234,29 @@ if v ~= game.Players.LocalPlayer then
 Funcs:AddEsp(player)
 end
 end)
+
+GM:Button("No Spread", function()
+for _,v in ipairs(game:GetService("ReplicatedStorage").Weapons.Guns:GetChildren()) do
+    for _,v2 in pairs(v:GetChildren()) do
+        if v2.ClassName == "Folder" then
+            v2:SetAttribute("bloomFactor", 0)
+        end
+    end
+end
+end)
+
+
+GM:Button("Fast Fire", function()
+for _,v in ipairs(game:GetService("ReplicatedStorage").Weapons.Guns:GetChildren()) do
+    for _,v2 in pairs(v:GetChildren()) do
+        if v2.ClassName == "Folder" then
+            v2:SetAttribute("Automatic", true)
+            v2:SetAttribute("ProjectileVelocity", 5000)
+            v:SetAttribute("Firerate", 50000)
+
+        end
+    end
+end
+
+end)
+
