@@ -33,9 +33,8 @@ local settings = {
     JP = false
 }
 
- local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
-
-local main = Library:Create("Script-Hub","SCP Games") 
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
+main = lib:Window() 
     MainWindow = main:Tab('Main') -- make a first Tab1 
     LP = main:Tab('LocalPlayer') -- make a 2nd Tab2
 
