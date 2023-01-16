@@ -1,6 +1,5 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
-
-local main = Library:Create("Script-Hub","Base Battle")
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
+main = lib:Window()
 local house =  main:Tab('Bakon Estase')
 local c4 =  main:Tab('Chapter 4')
 local credits =  main:Tab('Credits')
