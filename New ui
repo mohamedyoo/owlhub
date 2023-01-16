@@ -365,119 +365,10 @@ function Kavo.CreateLib(kavName, xGameName)
 					v.TextColor3 = Color3.fromRGB(190, 190, 190)
 				end
 			end
-		local Sections = {}
-		local focusing = false
-		local viewDe = false
-
-			function Sections:NewSection(secName, hidden)
-				secName = secName or "Section"
-				local sectionFunctions = {}
-				local modules = {}
-				hidden = hidden or false
-				local sectionFrame = Instance.new("Frame")
-				local sectionlistoknvm = Instance.new("UIListLayout")
-				local sectionHead = Instance.new("Frame")
-				local sHeadCorner = Instance.new("UICorner")
-				local sectionName = Instance.new("TextLabel")
-				local sectionInners = Instance.new("Frame")
-				local sectionElListing = Instance.new("UIListLayout")
-
-				if hidden then
-					sectionHead.Visible = false
-				else
-					sectionHead.Visible = true
-				end
-
-				sectionFrame.Name = "sectionFrame"
-				sectionFrame.Parent = page
-				sectionFrame.BackgroundColor3 = themeList.Background--36, 37, 43
-				sectionFrame.BorderSizePixel = 0
-
-				sectionlistoknvm.Name = "sectionlistoknvm"
-				sectionlistoknvm.Parent = sectionFrame
-				sectionlistoknvm.SortOrder = Enum.SortOrder.LayoutOrder
-				sectionlistoknvm.Padding = UDim.new(0, 5)
-
-				for i,v in pairs(sectionInners:GetChildren()) do
-					while wait() do
-						if v:IsA("Frame") or v:IsA("TextButton") then
-							function size(pro)
-								if pro == "Size" then
-									UpdateSize()
-									updateSectionFrame()
-								end
-							end
-							v.Changed:Connect(size)
-						end
-					end
-				end
-				sectionHead.Name = "sectionHead"
-				sectionHead.Parent = sectionFrame
-				sectionHead.BackgroundColor3 = themeList.SchemeColor
-				Objects[sectionHead] = "BackgroundColor3"
-				sectionHead.Size = UDim2.new(0, 352, 0, 33)
-
-				sHeadCorner.CornerRadius = UDim.new(0, 4)
-				sHeadCorner.Name = "sHeadCorner"
-				sHeadCorner.Parent = sectionHead
-
-				sectionName.Name = "sectionName"
-				sectionName.Parent = sectionHead
-				sectionName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				sectionName.BackgroundTransparency = 1.000
-				sectionName.BorderColor3 = Color3.fromRGB(27, 42, 53)
-				sectionName.Position = UDim2.new(0.0198863633, 0, 0, 0)
-				sectionName.Size = UDim2.new(0.980113626, 0, 1, 0)
-				sectionName.Font = Enum.Font.Gotham
-				sectionName.Text = secName
-				sectionName.RichText = true
-				sectionName.TextColor3 = themeList.TextColor
-				Objects[sectionName] = "TextColor3"
-				sectionName.TextSize = 14.000
-				sectionName.TextXAlignment = Enum.TextXAlignment.Left
-				if themeList.SchemeColor == Color3.fromRGB(255,255,255) then
-					Utility:TweenObject(sectionName, {TextColor3 = Color3.fromRGB(0,0,0)}, 0.2)
-				end 
-				if themeList.SchemeColor == Color3.fromRGB(0,0,0) then
-					Utility:TweenObject(sectionName, {TextColor3 = Color3.fromRGB(255,255,255)}, 0.2)
-				end 
-
-				sectionInners.Name = "sectionInners"
-				sectionInners.Parent = sectionFrame
-				sectionInners.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				sectionInners.BackgroundTransparency = 1.000
-				sectionInners.Position = UDim2.new(0, 0, 0.190751448, 0)
-
-				sectionElListing.Name = "sectionElListing"
-				sectionElListing.Parent = sectionInners
-				sectionElListing.SortOrder = Enum.SortOrder.LayoutOrder
-				sectionElListing.Padding = UDim.new(0, 3)
-
-
-				coroutine.wrap(function()
-					while wait() do
-						sectionFrame.BackgroundColor3 = themeList.Background
-						sectionHead.BackgroundColor3 = themeList.SchemeColor
-						tabButton.TextColor3 = themeList.TextColor
-						tabButton.BackgroundColor3 = themeList.SchemeColor
-						sectionName.TextColor3 = themeList.TextColor
-					end
-				end)()
-
-				local function updateSectionFrame()
-					local innerSc = sectionElListing.AbsoluteContentSize
-					sectionInners.Size = UDim2.new(1, 0, 0, innerSc.Y)
-					local frameSc = sectionlistoknvm.AbsoluteContentSize
-					sectionFrame.Size = UDim2.new(0, 352, 0, frameSc.Y)
-				end
-				updateSectionFrame()
-				UpdateSize()
 
 			local Elements = {}
-			function Elements:NewButton(bname,tipINf, callback)
-				showLogo = showLogo or true
+			function Elements:NewButton(bname, callback)
 				local ButtonFunction = {}
-				tipINf = tipINf or "Tip: Clicking this nothing will happen!"
 				bname = bname or "Click Me!"
 				callback = callback or function() end
 			local ButtonFrame = Instance.new("Frame")
@@ -541,9 +432,8 @@ function Kavo.CreateLib(kavName, xGameName)
 			return ButtonFunction
 		end
 
-			function Elements:NewTextBox(tname, tTip, callback)
+			function Elements:NewTextBox(tname, callback)
 				tname = tname or "Textbox"
-				tTip = tTip or "Gets a value of Textbox"
 				callback = callback or function() end
 			local TextboxFrame = Instance.new("Frame")
 			local TextboxFrameCorner = Instance.new("UICorner")
@@ -606,7 +496,7 @@ function Kavo.CreateLib(kavName, xGameName)
 			end)
 		end
 
-			function Elements:NewToggle(tname, nTip, callback)
+			function Elements:NewToggle(tname, callback)
 				local TogFunction = {}
 				tname = tname or "Toggle"
 				nTip = nTip or "Prints Current Toggle State"
@@ -691,17 +581,15 @@ function Kavo.CreateLib(kavName, xGameName)
 					game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
 					game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.3), {Position = UDim2.new(0.093, 0,0.153, 0)}):Play() 
 				end
-				pcall(Callback,ToggleEnabled)
+					pcall(callback,ToggleEnabled)
 			end)
 		end
 
-			function Elements:NewSlider(slidInf, slidTip, maxvalue, minvalue, callback)
-				slidInf = slidInf or "Slider"
-				slidTip = slidTip or "Slider tip here"
-				maxvalue = maxvalue or 500
-				minvalue = minvalue or 16
-				startVal = startVal or 0
-				callback = callback or function() end
+			function Elements:NewSlider(Name, Min, Max, callback)
+				local Name = Name or "Slider"
+				local Callback = callback or function() end
+				local Max = Max or 500
+				local Min = Min or 16
 
 			local SliderFrame = Instance.new("Frame")
 			local SliderFrameCorner = Instance.new("UICorner")
@@ -825,9 +713,8 @@ function Kavo.CreateLib(kavName, xGameName)
 				list = list or {}
 				dropinf = dropinf or "Dropdown info"
 				callback = callback or function() end   
-
 				local opened = false
-				local DropYSize = 33
+				local DropSize = 33
 
 
 					local DropdownFrame = Instance.new("Frame")
@@ -927,7 +814,7 @@ function Kavo.CreateLib(kavName, xGameName)
 
 					DropdownButton.MouseButton1Down:Connect(function()
 						if opened then 
-							Size()
+							UpdateSize()
 							opened = false 
 							DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
 							wait(0.1)
@@ -935,7 +822,7 @@ function Kavo.CreateLib(kavName, xGameName)
 								ImageColor3 = Color3.fromRGB(255,255,255)
 							}):Play()
 							DropList.Visible = false
-							Size()
+							UpdateSize()
 						else 
 							opened = true 
 							DropList.Visible = true
@@ -949,7 +836,7 @@ function Kavo.CreateLib(kavName, xGameName)
 						end 
 					end)  
 
-					for i,v in pairs(Listx) do 
+					for i,v in pairs(list) do 
 						local Option = Instance.new("TextButton")
 						local OptionCorner = Instance.new("UICorner")
 
@@ -966,7 +853,7 @@ function Kavo.CreateLib(kavName, xGameName)
 						OptionCorner.Parent = Option
 
 						Option.MouseButton1Down:Connect(function()
-							Callback(v)
+						callback(v)
 							for a,b in pairs(DropList:GetChildren()) do 
 								if b:IsA("TextButton") then 
 									b.TextColor3 = Color3.fromRGB(255,255,255)
@@ -983,7 +870,7 @@ function Kavo.CreateLib(kavName, xGameName)
 							DropList.Visible = false
 							opened = false
 							DropElements(true)
-							Size()
+							UpdateSize()
 						end)
 
 						Option.MouseEnter:Connect(function()
@@ -998,7 +885,7 @@ function Kavo.CreateLib(kavName, xGameName)
 						end)
 					end
 
-					function DropdownFunction:UpdateDropdown(List)
+					function DropFunction:UpdateDropdown(List)
 						local List = List or {}
 						for i,v in pairs(List) do 
 							local Option = Instance.new("TextButton")
@@ -1019,7 +906,7 @@ function Kavo.CreateLib(kavName, xGameName)
 							OptionCorner.Parent = Option
 
 							Option.MouseButton1Down:Connect(function()
-								Callback(v)
+							callback(v)
 								for a,b in pairs(DropList:GetChildren()) do 
 									if b:IsA("TextButton") then 
 										b.TextColor3 = Color3.fromRGB(255,255,255)
@@ -1036,7 +923,7 @@ function Kavo.CreateLib(kavName, xGameName)
 								DropList.Visible = false
 								opened = false
 								DropElements(true)
-								Size()
+								UpdateSize()
 							end)
 
 							Option.MouseEnter:Connect(function()
@@ -1057,8 +944,8 @@ function Kavo.CreateLib(kavName, xGameName)
 			function Elements:NewKeybind(keytext, keyinf, first, callback)
 				keytext = keytext or "KeybindText"
 				keyinf = keyinf or "KebindInfo"
-					local Callback = Callback or function() end
-					local Keyx = xKey.Name
+				local Callback = callback or function() end
+				local Keyx = first.Name
 					local KeybindFrame = Instance.new("Frame")
 					local KeybindFrameCorner = Instance.new("UICorner")
 					local KeybindName = Instance.new("TextLabel")
@@ -1176,9 +1063,7 @@ function Kavo.CreateLib(kavName, xGameName)
 					end
 			end	
 			return Elements
-		end
-		return Sections
-	end  
+	end
 	return Tabs
 end
 return Kavo
