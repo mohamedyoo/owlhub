@@ -411,7 +411,7 @@ function Kavo.CreateLib(kavName, xGameName)
 				game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
 					BackgroundColor3 = Color3.fromRGB(40, 42, 60)
 				}):Play()
-				pcall(Callback)
+				pcall(callback)
 			end)
 
 			Button.MouseEnter:Connect(function()
@@ -432,8 +432,9 @@ function Kavo.CreateLib(kavName, xGameName)
 			return ButtonFunction
 		end
 
-			function Elements:NewTextBox(tname, callback)
+			function Elements:NewTextBox(tname, Default, callback)
 				tname = tname or "Textbox"
+				local Default = Default or ""
 				callback = callback or function() end
 			local TextboxFrame = Instance.new("Frame")
 			local TextboxFrameCorner = Instance.new("UICorner")
@@ -492,14 +493,13 @@ function Kavo.CreateLib(kavName, xGameName)
 				game:GetService("TweenService"):Create(Textbox, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
 					BackgroundColor3 = Color3.fromRGB(55, 55, 75)
 				}):Play()
-				Callback(Textbox.Text)
+				callback(Textbox.Text)
 			end)
 		end
 
 			function Elements:NewToggle(tname, callback)
 				local TogFunction = {}
 				tname = tname or "Toggle"
-				nTip = nTip or "Prints Current Toggle State"
 				callback = callback or function() end
 				local toggled = false
 				table.insert(SettingsT, tname)
@@ -689,7 +689,7 @@ function Kavo.CreateLib(kavName, xGameName)
 					end)
 					SliderTrail:TweenSize(UDim2.new(0, math.clamp(mouse.X - SliderTrail.AbsolutePosition.X, 0, 389), 0, 10), "InOut", "Linear", 0.05, true)
 				end)
-				releaseconnection = uis.InputEnded:Connect(function(Mouse)
+					releaseconnection = uis.InputEnded:Connect(function(Mouse)
 					if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
 						Value = math.floor((((tonumber(Max) - tonumber(Min)) / 389) * SliderTrail.AbsoluteSize.X) + tonumber(Min))
 						pcall(function()
