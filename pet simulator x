@@ -1,17 +1,3 @@
-
---[[
-	we 𐎠re tr𐏑v5 𐏃𐎢𐎲 𐎠nd 𐎭rk 𐏃𐎢𐎲
-]] 
-
---[[Tabs and Uilib]]--
-local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
-main = lib:Window()
-local AutoW = main:Tab("AutoFarm")
-local AutoBuyW = main:Tab("AutoBuy")
-local PlayerW = main:Tab("LocalPlayer")
-local gis = main:Tab("Gui")
-local MiscW = main:Tab("Misc")
-
 --[[Config]]--
 Client = {
     AutoFarm = {
@@ -177,6 +163,198 @@ function CollectLootBag()
             cmod.Collect(v)
     end
 end
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
+main = lib:Window()
+local AutoW = main:Tab("AutoFarm")
+local AutoBuyW = main:Tab("AutoBuy")
+local PlayerW = main:Tab("LocalPlayer")
+local gis = main:Tab("Gui")
+local MiscW = main:Tab("Misc")
+
+AutoW:Dropdown('Select Area',AreaList,function(Selected)
+    Client.AutoFarm.AutoFarmArea = Selected
+end)
+
+AutoW:Toggle('AutoFarm Coin',function(state)
+    Client.AutoFarm.AutoFarmCoin = state
+end)
+
+AutoW:Dropdown('Select Chest',ChestsPlace,function(Selected)
+    Client.AutoFarm.AutoChestArea = Selected
+end)
+
+AutoW:Toggle('AutoFarm Chest',function(state)
+    Client.AutoFarm.AutoChestFarm = state
+end)
+
+AutoW:Toggle('Gem Snipe',function(state)
+    Client.AutoFarm.AutoGemSnipe = state
+end)
+
+AutoW:Toggle('Insta Collect Orbs',function(state)
+    Client.AutoFarm.AutoCollectOrbs = state
+end)
+
+AutoW:Toggle('Insta Collect Loot Bags',function(state)
+    Client.AutoFarm.AutoCollectLootBag = state
+end)
+
+AutoW:Toggle('Auto use 3x Coins Boost',function(state)
+    Client.AutoFarm.Autouse3xCoinsBoost = state
+end)
+
+AutoW:Toggle('Auto use 3x Coins Damage',function(state)
+    Client.AutoFarm.Autouse3xCoinsDamage = state
+end)
+
+AutoW:Toggle('No Lag',function(state)
+    game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.Game.Coins.Disabled = state
+end)
+
+--[[Auto Buy]]--
+
+AutoBuyW:Dropdown('Select Egg',eggers(),function(Selected)
+    Client.AutoBuy.SelectedEgg = Selected
+end)
+
+AutoBuyW:Toggle('Auto Buy Egg',function(state)
+    Client.AutoBuy.AutoBuyOneEgg = state
+end)
+
+AutoBuyW:Toggle('Auto Buy Triple Egg',function(state)
+    Client.AutoBuy.AutoBuyTripleEgg = state
+end)
+
+AutoBuyW:Toggle('Remove Egg Animation',function(state)
+    game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.Game["Open Eggs"].Disabled = state
+end)
+
+AutoBuyW:Toggle('Auto use Super Lucky',function(state)
+    Client.AutoBuy.AutouseSuperLucky = state
+end)
+
+AutoBuyW:Toggle('Auto use Ultra Lucky',function(state)
+    Client.AutoBuy.AutouseUltraLucky = state
+end)
+
+--[[Player Stuff]]--
+
+
+PlayerW:Slider('Gravity',0,196.2,function(num)
+    game.Workspace.Gravity = num
+end)
+
+PlayerW:Toggle('Inf Jump ',function(state)
+    Client.Player.InfJump = state
+end)
+
+PlayerW:Slider('WalkSpeed Config',16,500,function(num)
+    game:GetService('Players').LocalPlayer.Character.Humanoid.WalkSpeed = num
+end)
+
+PlayerW:Slider('JumpPower Config',50,200,function(num)
+    game:GetService('Players').LocalPlayer.Character.Humanoid.JumpPower = num
+end)
+
+PlayerW:Toggle('Fly',function(state)
+    if state then 
+        sFLY()
+    else
+        NOFLY()
+    end
+end)
+
+PlayerW:Slider('Fly Config',1,15,function(Value)
+    iyflyspeed = Value
+end)
+
+--[[Gui Tab]]--
+
+gis:Button("Upgrades",function()
+    game.Players.LocalPlayer.PlayerGui.Upgrades.Enabled = true
+end)
+
+gis:Button("Fuse Pets",function()
+    game.Players.LocalPlayer.PlayerGui.FusePets.Enabled = true
+end)
+
+gis:Button("Golden Machine",function()
+    game.Players.LocalPlayer.PlayerGui.Golden.Enabled = true
+end)
+
+gis:Button("Rainbow Machine",function()
+    game.Players.LocalPlayer.PlayerGui.Rainbow.Enabled = true
+end)
+
+gis:Button("Collections",function()
+    game.Players.LocalPlayer.PlayerGui.Collection.Enabled = true
+end)
+
+gis:Button("Merchant Shop",function()
+    game.Players.LocalPlayer.PlayerGui.Merchant.Enabled = true
+end)
+
+gis:Button("Dark Matter Machine",function()
+    game.Players.LocalPlayer.PlayerGui.DarkMatter.Enabled = true
+end)
+
+gis:Button("Bank",function()
+    game.Players.LocalPlayer.PlayerGui.Bank.Enabled = true
+end)
+
+--[[Misc Tab]]--
+
+
+MiscW:Button("Anti-Afk",function()
+    -- // LeLz thx IY for using your AntiAfk
+    local GC = getconnections or get_signal_cons
+    if GC then
+        for i,v in pairs(GC(game.Players.LocalPlayer.Idled)) do
+            if v["Disable"] then
+                v["Disable"](v)
+            elseif v["Disconnect"] then
+                v["Disconnect"](v)
+            end
+        end
+    else
+        local vu = game:GetService("VirtualUser")
+        game:GetService("Players").LocalPlayer.Idled:connect(function()
+            vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+            wait(1)
+            vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        end)
+    end
+end)
+
+MiscW:Button("Redeem Codes",function()
+    local codes = {"halfamillion","Clouds","plaid1234","Underworld","morecodes3","blamedavid","Back2Back","FreeDiamonds0","SuperUltra1","Triple275k","FirstUpdate","Ultra225k","DiscordDiamonds","MoreCoins180k","EzDiamonds150k","Easy125k","Triple80k","Lucky50k","Super25k","Release","triple800","easyboosts","VoiceChat"}
+        local function redeem(c)
+            local A_1 =
+                {
+                [1] = c
+                }
+            local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"]["redeem twitter code"]
+            Event:InvokeServer(A_1)
+        end
+        for _,v in pairs(codes) do
+            redeem(v)
+        end
+end)
+
+MiscW:Button("Collect VIP Rewards",function()
+    petmod.Network.Invoke("Redeem VIP Rewards")
+end)
+
+MiscW:Dropdown('Select HoverBoard',AllHov,function(Selected) -- // FrontMan𐎺#9917 Did This Whole Script In one and a half day, UNBELIEVABLE 
+    Client.Misc.SelectedHov = Selected
+end)
+
+MiscW:Button("Free HoverBoard",function() -- // Bye...#0001 Was Here And He Says UwU!
+    local HoverBoard = getsenv(game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.Game.Hoverboard)
+    local FramWork = require(game:GetService("ReplicatedStorage").Framework.Library)
+    FramWork.Save.Get().EquippedHoverboard = Client.Misc.SelectedHov
+    HoverBoard.Create(FramWork.LocalPlayer)
+end)
 
 task.spawn(function()
     while true do
@@ -424,191 +602,3 @@ for i = 1, 7 do
     local FireOnPlayer = game:GetService("Players").LocalPlayer
     game:GetService("ReplicatedStorage").Framework.Modules["2 | Network"]["fireworks animation"]:Fire(FireOnPlayer)
 end
---
-
---[[AutoFarm Tab]]--
-
-AutoW:Dropdown('Select Area',AreaList,function(Selected)
-    Client.AutoFarm.AutoFarmArea = Selected
-end)
-
-AutoW:Toggle('AutoFarm Coin',function(state)
-    Client.AutoFarm.AutoFarmCoin = state
-end)
-
-AutoW:Dropdown('Select Chest',ChestsPlace,function(Selected)
-    Client.AutoFarm.AutoChestArea = Selected
-end)
-
-AutoW:Toggle('AutoFarm Chest',function(state)
-    Client.AutoFarm.AutoChestFarm = state
-end)
-
-AutoW:Toggle('Gem Snipe',function(state)
-    Client.AutoFarm.AutoGemSnipe = state
-end)
-
-AutoW:Toggle('Insta Collect Orbs',function(state)
-    Client.AutoFarm.AutoCollectOrbs = state
-end)
-
-AutoW:Toggle('Insta Collect Loot Bags',function(state)
-    Client.AutoFarm.AutoCollectLootBag = state
-end)
-
-AutoW:Toggle('Auto use 3x Coins Boost',function(state)
-    Client.AutoFarm.Autouse3xCoinsBoost = state
-end)
-
-AutoW:Toggle('Auto use 3x Coins Damage',function(state)
-    Client.AutoFarm.Autouse3xCoinsDamage = state
-end)
-
-AutoW:Toggle('No Lag',function(state)
-    game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.Game.Coins.Disabled = state
-end)
-
---[[Auto Buy]]--
-
-AutoBuyW:Dropdown('Select Egg',eggers(),function(Selected)
-    Client.AutoBuy.SelectedEgg = Selected
-end)
-
-AutoBuyW:Toggle('Auto Buy Egg',function(state)
-    Client.AutoBuy.AutoBuyOneEgg = state
-end)
-
-AutoBuyW:Toggle('Auto Buy Triple Egg',function(state)
-    Client.AutoBuy.AutoBuyTripleEgg = state
-end)
-
-AutoBuyW:Toggle('Remove Egg Animation',function(state)
-    game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.Game["Open Eggs"].Disabled = state
-end)
-
-AutoBuyW:Toggle('Auto use Super Lucky',function(state)
-    Client.AutoBuy.AutouseSuperLucky = state
-end)
-
-AutoBuyW:Toggle('Auto use Ultra Lucky',function(state)
-    Client.AutoBuy.AutouseUltraLucky = state
-end)
-
---[[Player Stuff]]--
-
-
-PlayerW:Slider('Gravity',0,196.2,function(num)
-    game.Workspace.Gravity = num
-end)
-
-PlayerW:Toggle('Inf Jump ',function(state)
-    Client.Player.InfJump = state
-end)
-
-PlayerW:Slider('WalkSpeed Config',16,500,function(num)
-    game:GetService('Players').LocalPlayer.Character.Humanoid.WalkSpeed = num
-end)
-
-PlayerW:Slider('JumpPower Config',50,200,function(num)
-    game:GetService('Players').LocalPlayer.Character.Humanoid.JumpPower = num
-end)
-
-PlayerW:Toggle('Fly',function(state)
-    if state then 
-        sFLY()
-    else
-        NOFLY()
-    end
-end)
-
-PlayerW:Slider('Fly Config',1,15,function(Value)
-    iyflyspeed = Value
-end)
-
---[[Gui Tab]]--
-
-gis:Button("Upgrades",function()
-    game.Players.LocalPlayer.PlayerGui.Upgrades.Enabled = true
-end)
-
-gis:Button("Fuse Pets",function()
-    game.Players.LocalPlayer.PlayerGui.FusePets.Enabled = true
-end)
-
-gis:Button("Golden Machine",function()
-    game.Players.LocalPlayer.PlayerGui.Golden.Enabled = true
-end)
-
-gis:Button("Rainbow Machine",function()
-    game.Players.LocalPlayer.PlayerGui.Rainbow.Enabled = true
-end)
-
-gis:Button("Collections",function()
-    game.Players.LocalPlayer.PlayerGui.Collection.Enabled = true
-end)
-
-gis:Button("Merchant Shop",function()
-    game.Players.LocalPlayer.PlayerGui.Merchant.Enabled = true
-end)
-
-gis:Button("Dark Matter Machine",function()
-    game.Players.LocalPlayer.PlayerGui.DarkMatter.Enabled = true
-end)
-
-gis:Button("Bank",function()
-    game.Players.LocalPlayer.PlayerGui.Bank.Enabled = true
-end)
-
---[[Misc Tab]]--
-
-
-MiscW:Button("Anti-Afk",function()
-    -- // LeLz thx IY for using your AntiAfk
-    local GC = getconnections or get_signal_cons
-    if GC then
-        for i,v in pairs(GC(game.Players.LocalPlayer.Idled)) do
-            if v["Disable"] then
-                v["Disable"](v)
-            elseif v["Disconnect"] then
-                v["Disconnect"](v)
-            end
-        end
-    else
-        local vu = game:GetService("VirtualUser")
-        game:GetService("Players").LocalPlayer.Idled:connect(function()
-            vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-            wait(1)
-            vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-        end)
-    end
-end)
-
-MiscW:Button("Redeem Codes",function()
-    local codes = {"halfamillion","Clouds","plaid1234","Underworld","morecodes3","blamedavid","Back2Back","FreeDiamonds0","SuperUltra1","Triple275k","FirstUpdate","Ultra225k","DiscordDiamonds","MoreCoins180k","EzDiamonds150k","Easy125k","Triple80k","Lucky50k","Super25k","Release","triple800","easyboosts","VoiceChat"}
-        local function redeem(c)
-            local A_1 =
-                {
-                [1] = c
-                }
-            local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"]["redeem twitter code"]
-            Event:InvokeServer(A_1)
-        end
-        for _,v in pairs(codes) do
-            redeem(v)
-        end
-end)
-
-MiscW:Button("Collect VIP Rewards",function()
-    petmod.Network.Invoke("Redeem VIP Rewards")
-end)
-
-MiscW:Dropdown('Select HoverBoard',AllHov,function(Selected) -- // FrontMan𐎺#9917 Did This Whole Script In one and a half day, UNBELIEVABLE 
-    Client.Misc.SelectedHov = Selected
-end)
-
-MiscW:Button("Free HoverBoard",function() -- // Bye...#0001 Was Here And He Says UwU!
-    local HoverBoard = getsenv(game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.Game.Hoverboard)
-    local FramWork = require(game:GetService("ReplicatedStorage").Framework.Library)
-    FramWork.Save.Get().EquippedHoverboard = Client.Misc.SelectedHov
-    HoverBoard.Create(FramWork.LocalPlayer)
-end)
