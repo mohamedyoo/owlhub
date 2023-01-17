@@ -1,7 +1,6 @@
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
-
-local Window = Library:Create("Script-Hub","Base Battle")
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
+Window = lib:Window()
     -- MAIN
     local Main = Window:Tab("Main")
     local gun = Window:Tab("gun")
