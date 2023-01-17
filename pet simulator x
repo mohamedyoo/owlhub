@@ -344,6 +344,13 @@ end)
 MiscW:Button("Collect VIP Rewards",function()
     petmod.Network.Invoke("Redeem VIP Rewards")
 end)
+MiscW:Toggle("Enable Reset Character ",function(v)
+    getgenv().Enable = v
+    while getgenv().Enable == true do
+    game:GetService("StarterGui"):SetCore("ResetButtonCallback", true)
+     game:GetService("RunService").RenderStepped:Wait()
+     end
+end)
 
 MiscW:Dropdown('Select HoverBoard',AllHov,function(Selected) -- // FrontMan𐎺#9917 Did This Whole Script In one and a half day, UNBELIEVABLE 
     Client.Misc.SelectedHov = Selected
