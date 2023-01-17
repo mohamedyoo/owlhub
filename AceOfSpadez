@@ -49,9 +49,6 @@ end)
 CombatW:Toggle('Inf Ammo',function(state)
     Client.Toggles.InfAmmo = state
 end)
-CombatW:Keybind("Toggle",Enum.KeyCode.V,function()
-    Library:Toggle()
-end)
 
 function GetClosestPlr()
     Plr = nil
