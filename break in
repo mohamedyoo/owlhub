@@ -7,6 +7,27 @@ local Client = {
     }
 }
 
+spawn(function() 
+    while task.wait(.45) do
+if Client.toggles.Killbaddies then
+    for _,v in pairs(workspace.BadGuys:GetChildren()) do
+local ohInstance1 = v
+local ohNumber2 = 10
+
+game:GetService("ReplicatedStorage").RemoteEvents.HitBadguy:FireServer(ohInstance1, ohNumber2)
+end
+end
+end
+end)
+
+spawn(function()
+    while task.wait() do
+    if Client.toggles.Heal and game:GetService("Players").Ihaveash0rtname.PlayerGui.EnergyBar.EnergyBar.EnergyBar.Warning.Visible or game:GetService("Players").Ihaveash0rtname.PlayerGui.EnergyBar.EnergyBar.EnergyBar.Warning2.Visible then
+        game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("BloxyCola")
+        game:GetService("ReplicatedStorage").RemoteEvents.Energy:FireServer(15, "BloxyCola")
+    end
+end
+end)
 
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
 main = lib:Window()
@@ -96,27 +117,4 @@ end)
 Trolling:Dropdown(
 "Give Item",{'TeddyBloxpin','BloxyCola', "Plank", "Chips", "Cure", "MedKit", "Cookie", "Bat", "Pan", "Apple", "Pie"}, function(selected)
     game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer(selected)
-end)
-
-
-spawn(function() 
-    while task.wait(.45) do
-if Client.toggles.Killbaddies then
-    for _,v in pairs(workspace.BadGuys:GetChildren()) do
-local ohInstance1 = v
-local ohNumber2 = 10
-
-game:GetService("ReplicatedStorage").RemoteEvents.HitBadguy:FireServer(ohInstance1, ohNumber2)
-end
-end
-end
-end)
-
-spawn(function()
-    while task.wait() do
-    if Client.toggles.Heal and game:GetService("Players").Ihaveash0rtname.PlayerGui.EnergyBar.EnergyBar.EnergyBar.Warning.Visible or game:GetService("Players").Ihaveash0rtname.PlayerGui.EnergyBar.EnergyBar.EnergyBar.Warning2.Visible then
-        game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("BloxyCola")
-        game:GetService("ReplicatedStorage").RemoteEvents.Energy:FireServer(15, "BloxyCola")
-    end
-end
 end)
