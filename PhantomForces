@@ -1,16 +1,16 @@
 DarkHub_Client = {SavedSettings = false}
-if isfolder and makefolder and not isfolder('DarkHub') then
-    makefolder('DarkHub')
+if isfolder and makefolder and not isfolder('emptyness hub') then
+    makefolder('emptyness hub')
     DarkHub_Client.SaveSettings = true
-    if isfile('DarkHub/DarkHub_'..tostring(Game.PlaceId)..'.DARKHUB') then
+    if isfile('emptyness hub/emptyness hub'..tostring(Game.PlaceId)..'.emptyness hub') then
         DarkHub_Client.SavedSettings = true
-        DarkHub_Client.GameSettings = game:GetService('HttpService'):JSONDecode(readfile('DarkHub/DarkHub_'..tostring(Game.PlaceId)..'.DARKHUB'))
+        DarkHub_Client.GameSettings = game:GetService('HttpService'):JSONDecode(readfile('emptyness hub/emptyness hub'..tostring(Game.PlaceId)..'.emptyness hub'))
     end
 elseif isfolder('DarkHub') then
     DarkHub_Client.SaveSettings = true
-    if isfile('DarkHub/DarkHub_'..tostring(Game.PlaceId)..'.DARKHUB') then
+    if isfile('DarkHub/DarkHub_'..tostring(Game.PlaceId)..'.emptyness hub') then
         DarkHub_Client.SavedSettings = true
-        DarkHub_Client.GameSettings = game:GetService('HttpService'):JSONDecode(readfile('DarkHub/DarkHub_'..tostring(Game.PlaceId)..'.DARKHUB'))
+        DarkHub_Client.GameSettings = game:GetService('HttpService'):JSONDecode(readfile('emptyness hub/emptyness hub'..tostring(Game.PlaceId)..'.emptyness hub'))
     end
 else
     DarkHub_Client.SaveSettings = false
@@ -54,6 +54,7 @@ local Aimbot = main:Tab('Aimbot')
 local GunMods = main:Tab('Gun Mods')
 local Esp = main:Tab('Esp')
 local Misc = main:Tab('Miscellaneous')
+
 local FovCircle = Drawing.new("Circle")
 FovCircle.Visible = Client.Toggles.UseFov
 FovCircle.Radius = Client.Values.Fov
@@ -77,44 +78,6 @@ for i, v in pairs(getgc(false)) do
         break
     end
 end
-
-found["network"] = debug.getupvalue(found.effects.breakwindow, 1)
-found["char"] = debug.getupvalue(found.effects.muzzleflash, 2)
-found["replication"] = debug.getupvalue(found.camera.setspectate, 1)
-found["hud"] = debug.getupvalue(found.char.setmovementmode, 10)
-found["gamelogic"] = debug.getupvalue(found.char.setsprint, 1)
-found["input"] = debug.getupvalue(found.gamelogic.controllerstep, 2)
-local gunsway = debug.getupvalue(found.char.loadgrenade, 34)
-local gunbob = debug.getupvalue(found.char.loadgrenade, 33)
-local gunrequire = debug.getupvalue(loadgun, 2)
-local fromaxisangle = debug.getupvalue(found.camera.step, 11)
-local physicsignore = {workspace.Players, workspace.Camera, workspace.Ignore}
-local userinputservice = game:GetService("UserInputService")
-local runservice = game:GetService("RunService")
-local workspace = game:GetService("Workspace")
-local players = game:GetService("Players")
-local localplayer = players.LocalPlayer
-local rendertime = tick()
-local playeresp = {}
-local v3 = Vector3.new()
-local newcf = CFrame.new()
-local dot = v3.Dot
-local accel = Vector3.new(0, -workspace.Gravity, 0)
-local badtick, add, reset = tick(), 0, true
-
-for i, v in pairs(found) do
-    getgenv()[i] = v
-
-    for o, b in pairs(v) do
-        if not getgenv()[o] and type(b) == "function" then
-            getgenv()[o] = b
-        end
-    end
-end
-local chartable = debug.getupvalue(getbodyparts, 1)
-setreadonly(particle, false)
-
---Framework under this along with ui elements
 
 Aimbot:Toggle('Silent Aim', function(state)
     Client.Toggles.SilentAim = state
@@ -174,7 +137,7 @@ Esp:Toggle('Skeleton Esp', function(state)
     Client.Toggles.Skeleton = state
 end,Client.Toggles.Skeleton)
 
-Misc:Slider("Walk Speed", 0, 100, function(num)
+Misc:Slider("Walk Speed", 0, 100000, function(num)
     Client.Values.WalkSpeed = num
 
     if char.alive then
@@ -182,7 +145,7 @@ Misc:Slider("Walk Speed", 0, 100, function(num)
     end
 end,Client.Values.WalkSpeed)
 
-Misc:Slider("Jump Power", 0, 100, function(num)
+Misc:Slider("Jump Power", 0, 100000, function(num)
     Client.Values.JumpPower = num
 end,Client.Values.JumpPower)
 
@@ -195,6 +158,44 @@ Misc:Toggle('Invisible', function(state)
     Client.Toggles.Invisible = state
     reset = true
 end,Client.Toggles.Invisible)
+
+found["network"] = debug.getupvalue(found.effects.breakwindow, 1)
+found["char"] = debug.getupvalue(found.effects.muzzleflash, 2)
+found["replication"] = debug.getupvalue(found.camera.setspectate, 1)
+found["hud"] = debug.getupvalue(found.char.setmovementmode, 10)
+found["gamelogic"] = debug.getupvalue(found.char.setsprint, 1)
+found["input"] = debug.getupvalue(found.gamelogic.controllerstep, 2)
+local gunsway = debug.getupvalue(found.char.loadgrenade, 34)
+local gunbob = debug.getupvalue(found.char.loadgrenade, 33)
+local gunrequire = debug.getupvalue(loadgun, 2)
+local fromaxisangle = debug.getupvalue(found.camera.step, 11)
+local physicsignore = {workspace.Players, workspace.Camera, workspace.Ignore}
+local userinputservice = game:GetService("UserInputService")
+local runservice = game:GetService("RunService")
+local workspace = game:GetService("Workspace")
+local players = game:GetService("Players")
+local localplayer = players.LocalPlayer
+local rendertime = tick()
+local playeresp = {}
+local v3 = Vector3.new()
+local newcf = CFrame.new()
+local dot = v3.Dot
+local accel = Vector3.new(0, -workspace.Gravity, 0)
+local badtick, add, reset = tick(), 0, true
+
+for i, v in pairs(found) do
+    getgenv()[i] = v
+
+    for o, b in pairs(v) do
+        if not getgenv()[o] and type(b) == "function" then
+            getgenv()[o] = b
+        end
+    end
+end
+local chartable = debug.getupvalue(getbodyparts, 1)
+setreadonly(particle, false)
+
+--Framework under this along with ui elements
 
 --Goes under all framework
 spawn(function()
