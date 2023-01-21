@@ -924,20 +924,6 @@ function DarkLib:Window()
 			ItemHolder.CanvasSize = UDim2.new(0, 0, 0, ItemHolderUIList.AbsoluteContentSize.Y)
 		end
 
-                             function DropdownInit:AddToolTip(Name)
-					if tostring(Name):gsub(" ", "") ~= "" then
-						Dropdown.MouseEnter:Connect(function()
-							Screen.ToolTip.Text = Name
-							Screen.ToolTip.Size = UDim2.new(0,Screen.ToolTip.TextBounds.X + 5,0,Screen.ToolTip.TextBounds.Y + 5)
-							Screen.ToolTip.Visible = true
-						end)
-
-						Dropdown.MouseLeave:Connect(function()
-							Screen.ToolTip.Visible = false
-						end)
-					end
-				end
-
 		function Cont:Colorpicker(text, preset, callback)
 			local ColorPickerToggled = false
 			local OldToggleColor = Color3.fromRGB(0, 0, 0)
