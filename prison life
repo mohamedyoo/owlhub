@@ -4,14 +4,6 @@ Window = lib:Window()
     -- MAIN
     local Main = Window:Tab("Main")
     local gun = Window:Tab("gun")
-
-Main:Toggle("auto sell",function(v)
-    getgenv().autoclicker= v
-      while getgenv().autoclicker== true do
-game:GetService("ReplicatedStorage").RemoteEvents.SellTP:FireServer()
-  game:GetService("RunService").Heartbeat:wait();
-  end
-   end)
    
    Main:Button("Netural",function()
 	workspace.Remote.TeamEvent:FireServer("Medium stone grey");
