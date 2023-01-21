@@ -658,6 +658,7 @@ function DarkLib:Window()
 		end
 
 		function Cont:Dropdown(text, list, callback)
+		local DropdownInit = {}
 			local DropToggled = false
 			local ItemCount = 0
 			local DropdownFrameSize = 0
@@ -923,6 +924,55 @@ function DarkLib:Window()
 			end
 			ItemHolder.CanvasSize = UDim2.new(0, 0, 0, ItemHolderUIList.AbsoluteContentSize.Y)
 		end
+
+                             function DropdownInit:AddToolTip(Name)
+					if tostring(Name):gsub(" ", "") ~= "" then
+						Dropdown.MouseEnter:Connect(function()
+							Screen.ToolTip.Text = Name
+							Screen.ToolTip.Size = UDim2.new(0,Screen.ToolTip.TextBounds.X + 5,0,Screen.ToolTip.TextBounds.Y + 5)
+							Screen.ToolTip.Visible = true
+						end)
+
+						Dropdown.MouseLeave:Connect(function()
+							Screen.ToolTip.Visible = false
+						end)
+					end
+				end
+
+				function DropdownInit:GetOption()
+					return Dropdown.Container.Value.Text
+				end
+				function DropdownInit:SetOption(Name)
+					for _,Option in pairs(Dropdown.Container.Holder.Container:GetChildren()) do
+						if Option:IsA("TextButton") and string.find(Option.Name, Name) then
+							Dropdown.Container.Value.Text = Option.Name
+							Callback(Name)
+						end
+					end
+				end
+				function DropdownInit:RemoveOption(Name)
+					for _,Option in pairs(Dropdown.Container.Holder.Container:GetChildren()) do
+						if Option:IsA("TextButton") and string.find(Option.Name, Name) then
+							Option:Destroy()
+						end
+					end
+					Dropdown.Container.Holder.Size = UDim2.new(1,-5,0,Dropdown.Container.Holder.Container.ListLayout.AbsoluteContentSize.Y)
+							Dropdown.Size = UDim2.new(1,-10,0,Dropdown.Container.Holder.Container.ListLayout.AbsoluteContentSize.Y + Dropdown.Title.TextBounds.Y + 30)
+				end
+				function DropdownInit:ClearOptions()
+					for _, Option in pairs(Dropdown.Container.Holder.Container:GetChildren()) do
+						if Option:IsA("TextButton") then
+							Option:Destroy()
+						end
+					end
+					Dropdown.Container.Holder.Size = UDim2.new(1,-5,0,Dropdown.Container.Holder.Container.ListLayout.AbsoluteContentSize.Y)
+					Dropdown.Size = UDim2.new(1,-10,0,Dropdown.Container.Holder.Container.ListLayout.AbsoluteContentSize.Y + Dropdown.Title.TextBounds.Y + 30)
+				end
+				if InitialValue then
+					DropdownInit:SetOption(InitialValue)
+				end
+				return DropdownInit
+			end
 
 		function Cont:Colorpicker(text, preset, callback)
 			local ColorPickerToggled = false
