@@ -120,9 +120,8 @@ else
 end
 DarkHubLib.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-function DarkLib:Window(xHubName)
+function DarkLib:Window()
 	local firsttab = false
-	  local xHubName = xHubName or "UI Library"
 	local MainFrame = Instance.new("Frame")
 	local MainFrameUICorner = Instance.new("UICorner")
 	local Title = Instance.new("TextLabel")
@@ -153,7 +152,7 @@ function DarkLib:Window(xHubName)
 	Title.Position = UDim2.new(0.42778793, 0, 0.041837737, 0)
 	Title.Size = UDim2.new(0, 78, 0, 30)
 	Title.Font = Enum.Font.Gotham
-	Title.Text = xHubName
+	Title.Text = "Emptyness"
 	Title.TextColor3 = Color3.fromRGB(168, 168, 168)
 	Title.TextSize = 20.000
 
