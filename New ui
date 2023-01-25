@@ -374,14 +374,9 @@ Enter.MouseButton1Click:Connect(function()
 		wait(0.7)
 		Main.Visible = true
 		opengui.Visible = true
+		else
+		game.LocalPlayer:Kick("The code is wrong")
 	end
-	
-	script.Accepted:Play()
-	else
-	script.Denied:Play()
-	wait(script.denied.TimeLength + 0.65)
-	game.LocalPlayer:Kick("The code is wrong")
-      end
 end)
 
 KeyHere.Name = "Key Here"
@@ -391,7 +386,7 @@ KeyHere.BackgroundTransparency = 1.000
 KeyHere.Position = UDim2.new(0, 0, 0.232758626, 0)
 KeyHere.Size = UDim2.new(0, 315, 0, 56)
 KeyHere.Font = Enum.Font.SourceSans
-KeyHere.Text = ""
+KeyHere.Text = "bhvihbvfeievfbhibevfhibibgrihb"
 KeyHere.TextColor3 = Color3.fromRGB(255, 255, 255)
 KeyHere.TextScaled = true
 KeyHere.TextSize = 14.000
