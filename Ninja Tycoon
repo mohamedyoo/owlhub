@@ -103,7 +103,7 @@ title.BorderColor3 = Color3.fromRGB(56, 3, 0)
 title.BorderSizePixel = 4
 title.Size = UDim2.new(0, 281, 0, 52)
 title.Font = Enum.Font.SourceSans
-title.Text = "Ninja Tycoon GUI"
+title.Text = "Ninja Tycoon GUI old"
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
 title.TextSize = 45.000
 
@@ -115,15 +115,6 @@ astolfo_corner.Position = UDim2.new(-0.55160141, 0, 0.710843384, 0)
 astolfo_corner.Size = UDim2.new(0, 155, 0, 144)
 astolfo_corner.Image = "rbxassetid://6747647676"
 astolfo_corner.ImageTransparency = 0.100
-
-ImageLabel.Parent = main
-ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel.BackgroundTransparency = 1.000
-ImageLabel.BorderSizePixel = 0
-ImageLabel.Position = UDim2.new(0, 0, 0.104417674, 0)
-ImageLabel.Size = UDim2.new(0, 281, 0, 446)
-ImageLabel.Image = "http://www.roblox.com/asset/?id=7260121507"
-ImageLabel.ImageTransparency = 0.700
 
 Xclose.Name = "Xclose"
 Xclose.Parent = main
@@ -290,7 +281,7 @@ credits_2.BackgroundTransparency = 1.000
 credits_2.Position = UDim2.new(0, 0, 1, 0)
 credits_2.Size = UDim2.new(0, 281, 0, 36)
 credits_2.Font = Enum.Font.SourceSans
-credits_2.Text = "Astolfoware 1.22"
+credits_2.Text = "This script is not mind"
 credits_2.TextColor3 = Color3.fromRGB(255, 0, 81)
 credits_2.TextSize = 35.000
 
