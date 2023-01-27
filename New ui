@@ -356,7 +356,16 @@ getkey.TextColor3 = Color3.fromRGB(255, 255, 255)
 getkey.TextScaled = true
 getkey.TextSize = 14.000
 getkey.TextWrapped = true
-
+getkey.MouseButton1Click:Connect(function()
+	game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Copied",
+    Text = "you have copied the link pastebin",
+    Button1 = "Ok",
+    Duration = 4
+    })
+    wait(0.5)
+			setclipboard("https://pastebin.com/raw/hgsxEFK4")
+		end)
 Enter.Name = "Enter"
 Enter.Parent = keysystem
 Enter.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -386,7 +395,7 @@ KeyHere.BackgroundTransparency = 1.000
 KeyHere.Position = UDim2.new(0, 0, 0.232758626, 0)
 KeyHere.Size = UDim2.new(0, 315, 0, 56)
 KeyHere.Font = Enum.Font.SourceSans
-KeyHere.Text = "bhvihbvfeievfbhibevfhibibgrihb"
+KeyHere.Text = "Key here"
 KeyHere.TextColor3 = Color3.fromRGB(255, 255, 255)
 KeyHere.TextScaled = true
 KeyHere.TextSize = 14.000
@@ -429,7 +438,7 @@ ImageButton.BackgroundTransparency = 1.000
 ImageButton.Position = UDim2.new(0.870967746, 0, 0.332653075, 0)
 ImageButton.Size = UDim2.new(0, 100, 0, 100)
 ImageButton.Image = "rbxassetid://9836076474"
-opengui.MouseButton1Click:Connect(function()
+ImageButton.MouseButton1Click:Connect(function()
 	if Main.Visible == false then
 		Main.Visible = true
 	else
