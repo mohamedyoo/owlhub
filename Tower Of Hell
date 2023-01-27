@@ -1,26 +1,89 @@
- if game.PlaceId == 1962086868 then
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/New%20ui"))()
-local Window = Library.CreateLib("Tower Of Hell", "Midnight")
-    local Main = Window:NewTab("Main")
-    local MainSection = Main:NewSection("Main")
-    MainSection:NewButton("inf jumps", "inf", function()
-    loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Infinite%20Jump.txt"))()
-    end)
-    
-     MainSection:NewButton("Fly", "fly ", function()
-     loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Fly.txt"))()
-     end)
-    
-    MainSection:NewButton("anti afk", "fly ", function()
-    loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/anti-afk%20via%20autofocus.txt"))()
-    end)
-    
-   MainSection:NewButton("Give all gears", "Gives Gears", function()
-    for i, v in pairs (game:GetService("ReplicatedStorage").Gear:GetChildren()) do
-if v:IsA("Tool") then
-poop = v:Clone()
-poop.Parent = game:GetService("Players").LocalPlayer:FindFirstChild("Backpack")
-end
-end
+y = game:GetService("Players").LocalPlayer.PlayerScripts.LocalScript
+getsenv(y).kick = function() return nil end
+getsenv(y).kick()
+
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/new%20ui%20mapple"))()
+main = lib:Window()
+local MainWindow = main:Tab('Main')
+TimeAlive = 0
+
+MainWindow:Button('Instant Top',function()
+    if game.Players.LocalPlayer.Character:FindFirstChild('ForceField') or TimeAlive < 1 then
+        return    
+    end
+    local temp_table = {}
+    for i,v in pairs(game:GetService("Workspace").tower:GetDescendants()) do
+        if v:IsA('Part') and v.CanCollide == true then
+            table.insert(temp_table,v)
+            v.CanCollide = false
+        end
+    end
+    Me = game.Players.LocalPlayer.Character
+    Old = Me.KillScript.Disabled
+    Me.Humanoid.Jump = true
+    for i = 1,300 do
+        wait()
+        Me.KillScript.Disabled = true
+        Me.HumanoidRootPart.Velocity = Vector3.new(0,4000,0)
+        o = game:GetService("Workspace").tower.sections.finish.exit.ParticleBrick.Position.Y
+        e = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y
+        x = o - e
+        if x < 5 then
+            Me.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+            Me.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").tower.sections.finish.exit.carpet.CFrame.X,game:GetService("Workspace").tower.sections.finish.exit.carpet.CFrame.Y + 3,game:GetService("Workspace").tower.sections.finish.exit.carpet.CFrame.Z)
+            break
+        end
+    end
+    for i,v in pairs(temp_table) do
+        v.CanCollide = true
+    end
+    Me.KillScript.Disabled = Old
 end)
-end
+
+MainWindow:Toggle('Godmode',function(state)
+    if state == true then
+        require(game:GetService("ReplicatedStorage").Mutators.invincibility).mutate()
+    else
+        require(game:GetService("ReplicatedStorage").Mutators.invincibility).revert()
+    end
+end)
+MainWindow:Toggle('Double Jump',function(state)
+    if state == true then
+        require(game:GetService("ReplicatedStorage").Mutators["double jump"]).mutate()
+    else
+        require(game:GetService("ReplicatedStorage").Mutators["double jump"]).revert()
+    end
+end)
+MainWindow:Button('Get All Items',function()
+    for i,v in pairs(game:GetService("ReplicatedStorage").Gear:GetChildren()) do
+        New = v:Clone()
+        New.Parent = game.Players.LocalPlayer.Backpack
+    end
+end)
+
+MainWindow:Slider('Speed',1,91,function(val)
+    game:GetService("ReplicatedStorage").globalSpeed.Value = val
+end)
+
+MainWindow:Toggle('Gravity',function(state)
+    if state == true then
+        require(game:GetService("ReplicatedStorage").Mutators.gravity).mutate()
+    else
+        require(game:GetService("ReplicatedStorage").Mutators.gravity).revert()
+    end
+end)
+
+workspace.ChildAdded:Connect(function(child)
+    if child.Name == game.Players.LocalPlayer.Character.Name then
+        TimeAlive = 0
+    end
+end)
+
+spawn(function()
+    pcall(function()
+        while true do
+            wait(1)
+            TimeAlive = TimeAlive + 1
+        end
+    end)
+end)
