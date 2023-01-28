@@ -1,6 +1,6 @@
 game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title = "Loaded",
-    Text = "Script loaded",
+    Title = "Universal",
+    Text = "game not supported",
     Duration = 5
     })
     
