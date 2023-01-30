@@ -1,6 +1,15 @@
 -- Gui to Lua
 -- Version: 3.2
-
+if game.CoreGui:FindFirstChild("ScreenGui") then
+    game.CoreGui.ScreenGui:Destroy()
+end
+game:GetService("UserInputService").InputBegan:connect(
+    function(key, gpe)
+        if key.KeyCode == Enum.KeyCode.RightControl then
+            game.CoreGui.ScreenGui.Enabled = not game.CoreGui.ScreenGui.Enabled
+        end
+    end
+)
 -- Instances:
 
 local emptyness = {}
