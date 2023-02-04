@@ -1,4 +1,4 @@
-local emptyness = {}
+local Kavo  = {}
 
 local tween = game:GetService("TweenService")
 local tweeninfo = TweenInfo.new
@@ -7,7 +7,7 @@ local run = game:GetService("RunService")
 
 local Utility = {}
 local Objects = {}
-function emptyness:DraggingEnabled(frame, parent)
+function Kavo:DraggingEnabled(frame, parent)
         
     parent = parent or frame
     
@@ -2703,4 +2703,4 @@ TextBox.Name = "Keybox"
     end  
     return Tabs
 end
-return emptyness
+return Kavo
