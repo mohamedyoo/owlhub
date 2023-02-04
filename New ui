@@ -1,4 +1,4 @@
-local Kavo  = {}
+local Kavo = {}
 
 local tween = game:GetService("TweenService")
 local tweeninfo = TweenInfo.new
@@ -8,117 +8,124 @@ local run = game:GetService("RunService")
 local Utility = {}
 local Objects = {}
 function Kavo:DraggingEnabled(frame, parent)
-        
-    parent = parent or frame
-    
-    -- stolen from wally or kiriot, kek
-    local dragging = false
-    local dragInput, mousePos, framePos
 
-    frame.InputBegan:Connect(function(input)
-if Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then            
-dragging = true
-            mousePos = input.Position
-            framePos = parent.Position
-            
-            input.Changed:Connect(function()
-                if input.UserInputState == Enum.UserInputState.End then
-                    dragging = false
-                end
-            end)
-        end
-    end)
+	parent = parent or frame
 
-    frame.InputChanged:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-            dragInput = input
-        end
-    end)
+	-- stolen from wally or kiriot, kek
+	local dragging = false
+	local dragInput, mousePos, framePos
 
-    input.InputChanged:Connect(function(input)
-        if input == dragInput and dragging then
-            local delta = input.Position - mousePos
-            parent.Position  = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
-        end
-    end)
+	frame.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			mousePos = input.Position
+			framePos = parent.Position
+
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+
+	frame.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+
+	input.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			local delta = input.Position - mousePos
+			parent.Position  = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
+		end
+	end)
 end
 
 function Utility:TweenObject(obj, properties, duration, ...)
-    tween:Create(obj, tweeninfo(duration, ...), properties):Play()
+	tween:Create(obj, tweeninfo(duration, ...), properties):Play()
 end
 
 
 local themes = {
-    SchemeColor = Color3.fromRGB(74, 99, 135),
-    Background = Color3.fromRGB(36, 37, 43),
-    Header = Color3.fromRGB(28, 29, 34),
-    TextColor = Color3.fromRGB(255,255,255),
-    ElementColor = Color3.fromRGB(32, 32, 38)
+	SchemeColor = Color3.fromRGB(74, 99, 135),
+	Background = Color3.fromRGB(36, 37, 43),
+	Header = Color3.fromRGB(28, 29, 34),
+	TextColor = Color3.fromRGB(255,255,255),
+	ElementColor = Color3.fromRGB(32, 32, 38)
 }
 local themeStyles = {
-    DarkTheme = {
-        SchemeColor = Color3.fromRGB(64, 64, 64),
-        Background = Color3.fromRGB(0, 0, 0),
-        Header = Color3.fromRGB(0, 0, 0),
-        TextColor = Color3.fromRGB(255,255,255),
-        ElementColor = Color3.fromRGB(20, 20, 20)
-    },
-    LightTheme = {
-        SchemeColor = Color3.fromRGB(150, 150, 150),
-        Background = Color3.fromRGB(255,255,255),
-        Header = Color3.fromRGB(200, 200, 200),
-        TextColor = Color3.fromRGB(0,0,0),
-        ElementColor = Color3.fromRGB(224, 224, 224)
-    },
-    BloodTheme = {
-        SchemeColor = Color3.fromRGB(227, 27, 27),
-        Background = Color3.fromRGB(10, 10, 10),
-        Header = Color3.fromRGB(5, 5, 5),
-        TextColor = Color3.fromRGB(255,255,255),
-        ElementColor = Color3.fromRGB(20, 20, 20)
-    },
-    GrapeTheme = {
-        SchemeColor = Color3.fromRGB(166, 71, 214),
-        Background = Color3.fromRGB(64, 50, 71),
-        Header = Color3.fromRGB(36, 28, 41),
-        TextColor = Color3.fromRGB(255,255,255),
-        ElementColor = Color3.fromRGB(74, 58, 84)
-    },
-    Ocean = {
-        SchemeColor = Color3.fromRGB(86, 76, 251),
-        Background = Color3.fromRGB(26, 32, 58),
-        Header = Color3.fromRGB(38, 45, 71),
-        TextColor = Color3.fromRGB(200, 200, 200),
-        ElementColor = Color3.fromRGB(38, 45, 71)
-    },
-    Midnight = {
-        SchemeColor = Color3.fromRGB(26, 189, 158),
-        Background = Color3.fromRGB(44, 62, 82),
-        Header = Color3.fromRGB(57, 81, 105),
-        TextColor = Color3.fromRGB(255, 255, 255),
-        ElementColor = Color3.fromRGB(52, 74, 95)
-    },
-    Sentinel = {
-        SchemeColor = Color3.fromRGB(230, 35, 69),
-        Background = Color3.fromRGB(32, 32, 32),
-        Header = Color3.fromRGB(24, 24, 24),
-        TextColor = Color3.fromRGB(119, 209, 138),
-        ElementColor = Color3.fromRGB(24, 24, 24)
-    },
-    Synapse = {
-        SchemeColor = Color3.fromRGB(46, 48, 43),
-        Background = Color3.fromRGB(13, 15, 12),
-        Header = Color3.fromRGB(36, 38, 35),
-        TextColor = Color3.fromRGB(152, 99, 53),
-        ElementColor = Color3.fromRGB(24, 24, 24)
-    },
-    Serpent = {
-        SchemeColor = Color3.fromRGB(0, 166, 58),
-        Background = Color3.fromRGB(31, 41, 43),
-        Header = Color3.fromRGB(22, 29, 31),
-        TextColor = Color3.fromRGB(255,255,255),
-        ElementColor = Color3.fromRGB(22, 29, 31)
-    }
+	DarkTheme = {
+		SchemeColor = Color3.fromRGB(64, 64, 64),
+		Background = Color3.fromRGB(0, 0, 0),
+		Header = Color3.fromRGB(0, 0, 0),
+		TextColor = Color3.fromRGB(255,255,255),
+		ElementColor = Color3.fromRGB(20, 20, 20)
+	},
+	LightTheme = {
+		SchemeColor = Color3.fromRGB(150, 150, 150),
+		Background = Color3.fromRGB(255,255,255),
+		Header = Color3.fromRGB(200, 200, 200),
+		TextColor = Color3.fromRGB(0,0,0),
+		ElementColor = Color3.fromRGB(224, 224, 224)
+	},
+	BloodTheme = {
+		SchemeColor = Color3.fromRGB(227, 27, 27),
+		Background = Color3.fromRGB(10, 10, 10),
+		Header = Color3.fromRGB(5, 5, 5),
+		TextColor = Color3.fromRGB(255,255,255),
+		ElementColor = Color3.fromRGB(20, 20, 20)
+	},
+	GrapeTheme = {
+		SchemeColor = Color3.fromRGB(166, 71, 214),
+		Background = Color3.fromRGB(64, 50, 71),
+		Header = Color3.fromRGB(36, 28, 41),
+		TextColor = Color3.fromRGB(255,255,255),
+		ElementColor = Color3.fromRGB(74, 58, 84)
+	},
+	Ocean = {
+		SchemeColor = Color3.fromRGB(86, 76, 251),
+		Background = Color3.fromRGB(26, 32, 58),
+		Header = Color3.fromRGB(38, 45, 71),
+		TextColor = Color3.fromRGB(200, 200, 200),
+		ElementColor = Color3.fromRGB(38, 45, 71)
+	},
+	Midnight = {
+		SchemeColor = Color3.fromRGB(26, 189, 158),
+		Background = Color3.fromRGB(44, 62, 82),
+		Header = Color3.fromRGB(57, 81, 105),
+		TextColor = Color3.fromRGB(255, 255, 255),
+		ElementColor = Color3.fromRGB(52, 74, 95)
+	},
+	yooTheme = {
+		SchemeColor = Color3.fromRGB(0, 0, 0),
+		Background = Color3.fromRGB(0, 0, 0),
+		Header = Color3.fromRGB(85, 255, 255),
+		TextColor = Color3.fromRGB(255, 255, 255),
+		ElementColor = Color3.fromRGB(255, 255, 255)
+	},
+	Sentinel = {
+		SchemeColor = Color3.fromRGB(230, 35, 69),
+		Background = Color3.fromRGB(32, 32, 32),
+		Header = Color3.fromRGB(24, 24, 24),
+		TextColor = Color3.fromRGB(119, 209, 138),
+		ElementColor = Color3.fromRGB(24, 24, 24)
+	},
+	Synapse = {
+		SchemeColor = Color3.fromRGB(46, 48, 43),
+		Background = Color3.fromRGB(13, 15, 12),
+		Header = Color3.fromRGB(36, 38, 35),
+		TextColor = Color3.fromRGB(152, 99, 53),
+		ElementColor = Color3.fromRGB(24, 24, 24)
+	},
+	Serpent = {
+		SchemeColor = Color3.fromRGB(0, 166, 58),
+		Background = Color3.fromRGB(31, 41, 43),
+		Header = Color3.fromRGB(22, 29, 31),
+		TextColor = Color3.fromRGB(255,255,255),
+		ElementColor = Color3.fromRGB(22, 29, 31)
+	}
 }
 local oldTheme = ""
 
@@ -130,84 +137,84 @@ local Name = "KavoConfig.JSON"
 
 pcall(function()
 
-if not pcall(function() readfile(Name) end) then
-writefile(Name, game:service'HttpService':JSONEncode(SettingsT))
-end
+	if not pcall(function() readfile(Name) end) then
+		writefile(Name, game:service'HttpService':JSONEncode(SettingsT))
+	end
 
-Settings = game:service'HttpService':JSONEncode(readfile(Name))
+	Settings = game:service'HttpService':JSONEncode(readfile(Name))
 end)
 
 local LibName = tostring(math.random(1, 100))..tostring(math.random(1,50))..tostring(math.random(1, 100))
 
 function Kavo:ToggleUI()
-    if game.CoreGui[LibName].Enabled then
-        game.CoreGui[LibName].Enabled = false
-    else
-        game.CoreGui[LibName].Enabled = true
-    end
+	if game.CoreGui[LibName].Enabled then
+		game.CoreGui[LibName].Enabled = false
+	else
+		game.CoreGui[LibName].Enabled = true
+	end
 end
 
 function Kavo.CreateLib(kavName, themeList)
-    if not themeList then
-        themeList = themes
-    end
-    if themeList == "DarkTheme" then
-        themeList = themeStyles.DarkTheme
-    elseif themeList == "LightTheme" then
-        themeList = themeStyles.LightTheme
-    elseif themeList == "BloodTheme" then
-        themeList = themeStyles.BloodTheme
-    elseif themeList == "GrapeTheme" then
-        themeList = themeStyles.GrapeTheme
-    elseif themeList == "Ocean" then
-        themeList = themeStyles.Ocean
-    elseif themeList == "Midnight" then
-        themeList = themeStyles.Midnight
-    elseif themeList == "Sentinel" then
-        themeList = themeStyles.Sentinel
-    elseif themeList == "Synapse" then
-        themeList = themeStyles.Synapse
-    elseif themeList == "Serpent" then
-        themeList = themeStyles.Serpent
-    else
-        if themeList.SchemeColor == nil then
-            themeList.SchemeColor = Color3.fromRGB(74, 99, 135)
-        elseif themeList.Background == nil then
-            themeList.Background = Color3.fromRGB(36, 37, 43)
-        elseif themeList.Header == nil then
-            themeList.Header = Color3.fromRGB(28, 29, 34)
-        elseif themeList.TextColor == nil then
-            themeList.TextColor = Color3.fromRGB(255,255,255)
-        elseif themeList.ElementColor == nil then
-            themeList.ElementColor = Color3.fromRGB(32, 32, 38)
-        end
-    end
+	if not themeList then
+		themeList = themes
+	end
+	if themeList == "DarkTheme" then
+		themeList = themeStyles.DarkTheme
+	elseif themeList == "LightTheme" then
+		themeList = themeStyles.LightTheme
+	elseif themeList == "BloodTheme" then
+		themeList = themeStyles.BloodTheme
+	elseif themeList == "GrapeTheme" then
+		themeList = themeStyles.GrapeTheme
+	elseif themeList == "Ocean" then
+		themeList = themeStyles.Ocean
+	elseif themeList == "Midnight" then
+		themeList = themeStyles.Midnight
+	elseif themeList == "Sentinel" then
+		themeList = themeStyles.Sentinel
+	elseif themeList == "Synapse" then
+		themeList = themeStyles.Synapse
+	elseif themeList == "Serpent" then
+		themeList = themeStyles.Serpent
+	else
+		if themeList.SchemeColor == nil then
+			themeList.SchemeColor = Color3.fromRGB(74, 99, 135)
+		elseif themeList.Background == nil then
+			themeList.Background = Color3.fromRGB(36, 37, 43)
+		elseif themeList.Header == nil then
+			themeList.Header = Color3.fromRGB(28, 29, 34)
+		elseif themeList.TextColor == nil then
+			themeList.TextColor = Color3.fromRGB(255,255,255)
+		elseif themeList.ElementColor == nil then
+			themeList.ElementColor = Color3.fromRGB(32, 32, 38)
+		end
+	end
 
-    themeList = themeList or {}
-    local selectedTab 
-    kavName = kavName or "Library"
-    table.insert(Kavo, kavName)
-    for i,v in pairs(game.CoreGui:GetChildren()) do
-        if v:IsA("ScreenGui") and v.Name == kavName then
-            v:Destroy()
-        end
-    end
-    local ScreenGui = Instance.new("ScreenGui")
-    local Main = Instance.new("Frame")
-    local MainCorner = Instance.new("UICorner")
-    local MainHeader = Instance.new("Frame")
-    local headerCover = Instance.new("UICorner")
-    local coverup = Instance.new("Frame")
-    local title = Instance.new("TextLabel")
-    local close = Instance.new("ImageButton")
-    local MainSide = Instance.new("Frame")
-    local sideCorner = Instance.new("UICorner")
-    local coverup_2 = Instance.new("Frame")
-    local tabFrames = Instance.new("Frame")
-    local tabListing = Instance.new("UIListLayout")
-    local pages = Instance.new("Frame")
-    local Pages = Instance.new("Folder")
-    local infoContainer = Instance.new("Frame")
+	themeList = themeList or {}
+	local selectedTab 
+	kavName = kavName or "Library"
+	table.insert(Kavo, kavName)
+	for i,v in pairs(game.CoreGui:GetChildren()) do
+		if v:IsA("ScreenGui") and v.Name == kavName then
+			v:Destroy()
+		end
+	end
+	local ScreenGui = Instance.new("ScreenGui")
+	local Main = Instance.new("Frame")
+	local MainCorner = Instance.new("UICorner")
+	local MainHeader = Instance.new("Frame")
+	local headerCover = Instance.new("UICorner")
+	local coverup = Instance.new("Frame")
+	local title = Instance.new("TextLabel")
+	local close = Instance.new("TextButton")
+	local MainSide = Instance.new("Frame")
+	local sideCorner = Instance.new("UICorner")
+	local coverup_2 = Instance.new("Frame")
+	local TabFrame = Instance.new("Frame")
+	local tabListing = Instance.new("UIListLayout")
+	local pages = Instance.new("Frame")
+	local Pages = Instance.new("Folder")
+	local infoContainer = Instance.new("Frame")
 	local opengui = Instance.new("TextButton")
 	local keysystem = Instance.new("Frame")
 	local TextBox = Instance.new("TextBox")
@@ -215,93 +222,119 @@ function Kavo.CreateLib(kavName, themeList)
 	local Getkey = Instance.new("TextButton")
 	local UICorner = Instance.new("UICorner")
 	
-    local blurFrame = Instance.new("Frame")
 
-    Kavo:DraggingEnabled(MainHeader, Main)
+	local blurFrame = Instance.new("Frame")
 
-    blurFrame.Name = "blurFrame"
-    blurFrame.Parent = pages
-    blurFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    blurFrame.BackgroundTransparency = 1
-    blurFrame.BorderSizePixel = 0
-    blurFrame.Position = UDim2.new(-0.0222222228, 0, -0.0371747203, 0)
-    blurFrame.Size = UDim2.new(0, 376, 0, 289)
-    blurFrame.ZIndex = 999
+	Kavo:DraggingEnabled(MainHeader, Main)
 
-    ScreenGui.Parent = game.CoreGui
-    ScreenGui.Name = LibName
-    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    ScreenGui.ResetOnSpawn = false
+	blurFrame.Name = "blurFrame"
+	blurFrame.Parent = pages
+	blurFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	blurFrame.BackgroundTransparency = 1
+	blurFrame.BorderSizePixel = 0
+	blurFrame.Position = UDim2.new(-0.0222222228, 0, -0.0371747203, 0)
+	blurFrame.Size = UDim2.new(0, 376, 0, 289)
+	blurFrame.ZIndex = 999
 
-    Main.Name = "Main"
-    Main.Parent = ScreenGui
-    Main.BackgroundColor3 = themeList.Background
-    Main.ClipsDescendants = true
-    Main.Position = UDim2.new(0.336503863, 0, 0.275485456, 0)
-    Main.Size = UDim2.new(0, 525, 0, 318)
-Main.Visible = false
+	ScreenGui.Parent = game.CoreGui
+	ScreenGui.Name = LibName
+	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	ScreenGui.ResetOnSpawn = false
 
-    MainCorner.CornerRadius = UDim.new(0, 4)
-    MainCorner.Name = "MainCorner"
-    MainCorner.Parent = Main
 
-    MainHeader.Name = "MainHeader"
-    MainHeader.Parent = Main
-    MainHeader.BackgroundColor3 = themeList.Header
-    Objects[MainHeader] = "BackgroundColor3"
-    MainHeader.Size = UDim2.new(0, 525, 0, 29)
-    headerCover.CornerRadius = UDim.new(0, 4)
-    headerCover.Name = "headerCover"
-    headerCover.Parent = MainHeader
+	Main.Name = "Main"
+	Main.Parent = ScreenGui
+	Main.BackgroundColor3 = themeList.Background
+	Main.ClipsDescendants = true
+	Main.Position = UDim2.new(0.336503863, 0, 0.275485456, 0)
+	Main.Size = UDim2.new(0, 525, 0, 318)
+	Main.Visible = false
 
-    coverup.Name = "coverup"
-    coverup.Parent = MainHeader
-    coverup.BackgroundColor3 = themeList.Header
-    Objects[coverup] = "BackgroundColor3"
-    coverup.BorderSizePixel = 0
-    coverup.Position = UDim2.new(0, 0, 0.758620679, 0)
-    coverup.Size = UDim2.new(0, 525, 0, 7)
+	MainCorner.CornerRadius = UDim.new(0, 4)
+	MainCorner.Name = "MainCorner"
+	MainCorner.Parent = Main
 
-    title.Name = "title"
-    title.Parent = MainHeader
-    title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    title.BackgroundTransparency = 1.000
-    title.BorderSizePixel = 0
-    title.Position = UDim2.new(0.0171428565, 0, 0.344827592, 0)
-    title.Size = UDim2.new(0, 204, 0, 8)
-    title.Font = Enum.Font.Gotham
-    title.RichText = true
-    title.Text = kavName
-    title.TextColor3 = Color3.fromRGB(245, 245, 245)
-    title.TextSize = 16.000
-    title.TextXAlignment = Enum.TextXAlignment.Left
-    
-    
-    MainSide.Name = "MainSide"
-    MainSide.Parent = Main
-    MainSide.BackgroundColor3 = themeList.Header
-    Objects[MainSide] = "Header"
-    MainSide.Position = UDim2.new(-7.4505806e-09, 0, 0.0911949649, 0)
-    MainSide.Size = UDim2.new(0, 149, 0, 289)
+	MainHeader.Name = "MainHeader"
+	MainHeader.Parent = Main
+	MainHeader.BackgroundColor3 = themeList.Header
+	Objects[MainHeader] = "BackgroundColor3"
+	MainHeader.Size = UDim2.new(0, 525, 0, 29)
+	headerCover.CornerRadius = UDim.new(0, 4)
+	headerCover.Name = "headerCover"
+	headerCover.Parent = MainHeader
 
-    sideCorner.CornerRadius = UDim.new(0, 4)
-    sideCorner.Name = "sideCorner"
-    sideCorner.Parent = MainSide
+	coverup.Name = "coverup"
+	coverup.Parent = MainHeader
+	coverup.BackgroundColor3 = themeList.Header
+	Objects[coverup] = "BackgroundColor3"
+	coverup.BorderSizePixel = 0
+	coverup.Position = UDim2.new(0, 0, 0.758620679, 0)
+	coverup.Size = UDim2.new(0, 525, 0, 7)
 
-    coverup_2.Name = "coverup"
-    coverup_2.Parent = MainSide
-    coverup_2.BackgroundColor3 = themeList.Header
-    Objects[coverup_2] = "Header"
-    coverup_2.BorderSizePixel = 0
-    coverup_2.Position = UDim2.new(0.949939311, 0, 0, 0)
-    coverup_2.Size = UDim2.new(0, 7, 0, 289)
+	title.Name = "title"
+	title.Parent = MainHeader
+	title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title.BackgroundTransparency = 1.000
+	title.BorderSizePixel = 0
+	title.Position = UDim2.new(0.0171428565, 0, 0.344827592, 0)
+	title.Size = UDim2.new(0, 204, 0, 8)
+	title.Font = Enum.Font.Gotham
+	title.RichText = true
+	title.Text = kavName
+	title.TextColor3 = Color3.fromRGB(245, 245, 245)
+	title.TextSize = 16.000
+	title.TextXAlignment = Enum.TextXAlignment.Left
 
-    tabFrames.Name = "tabFrames"
-    tabFrames.Parent = MainSide
-    tabFrames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    tabFrames.BackgroundTransparency = 1.000
-    tabFrames.Position = UDim2.new(0.0438990258, 0, -0.00066378375, 0)
-    tabFrames.Size = UDim2.new(0, 135, 0, 283)
+	MainSide.Name = "MainSide"
+	MainSide.Parent = Main
+	MainSide.BackgroundColor3 = themeList.Header
+	Objects[MainSide] = "Header"
+	MainSide.Position = UDim2.new(-7.4505806e-09, 0, 0.0911949649, 0)
+	MainSide.Size = UDim2.new(0, 149, 0, 289)
+
+	sideCorner.CornerRadius = UDim.new(0, 4)
+	sideCorner.Name = "sideCorner"
+	sideCorner.Parent = MainSide
+
+	coverup_2.Name = "coverup"
+	coverup_2.Parent = MainSide
+	coverup_2.BackgroundColor3 = themeList.Header
+	Objects[coverup_2] = "Header"
+	coverup_2.BorderSizePixel = 0
+	coverup_2.Position = UDim2.new(0.949939311, 0, 0, 0)
+	coverup_2.Size = UDim2.new(0, 7, 0, 289)
+	
+	TabFrame.Name = "TabFrame"
+	TabFrame.Parent = MainSide
+	TabFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TabFrame.BackgroundTransparency = 1.000
+	TabFrame.Position = UDim2.new(0, 0, -0.00066378375, 0)
+	TabFrame.Size = UDim2.new(0, 135, 0, 283)
+
+	tabListing.Name = "tabListing"
+	tabListing.Parent = TabFrame
+	tabListing.SortOrder = Enum.SortOrder.LayoutOrder
+
+	pages.Name = "pages"
+	pages.Parent = Main
+	pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	pages.BackgroundTransparency = 1.000
+	pages.BorderSizePixel = 0
+	pages.Position = UDim2.new(0.299047589, 0, 0.122641519, 0)
+	pages.Size = UDim2.new(0, 360, 0, 269)
+
+	Pages.Name = "Pages"
+	Pages.Parent = pages
+	
+	infoContainer.Name = "infoContainer"
+	infoContainer.Parent = Main
+	infoContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	infoContainer.BackgroundTransparency = 1.000
+	infoContainer.BorderColor3 = Color3.fromRGB(27, 42, 53)
+	infoContainer.ClipsDescendants = true
+	infoContainer.Position = UDim2.new(0.299047619, 0, 0.874213815, 0)
+	infoContainer.Size = UDim2.new(0, 368, 0, 33)
+
 keysystem.Name = "keysystem"
 	keysystem.Parent = ScreenGui
 	keysystem.BackgroundColor3 = Color3.fromRGB(85, 0, 255)
@@ -378,8 +411,8 @@ TextBox.Name = "Keybox"
 	close.MouseButton1Click:Connect(function()
         keysystem:Destroy()
     end)
-    
-    opengui.Name = "open gui"
+
+	opengui.Name = "open gui"
 	opengui.Parent = ScreenGui
 	opengui.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	opengui.Position = UDim2.new(0.912751675, 0, 0.324489802, 0)
@@ -399,32 +432,7 @@ TextBox.Name = "Keybox"
 		end
 	end)
 	
-    tabListing.Name = "tabListing"
-    tabListing.Parent = tabFrames
-    tabListing.SortOrder = Enum.SortOrder.LayoutOrder
-
-    pages.Name = "pages"
-    pages.Parent = Main
-    pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    pages.BackgroundTransparency = 1.000
-    pages.BorderSizePixel = 0
-    pages.Position = UDim2.new(0.299047589, 0, 0.122641519, 0)
-    pages.Size = UDim2.new(0, 360, 0, 269)
-
-    Pages.Name = "Pages"
-    Pages.Parent = pages
-
-    infoContainer.Name = "infoContainer"
-    infoContainer.Parent = Main
-    infoContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    infoContainer.BackgroundTransparency = 1.000
-    infoContainer.BorderColor3 = Color3.fromRGB(27, 42, 53)
-    infoContainer.ClipsDescendants = true
-    infoContainer.Position = UDim2.new(0.299047619, 0, 0.874213815, 0)
-    infoContainer.Size = UDim2.new(0, 368, 0, 33)
-
-    
-    coroutine.wrap(function()
+	coroutine.wrap(function()
         while wait() do
             Main.BackgroundColor3 = themeList.Background
             MainHeader.BackgroundColor3 = themeList.Header
@@ -483,7 +491,7 @@ TextBox.Name = "Keybox"
         pageListing.Padding = UDim.new(0, 5)
 
         tabButton.Name = tabName.."TabButton"
-        tabButton.Parent = tabFrames
+        tabButton.Parent = TabFrame
         tabButton.BackgroundColor3 = themeList.SchemeColor
         Objects[tabButton] = "SchemeColor"
         tabButton.Size = UDim2.new(0, 135, 0, 28)
@@ -519,7 +527,7 @@ TextBox.Name = "Keybox"
                 v.Visible = false
             end
             page.Visible = true
-            for i,v in next, tabFrames:GetChildren() do
+            for i,v in next, TabFrame:GetChildren() do
                 if v:IsA("TextButton") then
                     if themeList.SchemeColor == Color3.fromRGB(255,255,255) then
                         Utility:TweenObject(v, {TextColor3 = Color3.fromRGB(255,255,255)}, 0.2)
@@ -1993,6 +2001,111 @@ TextBox.Name = "Keybox"
                 end
                 return DropFunction
             end
+	    
+	    function Elements:NewKey(keytext, keyinf, key, callback)
+keytext = keytext or "Keysystem"
+                keyinf = keyinf or "KeysystemInfo"
+                callback = callback or function() end
+		local Key = key.Name
+
+			local Bind = Instance.new("TextButton")
+			local BindUICorner = Instance.new("UICorner")
+			local Title = Instance.new("TextLabel")
+			local BindFrame = Instance.new("Frame")
+			local BindFrameUICorner = Instance.new("UICorner")
+			local BindLabel = Instance.new("TextLabel")
+
+			Bind.Name = "Bind"
+			Bind.Parent = ItemHolder
+			Bind.AnchorPoint = Vector2.new(0.5, 0.5)
+			Bind.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+			Bind.Position = UDim2.new(-0.436928689, 0, 0.696994126, 0)
+			Bind.Size = UDim2.new(0, 491, 0, 29)
+			Bind.AutoButtonColor = false
+			Bind.Font = Enum.Font.Gotham
+			Bind.Text = ""
+			Bind.TextColor3 = Color3.fromRGB(195, 195, 195)
+			Bind.TextSize = 14.000
+
+			BindUICorner.CornerRadius = UDim.new(0, 6)
+			BindUICorner.Name = "BindUICorner"
+			BindUICorner.Parent = Bind
+
+			Title.Name = "Title"
+			Title.Parent = Bind
+			Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Title.BackgroundTransparency = 1.000
+			Title.Position = UDim2.new(0.0244399179, 0, 0.068965517, 0)
+			Title.Size = UDim2.new(0, 1, 0, 24)
+			Title.Font = Enum.Font.Gotham
+			Title.TextColor3 = Color3.fromRGB(195, 195, 195)
+			Title.TextSize = 14.000
+			Title.TextXAlignment = Enum.TextXAlignment.Left
+			Title.Text = text
+
+			BindFrame.Name = "BindFrame"
+			BindFrame.Parent = Bind
+			BindFrame.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
+			BindFrame.Position = UDim2.new(0.775967538, 0, 0.172413796, 0)
+			BindFrame.Size = UDim2.new(0, 103, 0, 19)
+
+			BindFrameUICorner.CornerRadius = UDim.new(0, 6)
+			BindFrameUICorner.Name = "BindFrameUICorner"
+			BindFrameUICorner.Parent = BindFrame
+
+			BindLabel.Name = "BindLabel"
+			BindLabel.Parent = BindFrame
+			BindLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			BindLabel.BackgroundTransparency = 1.000
+			BindLabel.Size = UDim2.new(0, 102, 0, 20)
+			BindLabel.Font = Enum.Font.Gotham
+			BindLabel.Text = Key
+			BindLabel.TextColor3 = Color3.fromRGB(195, 195, 195)
+			BindLabel.TextSize = 13.000
+
+			Bind.MouseEnter:Connect(
+				function()
+					TweenService:Create(
+						Bind,
+						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+						{BackgroundColor3 = Color3.fromRGB(44, 44, 44)}
+					):Play()
+				end
+			)
+
+			Bind.MouseLeave:Connect(
+				function()
+					TweenService:Create(
+						Bind,
+						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+						{BackgroundColor3 = Color3.fromRGB(39, 39, 39)}
+					):Play()
+				end
+			)
+
+			Bind.MouseButton1Click:connect(
+				function(e)
+					BindLabel.Text = "..."
+					local a, b = game:GetService("UserInputService").InputBegan:wait()
+					if a.KeyCode.Name ~= "Unknown" then
+						BindLabel.Text = a.KeyCode.Name
+						Key = a.KeyCode.Name
+					end
+				end
+			)
+
+			game:GetService("UserInputService").InputBegan:connect(
+			function(current, pressed)
+				if not pressed then
+					if current.KeyCode.Name == Key then
+						pcall(callback)
+					end
+				end
+			end
+			)
+			ItemHolder.CanvasSize = UDim2.new(0, 0, 0, ItemHolderUIList.AbsoluteContentSize.Y)
+		end
+	    
             function Elements:NewKeybind(keytext, keyinf, first, callback)
                 keytext = keytext or "KeybindText"
                 keyinf = keyinf or "KebindInfo"
@@ -2673,7 +2786,7 @@ TextBox.Name = "Keybox"
                 end)
                 setcolor({h,s,v})
             end
-            
+	
             function Elements:NewLabel(title)
             	local labelFunctions = {}
             	local label = Instance.new("TextLabel")
