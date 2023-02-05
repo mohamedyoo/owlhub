@@ -126,7 +126,7 @@ local SettingsT = {
 
 }
 
-local Name = "KavoConfig.JSON"
+local Name = "EmptynessHub"
 
 pcall(function()
 
@@ -199,7 +199,7 @@ function Kavo.CreateLib(kavName, themeList)
     local headerCover = Instance.new("UICorner")
     local coverup = Instance.new("Frame")
     local title = Instance.new("TextLabel")
-    local close = Instance.new("ImageButton")
+    local close = Instance.new("TextButton")
     local MainSide = Instance.new("Frame")
     local sideCorner = Instance.new("UICorner")
     local coverup_2 = Instance.new("Frame")
@@ -207,6 +207,12 @@ function Kavo.CreateLib(kavName, themeList)
     local tabListing = Instance.new("UIListLayout")
     local pages = Instance.new("Frame")
     local Pages = Instance.new("Folder")
+    local opengui = Instance.new("TextButton")
+	local keysystem = Instance.new("Frame")
+	local TextBox = Instance.new("TextBox")
+	local Enter = Instance.new("TextButton")
+	local Getkey = Instance.new("TextButton")
+	local UICorner = Instance.new("UICorner")
     local infoContainer = Instance.new("Frame")
 
     local blurFrame = Instance.new("Frame")
@@ -254,6 +260,104 @@ function Kavo.CreateLib(kavName, themeList)
     coverup.BorderSizePixel = 0
     coverup.Position = UDim2.new(0, 0, 0.758620679, 0)
     coverup.Size = UDim2.new(0, 525, 0, 7)
+
+keysystem.Name = "keysystem"
+	keysystem.Parent = ScreenGui
+	keysystem.BackgroundColor3 = Color3.fromRGB(85, 0, 255)
+	keysystem.Position = UDim2.new(0.237265423, 0, 0.240816325, 0)
+	keysystem.Size = UDim2.new(0, 284, 0, 274)
+
+TextBox.Name = "Keybox"
+	TextBox.Parent = keysystem
+	TextBox.BackgroundColor3 = Color3.fromRGB(85, 255, 255)
+	TextBox.Position = UDim2.new(0, 0, 0.120437957, 0)
+	TextBox.Size = UDim2.new(0, 284, 0, 74)
+	TextBox.Font = Enum.Font.SourceSans
+	TextBox.Text = "Key goes here"
+	TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TextBox.TextScaled = true
+	TextBox.TextSize = 14.000
+	TextBox.TextWrapped = true
+
+	Enter.Name = "Enter"
+	Enter.Parent = keysystem
+	Enter.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Enter.Position = UDim2.new(0.0821938589, 0, 0.452554733, 0)
+	Enter.Size = UDim2.new(0, 218, 0, 63)
+	Enter.Font = Enum.Font.SourceSans
+	Enter.Text = "Enter"
+	Enter.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Enter.TextScaled = true
+	Enter.TextSize = 14.000
+	Enter.TextWrapped = true
+	Enter.MouseButton1Click:Connect(function()
+	if TextBox.Text == "bhvihbvfeievfbhibevfhibibgrihb" then
+		keysystem:Destroy()
+		wait(0.7)
+			Main.Visible = true
+			opengui.Visible = true
+	end
+	end)
+	
+	Getkey.Name = "Getkey"
+	Getkey.Parent = keysystem
+	Getkey.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Getkey.Position = UDim2.new(0.0821938589, 0, 0.7591241, 0)
+	Getkey.Size = UDim2.new(0, 231, 0, 66)
+	Getkey.Font = Enum.Font.SourceSans
+	Getkey.Text = "GetKey"
+	Getkey.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Getkey.TextScaled = true
+	Getkey.TextSize = 14.000
+	Getkey.TextWrapped = true
+	Getkey.MouseButton1Click:Connect(function()
+	game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Copied",
+    Text = "you have copied the link pastebin",
+    Button1 = "Ok",
+    Duration = 4
+    })
+    wait(0.5)
+			setclipboard("https://pastebin.com/raw/hgsxEFK4")
+		end)
+		
+	UICorner.Parent = keysystem
+
+ close.Name = "close"
+	close.Parent = keysystem
+	close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	close.Position = UDim2.new(0.848591566, 0, 0, 0)
+	close.Size = UDim2.new(0, 43, 0, 33)
+	close.Font = Enum.Font.SourceSans
+	close.Text = "X"
+	close.TextColor3 = Color3.fromRGB(0, 0, 0)
+	close.TextScaled = true
+	close.TextSize = 14.000
+	close.TextWrapped = true
+	close.MouseButton1Click:Connect(function()
+        keysystem:Destroy()
+    end)
+
+	opengui.Name = "open gui"
+	opengui.Parent = ScreenGui
+	opengui.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	opengui.Position = UDim2.new(0.912751675, 0, 0.324489802, 0)
+	opengui.Size = UDim2.new(0, 65, 0, 56)
+	opengui.Font = Enum.Font.SourceSans
+	opengui.Text = "Open"
+	opengui.TextColor3 = Color3.fromRGB(0, 0, 0)
+	opengui.TextScaled = true
+	opengui.TextSize = 14.000
+	opengui.Visible = false
+	opengui.TextWrapped = true
+	opengui.MouseButton1Click:Connect(function()
+		if Main.Visible == false then
+			Main.Visible = true
+		else
+			Main.Visible = false
+		end
+	end)
+
 
     title.Name = "title"
     title.Parent = MainHeader
