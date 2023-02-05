@@ -320,7 +320,7 @@ function Kavo.CreateLib(kavName, themeList)
 	KeyHere.Position = UDim2.new(0, 0, 0.232758626, 0)
 	KeyHere.Size = UDim2.new(0, 315, 0, 56)
 	KeyHere.Font = Enum.Font.SourceSans
-	KeyHere.Text = ""
+	KeyHere.Text = "bhvihbvfeievfbhibevfhibibgrihb"
 	KeyHere.TextColor3 = Color3.fromRGB(255, 255, 255)
 	KeyHere.TextScaled = true
 	KeyHere.TextSize = 14.000
@@ -333,7 +333,7 @@ function Kavo.CreateLib(kavName, themeList)
 	TitleKey.Position = UDim2.new(0.00317460299, 0, 0, 0)
 	TitleKey.Size = UDim2.new(0, 315, 0, 50)
 	TitleKey.Font = Enum.Font.SourceSans
-	TitleKey.Text = "Key System"
+	TitleKey.Text = "Key System clikc enter"
 	TitleKey.TextColor3 = Color3.fromRGB(85, 255, 255)
 	TitleKey.TextScaled = true
 	TitleKey.TextSize = 14.000
