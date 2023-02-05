@@ -309,7 +309,7 @@ function Kavo.CreateLib(kavName, themeList)
 			keysystem:Destroy()
 			wait(0.7)
 			Main.Visible = true
-			opengui.Visible = true
+			ImageButtonK.Visible = true
 		end
 	end)
 	
@@ -362,6 +362,7 @@ function Kavo.CreateLib(kavName, themeList)
 	ImageButtonK.BackgroundTransparency = 1.000
 	ImageButtonK.Position = UDim2.new(0.870967746, 0, 0.332653075, 0)
 	ImageButtonK.Size = UDim2.new(0, 100, 0, 100)
+		ImageButtonK.Visible = false
 	ImageButtonK.Image = "rbxassetid://9836076474"
 	ImageButtonK.MouseButton1Click:Connect(function()
 		if Main.Visible == false then
