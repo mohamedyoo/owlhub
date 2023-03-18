@@ -246,18 +246,20 @@ local Pages = Instance.new("Folder")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 
-	Main.Name = "main"
-	Main.Parent = ScreenGui
-	Main.BackgroundColor3 = themeList.Background
-	Main.Position = UDim2.new(0.147096798, 0, 0.228003055, 0)
-	Main.Size = UDim2.new(0, 451, 0, 209)
+	  Main.Name = "Main"
+    Main.Parent = ScreenGui
+    Main.BackgroundColor3 = themeList.Background
+    Main.ClipsDescendants = true
+    Main.Position = UDim2.new(0.336503863, 0, 0.275485456, 0)
+    Main.Size = UDim2.new(0, 525, 0, 318)
+	Main.Visible = false
 	
 	MainShadow.Name = "Frame2 (Shadow)"
 	MainShadow.Parent = Main
 	MainShadow.BackgroundColor3 = themeList.Background
 	MainShadow.Position = UDim2.new(-0.0397621728, 0, -0.0467979759, 0)
 	MainShadow.Size = UDim2.new(1.07934463, 0, 1.12893796, 0)
-	MainShadow.Visible = false
+	MainShadow.Visible = flase
 	MainShadow.ZIndex = 0
 	
 	FrameKey.Parent = ScreenGui
@@ -368,19 +370,21 @@ local Pages = Instance.new("Folder")
 		end
 	end)
 	
-	title.Name = "title"
-	title.Parent = MainHeader
-	title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	title.BackgroundTransparency = 1.000
-	title.BorderSizePixel = 0
-	title.Position = UDim2.new(0.0171428565, 0, 0.344827592, 0)
-	title.Size = UDim2.new(0, 204, 0, 8)
-	title.Font = Enum.Font.Gotham
-	title.RichText = true
-	title.Text = kavName
-	title.TextColor3 = Color3.fromRGB(245, 245, 245)
-	title.TextSize = 16.000
-	title.TextXAlignment = Enum.TextXAlignment.Left
+	
+    title.Name = "title"
+    title.Parent = MainHeader
+    title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    title.BackgroundTransparency = 1.000
+    title.BorderSizePixel = 0
+    title.Position = UDim2.new(0.0171428565, 0, 0.344827592, 0)
+    title.Size = UDim2.new(0, 204, 0, 8)
+    title.Font = Enum.Font.Gotham
+    title.RichText = true
+    title.Text = kavName
+    title.TextColor3 = Color3.fromRGB(245, 245, 245)
+    title.TextSize = 19.000
+    title.TextXAlignment = Enum.TextXAlignment.Left
+
 
 X.Name = "X"
 X.Parent = Main
@@ -395,12 +399,11 @@ X.TextScaled = true
 X.TextSize = 14.000
 X.TextWrapped = true
 
-
-	MainHeader.Name = "MainHeader"
-	MainHeader.Parent = Main
-	MainHeader.BackgroundColor3 = themeList.Header
-	Objects[MainHeader] = "BackgroundColor3"
-	MainHeader.Size = UDim2.new(0, 525, 0, 29)
+   MainHeader.Name = "MainHeader"
+    MainHeader.Parent = Main
+    MainHeader.BackgroundColor3 = themeList.Header
+    Objects[MainHeader] = "BackgroundColor3"
+    MainHeader.Size = UDim2.new(0, 525, 0, 29)
 
 	coverup.Name = "coverup"
 	coverup.Parent = MainHeader
@@ -410,16 +413,16 @@ X.TextWrapped = true
 	coverup.Position = UDim2.new(0, 0, 0.758620679, 0)
 	coverup.Size = UDim2.new(0, 525, 0, 7)
 
-	headerCover.CornerRadius = UDim.new(0, 4)
-	headerCover.Name = "headerCover"
-	headerCover.Parent = MainHeader
+	  headerCover.CornerRadius = UDim.new(0, 4)
+    headerCover.Name = "headerCover"
+    headerCover.Parent = MainHeader
 
 	MainSide.Name = "MainSide"
-	MainSide.Parent = Main
-	MainSide.BackgroundColor3 = themeList.Header
-	Objects[MainSide] = "Header"
-	MainSide.Position = UDim2.new(-7.4505806e-09, 0, 0.0911949649, 0)
-	MainSide.Size = UDim2.new(0, 149, 0, 289)
+    MainSide.Parent = Main
+    MainSide.BackgroundColor3 = themeList.Header
+    Objects[MainSide] = "Header"
+    MainSide.Position = UDim2.new(-7.4505806e-09, 0, 0.0911949649, 0)
+    MainSide.Size = UDim2.new(0, 149, 0, 289)
 
 	sideCorner.CornerRadius = UDim.new(0, 4)
 	sideCorner.Name = "sideCorner"
@@ -433,36 +436,36 @@ X.TextWrapped = true
 	coverup_2.Position = UDim2.new(0.949939311, 0, 0, 0)
 	coverup_2.Size = UDim2.new(0, 7, 0, 289)
 
-	tabFrames.Name = "tabFrames"
-	tabFrames.Parent = MainSide
-	tabFrames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	tabFrames.BackgroundTransparency = 1.000
-	tabFrames.Position = UDim2.new(0.0438990258, 0, -0.00066378375, 0)
-	tabFrames.Size = UDim2.new(0, 135, 0, 283)
+	 tabFrames.Name = "tabFrames"
+    tabFrames.Parent = MainSide
+    tabFrames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    tabFrames.BackgroundTransparency = 1.000
+    tabFrames.Position = UDim2.new(0.0438990258, 0, -0.00066378375, 0)
+    tabFrames.Size = UDim2.new(0, 135, 0, 283)
 
-	tabListing.Name = "tabListing"
-	tabListing.Parent = tabFrames
-	tabListing.SortOrder = Enum.SortOrder.LayoutOrder
+    tabListing.Name = "tabListing"
+    tabListing.Parent = tabFrames
+    tabListing.SortOrder = Enum.SortOrder.LayoutOrder
 
-	pages.Name = "pages"
-	pages.Parent = Main
-	pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	pages.BackgroundTransparency = 1.000
-	pages.BorderSizePixel = 0
-	pages.Position = UDim2.new(0.299047589, 0, 0.122641519, 0)
-	pages.Size = UDim2.new(0, 360, 0, 269)
+    pages.Name = "pages"
+    pages.Parent = Main
+    pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    pages.BackgroundTransparency = 1.000
+    pages.BorderSizePixel = 0
+    pages.Position = UDim2.new(0.299047589, 0, 0.122641519, 0)
+    pages.Size = UDim2.new(0, 360, 0, 269)
 
-	Pages.Name = "Pages"
-	Pages.Parent = pages
+    Pages.Name = "Pages"
+    Pages.Parent = pages
 
-	infoContainer.Name = "infoContainer"
-	infoContainer.Parent = Main
-	infoContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	infoContainer.BackgroundTransparency = 1.000
-	infoContainer.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	infoContainer.ClipsDescendants = true
-	infoContainer.Position = UDim2.new(0.299047619, 0, 0.874213815, 0)
-	infoContainer.Size = UDim2.new(0, 368, 0, 33)
+    infoContainer.Name = "infoContainer"
+    infoContainer.Parent = Main
+    infoContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    infoContainer.BackgroundTransparency = 1.000
+    infoContainer.BorderColor3 = Color3.fromRGB(27, 42, 53)
+    infoContainer.ClipsDescendants = true
+    infoContainer.Position = UDim2.new(0.299047619, 0, 0.874213815, 0)
+    infoContainer.Size = UDim2.new(0, 368, 0, 33)
 
 MainCorner.CornerRadius = UDim.new(0, 4)
 MainCorner.Name = "MainCorner"
