@@ -230,7 +230,7 @@ local Pages = Instance.new("Folder")
 
 	local blurFrame = Instance.new("Frame")
 
-	Emptyness:DraggingEnabled(MainHeader, Main, Frame)
+	Emptyness:DraggingEnabled(MainHeader, Main, FrameKey)
 
 	blurFrame.Name = "blurFrame"
 	blurFrame.Parent = pages
