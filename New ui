@@ -326,7 +326,7 @@ function Emptyness.CreateLib(kavName, themeList)
 	PlaceID.Parent = Main
 	PlaceID.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	PlaceID.BackgroundTransparency = 1.000
-	PlaceID.Position = UDim2.new(0.50000006, 0, 0.421576917, 0)
+	PlaceID.Position = UDim2.new(0.0033968098, 0, 0.883647799, 0)
 	PlaceID.Size = UDim2.new(0, 162, 0, 37)
 	PlaceID.Font = Enum.Font.SourceSans
 	PlaceID.Text = "Welcome, Emptyness Winning."
@@ -498,13 +498,18 @@ function Emptyness.CreateLib(kavName, themeList)
 		end
 	end)()
 	
-	local userId = Player.UserId
+	local PlaceId = game.PlaceId
 	local thumbType = Enum.ThumbnailType.HeadShot
 	local thumbSize = Enum.ThumbnailSize.Size420x420
-	local content, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
+	local content, isReady = Players:GetUserThumbnailAsync(PlaceId, thumbType, thumbSize)
 
 	PlaceID.Text = "Place: "..game.PlaceId.."!" 
 	
+		local TweenService = game:GetService("TweenService")
+		
+		local UserLabelTween = TweenService:Create(PlaceID, TweenInfo.new(1, Enum.EasingStyle.Quint), {
+			Position = UDim2.new(0.497796267, 0, 0.6, 0)
+		})
 	function Emptyness:ChangeColor(prope,color)
 		if prope == "Background" then
 			themeList.Background = color
