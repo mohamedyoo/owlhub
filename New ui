@@ -500,8 +500,7 @@ function Emptyness.CreateLib(kavName, themeList)
 		end
 	end)()
 
-
-	function Emptyness:ChangeColor(prope,color)
+	function Kavo:ChangeColor(prope,color)
 		if prope == "Background" then
 			themeList.Background = color
 		elseif prope == "SchemeColor" then
@@ -617,7 +616,6 @@ function Emptyness.CreateLib(kavName, themeList)
 				tabButton.BackgroundColor3 = themeList.SchemeColor
 			end
 		end)()
-
 
 		function Sections:NewSection(secName, hidden)
 			secName = secName or "Section"
