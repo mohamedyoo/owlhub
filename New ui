@@ -415,7 +415,10 @@ function Emptyness.CreateLib(kavName, themeList)
 	X.TextScaled = true
 	X.TextSize = 14.000
 	X.TextWrapped = true
-
+X.MouseButton1Click:Connect(function()
+		Main:Destroy()
+	end)
+	
 	MainHeader.Name = "MainHeader"
 	MainHeader.Parent = Main
 	MainHeader.BackgroundColor3 = themeList.Header
