@@ -1,0 +1,186 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+if game.CoreGui:FindFirstChild("UniversalGui") then
+    game.CoreGui.UniversalGui:Destroy()
+end
+game:GetService("UserInputService").InputBegan:connect(
+    function(key, gpe)
+        if key.KeyCode == Enum.KeyCode.RightControl then
+            game.CoreGui.UniversalGui.Enabled = not game.CoreGui.UniversalGui.Enabled
+        end
+    end
+)
+
+local Kavo = {}
+
+local tween = game:GetService("TweenService")
+local tweeninfo = TweenInfo.new
+local input = game:GetService("UserInputService")
+local run = game:GetService("RunService")
+
+local Utility = {}
+local Objects = {}
+function Kavo:DraggingEnabled(frame, parent)
+
+	parent = parent or frame
+
+	-- stolen from wally or kiriot, kek
+	local dragging = false
+	local dragInput, mousePos, framePos
+
+	frame.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			mousePos = input.Position
+			framePos = parent.Position
+
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+
+	frame.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+
+	input.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			local delta = input.Position - mousePos
+			parent.Position  = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
+		end
+	end)
+end
+
+function Utility:TweenObject(obj, properties, duration, ...)
+	tween:Create(obj, tweeninfo(duration, ...), properties):Play()
+end
+
+local UniversalGui = Instance.new("ScreenGui")
+local UniversalFrame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local UIGradient = Instance.new("UIGradient")
+local DarkHUbLib = Instance.new("TextButton")
+local RandomLib = Instance.new("TextButton")
+local DarkhubLabel = Instance.new("TextLabel")
+local RandomLabel = Instance.new("TextLabel")
+local Title = Instance.new("TextLabel")
+local X = Instance.new("TextButton")
+
+--Properties:
+
+Kavo:DraggingEnabled(UniversalFrame)
+
+UniversalGui.Parent = game.CoreGui
+	UniversalGui.Name = "One Gui"
+	UniversalGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	UniversalGui.ResetOnSpawn = false
+
+UniversalFrame.Name = "Universal Frame"
+UniversalFrame.Parent = UniversalGui
+UniversalFrame.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+UniversalFrame.Position = UDim2.new(0.168407321, 0, 0.232653067, 0)
+UniversalFrame.Size = UDim2.new(0, 507, 0, 316)
+
+UICorner.Parent = UniversalFrame
+
+UIGradient.Parent = UniversalFrame
+
+DarkHUbLib.Name = "DarkHUb Lib"
+DarkHUbLib.Parent = UniversalFrame
+DarkHUbLib.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DarkHUbLib.BackgroundTransparency = 1.000
+DarkHUbLib.Position = UDim2.new(0, 0, 0.12658228, 0)
+DarkHUbLib.Size = UDim2.new(0, 238, 0, 147)
+DarkHUbLib.Font = Enum.Font.SourceSans
+DarkHUbLib.Text = "DarkHub Lib"
+DarkHUbLib.TextColor3 = Color3.fromRGB(0, 0, 0)
+DarkHUbLib.TextScaled = true
+DarkHUbLib.TextSize = 14.000
+DarkHUbLib.TextWrapped = true
+DarkHUbLib.MouseButton1Click:Connect(function()
+UniversalGui:Destroy()
+wait(0.5)
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/break%20in"))()
+end)
+
+RandomLib.Name = "Random Lib"
+RandomLib.Parent = UniversalFrame
+RandomLib.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+RandomLib.BackgroundTransparency = 1.000
+RandomLib.BorderColor3 = Color3.fromRGB(85, 255, 127)
+RandomLib.Position = UDim2.new(0.483234704, 0, 0.12658228, 0)
+RandomLib.Size = UDim2.new(0, 262, 0, 158)
+RandomLib.Font = Enum.Font.SourceSans
+RandomLib.Text = "Kavo Lib"
+RandomLib.TextColor3 = Color3.fromRGB(0, 0, 0)
+RandomLib.TextScaled = true
+RandomLib.TextSize = 14.000
+RandomLib.TextWrapped = true
+RandomLib.MouseButton1Click:Connect(function()
+UniversalGui:Destroy()
+wait(0.5)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/mohamedyoo/owlhub/main/break%20in%20kavo'))()
+end)
+
+DarkhubLabel.Name = "Darkhub Label"
+DarkhubLabel.Parent = UniversalFrame
+DarkhubLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DarkhubLabel.BackgroundTransparency = 1.000
+DarkhubLabel.Position = UDim2.new(0.0197238661, 0, 0.604430377, 0)
+DarkhubLabel.Size = UDim2.new(0, 235, 0, 103)
+DarkhubLabel.Font = Enum.Font.SourceSans
+DarkhubLabel.Text = "Most script doesn't function"
+DarkhubLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+DarkhubLabel.TextScaled = true
+DarkhubLabel.TextSize = 14.000
+DarkhubLabel.TextWrapped = true
+
+RandomLabel.Name = "Random Label"
+RandomLabel.Parent = UniversalFrame
+RandomLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+RandomLabel.BackgroundTransparency = 1.000
+RandomLabel.Position = UDim2.new(0.536489129, 0, 0.613924026, 0)
+RandomLabel.Size = UDim2.new(0, 235, 0, 122)
+RandomLabel.Font = Enum.Font.SourceSans
+RandomLabel.Text = "Have Godd features works perfectly and have anything you need"
+RandomLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+RandomLabel.TextScaled = true
+RandomLabel.TextSize = 14.000
+RandomLabel.TextWrapped = true
+
+Title.Name = "Title"
+Title.Parent = UniversalFrame
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.Position = UDim2.new(0.134694293, 0, 0, 0)
+Title.Size = UDim2.new(0, 314, 0, 52)
+Title.Font = Enum.Font.SourceSans
+Title.Text = "Pick one Not unviersal"
+Title.TextColor3 = Color3.fromRGB(0, 0, 0)
+Title.TextScaled = true
+Title.TextSize = 20.000
+Title.TextWrapped = true
+
+X.Name = "X"
+X.Parent = UniversalFrame
+X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+X.BackgroundTransparency = 1.000
+X.BorderColor3 = Color3.fromRGB(85, 255, 127)
+X.Position = UDim2.new(0.866143048, 0, -0.0253164563, 0)
+X.Size = UDim2.new(0, 77, 0, 68)
+X.Font = Enum.Font.SourceSans
+X.Text = "X"
+X.TextColor3 = Color3.fromRGB(0, 0, 0)
+X.TextScaled = true
+X.TextSize = 14.000
+X.TextWrapped = true
+X.MouseButton1Click:Connect(function()
+	UniversalGui:Destroy()
+end)
