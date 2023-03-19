@@ -61,7 +61,7 @@ local Count = 0
 local function getNearestTitan()
     local TargetDistance = math.huge
     local Target
-    for i, v in ipairs(workspace:GetChildren()) do
+    for i, v in ipairs(workspace,Entities.Titans:GetChildren()) do
         if v.Name == "Titan" then
             if v:FindFirstChildOfClass("Humanoid").Health >= 1 then
             local Mag = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v:FindFirstChild("Head").Position).Magnitude
