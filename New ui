@@ -248,7 +248,7 @@ function Emptyness.CreateLib(kavName, themeList)
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 
-	Main.Name = "MainEmptyness"
+	Main.Name = "Main"
 	Main.Parent = ScreenGui
 	Main.BackgroundColor3 = themeList.Background
 	Main.ClipsDescendants = true
@@ -401,22 +401,21 @@ UserLabel.TextSize = 22.000
 	title.TextSize = 19.000
 	title.TextXAlignment = Enum.TextXAlignment.Left
 
-
-	X.Name = "X"
-	X.Parent = Main
+X.Parent = Main
 	X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	X.BackgroundTransparency = 1.000
 	X.Position = UDim2.new(0.895458281, 0, -0.0467979759, 0)
 	X.Size = UDim2.new(0, 65, 0, 42)
 	X.Font = Enum.Font.SourceSans
 	X.Text = "X"
-	X.TextColor3 = Color3.fromRGB(85, 255, 255)
+	X.TextColor3 = Color3.fromRGB(0, 0, 0)
 	X.TextScaled = true
-	X.TextSize = 14.000
+	X.TextSize = 30.000
 	X.TextWrapped = true
 	X.MouseButton1Click:Connect(function()
-MainEmptyness:Destroy()
-end)
+		Main:Destroy()
+	end)
+	
 	MainHeader.Name = "MainHeader"
 	MainHeader.Parent = Main
 	MainHeader.BackgroundColor3 = themeList.Header
