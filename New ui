@@ -248,7 +248,7 @@ function Emptyness.CreateLib(kavName, themeList)
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 
-	Main.Name = "Main"
+	Main.Name = "MainEmptyness"
 	Main.Parent = ScreenGui
 	Main.BackgroundColor3 = themeList.Background
 	Main.ClipsDescendants = true
@@ -415,7 +415,7 @@ UserLabel.TextSize = 22.000
 	X.TextSize = 14.000
 	X.TextWrapped = true
 	X.MouseButton1Click:Connect(function()
-Main:Destroy()
+MainEmptyness:Destroy()
 end)
 	MainHeader.Name = "MainHeader"
 	MainHeader.Parent = Main
