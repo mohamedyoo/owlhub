@@ -213,6 +213,7 @@ local tabListing = Instance.new("UIListLayout")
 local infoContainer = Instance.new("Frame")
 local pages = Instance.new("Frame")
 local Pages = Instance.new("Folder")
+local UserLabel = Instance.new("TextLabel")
 	local MainCorner = Instance.new("UICorner")
 	local ScreenGui = Instance.new("ScreenGui")
 	local FrameKey = Instance.new("Frame")
@@ -223,7 +224,11 @@ local Pages = Instance.new("Folder")
 	local XButton = Instance.new("TextButton")
 	local ImageButtonK = Instance.new("ImageButton")
 	local UICornerkey = Instance.new("UICorner")
-
+local Popup = Instance.new("Frame")
+local PopupFixCorners = Instance.new("Frame")
+local PopupTitle = Instance.new("TextLabel")
+local PopupIcon = Instance.new("ImageLabel")
+local PopupText = Instance.new("TextLabel")
 
 
 --Properties:
@@ -261,6 +266,69 @@ local Pages = Instance.new("Folder")
 	MainShadow.Size = UDim2.new(1.07934463, 0, 1.12893796, 0)
 	MainShadow.Visible = flase
 	MainShadow.ZIndex = 0
+	
+	Popup.Parent = Main
+Popup.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Popup.BorderSizePixel = 0
+Popup.Position = UDim2.new(3, 0, 1, 0)
+Popup.AnchorPoint = Vector2.new(0.5, 0.5)
+Popup.Size = UDim2.new(0.4, 0, 0.1, 0)
+Popup.Visible = true
+
+PopupTitle.Parent = Popup
+PopupTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PopupTitle.BackgroundTransparency = 1.000
+PopupTitle.BorderSizePixel = 0
+PopupTitle.AnchorPoint = Vector2.new(0.5, 0.5)
+PopupTitle.Position = UDim2.new(0.5, 0, 0.1, 0)
+PopupTitle.Size = UDim2.new(0.5, 0, 0.05, 0)
+PopupTitle.Font = Enum.Font.SourceSans
+PopupTitle.Text = "Title"
+PopupTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+PopupTitle.TextSize = 20.000
+PopupTitle.ZIndex = 5
+
+PopupIcon.Parent = Popup
+PopupIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PopupIcon.BackgroundTransparency = 1.000
+PopupIcon.BorderSizePixel = 0
+PopupIcon.AnchorPoint = Vector2.new(0.5, 0.5)
+PopupIcon.Position = UDim2.new(0.1, 0, 0.1, 0)
+PopupIcon.Size = UDim2.new(0, 25, 0, 25)
+PopupIcon.Image = "rbxassetid://9838873385"
+PopupIcon.ImageColor3 = Color3.fromRGB(0, 0, 0)
+PopupIcon.ScaleType = Enum.ScaleType.Stretch
+PopupIcon.ZIndex = 5
+
+
+
+PopupText.Parent = Popup
+PopupText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PopupText.BackgroundTransparency = 1.000
+PopupText.BorderSizePixel = 0
+PopupText.AnchorPoint = Vector2.new(0, 0.5)
+PopupText.Position = UDim2.new(0.05, 0, 0.4, 0)
+PopupText.Size = UDim2.new(0.75, 0, 0.5, 0)
+PopupText.Font = Enum.Font.SourceSans
+PopupText.Text = "Text"
+PopupText.TextXAlignment = Enum.TextXAlignment.Left
+PopupText.TextYAlignment = Enum.TextYAlignment.Top
+PopupText.TextColor3 = Color3.fromRGB(50, 50, 50)
+PopupText.TextSize = 18.000
+PopupText.ZIndex = 5
+PopupText.TextWrapped = true
+
+PopupFixCorners.Parent = Popup
+PopupFixCorners.AnchorPoint = Vector2.new(1, 0.5)
+PopupFixCorners.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PopupFixCorners.BorderSizePixel = 0
+PopupFixCorners.Position = UDim2.new(1, 0, 0.5, 0)
+PopupFixCorners.Size = UDim2.new(0.2, 0, 1, 0)
+
+local PopupCorner = Instance.new("UICorner")
+
+PopupCorner.Parent = Popup
+PopupCorner.CornerRadius = UDim.new(0, 10)
 	
 	FrameKey.Parent = ScreenGui
 	FrameKey.BackgroundColor3 = Color3.fromRGB(85, 0, 255)
@@ -319,6 +387,19 @@ local Pages = Instance.new("Folder")
 	
 	UICornerkey.Parent = FrameKey
 	
+	UserLabel.Name = "UserLabel"
+UserLabel.Parent = Main
+UserLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+UserLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UserLabel.BackgroundTransparency = 1.000
+UserLabel.BorderSizePixel = 0
+UserLabel.Position = UDim2.new(0.50000006, 0, 0.421576917, 0)
+UserLabel.Size = UDim2.new(0.800000012, 0, 0.0547846109, 0)
+UserLabel.Font = Enum.Font.Gotham
+UserLabel.Text = "Welcome, VisionWinning."
+UserLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+UserLabel.TextSize = 22.000
+
 	XButton.Parent = FrameKey
 	XButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	XButton.BackgroundTransparency = 1.000
@@ -471,6 +552,14 @@ MainCorner.CornerRadius = UDim.new(0, 4)
 MainCorner.Name = "MainCorner"
 	MainCorner.Parent = Main
 	
+	local userId = Player.UserId
+local thumbType = Enum.ThumbnailType.HeadShot
+local thumbSize = Enum.ThumbnailSize.Size420x420
+local content, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
+UserIcon.Image = content
+
+UserLabel.Text = "Welcome "..game.PlaceId.."!"
+
 	coroutine.wrap(function()
 		while wait() do
 			Main.BackgroundColor3 = themeList.Background
