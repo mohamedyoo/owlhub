@@ -197,23 +197,22 @@ function Emptyness.CreateLib(kavName, themeList)
 		end
 	end
 
-local ScreenGui = Instance.new("ScreenGui")
-local Main = Instance.new("Frame")
+	local ScreenGui = Instance.new("ScreenGui")
+	local Main = Instance.new("Frame")
 	local title = Instance.new("TextLabel")
 	local MainShadow = Instance.new("Frame")
-local X = Instance.new("TextButton")
-local MainHeader = Instance.new("Frame")
-local coverup = Instance.new("Frame")
-local headerCover = Instance.new("UICorner")
-local MainSide = Instance.new("Frame")
-local sideCorner = Instance.new("UICorner")
-local coverup_2 = Instance.new("Frame")
-local tabFrames = Instance.new("Frame")
-local tabListing = Instance.new("UIListLayout")
-local infoContainer = Instance.new("Frame")
-local pages = Instance.new("Frame")
-local Pages = Instance.new("Folder")
-local UserLabel = Instance.new("TextLabel")
+	local X = Instance.new("TextButton")
+	local MainHeader = Instance.new("Frame")
+	local coverup = Instance.new("Frame")
+	local headerCover = Instance.new("UICorner")
+	local MainSide = Instance.new("Frame")
+	local sideCorner = Instance.new("UICorner")
+	local coverup_2 = Instance.new("Frame")
+	local tabFrames = Instance.new("Frame")
+	local tabListing = Instance.new("UIListLayout")
+	local infoContainer = Instance.new("Frame")
+	local pages = Instance.new("Frame")
+	local Pages = Instance.new("Folder")
 	local MainCorner = Instance.new("UICorner")
 	local ScreenGui = Instance.new("ScreenGui")
 	local FrameKey = Instance.new("Frame")
@@ -224,14 +223,12 @@ local UserLabel = Instance.new("TextLabel")
 	local XButton = Instance.new("TextButton")
 	local ImageButtonK = Instance.new("ImageButton")
 	local UICornerkey = Instance.new("UICorner")
-local Popup = Instance.new("Frame")
-local PopupFixCorners = Instance.new("Frame")
-local PopupTitle = Instance.new("TextLabel")
-local PopupIcon = Instance.new("ImageLabel")
-local PopupText = Instance.new("TextLabel")
+	local PlaceID = Instance.new("TextLabel")
+
+	
 
 
---Properties:
+	--Properties:
 
 	local blurFrame = Instance.new("Frame")
 
@@ -251,85 +248,24 @@ local PopupText = Instance.new("TextLabel")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 
-	  Main.Name = "Main"
-    Main.Parent = ScreenGui
-    Main.BackgroundColor3 = themeList.Background
-    Main.ClipsDescendants = true
-    Main.Position = UDim2.new(0.336503863, 0, 0.275485456, 0)
-    Main.Size = UDim2.new(0, 525, 0, 318)
+	Main.Name = "Main"
+	Main.Parent = ScreenGui
+	Main.BackgroundColor3 = themeList.Background
+	Main.ClipsDescendants = true
+	Main.Position = UDim2.new(0.336503863, 0, 0.275485456, 0)
+	Main.Size = UDim2.new(0, 525, 0, 318)
 	Main.Visible = false
-	
+
 	MainShadow.Name = "Frame2 (Shadow)"
 	MainShadow.Parent = Main
 	MainShadow.BackgroundColor3 = themeList.Background
 	MainShadow.Position = UDim2.new(-0.0397621728, 0, -0.0467979759, 0)
 	MainShadow.Size = UDim2.new(1.07934463, 0, 1.12893796, 0)
-	MainShadow.Visible = flase
+	MainShadow.Visible = false
 	MainShadow.ZIndex = 0
+
 	
-	Popup.Parent = Main
-Popup.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Popup.BorderSizePixel = 0
-Popup.Position = UDim2.new(3, 0, 1, 0)
-Popup.AnchorPoint = Vector2.new(0.5, 0.5)
-Popup.Size = UDim2.new(0.4, 0, 0.1, 0)
-Popup.Visible = true
 
-PopupTitle.Parent = Popup
-PopupTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-PopupTitle.BackgroundTransparency = 1.000
-PopupTitle.BorderSizePixel = 0
-PopupTitle.AnchorPoint = Vector2.new(0.5, 0.5)
-PopupTitle.Position = UDim2.new(0.5, 0, 0.1, 0)
-PopupTitle.Size = UDim2.new(0.5, 0, 0.05, 0)
-PopupTitle.Font = Enum.Font.SourceSans
-PopupTitle.Text = "Title"
-PopupTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
-PopupTitle.TextSize = 20.000
-PopupTitle.ZIndex = 5
-
-PopupIcon.Parent = Popup
-PopupIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-PopupIcon.BackgroundTransparency = 1.000
-PopupIcon.BorderSizePixel = 0
-PopupIcon.AnchorPoint = Vector2.new(0.5, 0.5)
-PopupIcon.Position = UDim2.new(0.1, 0, 0.1, 0)
-PopupIcon.Size = UDim2.new(0, 25, 0, 25)
-PopupIcon.Image = "rbxassetid://9838873385"
-PopupIcon.ImageColor3 = Color3.fromRGB(0, 0, 0)
-PopupIcon.ScaleType = Enum.ScaleType.Stretch
-PopupIcon.ZIndex = 5
-
-
-
-PopupText.Parent = Popup
-PopupText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-PopupText.BackgroundTransparency = 1.000
-PopupText.BorderSizePixel = 0
-PopupText.AnchorPoint = Vector2.new(0, 0.5)
-PopupText.Position = UDim2.new(0.05, 0, 0.4, 0)
-PopupText.Size = UDim2.new(0.75, 0, 0.5, 0)
-PopupText.Font = Enum.Font.SourceSans
-PopupText.Text = "Text"
-PopupText.TextXAlignment = Enum.TextXAlignment.Left
-PopupText.TextYAlignment = Enum.TextYAlignment.Top
-PopupText.TextColor3 = Color3.fromRGB(50, 50, 50)
-PopupText.TextSize = 18.000
-PopupText.ZIndex = 5
-PopupText.TextWrapped = true
-
-PopupFixCorners.Parent = Popup
-PopupFixCorners.AnchorPoint = Vector2.new(1, 0.5)
-PopupFixCorners.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-PopupFixCorners.BorderSizePixel = 0
-PopupFixCorners.Position = UDim2.new(1, 0, 0.5, 0)
-PopupFixCorners.Size = UDim2.new(0.2, 0, 1, 0)
-
-local PopupCorner = Instance.new("UICorner")
-
-PopupCorner.Parent = Popup
-PopupCorner.CornerRadius = UDim.new(0, 10)
-	
 	FrameKey.Parent = ScreenGui
 	FrameKey.BackgroundColor3 = Color3.fromRGB(85, 0, 255)
 	FrameKey.Position = UDim2.new(0.227154046, 0, 0.348979592, 0)
@@ -370,9 +306,9 @@ PopupCorner.CornerRadius = UDim.new(0, 10)
 		else
 			KeyText.Text = "Incorrect"
 		end
-	
+
 	end)
-	
+
 	TextLabel.Parent = FrameKey
 	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	TextLabel.BackgroundTransparency = 1.000
@@ -384,22 +320,22 @@ PopupCorner.CornerRadius = UDim.new(0, 10)
 	TextLabel.TextScaled = true
 	TextLabel.TextSize = 30.000
 	TextLabel.TextWrapped = true
-	
-	UICornerkey.Parent = FrameKey
-	
-	UserLabel.Name = "UserLabel"
-UserLabel.Parent = Main
-UserLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-UserLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-UserLabel.BackgroundTransparency = 1.000
-UserLabel.BorderSizePixel = 0
-UserLabel.Position = UDim2.new(0.50000006, 0, 0.421576917, 0)
-UserLabel.Size = UDim2.new(0.800000012, 0, 0.0547846109, 0)
-UserLabel.Font = Enum.Font.Gotham
-UserLabel.Text = "Welcome, VisionWinning."
-UserLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-UserLabel.TextSize = 22.000
 
+	UICornerkey.Parent = FrameKey
+
+	PlaceID.Parent = Main
+	PlaceID.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	PlaceID.BackgroundTransparency = 1.000
+	PlaceID.Position = UDim2.new(0.50000006, 0, 0.421576917, 0)
+	PlaceID.Size = UDim2.new(0, 162, 0, 37)
+	PlaceID.Font = Enum.Font.SourceSans
+	PlaceID.Text = "Welcome, Emptyness Winning."
+	PlaceID.TextColor3 = Color3.fromRGB(255, 255, 255)
+	PlaceID.TextScaled = true
+	PlaceID.TextSize = 22.000
+	PlaceID.TextWrapped = true
+	
+	
 	XButton.Parent = FrameKey
 	XButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	XButton.BackgroundTransparency = 1.000
@@ -435,7 +371,7 @@ UserLabel.TextSize = 22.000
 		wait(0.5)
 		setclipboard("https://pastebin.com/raw/hgsxEFK4")
 	end)
-	
+
 	ImageButtonK.Parent = ScreenGui
 	ImageButtonK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	ImageButtonK.BackgroundTransparency = 1.000
@@ -450,41 +386,41 @@ UserLabel.TextSize = 22.000
 			Main.Visible = false
 		end
 	end)
-	
-	
-    title.Name = "title"
-    title.Parent = MainHeader
-    title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    title.BackgroundTransparency = 1.000
-    title.BorderSizePixel = 0
-    title.Position = UDim2.new(0.0171428565, 0, 0.344827592, 0)
-    title.Size = UDim2.new(0, 204, 0, 8)
-    title.Font = Enum.Font.Gotham
-    title.RichText = true
-    title.Text = kavName
-    title.TextColor3 = Color3.fromRGB(245, 245, 245)
-    title.TextSize = 19.000
-    title.TextXAlignment = Enum.TextXAlignment.Left
 
 
-X.Name = "X"
-X.Parent = Main
-X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-X.BackgroundTransparency = 1.000
-X.Position = UDim2.new(0.895458281, 0, -0.0467979759, 0)
-X.Size = UDim2.new(0, 65, 0, 42)
-X.Font = Enum.Font.SourceSans
-X.Text = "X"
-X.TextColor3 = Color3.fromRGB(85, 255, 255)
-X.TextScaled = true
-X.TextSize = 14.000
-X.TextWrapped = true
+	title.Name = "title"
+	title.Parent = MainHeader
+	title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title.BackgroundTransparency = 1.000
+	title.BorderSizePixel = 0
+	title.Position = UDim2.new(0.0171428565, 0, 0.344827592, 0)
+	title.Size = UDim2.new(0, 204, 0, 8)
+	title.Font = Enum.Font.Gotham
+	title.RichText = true
+	title.Text = kavName
+	title.TextColor3 = Color3.fromRGB(245, 245, 245)
+	title.TextSize = 19.000
+	title.TextXAlignment = Enum.TextXAlignment.Left
 
-   MainHeader.Name = "MainHeader"
-    MainHeader.Parent = Main
-    MainHeader.BackgroundColor3 = themeList.Header
-    Objects[MainHeader] = "BackgroundColor3"
-    MainHeader.Size = UDim2.new(0, 525, 0, 29)
+
+	X.Name = "X"
+	X.Parent = Main
+	X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	X.BackgroundTransparency = 1.000
+	X.Position = UDim2.new(0.895458281, 0, -0.0467979759, 0)
+	X.Size = UDim2.new(0, 65, 0, 42)
+	X.Font = Enum.Font.SourceSans
+	X.Text = "X"
+	X.TextColor3 = Color3.fromRGB(85, 255, 255)
+	X.TextScaled = true
+	X.TextSize = 14.000
+	X.TextWrapped = true
+
+	MainHeader.Name = "MainHeader"
+	MainHeader.Parent = Main
+	MainHeader.BackgroundColor3 = themeList.Header
+	Objects[MainHeader] = "BackgroundColor3"
+	MainHeader.Size = UDim2.new(0, 462, 0, 29)
 
 	coverup.Name = "coverup"
 	coverup.Parent = MainHeader
@@ -492,18 +428,18 @@ X.TextWrapped = true
 	Objects[coverup] = "BackgroundColor3"
 	coverup.BorderSizePixel = 0
 	coverup.Position = UDim2.new(0, 0, 0.758620679, 0)
-	coverup.Size = UDim2.new(0, 525, 0, 7)
+	coverup.Size = UDim2.new(0, 480, 0, 7)
 
-	  headerCover.CornerRadius = UDim.new(0, 4)
-    headerCover.Name = "headerCover"
-    headerCover.Parent = MainHeader
+	headerCover.CornerRadius = UDim.new(0, 4)
+	headerCover.Name = "headerCover"
+	headerCover.Parent = MainHeader
 
 	MainSide.Name = "MainSide"
-    MainSide.Parent = Main
-    MainSide.BackgroundColor3 = themeList.Header
-    Objects[MainSide] = "Header"
-    MainSide.Position = UDim2.new(-7.4505806e-09, 0, 0.0911949649, 0)
-    MainSide.Size = UDim2.new(0, 149, 0, 289)
+	MainSide.Parent = Main
+	MainSide.BackgroundColor3 = themeList.Header
+	Objects[MainSide] = "Header"
+	MainSide.Position = UDim2.new(-7.4505806e-09, 0, 0.0911949649, 0)
+	MainSide.Size = UDim2.new(0, 7, 0, 244)
 
 	sideCorner.CornerRadius = UDim.new(0, 4)
 	sideCorner.Name = "sideCorner"
@@ -515,50 +451,42 @@ X.TextWrapped = true
 	Objects[coverup_2] = "Header"
 	coverup_2.BorderSizePixel = 0
 	coverup_2.Position = UDim2.new(0.949939311, 0, 0, 0)
-	coverup_2.Size = UDim2.new(0, 7, 0, 289)
+	coverup_2.Size = UDim2.new(0, 7, 0, 183)
 
-	 tabFrames.Name = "tabFrames"
-    tabFrames.Parent = MainSide
-    tabFrames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    tabFrames.BackgroundTransparency = 1.000
-    tabFrames.Position = UDim2.new(0.0438990258, 0, -0.00066378375, 0)
-    tabFrames.Size = UDim2.new(0, 135, 0, 283)
+	tabFrames.Name = "tabFrames"
+	tabFrames.Parent = MainSide
+	tabFrames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	tabFrames.BackgroundTransparency = 1.000
+	tabFrames.Position = UDim2.new(0.00655691978, 0, -0.0259046722, 0)
+	tabFrames.Size = UDim2.new(0, 135, 0, 251)
 
-    tabListing.Name = "tabListing"
-    tabListing.Parent = tabFrames
-    tabListing.SortOrder = Enum.SortOrder.LayoutOrder
+	tabListing.Name = "tabListing"
+	tabListing.Parent = tabFrames
+	tabListing.SortOrder = Enum.SortOrder.LayoutOrder
 
-    pages.Name = "pages"
-    pages.Parent = Main
-    pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    pages.BackgroundTransparency = 1.000
-    pages.BorderSizePixel = 0
-    pages.Position = UDim2.new(0.299047589, 0, 0.122641519, 0)
-    pages.Size = UDim2.new(0, 360, 0, 269)
+	pages.Name = "pages"
+	pages.Parent = Main
+	pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	pages.BackgroundTransparency = 1.000
+	pages.BorderSizePixel = 0
+	pages.Position = UDim2.new(0.299047589, 0, 0.122641519, 0)
+	pages.Size = UDim2.new(0, 360, 0, 269)
 
-    Pages.Name = "Pages"
-    Pages.Parent = pages
+	Pages.Name = "Pages"
+	Pages.Parent = pages
 
-    infoContainer.Name = "infoContainer"
-    infoContainer.Parent = Main
-    infoContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    infoContainer.BackgroundTransparency = 1.000
-    infoContainer.BorderColor3 = Color3.fromRGB(27, 42, 53)
-    infoContainer.ClipsDescendants = true
-    infoContainer.Position = UDim2.new(0.299047619, 0, 0.874213815, 0)
-    infoContainer.Size = UDim2.new(0, 368, 0, 33)
+	infoContainer.Name = "infoContainer"
+	infoContainer.Parent = Main
+	infoContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	infoContainer.BackgroundTransparency = 1.000
+	infoContainer.BorderColor3 = Color3.fromRGB(27, 42, 53)
+	infoContainer.ClipsDescendants = true
+	infoContainer.Position = UDim2.new(0.299047619, 0, 0.874213815, 0)
+	infoContainer.Size = UDim2.new(0, 368, 0, 33)
 
-MainCorner.CornerRadius = UDim.new(0, 4)
-MainCorner.Name = "MainCorner"
+	MainCorner.CornerRadius = UDim.new(0, 4)
+	MainCorner.Name = "MainCorner"
 	MainCorner.Parent = Main
-	
-	local userId = Player.UserId
-local thumbType = Enum.ThumbnailType.HeadShot
-local thumbSize = Enum.ThumbnailSize.Size420x420
-local content, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
-UserIcon.Image = content
-
-UserLabel.Text = "Welcome "..game.PlaceId.."!"
 
 	coroutine.wrap(function()
 		while wait() do
@@ -569,7 +497,14 @@ UserLabel.Text = "Welcome "..game.PlaceId.."!"
 			coverup.BackgroundColor3 = themeList.Header
 		end
 	end)()
+	
+	local userId = Player.UserId
+	local thumbType = Enum.ThumbnailType.HeadShot
+	local thumbSize = Enum.ThumbnailSize.Size420x420
+	local content, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
 
+	PlaceID.Text = "Place: "..game.PlaceId.."!" 
+	
 	function Emptyness:ChangeColor(prope,color)
 		if prope == "Background" then
 			themeList.Background = color
@@ -686,7 +621,7 @@ UserLabel.Text = "Welcome "..game.PlaceId.."!"
 				tabButton.BackgroundColor3 = themeList.SchemeColor
 			end
 		end)()
-		
+
 
 		function Sections:NewSection(secName, hidden)
 			secName = secName or "Section"
