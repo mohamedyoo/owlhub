@@ -488,17 +488,7 @@ function Emptyness.CreateLib(kavName, themeList)
 	MainCorner.Name = "MainCorner"
 	MainCorner.Parent = Main
 
-	coroutine.wrap(function()
-		while wait() do
-			Main.BackgroundColor3 = themeList.Background
-			MainHeader.BackgroundColor3 = themeList.Header
-			MainSide.BackgroundColor3 = themeList.Header
-			coverup_2.BackgroundColor3 = themeList.Header
-			coverup.BackgroundColor3 = themeList.Header
-		end
-	end)()
-	
-	local PlaceId = game.PlaceId
+local PlaceId = game.PlaceId
 	local thumbType = Enum.ThumbnailType.HeadShot
 	local thumbSize = Enum.ThumbnailSize.Size420x420
 	local content, isReady = Players:GetUserThumbnailAsync(PlaceId, thumbType, thumbSize)
@@ -510,6 +500,20 @@ function Emptyness.CreateLib(kavName, themeList)
 		local UserLabelTween = TweenService:Create(PlaceID, TweenInfo.new(1, Enum.EasingStyle.Quint), {
 			Position = UDim2.new(0.497796267, 0, 0.6, 0)
 		})
+		  UserLabelTween:Play()
+		   ExitTween:Play()
+		   
+	coroutine.wrap(function()
+		while wait() do
+			Main.BackgroundColor3 = themeList.Background
+			MainHeader.BackgroundColor3 = themeList.Header
+			MainSide.BackgroundColor3 = themeList.Header
+			coverup_2.BackgroundColor3 = themeList.Header
+			coverup.BackgroundColor3 = themeList.Header
+		end
+	end)()
+	
+		   
 	function Emptyness:ChangeColor(prope,color)
 		if prope == "Background" then
 			themeList.Background = color
