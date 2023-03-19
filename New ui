@@ -329,12 +329,11 @@ function Emptyness.CreateLib(kavName, themeList)
 	PlaceID.Position = UDim2.new(0.0033968098, 0, 0.883647799, 0)
 	PlaceID.Size = UDim2.new(0, 162, 0, 37)
 	PlaceID.Font = Enum.Font.SourceSans
-	PlaceID.Text = "Welcome, Emptyness Winning."
+	PlaceID.Text = "Place"..game.PlaceId.."!"
 	PlaceID.TextColor3 = Color3.fromRGB(255, 255, 255)
 	PlaceID.TextScaled = true
 	PlaceID.TextSize = 22.000
 	PlaceID.TextWrapped = true
-	
 	
 	XButton.Parent = FrameKey
 	XButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -416,7 +415,7 @@ function Emptyness.CreateLib(kavName, themeList)
 	X.TextSize = 14.000
 	X.TextWrapped = true
 X.MouseButton1Click:Connect(function()
-		Main:Destroy()
+		ScreenGui:Destroy()
 	end)
 	
 	MainHeader.Name = "MainHeader"
@@ -491,20 +490,6 @@ X.MouseButton1Click:Connect(function()
 	MainCorner.Name = "MainCorner"
 	MainCorner.Parent = Main
 
-local PlaceId = game.PlaceId
-	local thumbType = Enum.ThumbnailType.HeadShot
-	local thumbSize = Enum.ThumbnailSize.Size420x420
-	local content, isReady = Players:GetUserThumbnailAsync(PlaceId, thumbType, thumbSize)
-
-	PlaceID.Text = "Place: "..game.PlaceId.."!" 
-	
-		local TweenService = game:GetService("TweenService")
-		
-		local UserLabelTween = TweenService:Create(PlaceID, TweenInfo.new(1, Enum.EasingStyle.Quint), {
-			Position = UDim2.new(0.497796267, 0, 0.6, 0)
-		})
-		  UserLabelTween:Play()
-		   ExitTween:Play()
 		   
 	coroutine.wrap(function()
 		while wait() do
