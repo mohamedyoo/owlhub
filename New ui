@@ -1,3 +1,7 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
 local Emptyness = {}
 
 local tween = game:GetService("TweenService")
@@ -16,7 +20,7 @@ function Emptyness:DraggingEnabled(frame, parent)
 	local dragInput, mousePos, framePos
 
 	frame.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 			dragging = true
 			mousePos = input.Position
 			framePos = parent.Position
@@ -30,7 +34,7 @@ function Emptyness:DraggingEnabled(frame, parent)
 	end)
 
 	frame.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement then
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
 			dragInput = input
 		end
 	end)
@@ -126,7 +130,7 @@ local SettingsT = {
 
 }
 
-local Name = "KavoConfig.JSON"
+local Name = "EmptynessHub"
 
 pcall(function()
 
@@ -192,22 +196,24 @@ function Emptyness.CreateLib(kavName, themeList)
 			v:Destroy()
 		end
 	end
+
 	local ScreenGui = Instance.new("ScreenGui")
 	local Main = Instance.new("Frame")
-	local MainCorner = Instance.new("UICorner")
-	local MainHeader = Instance.new("Frame")
-	local headerCover = Instance.new("UICorner")
-	local coverup = Instance.new("Frame")
 	local title = Instance.new("TextLabel")
-	local close = Instance.new("ImageButton")
+	local MainShadow = Instance.new("Frame")
+	local X = Instance.new("TextButton")
+	local MainHeader = Instance.new("Frame")
+	local coverup = Instance.new("Frame")
+	local headerCover = Instance.new("UICorner")
 	local MainSide = Instance.new("Frame")
 	local sideCorner = Instance.new("UICorner")
 	local coverup_2 = Instance.new("Frame")
 	local tabFrames = Instance.new("Frame")
 	local tabListing = Instance.new("UIListLayout")
+	local infoContainer = Instance.new("Frame")
 	local pages = Instance.new("Frame")
 	local Pages = Instance.new("Folder")
-	local infoContainer = Instance.new("Frame")
+	local MainCorner = Instance.new("UICorner")
 	local FrameKey = Instance.new("Frame")
 	local KeyText = Instance.new("TextBox")
 	local Enter = Instance.new("TextButton")
@@ -217,6 +223,11 @@ function Emptyness.CreateLib(kavName, themeList)
 	local ImageButtonK = Instance.new("ImageButton")
 	local UICornerkey = Instance.new("UICorner")
 	local PlaceID = Instance.new("TextLabel")
+
+
+
+
+	--Properties:
 
 	local blurFrame = Instance.new("Frame")
 
@@ -244,28 +255,16 @@ function Emptyness.CreateLib(kavName, themeList)
 	Main.Size = UDim2.new(0, 525, 0, 318)
 	Main.Visible = false
 
-	MainCorner.CornerRadius = UDim.new(0, 4)
-	MainCorner.Name = "MainCorner"
-	MainCorner.Parent = Main
+	MainShadow.Name = "Frame2 (Shadow)"
+	MainShadow.Parent = Main
+	MainShadow.BackgroundColor3 = themeList.Background
+	MainShadow.Position = UDim2.new(-0.0397621728, 0, -0.0467979759, 0)
+	MainShadow.Size = UDim2.new(1.07934463, 0, 1.12893796, 0)
+	MainShadow.Visible = false
+	MainShadow.ZIndex = 0
 
-	MainHeader.Name = "MainHeader"
-	MainHeader.Parent = Main
-	MainHeader.BackgroundColor3 = themeList.Header
-	Objects[MainHeader] = "BackgroundColor3"
-	MainHeader.Size = UDim2.new(0, 525, 0, 29)
 
-	headerCover.CornerRadius = UDim.new(0, 4)
-	headerCover.Name = "headerCover"
-	headerCover.Parent = MainHeader
 
-	coverup.Name = "coverup"
-	coverup.Parent = MainHeader
-	coverup.BackgroundColor3 = themeList.Header
-	Objects[coverup] = "BackgroundColor3"
-	coverup.BorderSizePixel = 0
-	coverup.Position = UDim2.new(0, 0, 0.758620679, 0)
-	coverup.Size = UDim2.new(0, 525, 0, 7)
-	
 	FrameKey.Parent = ScreenGui
 	FrameKey.BackgroundColor3 = Color3.fromRGB(85, 0, 255)
 	FrameKey.Position = UDim2.new(0.227154046, 0, 0.348979592, 0)
@@ -385,7 +384,8 @@ function Emptyness.CreateLib(kavName, themeList)
 			Main.Visible = false
 		end
 	end)
-	
+
+
 	title.Name = "title"
 	title.Parent = MainHeader
 	title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -397,37 +397,50 @@ function Emptyness.CreateLib(kavName, themeList)
 	title.RichText = true
 	title.Text = kavName
 	title.TextColor3 = Color3.fromRGB(245, 245, 245)
-	title.TextSize = 16.000
+	title.TextSize = 19.000
 	title.TextXAlignment = Enum.TextXAlignment.Left
 
-	close.Name = "close"
-	close.Parent = MainHeader
-	close.BackgroundTransparency = 1.000
-	close.Position = UDim2.new(0.949999988, 0, 0.137999997, 0)
-	close.Size = UDim2.new(0, 21, 0, 21)
-	close.ZIndex = 2
-	close.Image = "rbxassetid://3926305904"
-	close.ImageRectOffset = Vector2.new(284, 4)
-	close.ImageRectSize = Vector2.new(24, 24)
-	close.MouseButton1Click:Connect(function()
-		game.TweenService:Create(close, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
-			ImageTransparency = 1
-		}):Play()
-		wait()
-		game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-			Size = UDim2.new(0,0,0,0),
-			Position = UDim2.new(0, Main.AbsolutePosition.X + (Main.AbsoluteSize.X / 2), 0, Main.AbsolutePosition.Y + (Main.AbsoluteSize.Y / 2))
-		}):Play()
-		wait(1)
+
+	X.Name = "X"
+	X.Parent = Main
+	X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	X.BackgroundTransparency = 1.000
+	X.Position = UDim2.new(0.895458281, 0, -0.0467979759, 0)
+	X.Size = UDim2.new(0, 65, 0, 42)
+	X.Font = Enum.Font.SourceSans
+	X.Text = "X"
+	X.TextColor3 = Color3.fromRGB(85, 255, 255)
+	X.TextScaled = true
+	X.TextSize = 14.000
+	X.TextWrapped = true
+	X.MouseButton1Click:Connect(function()
 		ScreenGui:Destroy()
 	end)
+
+	MainHeader.Name = "MainHeader"
+	MainHeader.Parent = Main
+	MainHeader.BackgroundColor3 = themeList.Header
+	Objects[MainHeader] = "BackgroundColor3"
+	MainHeader.Size = UDim2.new(0, 462, 0, 29)
+
+	coverup.Name = "coverup"
+	coverup.Parent = MainHeader
+	coverup.BackgroundColor3 = themeList.Header
+	Objects[coverup] = "BackgroundColor3"
+	coverup.BorderSizePixel = 0
+	coverup.Position = UDim2.new(0, 0, 0.758620679, 0)
+	coverup.Size = UDim2.new(0, 480, 0, 7)
+
+	headerCover.CornerRadius = UDim.new(0, 4)
+	headerCover.Name = "headerCover"
+	headerCover.Parent = MainHeader
 
 	MainSide.Name = "MainSide"
 	MainSide.Parent = Main
 	MainSide.BackgroundColor3 = themeList.Header
 	Objects[MainSide] = "Header"
 	MainSide.Position = UDim2.new(-7.4505806e-09, 0, 0.0911949649, 0)
-	MainSide.Size = UDim2.new(0, 149, 0, 289)
+	MainSide.Size = UDim2.new(0, 7, 0, 244)
 
 	sideCorner.CornerRadius = UDim.new(0, 4)
 	sideCorner.Name = "sideCorner"
@@ -439,14 +452,14 @@ function Emptyness.CreateLib(kavName, themeList)
 	Objects[coverup_2] = "Header"
 	coverup_2.BorderSizePixel = 0
 	coverup_2.Position = UDim2.new(0.949939311, 0, 0, 0)
-	coverup_2.Size = UDim2.new(0, 7, 0, 289)
+	coverup_2.Size = UDim2.new(0, 7, 0, 183)
 
 	tabFrames.Name = "tabFrames"
 	tabFrames.Parent = MainSide
 	tabFrames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	tabFrames.BackgroundTransparency = 1.000
-	tabFrames.Position = UDim2.new(0.0438990258, 0, -0.00066378375, 0)
-	tabFrames.Size = UDim2.new(0, 135, 0, 283)
+	tabFrames.Position = UDim2.new(0.00655691978, 0, -0.0259046722, 0)
+	tabFrames.Size = UDim2.new(0, 135, 0, 251)
 
 	tabListing.Name = "tabListing"
 	tabListing.Parent = tabFrames
@@ -472,6 +485,10 @@ function Emptyness.CreateLib(kavName, themeList)
 	infoContainer.Position = UDim2.new(0.299047619, 0, 0.874213815, 0)
 	infoContainer.Size = UDim2.new(0, 368, 0, 33)
 
+	MainCorner.CornerRadius = UDim.new(0, 4)
+	MainCorner.Name = "MainCorner"
+	MainCorner.Parent = Main
+
 
 	coroutine.wrap(function()
 		while wait() do
@@ -482,6 +499,7 @@ function Emptyness.CreateLib(kavName, themeList)
 			coverup.BackgroundColor3 = themeList.Header
 		end
 	end)()
+
 
 	function Emptyness:ChangeColor(prope,color)
 		if prope == "Background" then
@@ -599,6 +617,7 @@ function Emptyness.CreateLib(kavName, themeList)
 				tabButton.BackgroundColor3 = themeList.SchemeColor
 			end
 		end)()
+
 
 		function Sections:NewSection(secName, hidden)
 			secName = secName or "Section"
