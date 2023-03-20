@@ -111,6 +111,17 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/moham
         local Event = game:GetService("ReplicatedStorage").RemoteEvents.FoundMoney
         Event:FireServer(A_1)
     end)
+    
+    Mainz:Textbox("Play Audio (ID)", "LOL, function(Text)
+    print('yes')
+local a = "rbxassetid://" .. tostring(Text) -- soundwwwwwwww
+local b = false -- random shit idk
+local c = 69 -- volume (really you can only do 1,10 but fuck u)
+local d = "trolling57"
+
+game:GetService("ReplicatedStorage").RemoteEvents.Sounds:FireServer(a, b, c, d)
+end)
+
     RemotesSection:NewButton("KillEnemies", "Kills The Bad Guy", function()
         for i,v in pairs(game.Workspace.BadGuys:GetChildren()) do
             for i = 1, 50 do
