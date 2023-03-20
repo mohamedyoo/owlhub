@@ -112,7 +112,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/moham
         Event:FireServer(A_1)
     end)
     
-    Mainz:Textbox("Play Audio (ID)", "LOL, function(Text)
+    RemotesSection:NewTextbox("Play Audio (ID)", "LOL, true, function(Text)
     print('yes')
 local a = "rbxassetid://" .. tostring(Text) -- soundwwwwwwww
 local b = false -- random shit idk
