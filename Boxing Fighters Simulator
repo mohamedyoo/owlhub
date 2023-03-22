@@ -1,0 +1,73 @@
+game:GetService("StarterGui"):SetCore("SendNotification",{
+			Title = "Info",
+			Text = "Used using turtle Spy",
+			Duration = 4
+		})
+		
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Boxing Fighters Simulator Simple stuffs", "DarkTheme")
+
+local Main = Window:NewTab("Main")
+
+local credit = Window:NewTab("credit")
+
+
+local Section = Main:NewSection("Main")
+
+local creditSection = credit:NewSection("Main")
+
+  Section:NewToggle("auto punch", "Make your player auto click", function(v)
+    getgenv().punch = v
+      while getgenv().punch == true do
+game:GetService("ReplicatedStorage").Network.Punch:FireServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+   Section:NewToggle("auto rebirth", "Make your player auto click", function(v)
+    getgenv().rebirth = v
+      while getgenv().rebirth == true do
+game:GetService("ReplicatedStorage").Network.Prestige:FireServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+    Section:NewToggle("auto upgrade", "Make your player auto click", function(v)
+    getgenv().rebirth = v
+      while getgenv().rebirth == true do
+game:GetService("ReplicatedStorage").Network.BuyUpgrade:FireServer("Coins")
+game:GetService("ReplicatedStorage").Network.BuyUpgrade:FireServer("Strength")
+game:GetService("ReplicatedStorage").Network.BuyUpgrade:FireServer("Critical Chance")
+game:GetService("ReplicatedStorage").Network.BuyUpgrade:FireServer("Walkspeed")
+ game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+      Section:NewToggle("buy all area", "Make your player auto click", function(v)
+    getgenv().area = v
+      while getgenv().area == true do
+game:GetService("ReplicatedStorage").Network.BuyLocation:FireServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+    Section:NewToggle("auto equip best glove", "Make your player auto click", function(v)
+    getgenv().glove = v
+      while getgenv().glove == true do
+game:GetService("ReplicatedStorage").Network.EquipBestGlove:FireServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+  creditSection:NewButton("Copy link", "Link to the website script", function()
+game:GetService("StarterGui"):SetCore("SendNotification",{
+			Title = "Copied",
+			Text = "you have copied the link pastebin",
+			Duration = 4
+		})
+		wait(0.5)
+         	setclipboard("https://scriptblox.com/script/Universal-Script-emptyness-hub-7276")
+
+end)
+
+creditSection:UpdateButton("By Roblox_Gaming")
