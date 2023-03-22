@@ -4,8 +4,8 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 			Duration = 4
 		})
 		
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Boxing Fighters Simulator Simple stuffs", "DarkTheme")
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/New%20ui"))()
+local Window = Library.CreateLib("Boxing Fighters Simulator Simple stuffs", "Sentinel")
 
 local Main = Window:NewTab("Main")
 
