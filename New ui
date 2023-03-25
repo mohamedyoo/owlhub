@@ -210,12 +210,6 @@ function Emptyness.CreateLib(kavName, themeList)
 	local pages = Instance.new("Frame")
 	local Pages = Instance.new("Folder")
 	local MainCorner = Instance.new("UICorner")
-	local FrameKey = Instance.new("Frame")
-	local KeyText = Instance.new("TextBox")
-	local Enter = Instance.new("TextButton")
-	local GetKey = Instance.new("TextButton")
-	local TextLabel = Instance.new("TextLabel")
-	local XButton = Instance.new("TextButton")
 	local ImageButtonK = Instance.new("ImageButton")
 	local UICornerkey = Instance.new("UICorner")
 	local PlaceID = Instance.new("TextLabel")
@@ -227,7 +221,7 @@ function Emptyness.CreateLib(kavName, themeList)
 
 	local blurFrame = Instance.new("Frame")
 
-	Emptyness:DraggingEnabled(MainHeader, Main, FrameKey)
+	Emptyness:DraggingEnabled(MainHeader, Main)
 
 	blurFrame.Name = "blurFrame"
 	blurFrame.Parent = pages
@@ -249,7 +243,7 @@ function Emptyness.CreateLib(kavName, themeList)
 	Main.ClipsDescendants = true
 	Main.Position = UDim2.new(0.336503863, 0, 0.275485456, 0)
 	Main.Size = UDim2.new(0, 525, 0, 318)
-	Main.Visible = false
+	Main.Visible = true
 
 	MainShadow.Name = "Frame2 (Shadow)"
 	MainShadow.Parent = Main
@@ -260,63 +254,6 @@ function Emptyness.CreateLib(kavName, themeList)
 	MainShadow.ZIndex = 0
 
 
-
-	FrameKey.Parent = ScreenGui
-	FrameKey.BackgroundColor3 = Color3.fromRGB(85, 0, 255)
-	FrameKey.Position = UDim2.new(0.227154046, 0, 0.348979592, 0)
-	FrameKey.Size = UDim2.new(0, 422, 0, 157)
-
-	KeyText.Name = "KeyText"
-	KeyText.Parent = FrameKey
-	KeyText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	KeyText.BackgroundTransparency = 1.000
-	KeyText.Position = UDim2.new(0, 0, 0.248149216, 0)
-	KeyText.Size = UDim2.new(0, 422, 0, 42)
-	KeyText.Font = Enum.Font.SourceSans
-	KeyText.Text = ""
-	KeyText.TextColor3 = Color3.fromRGB(0, 0, 0)
-	KeyText.TextScaled = true
-	KeyText.TextSize = 14.000
-	KeyText.TextWrapped = true
-
-	Enter.Name = "Enter"
-	Enter.Parent = FrameKey
-	Enter.BackgroundColor3 = Color3.fromRGB(85, 85, 255)
-	Enter.BackgroundTransparency = 1.000
-	Enter.Position = UDim2.new(0.047393363, 0, 0.791383982, 0)
-	Enter.Size = UDim2.new(0, 377, 0, 34)
-	Enter.Font = Enum.Font.SourceSans
-	Enter.Text = "Enter"
-	Enter.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Enter.TextScaled = true
-	Enter.TextSize = 30.000
-	Enter.TextWrapped = true
-	Enter.MouseButton1Click:Connect(function()
-		if KeyText.Text == "bhvihbvfeievfbhibevfhibibgrihb" then
-			KeyText.Text = "Correct"
-			FrameKey:Destroy()
-			wait(0.7)
-			Main.Visible = true
-			ImageButtonK.Visible = true
-		else
-			KeyText.Text = "Incorrect"
-		end
-
-	end)
-
-	TextLabel.Parent = FrameKey
-	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TextLabel.BackgroundTransparency = 1.000
-	TextLabel.Position = UDim2.new(0.0848806351, 0, 0, 0)
-	TextLabel.Size = UDim2.new(0, 334, 0, 36)
-	TextLabel.Font = Enum.Font.SourceSans
-	TextLabel.Text = "Key System"
-	TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-	TextLabel.TextScaled = true
-	TextLabel.TextSize = 30.000
-	TextLabel.TextWrapped = true
-
-	UICornerkey.Parent = FrameKey
 
 	PlaceID.Parent = Main
 	PlaceID.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -330,48 +267,12 @@ function Emptyness.CreateLib(kavName, themeList)
 	PlaceID.TextSize = 22.000
 	PlaceID.TextWrapped = true
 
-	XButton.Parent = FrameKey
-	XButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	XButton.BackgroundTransparency = 1.000
-	XButton.Position = UDim2.new(0.885941625, 0, 0, 0)
-	XButton.Size = UDim2.new(0, 43, 0, 36)
-	XButton.Font = Enum.Font.SourceSans
-	XButton.Text = "X"
-	XButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-	XButton.TextScaled = true
-	XButton.TextSize = 30.000
-	XButton.TextWrapped = true
-	XButton.MouseButton1Click:Connect(function()
-		FrameKey:Destroy()
-	end)
-	GetKey.Name = "Get Key"
-	GetKey.Parent = FrameKey
-	GetKey.BackgroundColor3 = Color3.fromRGB(85, 85, 255)
-	GetKey.BackgroundTransparency = 1.000
-	GetKey.Position = UDim2.new(0, 0, 0.569060504, 0)
-	GetKey.Size = UDim2.new(0, 422, 0, 34)
-	GetKey.Font = Enum.Font.SourceSans
-	GetKey.Text = "Get Key"
-	GetKey.TextColor3 = Color3.fromRGB(0, 0, 0)
-	GetKey.TextScaled = true
-	GetKey.TextSize = 30.000
-	GetKey.TextWrapped = true
-	GetKey.MouseButton1Click:Connect(function()
-		game:GetService("StarterGui"):SetCore("SendNotification",{
-			Title = "Copied",
-			Text = "you have copied the link pastebin",
-			Duration = 4
-		})
-		wait(0.5)
-		setclipboard("https://pastebin.com/raw/hgsxEFK4")
-	end)
-
 	ImageButtonK.Parent = ScreenGui
 	ImageButtonK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	ImageButtonK.BackgroundTransparency = 1.000
 	ImageButtonK.Position = UDim2.new(0.870967746, 0, 0.332653075, 0)
 	ImageButtonK.Size = UDim2.new(0, 100, 0, 100)
-	ImageButtonK.Visible = false
+	ImageButtonK.Visible = true
 	ImageButtonK.Image = "rbxassetid://9836076474"
 	ImageButtonK.MouseButton1Click:Connect(function()
 		if Main.Visible == false then
