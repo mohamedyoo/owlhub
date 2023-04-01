@@ -16,7 +16,7 @@ if v:IsA('Part') or v:IsA("SpawnLocation") then
 end
 
 
-    Section:NewDropdown("Teleport To SCP's", "LOL", SCPNames, function(c) -- drop down for multiple options that go under the same catagory, ex. Aimbone (Head, UpperTorso, Legs)
+    Section:NewDropdown("Teleport To Island", "LOL", SCPNames, function(c) -- drop down for multiple options that go under the same catagory, ex. Aimbone (Head, UpperTorso, Legs)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Teleports[c].CFrame
     end)
     
