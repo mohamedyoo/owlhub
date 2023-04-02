@@ -51,79 +51,6 @@ function Utility:TweenObject(obj, properties, duration, ...)
 	tween:Create(obj, tweeninfo(duration, ...), properties):Play()
 end
 
-
-local themes = {
-	SchemeColor = Color3.fromRGB(74, 99, 135),
-	Background = Color3.fromRGB(36, 37, 43),
-	Header = Color3.fromRGB(28, 29, 34),
-	TextColor = Color3.fromRGB(255,255,255),
-	ElementColor = Color3.fromRGB(32, 32, 38)
-}
-local themeStyles = {
-	DarkTheme = {
-		SchemeColor = Color3.fromRGB(64, 64, 64),
-		Background = Color3.fromRGB(0, 0, 0),
-		Header = Color3.fromRGB(0, 0, 0),
-		TextColor = Color3.fromRGB(255,255,255),
-		ElementColor = Color3.fromRGB(20, 20, 20)
-	},
-	LightTheme = {
-		SchemeColor = Color3.fromRGB(150, 150, 150),
-		Background = Color3.fromRGB(255,255,255),
-		Header = Color3.fromRGB(200, 200, 200),
-		TextColor = Color3.fromRGB(0,0,0),
-		ElementColor = Color3.fromRGB(224, 224, 224)
-	},
-	BloodTheme = {
-		SchemeColor = Color3.fromRGB(227, 27, 27),
-		Background = Color3.fromRGB(10, 10, 10),
-		Header = Color3.fromRGB(5, 5, 5),
-		TextColor = Color3.fromRGB(255,255,255),
-		ElementColor = Color3.fromRGB(20, 20, 20)
-	},
-	GrapeTheme = {
-		SchemeColor = Color3.fromRGB(166, 71, 214),
-		Background = Color3.fromRGB(64, 50, 71),
-		Header = Color3.fromRGB(36, 28, 41),
-		TextColor = Color3.fromRGB(255,255,255),
-		ElementColor = Color3.fromRGB(74, 58, 84)
-	},
-	Ocean = {
-		SchemeColor = Color3.fromRGB(86, 76, 251),
-		Background = Color3.fromRGB(26, 32, 58),
-		Header = Color3.fromRGB(38, 45, 71),
-		TextColor = Color3.fromRGB(200, 200, 200),
-		ElementColor = Color3.fromRGB(38, 45, 71)
-	},
-	Midnight = {
-		SchemeColor = Color3.fromRGB(26, 189, 158),
-		Background = Color3.fromRGB(44, 62, 82),
-		Header = Color3.fromRGB(57, 81, 105),
-		TextColor = Color3.fromRGB(255, 255, 255),
-		ElementColor = Color3.fromRGB(52, 74, 95)
-	},
-	Sentinel = {
-		SchemeColor = Color3.fromRGB(230, 35, 69),
-		Background = Color3.fromRGB(32, 32, 32),
-		Header = Color3.fromRGB(24, 24, 24),
-		TextColor = Color3.fromRGB(119, 209, 138),
-		ElementColor = Color3.fromRGB(24, 24, 24)
-	},
-	Synapse = {
-		SchemeColor = Color3.fromRGB(46, 48, 43),
-		Background = Color3.fromRGB(13, 15, 12),
-		Header = Color3.fromRGB(36, 38, 35),
-		TextColor = Color3.fromRGB(152, 99, 53),
-		ElementColor = Color3.fromRGB(24, 24, 24)
-	},
-	Serpent = {
-		SchemeColor = Color3.fromRGB(0, 166, 58),
-		Background = Color3.fromRGB(31, 41, 43),
-		Header = Color3.fromRGB(22, 29, 31),
-		TextColor = Color3.fromRGB(255,255,255),
-		ElementColor = Color3.fromRGB(22, 29, 31)
-	}
-}
 local oldTheme = ""
 
 local SettingsT = {
@@ -151,53 +78,9 @@ function Emptyness:ToggleUI()
 	end
 end
 
-function Emptyness.CreateLib(xHubName, xGameName, themeList)
-	if not themeList then
-		themeList = themes
-	end
-	if themeList == "DarkTheme" then
-		themeList = themeStyles.DarkTheme
-	elseif themeList == "LightTheme" then
-		themeList = themeStyles.LightTheme
-	elseif themeList == "BloodTheme" then
-		themeList = themeStyles.BloodTheme
-	elseif themeList == "GrapeTheme" then
-		themeList = themeStyles.GrapeTheme
-	elseif themeList == "Ocean" then
-		themeList = themeStyles.Ocean
-	elseif themeList == "Midnight" then
-		themeList = themeStyles.Midnight
-	elseif themeList == "Sentinel" then
-		themeList = themeStyles.Sentinel
-	elseif themeList == "Synapse" then
-		themeList = themeStyles.Synapse
-	elseif themeList == "Serpent" then
-		themeList = themeStyles.Serpent
-	else
-		if themeList.SchemeColor == nil then
-			themeList.SchemeColor = Color3.fromRGB(74, 99, 135)
-		elseif themeList.Background == nil then
-			themeList.Background = Color3.fromRGB(36, 37, 43)
-		elseif themeList.Header == nil then
-			themeList.Header = Color3.fromRGB(28, 29, 34)
-		elseif themeList.TextColor == nil then
-			themeList.TextColor = Color3.fromRGB(255,255,255)
-		elseif themeList.ElementColor == nil then
-			themeList.ElementColor = Color3.fromRGB(32, 32, 38)
-		end
-	end
-
-	themeList = themeList or {}
-	local selectedTab 
-	table.insert(Emptyness, xHubName)
-	for i,v in pairs(game.CoreGui:GetChildren()) do
-		if v:IsA("ScreenGui") and v.Name == xHubName then
-			v:Destroy()
-		end
-	end
-	
+function Emptyness.CreateLib(xHubName, xGameName)
 	local xHubName = xHubName or "UI Library"
-	local xGameName = xGameName or "By Mapple#3045"
+	local xGameName = xGameName or "By Random UI"
 local MappleUI = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
 local MainCorner = Instance.new("UICorner")
@@ -234,90 +117,94 @@ local Tabs = Instance.new("Folder")
 	MappleUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	MappleUI.ResetOnSpawn = false
 
-Main.Name = "Main"
-Main.Parent = MappleUI
-	Main.BackgroundColor3 = themeList.Background
-Main.Position = UDim2.new(0.0380116962, 0, 0.144552559, 0)
-Main.Size = UDim2.new(0, 580, 0, 370)
+ Main.Name = "Main"
+    Main.Parent = ScreenGui
+    Main.BackgroundColor3 = Color3.fromRGB(31, 30, 46)
+    Main.Position = UDim2.new(0.278277636, 0, 0.281287253, 0)
+    Main.Size = UDim2.new(0, 580, 0, 370)
 
-MainCorner.Name = "MainCorner"
-MainCorner.Parent = Main
+    MainCorner.CornerRadius = UDim.new(0, 12)
+    MainCorner.Name = "MainCorner"
+    MainCorner.Parent = Main
 
-Xbutton.Name = "Xbutton"
-Xbutton.Parent = Main
-Xbutton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Xbutton.BackgroundTransparency = 1.000
-Xbutton.BorderColor3 = Color3.fromRGB(27, 42, 53)
-Xbutton.Position = UDim2.new(0.940472364, 0, -0.0108108111, 0)
-Xbutton.Size = UDim2.new(0, 34, 0, 34)
-Xbutton.Font = Enum.Font.SourceSans
-Xbutton.Text = "X"
-	Xbutton.TextColor3 = themeList.Background
-Xbutton.TextScaled = true
-Xbutton.TextSize = 14.000
-Xbutton.TextWrapped = true
+    Sidebar.Name = "Sidebar"
+    Sidebar.Parent = Main
+    Sidebar.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+    Sidebar.Size = UDim2.new(0, 140, 0, 370)
 
-Sidebar.Name = "Sidebar"
-Sidebar.Parent = Main
-	Sidebar.BackgroundColor3 = themeList.Background
-Sidebar.Size = UDim2.new(0, 140, 0, 370)
+    SidebarCorner.Name = "SidebarCorner"
+    SidebarCorner.Parent = Sidebar
 
-SidebarCorner.Name = "SidebarCorner"
-SidebarCorner.Parent = Sidebar
+    Filler.Name = "Filler"
+    Filler.Parent = Sidebar
+    Filler.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+    Filler.BorderSizePixel = 0
+    Filler.Position = UDim2.new(0.930769145, 0, 0, 0)
+    Filler.Size = UDim2.new(0, 9, 0, 370)
 
-Filer.Name = "Filer"
-Filer.Parent = Sidebar
-	Filer.BackgroundColor3 = themeList.Background
-	
-HubName.Name = "HubName"
-HubName.Parent = Sidebar
-	HubName.BackgroundColor3 = themeList.Background
-HubName.Position = UDim2.new(0, 0, 0.024324324, 0)
-HubName.Size = UDim2.new(0, 140, 0, 21)
-HubName.Font = Enum.Font.SourceSans
-	HubName.TextColor3 = themeList.Background
-HubName.TextSize = 14.000
+    HubName.Name = "HubName"
+    HubName.Parent = Sidebar
+    HubName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    HubName.BackgroundTransparency = 1.000
+    HubName.BorderSizePixel = 0
+    HubName.Position = UDim2.new(0, 0, 0.024324324, 0)
+    HubName.Size = UDim2.new(0, 140, 0, 21)
+    HubName.Font = Enum.Font.Gotham
+    HubName.Text = xHubName
+    HubName.TextColor3 = Color3.fromRGB(255, 255, 255)
+    HubName.TextSize = 16.000
 
-Line.Name = "Line"
-Line.Parent = Sidebar
-	Line.BackgroundColor3 = themeList.Background
-Line.Position = UDim2.new(0, 0, 0.148648649, 0)
-Line.Size = UDim2.new(0, 121, 0, 2)
+    Line.Name = "Line"
+    Line.Parent = Sidebar
+    Line.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+    Line.BorderSizePixel = 0
+    Line.Position = UDim2.new(0.0642857179, 0, 0.148648649, 0)
+    Line.Size = UDim2.new(0, 121, 0, 2)
 
-SideLine.Name = "SideLine"
-SideLine.Parent = Sidebar
-	SideLine.BackgroundColor3 = themeList.Background
-SideLine.Size = UDim2.new(0, 2, 0, 370)
+    ActualSide.Name = "ActualSide"
+    ActualSide.Parent = Sidebar
+    ActualSide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ActualSide.BackgroundTransparency = 1.000
+    ActualSide.BorderSizePixel = 0
+    ActualSide.Position = UDim2.new(0, 0, 0.172972977, 0)
+    ActualSide.Size = UDim2.new(0, 139, 0, 297)
+    ActualSide.CanvasSize = UDim2.new(0,0,0,0)
+    ActualSide.ScrollBarThickness = 0
 
-GameName.Name = "GameName"
-GameName.Parent = Sidebar
-	GameName.BackgroundColor3 = themeList.Background
-GameName.Position = UDim2.new(0, 0, 0.0810810775, 0)
-GameName.Size = UDim2.new(0, 141, 0, 25)
-GameName.Font = Enum.Font.SourceSans
-	GameName.TextColor3 = themeList.Background
-GameName.TextSize = 14.000
+    ActualSideListLayout.Name = "ActualSideListLayout"
+    ActualSideListLayout.Parent = ActualSide
+    ActualSideListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-ActualSide.Name = "ActualSide"
-ActualSide.Parent = Sidebar
-	ActualSide.BackgroundColor3 = themeList.Background
-ActualSide.Position = UDim2.new(0, 5, 0, 0)
-ActualSide.Size = UDim2.new(0, 139, 0, 297)
+    SideLine.Name = "SideLine"
+    SideLine.Parent = Sidebar
+    SideLine.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    SideLine.BorderSizePixel = 0
+    SideLine.Position = UDim2.new(1, 0, 0, 0)
+    SideLine.Size = UDim2.new(0, 2, 0, 370)
 
-ActualSideListLayout.Name = "ActualSideListLayout"
-ActualSideListLayout.Parent = ActualSide
-ActualSideListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    GameName.Name = "GameName"
+    GameName.Parent = Sidebar
+    GameName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    GameName.BackgroundTransparency = 1.000
+    GameName.BorderSizePixel = 0
+    GameName.Position = UDim2.new(-0.00714285718, 0, 0.0810810775, 0)
+    GameName.Size = UDim2.new(0, 141, 0, 25)
+    GameName.Font = Enum.Font.Gotham
+    GameName.Text = xGameName
+    GameName.TextColor3 = Color3.fromRGB(190, 190, 190)
+    GameName.TextSize = 14.000
 
-TabHolder.Name = "TabHolder"
-TabHolder.Parent = Main
-	TabHolder.BackgroundColor3 = themeList.Background
-TabHolder.Position = UDim2.new(0, 0, 0.024324324, 0)
-TabHolder.Size = UDim2.new(0, 438, 0, 352)
+    TabHolder.Name = "TabHolder"
+    TabHolder.Parent = Main
+    TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TabHolder.BackgroundTransparency = 1.000
+    TabHolder.BorderSizePixel = 0
+    TabHolder.Position = UDim2.new(0.244827583, 0, 0.024324324, 0)
+    TabHolder.Size = UDim2.new(0, 438, 0, 352)
 
-Tabs.Name = "Tabs"
-	Tabs.Parent = TabHolder
-	
-	
+    Tabs.Name = "Tabs"
+    Tabs.Parent = TabHolder
+		
 	local xTabs = {}
 
 	  function xTabs:NewTab(Name,xVisible)
