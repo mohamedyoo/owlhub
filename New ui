@@ -397,6 +397,14 @@ function Emptyness.CreateLib(kavName, themeList)
 		end
 	end)()
 
+local function CheckKey(Table, Key)
+	for _, v in next, Table do
+		if v == Key then
+			return true
+		end
+	end
+end
+
 	function Emptyness:ChangeColor(prope,color)
 		if prope == "Background" then
 			themeList.Background = color
