@@ -115,10 +115,10 @@ function Emptyness.CreateLib(xHubName, xGameName)
 	blurFrame.Size = UDim2.new(0, 376, 0, 289)
 	blurFrame.ZIndex = 999
 
-	MappleUI.Parent = game.CoreGui
-	MappleUI.Name = LibName
-	MappleUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-	MappleUI.ResetOnSpawn = false
+	ScreenGui.Parent = game.CoreGui
+	ScreenGui.Name = LibName
+	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	ScreenGui.ResetOnSpawn = false
 
  Main.Name = "Main"
     Main.Parent = ScreenGui
