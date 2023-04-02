@@ -81,21 +81,24 @@ end
 function Emptyness.CreateLib(xHubName, xGameName)
 	local xHubName = xHubName or "UI Library"
 	local xGameName = xGameName or "By Random UI"
-local MappleUI = Instance.new("ScreenGui")
-local Main = Instance.new("Frame")
-local MainCorner = Instance.new("UICorner")
-local Xbutton = Instance.new("TextButton")
-local Sidebar = Instance.new("Frame")
-local SidebarCorner = Instance.new("UICorner")
-local Filer = Instance.new("Frame")
-local HubName = Instance.new("TextLabel")
-local Line = Instance.new("Frame")
-local SideLine = Instance.new("Frame")
-local GameName = Instance.new("TextLabel")
-local ActualSide = Instance.new("Frame")
-local ActualSideListLayout = Instance.new("UIListLayout")
-local TabHolder = Instance.new("Frame")
-local Tabs = Instance.new("Folder")
+  local ScreenGui = Instance.new("ScreenGui")
+    local Main = Instance.new("Frame")
+    local MainCorner = Instance.new("UICorner")
+    local Sidebar = Instance.new("Frame")
+    local SidebarCorner = Instance.new("UICorner")
+    local Filler = Instance.new("Frame")
+    local HubName = Instance.new("TextLabel")
+    local Line = Instance.new("Frame")
+    local ActualSide = Instance.new("ScrollingFrame")
+    local ActualSideListLayout = Instance.new("UIListLayout")
+    local SideLine = Instance.new("Frame")
+    local GameName = Instance.new("TextLabel")
+    local TabHolder = Instance.new("Frame")
+    local Tabs = Instance.new("Folder")
+
+    function ScrollSize()
+        ActualSide.CanvasSize = UDim2.new(0, 0, 0, ActualSideListLayout.AbsoluteContentSize.Y)
+    end
 
 --Properties:
 
