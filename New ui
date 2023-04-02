@@ -250,7 +250,7 @@ function Emptyness.CreateLib(kavName, themeList)
 	MainShadow.BackgroundColor3 = themeList.Background
 	MainShadow.Position = UDim2.new(-0.0397621728, 0, -0.0467979759, 0)
 	MainShadow.Size = UDim2.new(1.07934463, 0, 1.12893796, 0)
-	MainShadow.Visible = false
+	MainShadow.Visible = true
 	MainShadow.ZIndex = 0
 
 
