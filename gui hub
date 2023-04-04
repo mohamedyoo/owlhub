@@ -213,6 +213,7 @@ function Library:Create(xHubName,xGameName)
 	PiaceID.Text = "PiaceID: "..game.PlaceId.."!"
 	PiaceID.TextColor3 = Color3.fromRGB(255, 255, 255)
 	PiaceID.TextSize = 21.000
+PiaceID.TextWrapped = true
 
 	UIGradient_5.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)), ColorSequenceKeypoint.new(0.10, Color3.fromRGB(255, 0, 255)), ColorSequenceKeypoint.new(0.20, Color3.fromRGB(0, 0, 255)), ColorSequenceKeypoint.new(0.30, Color3.fromRGB(0, 255, 255)), ColorSequenceKeypoint.new(0.40, Color3.fromRGB(0, 255, 17)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 0)), ColorSequenceKeypoint.new(0.60, Color3.fromRGB(255, 106, 0)), ColorSequenceKeypoint.new(0.70, Color3.fromRGB(176, 0, 0)), ColorSequenceKeypoint.new(0.80, Color3.fromRGB(255, 0, 234)), ColorSequenceKeypoint.new(0.90, Color3.fromRGB(8, 0, 247)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 255, 247))}
 	UIGradient_5.Parent = PiaceID
