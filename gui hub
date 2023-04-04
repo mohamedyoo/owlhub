@@ -59,21 +59,23 @@ end
 function Library:Create(xHubName,xGameName)
 	local xHubName = xHubName or "UI Library"
 	local xGameName = xGameName or "By me"
-local ScreenGui = Instance.new("ScreenGui")
+	local ScreenGui = Instance.new("ScreenGui")
 	local Main = Instance.new("Frame")
-	local MainCorner = Instance.new("UICorner")
+	local MainICorner = Instance.new("UICorner")
 	local Sidebar = Instance.new("Frame")
 	local SidebarCorner = Instance.new("UICorner")
 	local Filler = Instance.new("Frame")
 	local HubName = Instance.new("TextLabel")
+	local UIGradient = Instance.new("UIGradient")
 	local Line = Instance.new("Frame")
 	local ActualSide = Instance.new("ScrollingFrame")
 	local ActualSideListLayout = Instance.new("UIListLayout")
 	local SideLine = Instance.new("Frame")
 	local GameName = Instance.new("TextLabel")
+	local UIGradient_2 = Instance.new("UIGradient")
 	local TabHolder = Instance.new("Frame")
 	local Tabs = Instance.new("Folder")
-	local X = Instance.new("TextButton")
+	local X = Instance.new("TextLabel")
 	local UIGradient_3 = Instance.new("UIGradient")
 	local UIGradient_4 = Instance.new("UIGradient")
 	local PiaceID = Instance.new("TextLabel")
@@ -88,17 +90,16 @@ local ScreenGui = Instance.new("ScreenGui")
 	ScreenGui.ResetOnSpawn = false 
 	ScreenGui.Name = LibraryName
 
-Main.Name = "Main"
+	Main.Name = "Main"
 	Main.Parent = ScreenGui
 	Main.BackgroundColor3 = Color3.fromRGB(31, 30, 46)
-	Main.Position = UDim2.new(0.278277636, 0, 0.281287253, 0)
+	Main.Position = UDim2.new(0.0862573087, 0, 0.1363893, 0)
 	Main.Size = UDim2.new(0, 580, 0, 370)
 
+	MainICorner.Name = "MainICorner"
+	MainICorner.Parent = Main
 
-	MainCorner.Name = "MainCorner"
-	MainCorner.Parent = Main
-
-Sidebar.Name = "Sidebar"
+	Sidebar.Name = "Sidebar"
 	Sidebar.Parent = Main
 	Sidebar.BackgroundColor3 = Color3.fromRGB(0, 42, 60)
 	Sidebar.Size = UDim2.new(0, 159, 0, 340)
@@ -108,38 +109,39 @@ Sidebar.Name = "Sidebar"
 
 	Filler.Name = "Filler"
 	Filler.Parent = Sidebar
-	Filler.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
-	Filler.BorderSizePixel = 0
-	Filler.Position = UDim2.new(0.930769145, 0, 0, 0)
-	Filler.Size = UDim2.new(0, 9, 0, 370)
+	Filler.BackgroundColor3 = Color3.fromRGB(0, 42, 60)
+	Filler.Size = UDim2.new(0, 9, 0, 340)
 
 	HubName.Name = "HubName"
 	HubName.Parent = Sidebar
 	HubName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	HubName.BackgroundTransparency = 1.000
-	HubName.BorderSizePixel = 0
-	HubName.Position = UDim2.new(0, 0, 0.024324324, 0)
-	HubName.Size = UDim2.new(0, 140, 0, 21)
-	HubName.Font = Enum.Font.Gotham
+	HubName.Position = UDim2.new(0, 0, -0.00214626454, 0)
+	HubName.Size = UDim2.new(0, 159, 0, 28)
+	HubName.Font = Enum.Font.SourceSans
 	HubName.Text = xHubName
 	HubName.TextColor3 = Color3.fromRGB(255, 255, 255)
-	HubName.TextSize = 16.000
+	HubName.TextSize = 17.000
+
+	UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)), ColorSequenceKeypoint.new(0.10, Color3.fromRGB(255, 0, 255)), ColorSequenceKeypoint.new(0.20, Color3.fromRGB(0, 0, 255)), ColorSequenceKeypoint.new(0.30, Color3.fromRGB(0, 255, 255)), ColorSequenceKeypoint.new(0.40, Color3.fromRGB(0, 255, 17)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 0)), ColorSequenceKeypoint.new(0.60, Color3.fromRGB(255, 106, 0)), ColorSequenceKeypoint.new(0.70, Color3.fromRGB(176, 0, 0)), ColorSequenceKeypoint.new(0.80, Color3.fromRGB(255, 0, 234)), ColorSequenceKeypoint.new(0.90, Color3.fromRGB(8, 0, 247)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 255, 247))}
+	UIGradient.Parent = HubName
 
 	Line.Name = "Line"
 	Line.Parent = Sidebar
-	Line.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+	Line.BackgroundColor3 = Color3.fromRGB(0, 75, 75)
 	Line.BorderSizePixel = 0
-	Line.Position = UDim2.new(0.0642857179, 0, 0.148648649, 0)
-	Line.Size = UDim2.new(0, 121, 0, 2)
+	Line.Position = UDim2.new(0, 0, 0.148648649, 0)
+	Line.Size = UDim2.new(0, 159, 0, 2)
 
 	ActualSide.Name = "ActualSide"
 	ActualSide.Parent = Sidebar
+	ActualSide.Active = true
 	ActualSide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	ActualSide.BackgroundTransparency = 1.000
 	ActualSide.BorderSizePixel = 0
 	ActualSide.Position = UDim2.new(0, 0, 0.172972977, 0)
-	ActualSide.Size = UDim2.new(0, 139, 0, 297)
-	ActualSide.CanvasSize = UDim2.new(0,0,0,0)
+	ActualSide.Size = UDim2.new(0, 159, 0, 281)
+	ActualSide.CanvasSize = UDim2.new(0, 0, 0, 0)
 	ActualSide.ScrollBarThickness = 0
 
 	ActualSideListLayout.Name = "ActualSideListLayout"
@@ -148,30 +150,32 @@ Sidebar.Name = "Sidebar"
 
 	SideLine.Name = "SideLine"
 	SideLine.Parent = Sidebar
-	SideLine.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	SideLine.BackgroundColor3 = Color3.fromRGB(0, 20, 20)
 	SideLine.BorderSizePixel = 0
-	SideLine.Position = UDim2.new(1, 0, 0, 0)
-	SideLine.Size = UDim2.new(0, 2, 0, 370)
+	SideLine.Size = UDim2.new(0, 0, 0, 340)
 
 	GameName.Name = "GameName"
 	GameName.Parent = Sidebar
 	GameName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	GameName.BackgroundTransparency = 1.000
 	GameName.BorderSizePixel = 0
-	GameName.Position = UDim2.new(-0.00714285718, 0, 0.0810810775, 0)
-	GameName.Size = UDim2.new(0, 141, 0, 25)
-	GameName.Font = Enum.Font.Gotham
+	GameName.Position = UDim2.new(0, 0, 0.0810810775, 0)
+	GameName.Size = UDim2.new(0, 159, 0, 25)
+	GameName.Font = Enum.Font.SourceSans
 	GameName.Text = xGameName
-	GameName.TextColor3 = Color3.fromRGB(190, 190, 190)
-	GameName.TextSize = 14.000
+	GameName.TextColor3 = Color3.fromRGB(0, 190, 190)
+	GameName.TextSize = 17.000
+
+	UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)), ColorSequenceKeypoint.new(0.10, Color3.fromRGB(255, 0, 255)), ColorSequenceKeypoint.new(0.20, Color3.fromRGB(0, 0, 255)), ColorSequenceKeypoint.new(0.30, Color3.fromRGB(0, 255, 255)), ColorSequenceKeypoint.new(0.40, Color3.fromRGB(0, 255, 17)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 0)), ColorSequenceKeypoint.new(0.60, Color3.fromRGB(255, 106, 0)), ColorSequenceKeypoint.new(0.70, Color3.fromRGB(176, 0, 0)), ColorSequenceKeypoint.new(0.80, Color3.fromRGB(255, 0, 234)), ColorSequenceKeypoint.new(0.90, Color3.fromRGB(8, 0, 247)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 255, 247))}
+	UIGradient_2.Parent = GameName
 
 	TabHolder.Name = "TabHolder"
-	TabHolder.Parent = Main
+	TabHolder.Parent = Sidebar
 	TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	TabHolder.BackgroundTransparency = 1.000
 	TabHolder.BorderSizePixel = 0
-	TabHolder.Position = UDim2.new(0.244827583, 0, 0.024324324, 0)
-	TabHolder.Size = UDim2.new(0, 438, 0, 352)
+	TabHolder.Position = UDim2.new(0, 0, 0.154610485, 0)
+	TabHolder.Size = UDim2.new(0, 595, 0, 286)
 
 	Tabs.Name = "Tabs"
 	Tabs.Parent = TabHolder
@@ -209,7 +213,6 @@ Sidebar.Name = "Sidebar"
 	PiaceID.Text = "PiaceID: "..game.PlaceId.."!"
 	PiaceID.TextColor3 = Color3.fromRGB(255, 255, 255)
 	PiaceID.TextSize = 21.000
-PiaceID.TextWrapped = true
 
 	UIGradient_5.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)), ColorSequenceKeypoint.new(0.10, Color3.fromRGB(255, 0, 255)), ColorSequenceKeypoint.new(0.20, Color3.fromRGB(0, 0, 255)), ColorSequenceKeypoint.new(0.30, Color3.fromRGB(0, 255, 255)), ColorSequenceKeypoint.new(0.40, Color3.fromRGB(0, 255, 17)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 0)), ColorSequenceKeypoint.new(0.60, Color3.fromRGB(255, 106, 0)), ColorSequenceKeypoint.new(0.70, Color3.fromRGB(176, 0, 0)), ColorSequenceKeypoint.new(0.80, Color3.fromRGB(255, 0, 234)), ColorSequenceKeypoint.new(0.90, Color3.fromRGB(8, 0, 247)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 255, 247))}
 	UIGradient_5.Parent = PiaceID
