@@ -210,7 +210,7 @@ function Library:Create(xHubName,xGameName)
 	PiaceID.Position = UDim2.new(-0.0724137798, 0, 0.918918908, 0)
 	PiaceID.Size = UDim2.new(0, 177, 0, 31)
 	PiaceID.Font = Enum.Font.SourceSans
-	PiaceID.Text = "PiaceID: "
+	PiaceID.Text = "PiaceID: "..game.PlaceId.."!"
 	PiaceID.TextColor3 = Color3.fromRGB(255, 255, 255)
 	PiaceID.TextSize = 21.000
 
