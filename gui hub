@@ -122,6 +122,7 @@ function Library:Create(xHubName,xGameName)
 	HubName.Text = xHubName
 	HubName.TextColor3 = Color3.fromRGB(255, 255, 255)
 	HubName.TextSize = 17.000
+	HubName.TextWrapped = true
 
 	UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)), ColorSequenceKeypoint.new(0.10, Color3.fromRGB(255, 0, 255)), ColorSequenceKeypoint.new(0.20, Color3.fromRGB(0, 0, 255)), ColorSequenceKeypoint.new(0.30, Color3.fromRGB(0, 255, 255)), ColorSequenceKeypoint.new(0.40, Color3.fromRGB(0, 255, 17)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 0)), ColorSequenceKeypoint.new(0.60, Color3.fromRGB(255, 106, 0)), ColorSequenceKeypoint.new(0.70, Color3.fromRGB(176, 0, 0)), ColorSequenceKeypoint.new(0.80, Color3.fromRGB(255, 0, 234)), ColorSequenceKeypoint.new(0.90, Color3.fromRGB(8, 0, 247)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 255, 247))}
 	UIGradient.Parent = HubName
@@ -165,20 +166,22 @@ function Library:Create(xHubName,xGameName)
 	GameName.Text = xGameName
 	GameName.TextColor3 = Color3.fromRGB(0, 190, 190)
 	GameName.TextSize = 17.000
+	GameName.TextWrapped = true
+
 
 	UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)), ColorSequenceKeypoint.new(0.10, Color3.fromRGB(255, 0, 255)), ColorSequenceKeypoint.new(0.20, Color3.fromRGB(0, 0, 255)), ColorSequenceKeypoint.new(0.30, Color3.fromRGB(0, 255, 255)), ColorSequenceKeypoint.new(0.40, Color3.fromRGB(0, 255, 17)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 0)), ColorSequenceKeypoint.new(0.60, Color3.fromRGB(255, 106, 0)), ColorSequenceKeypoint.new(0.70, Color3.fromRGB(176, 0, 0)), ColorSequenceKeypoint.new(0.80, Color3.fromRGB(255, 0, 234)), ColorSequenceKeypoint.new(0.90, Color3.fromRGB(8, 0, 247)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 255, 247))}
 	UIGradient_2.Parent = GameName
 
 	TabHolder.Name = "TabHolder"
-	TabHolder.Parent = Sidebar
-	TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TabHolder.BackgroundTransparency = 1.000
-	TabHolder.BorderSizePixel = 0
-	TabHolder.Position = UDim2.new(0, 0, 0.154610485, 0)
-	TabHolder.Size = UDim2.new(0, 595, 0, 286)
+TabHolder.Parent = Sidebar
+TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TabHolder.BackgroundTransparency = 1.000
+TabHolder.BorderSizePixel = 0
+TabHolder.Position = UDim2.new(0, 0, 0.00588235306, 0)
+TabHolder.Size = UDim2.new(0, 580, 0, 367)
 
-	Tabs.Name = "Tabs"
-	Tabs.Parent = TabHolder
+Tabs.Name = "Tabs"
+Tabs.Parent = TabHolder
 
 	
 	X.Name = "X"
