@@ -172,8 +172,8 @@ TabHolder.Parent = Sidebar
 TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TabHolder.BackgroundTransparency = 1.000
 TabHolder.BorderSizePixel = 0
-TabHolder.Position = UDim2.new(0, 0, 0.024324324, 0)
-TabHolder.Size = UDim2.new(0, 467, 0, 331)
+	TabHolder.Position = UDim2.new(0, 0, 0.0810810775, 0)
+	TabHolder.Size = UDim2.new(0, 595, 0, 311)
 
 Tabs.Name = "Tabs"
 Tabs.Parent = TabHolder
@@ -202,7 +202,7 @@ PiaceID.BackgroundTransparency = 1.000
 PiaceID.Position = UDim2.new(-0.0724137798, 0, 0.918918908, 0)
 PiaceID.Size = UDim2.new(0, 177, 0, 31)
 PiaceID.Font = Enum.Font.SourceSans
-PiaceID.Text = "PiaceID: "
+PiaceID.Text = "PiaceID: "..game.PlaceId.."!"
 PiaceID.TextColor3 = Color3.fromRGB(255, 255, 255)
 PiaceID.TextSize = 21.000
 
