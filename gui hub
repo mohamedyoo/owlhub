@@ -150,6 +150,7 @@ function Emptyness:ToggleUI()
 		game.CoreGui[LibName].Enabled = true
 	end
 end
+
 	function Emptyness.CreateLib(kavName, xGameName, themeList)
 		if not themeList then
 			themeList = themes
@@ -236,6 +237,7 @@ local HubName = Instance.new("TextLabel")
 Main.Name = "Main"
 Main.Parent = ScreenGui
 		Main.BackgroundColor3 = themeList.Background
+		Main.ClipsDescendants = true
 Main.Position = UDim2.new(0.0789473653, 0, 0.279567093, 0)
 		Main.Size = UDim2.new(0, 525, 0, 318)
 		
@@ -257,7 +259,9 @@ sideCorner.Parent = MainSide
 
 tabFrames.Name = "tabFrames"
 tabFrames.Parent = MainSide
-tabFrames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		tabFrames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		tabFrames.BackgroundTransparency = 1.000
+
 tabFrames.Position = UDim2.new(0, 0, 0.0339382924, 0)
 tabFrames.Size = UDim2.new(0, 135, 0, 279)
 
@@ -268,12 +272,15 @@ tabListing.SortOrder = Enum.SortOrder.LayoutOrder
 coverup_2.Name = "coverup_2"
 coverup_2.Parent = MainSide
 coverup_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-coverup_2.Position = UDim2.new(0, 0, 0.0339382924, 0)
+		coverup_2.Position = UDim2.new(0, 0, 0.0339382924, 0)
+		Objects[coverup_2] = "Header"
 coverup_2.Size = UDim2.new(0, 7, 0, 279)
 
 pages.Name = "pages"
 pages.Parent = Main
-pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		pages.BackgroundTransparency = 1.000
+		pages.BorderSizePixel = 0
 pages.Position = UDim2.new(0.335238099, 0, 0.12203826, 0)
 pages.Size = UDim2.new(0, 349, 0, 279)
 
@@ -282,12 +289,14 @@ Pages.Parent = pages
 
 MainHeader.Name = "MainHeader"
 MainHeader.Parent = Main
-MainHeader.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		MainHeader.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Objects[MainHeader] = "BackgroundColor3"
 MainHeader.Size = UDim2.new(0, 525, 0, 29)
 
 coverup.Name = "coverup"
 coverup.Parent = MainHeader
-coverup.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		coverup.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Objects[coverup] = "BackgroundColor3"
 coverup.Size = UDim2.new(0, 525, 0, 7)
 
 headerCover.Name = "headerCover"
@@ -295,20 +304,24 @@ headerCover.Parent = MainHeader
 
 GameName.Name = "GameName"
 GameName.Parent = MainHeader
-GameName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		GameName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		GameName.BackgroundTransparency = 1.000
+		GameName.BorderSizePixel = 0
 GameName.Position = UDim2.new(0, 0, 0.241379321, 0)
 GameName.Size = UDim2.new(0, 204, 0, 8)
-		GameName.Font = Enum.Font.SourceSans
+		GameName.Font = Enum.Font.Gotham
 		GameName.Text = kavName
 GameName.TextColor3 = Color3.fromRGB(0, 0, 0)
 GameName.TextSize = 14.000
 
 HubName.Name = "HubName"
 HubName.Parent = MainHeader
-HubName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		HubName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		HubName.BackgroundTransparency = 1.000
+		HubName.BorderSizePixel = 0
 HubName.Position = UDim2.new(0.405714273, 0, 0.241379321, 0)
 HubName.Size = UDim2.new(0, 204, 0, 8)
-		HubName.Font = Enum.Font.SourceSans
+		HubName.Font = Enum.Font.Gotham
 		HubName.Text = xGameName
 HubName.TextColor3 = Color3.fromRGB(0, 0, 0)
 		HubName.TextSize = 14.000
