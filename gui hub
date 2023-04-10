@@ -85,7 +85,7 @@ local close = Instance.new("ImageButton")
 	
 	ScreenGui.Parent = game.CoreGui
 	ScreenGui.ResetOnSpawn = false 
-	ScreenGui.Name = LibraryName
+	ScreenGui.Name = xHubName
 
 Main.Name = "Main"
 Main.Parent = ScreenGui
