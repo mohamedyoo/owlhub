@@ -1,0 +1,617 @@
+
+ 
+--globals
+getgenv().grabOrb = false
+getgenv().autoRebirth = false
+getgenv().EarthEnd = false
+getgenv().SpaceEnd = false
+getgenv().SummerEnd = false
+getgenv().CandyEnd = false
+--earth laps stuff
+getgenv().EarthLaps = false
+getgenv().EarthLapsRebirth = false
+getgenv().EarthLapsRebirthLoop = false
+
+--space laps stuff
+getgenv().SpaceLaps = false
+getgenv().SpaceLapsRebirth = false
+getgenv().SpaceLapsRebirthLoop = false
+
+--summer laps stuff
+getgenv().SummerLaps = false
+getgenv().SummerLapsRebirth = false
+getgenv().SummerLapsRebirthLoop = false
+
+--candy laps stuff
+getgenv().CandyLaps = false
+getgenv().CandyLapsRebirth = false
+getgenv().CandyLapsRebirthLoop = false
+
+
+function gOrb()
+	while getgenv().grabOrb == true do wait(.2)
+		for i,v in pairs (game:GetService("Workspace").Camera:GetDescendants()) do
+			if v:IsA("Part") then
+				game:GetService"Players".LocalPlayer.Character:FindFirstChild"HumanoidRootPart".CFrame = v.CFrame
+			end
+		end
+	end
+end
+
+function aRebirth()
+	while getgenv().autoRebirth == true do wait()
+		local events = {"MouseButton1Click", "MouseButton1Down", "Activated"}
+			for i,v in pairs(events) do
+    			for i,v in pairs(getconnections(button[v])) do
+        		v:Fire()
+			end
+		end
+	end
+end
+
+Eggs = {}
+	for i,v in pairs(game:GetService("Workspace").Eggs:GetChildren()) do
+		if not table.find(Eggs, v.Name) then
+		table.insert(Eggs, v.Name)
+	end
+end
+
+function eEnd()
+    while getgenv().EarthEnd == true do 
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(233.318314, 35.8945541, -836.438965)
+        	wait(1)
+        		local plr = game.Players.LocalPlayer
+					local tween_s = game:service"TweenService";
+						local info = TweenInfo.new(1,Enum.EasingStyle.Linear);
+                            function tp(...)
+                                local tic_k = tick();
+                                    local params = {...};
+                                        local cframe = CFrame.new(params[1],params[2],params[3]);
+                                    local tween,err = pcall(function()
+                                local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+                            tween:Play();
+                        end)
+                    if not tween then return err end
+                end
+            tp(200268.53125, -1.1599936485290527, -839.9467163085938) -- Coordinates go here 
+        wait(4)
+    end
+end
+
+function sEnd()
+    while getgenv().SpaceEnd == true do 
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(263.680573, 35.8949547, -101000)
+            wait(1)
+                local plr = game.Players.LocalPlayer
+                    local tween_s = game:service"TweenService";
+                        local info = TweenInfo.new(1,Enum.EasingStyle.Linear);
+                            function tp(...)
+                                local tic_k = tick();
+                                    local params = {...};
+                                        local cframe = CFrame.new(params[1],params[2],params[3]);
+                                    local tween,err = pcall(function()
+                                local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+                            tween:Play();
+                        end)
+                    if not tween then return err end
+                end
+            tp(200180.703125, -1.1600016355514526, -128894.8828125) -- Coordinates go here 
+        wait(4)
+    end
+end
+
+function sumEnd()
+	while getgenv().SummerEnd == true do
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(155.972946, 35.8949623, 104719.469)
+            wait(1)
+                local plr = game.Players.LocalPlayer
+                    local tween_s = game:service"TweenService";
+                        local info = TweenInfo.new(1,Enum.EasingStyle.Linear);
+                            function tp(...)
+                                local tic_k = tick();
+                                    local params = {...};
+                                        local cframe = CFrame.new(params[1],params[2],params[3]);
+                                    local tween,err = pcall(function()
+                                local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+                            tween:Play();
+                        end)
+                    if not tween then return err end
+                end
+            tp(150196.015625, -1.1600397825241089, 104712.9140625) -- Coordinates go here 
+        wait(4)
+    end
+end
+
+function cEnd()
+    while getgenv().CandyEnd == true do
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(234.356964, 35.8947296, -201997.078)
+            wait(1)
+                local plr = game.Players.LocalPlayer
+                    local tween_s = game:service"TweenService";
+                        local info = TweenInfo.new(1,Enum.EasingStyle.Linear);
+                            function tp(...)
+                                local tic_k = tick();
+                                    local params = {...};
+                                        local cframe = CFrame.new(params[1],params[2],params[3]);
+                                    local tween,err = pcall(function()
+                                local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+                            tween:Play();
+                        end)
+                    if not tween then return err end
+                end
+            tp(150245.453125, -0.48052823543548584, -202000.671875) -- Coordinates go here 
+        wait(4)
+    end
+end
+
+function LapsEarth()
+    --loop laps
+        local amount = selectedAmountEarth
+            for i = 1,amount do task.wait()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(150383.578, -3.85999489, -836.438965)
+                    end
+                        --tp to launch
+                            while EarthLaps == true do wait()
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(235.836014, 35.8945541, -836.438965)
+                                    task.wait()
+                                        break
+                                            end
+                                                wait()
+                                                    --then tp to end
+                                                        local plr = game.Players.LocalPlayer
+                                                            local tween_s = game:service"TweenService";
+                                                    local info = TweenInfo.new(1,Enum.EasingStyle.Linear);
+                                                function tp(...)
+                                            local tic_k = tick();
+                                        local params = {...};
+                                    local cframe = CFrame.new(params[1],params[2],params[3]);
+                                local tween,err = pcall(function()
+                            local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+                        tween:Play();
+                    end)
+                if not tween then return err end
+            end
+        tp(150251.171875, -0.48070579767227173, -844.1124877929688) -- Coordinates go here
+    wait(2)
+end
+
+function LapsSpace()
+--loop laps
+    local amount = selectedAmountSpace
+        for i = 1,amount do task.wait()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(150411.25, -3.86004639, -100999.984)
+                end
+                    --tp to launch
+                        while SpaceLaps == true do wait()
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(263.680573, 35.8949547, -101000)
+                                task.wait()
+                                    break
+                                        end
+                                            wait()
+                                                --then tp to end
+                                                    local plr = game.Players.LocalPlayer
+                                                        local tween_s = game:service"TweenService";
+                                                    local info = TweenInfo.new(1,Enum.EasingStyle.Linear);
+                                                function tp(...)
+                                            local tic_k = tick();
+                                        local params = {...};
+                                    local cframe = CFrame.new(params[1],params[2],params[3]);
+                                local tween,err = pcall(function()
+                            local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+                        tween:Play();
+                    end)
+                if not tween then return err end
+            end
+        tp(150277.03125, -0.4807571768760681, -100996.6328125) -- Coordinates go here
+    wait(2)
+end
+
+function LapsSummer()
+--loop laps
+    local amount = selectedAmountSummer
+        for i = 1,amount do task.wait()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(150306.594, -3.86003876, 104719.453)
+                end
+                    --tp to launch
+                        while SummerLaps == true do wait()
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(158.490646, 35.8949623, 104719.469)
+                                task.wait()
+                                    break
+                                        end
+                                            wait()
+                                                --then tp to end
+                                                    local plr = game.Players.LocalPlayer
+                                                        local tween_s = game:service"TweenService";
+                                                    local info = TweenInfo.new(1,Enum.EasingStyle.Linear);
+                                                function tp(...)
+                                            local tic_k = tick();
+                                        local params = {...};
+                                    local cframe = CFrame.new(params[1],params[2],params[3]);
+                                local tween,err = pcall(function()
+                            local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+                        tween:Play();
+                    end)
+                if not tween then return err end
+            end
+        tp(150173.71875, -0.48074954748153687, 104714.671875) -- Coordinates go here
+    wait(2)
+end
+
+function LapsCandy()
+    --loop laps
+        local amount = selectedAmountCandy
+            for i = 1,amount do task.wait()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(150383.578, -3.8598175, -201997.094)
+                    end
+                        --tp to launch
+                            while CandyLaps == true do wait()
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(234.356964, 35.8947296, -201997.078)
+                                    task.wait()
+                                        break
+                                            end
+                                                wait()
+                                                    --then tp to end
+                                                        local plr = game.Players.LocalPlayer
+                                                            local tween_s = game:service"TweenService";
+                                                    local info = TweenInfo.new(1,Enum.EasingStyle.Linear);
+                                                function tp(...)
+                                            local tic_k = tick();
+                                        local params = {...};
+                                    local cframe = CFrame.new(params[1],params[2],params[3]);
+                                local tween,err = pcall(function()
+                            local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+                        tween:Play();
+                    end)
+                if not tween then return err end
+            end
+        tp(150245.453125, -0.48052823543548584, -202000.671875) -- Coordinates go here
+    wait(2)
+end
+
+
+
+--rebirth farm stuff
+function RebirthFarmEarth()
+    while getgenv().EarthLapsRebirthLoop == true do task.wait()
+        --loop laps
+            local amount = selectedAmountEarthRebirth
+                for i = 1,amount do task.wait()
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(150383.578, -3.85999489, -836.438965)
+                        end
+                            --tp to launch
+                                while EarthLapsRebirth == true do wait()
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(235.836014, 35.8945541, -836.438965)
+                                        task.wait()
+                                            break
+                                                end
+                                                    wait()
+                                                        --then tp to end
+                                                            local plr = game.Players.LocalPlayer
+                                                            local tween_s = game:service"TweenService";
+                                                        local info = TweenInfo.new(1,Enum.EasingStyle.Linear);
+                                                    function tp(...)
+                                                local tic_k = tick();
+                                            local params = {...};
+                                        local cframe = CFrame.new(params[1],params[2],params[3]);
+                                    local tween,err = pcall(function()
+                                local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+                            tween:Play();
+                        end)
+                    if not tween then return err end
+                end
+            tp(150251.171875, -0.48070579767227173, -844.1124877929688) -- Coordinates go here
+        wait(2)
+        local events = {"MouseButton1Click", "MouseButton1Down", "Activated"}
+		for i,v in pairs(events) do
+    		for i,v in pairs(getconnections(button[v])) do
+        	v:Fire()
+            wait(2)
+            end
+        end
+    end
+end
+
+function RebirthFarmSpace()
+    while getgenv().SpaceLapsRebirthLoop == true do task.wait()
+        --loop laps
+            local amount = selectedAmountSpaceRebirth
+                for i = 1,amount do task.wait()
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(150411.25, -3.86004639, -100999.984)
+                        end
+                            --tp to launch
+                                while SpaceLapsRebirth == true do wait()
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(263.680573, 35.8949547, -101000)
+                                        task.wait()
+                                            break
+                                                end
+                                                    wait()
+                                                        --then tp to end
+                                                            local plr = game.Players.LocalPlayer
+                                                            local tween_s = game:service"TweenService";
+                                                        local info = TweenInfo.new(1,Enum.EasingStyle.Linear);
+                                                    function tp(...)
+                                                local tic_k = tick();
+                                            local params = {...};
+                                        local cframe = CFrame.new(params[1],params[2],params[3]);
+                                    local tween,err = pcall(function()
+                                local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+                            tween:Play();
+                        end)
+                    if not tween then return err end
+                end
+            tp(150299.53125, -0.48075729608535767, -101003.265625) -- Coordinates go here
+        wait(2)
+        local events = {"MouseButton1Click", "MouseButton1Down", "Activated"}
+		for i,v in pairs(events) do
+    		for i,v in pairs(getconnections(button[v])) do
+        	v:Fire()
+            wait(2)
+            end
+        end
+    end
+end
+
+function RebirthFarmSummer()
+    while getgenv().SummerLapsRebirthLoop == true do task.wait()
+        --loop laps
+            local amount = selectedAmountSummerRebirth
+                for i = 1,amount do task.wait()
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(150306.594, -3.86003876, 104719.453)
+                        end
+                            --tp to launch
+                                while SummerLapsRebirth == true do wait()
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(158.490646, 35.8949623, 104719.469)
+                                        task.wait()
+                                            break
+                                                end
+                                                    wait()
+                                                        --then tp to end
+                                                            local plr = game.Players.LocalPlayer
+                                                            local tween_s = game:service"TweenService";
+                                                        local info = TweenInfo.new(1,Enum.EasingStyle.Linear);
+                                                    function tp(...)
+                                                local tic_k = tick();
+                                            local params = {...};
+                                        local cframe = CFrame.new(params[1],params[2],params[3]);
+                                    local tween,err = pcall(function()
+                                local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+                            tween:Play();
+                        end)
+                    if not tween then return err end
+                end
+            tp(150173.71875, -0.48074954748153687, 104714.671875) -- Coordinates go here
+        wait(2)
+        local events = {"MouseButton1Click", "MouseButton1Down", "Activated"}
+		for i,v in pairs(events) do
+    		for i,v in pairs(getconnections(button[v])) do
+        	v:Fire()
+            wait(2)
+            end
+        end
+    end
+end
+
+function RebirthFarmCandy()
+    while getgenv().CandyLapsRebirthLoop == true do task.wait()
+    --loop laps
+    local amount = selectedAmountCandyRebirth
+            for i = 1,amount do task.wait()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(150383.578, -3.8598175, -201997.094)
+                    end
+                        --tp to launch
+                            while CandyLapsRebirth == true do wait()
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(234.356964, 35.8947296, -201997.078)
+                                    task.wait()
+                                        break
+                                            end
+                                                wait()
+                                                    --then tp to end
+                                                        local plr = game.Players.LocalPlayer
+                                                            local tween_s = game:service"TweenService";
+                                                    local info = TweenInfo.new(1,Enum.EasingStyle.Linear);
+                                                function tp(...)
+                                            local tic_k = tick();
+                                        local params = {...};
+                                    local cframe = CFrame.new(params[1],params[2],params[3]);
+                                local tween,err = pcall(function()
+                            local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+                        tween:Play();
+                    end)
+                if not tween then return err end
+            end
+        tp(150245.453125, -0.48052823543548584, -202000.671875) -- Coordinates go here
+    wait(2)
+--fire the rebirth
+    local events = {"MouseButton1Click", "MouseButton1Down", "Activated"}
+		for i,v in pairs(events) do
+    		for i,v in pairs(getconnections(button[v])) do
+        	v:Fire()
+            wait(2)
+            end
+        end
+    end
+end
+
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("[🎄 EVENT!] Fly Race", "Serpent")
+
+local serv1 = Window:NewTab("Main")
+
+local serv2 = Window:NewTab("Credit")
+
+local MainSection  = serv1:NewSection("Main / Earth world")
+local SpaceWorld = serv1:NewSection("Space World")
+local SummerWorld = serv1:NewSection("Summer World")
+local CandyWorld = serv1:NewSection("Candy World")
+local Cred = serv2:NewSection("Credit")
+local misc = serv2:NewSection("Misc")
+
+
+MainSection:NewToggle("Auto grab orbs", "ToggleInfo", function(bool)
+    getgenv().grabOrb = bool
+		if bool then
+        gOrb()
+            end
+end)
+
+MainSection:NewToggle("Auto Rebirth", "ToggleInfo", function(bool)
+   getgenv().autoRebirth = bool
+		if bool then
+        aRebirth()
+            end
+end)
+
+MainSection:NewToggle("Auto Go to end", "Will glitch if you have high flight.", function(bool)
+  getgenv().EarthEnd = bool
+		if bool then
+        eEnd()
+            end
+end)
+
+MainSection:NewToggle("Auto Do Selected Laps", "Will glitch if you have high flight.", function(bool)
+  getgenv().EarthLaps = bool
+        if bool then
+        LapsEarth()
+            end
+end)
+
+MainSection:NewSlider("Select Lap Amount", "SliderInfo", 10000, 10, function(Value) -- 500 (MaxValue) | 0 (MinValue)
+selectedAmountEarth = Value
+end)
+
+
+SpaceWorld:NewToggle("Auto Go To The End", "Will glitch if you have high flight.", function(bool)
+ getgenv().SpaceEnd = bool
+		if bool then
+        sEnd()
+            end
+end)
+
+SpaceWorld:NewToggle("Auto do selected Lap", "Will glitch if you have high flight.", function(bool)
+  getgenv().SpaceLaps = bool
+        if bool then
+        LapsSpace()
+            end
+end)
+
+SpaceWorld:NewSlider("Select Amount", "SliderInfo", 10000, 16, function(Value) -- 500 (MaxValue) | 0 (MinValue)
+selectedAmountSpace = Value
+end)
+
+SpaceWorld:NewToggle("Rebrith Farm with selected Lap", "Will glitch if you have high flight.", function(bool)
+ getgenv().SpaceLapsRebirth = bool
+        getgenv().SpaceLapsRebirthLoop = bool
+        if bool then
+        RebirthFarmSpace()
+            end
+end)
+
+SpaceWorld:NewSlider("Select Amount", "SliderInfo", 10000, 16, function(Value) -- 500 (MaxValue) | 0 (MinValue)
+selectedAmountSpaceRebirth = Value
+end)
+
+SummerWorld:NewToggle("Auto Go To The End", "Will glitch if you have high flight.", function(bool)
+  getgenv().SummerEnd = bool
+		if bool then
+        sumEnd()
+            end
+end)
+
+SummerWorld:NewToggle("Auto Do Selected Lap", "Will glitch if you have high flight.", function(bool)
+  getgenv().SummerLaps = bool
+        if bool then
+        LapsSummer()
+            end
+end)
+
+SummerWorld:NewSlider("Select Amount", "SliderInfo", 10000, 16, function(Value) -- 500 (MaxValue) | 0 (MinValue)
+selectedAmountSummer = Value
+end)
+
+SummerWorld:NewToggle("Rebrith Farm with selected Lap", "Will glitch if you have high flight.", function(bool)
+  getgenv().SummerLapsRebirth = bool
+        getgenv().SummerLapsRebirthLoop = bool
+        if bool then
+        RebirthFarmSummer()
+            end
+end)
+
+SummerWorld:NewSlider("Select Amount", "SliderInfo", 10000, 16, function(Value) -- 500 (MaxValue) | 0 (MinValue)
+        selectedAmountSummerRebirth = Value
+end)
+ CandyWorld:NewToggle("Auto Go To The End", "Will glitch if you have high flight.", function(bool)
+ getgenv().CandyEnd = bool
+		if bool then
+        cEnd()
+            end
+end)
+
+CandyWorld:NewSlider("Select Amount", "SliderInfo", 10000, 16, function(Value) -- 500 (MaxValue) | 0 (MinValue)
+        selectedAmountCandy = Value
+end)
+
+CandyWorld:NewToggle("Rebrith Farm with selected Lap", "Will glitch if you have high flight.", function(bool)
+   getgenv().CandyLapsRebirth = bool
+        getgenv().CandyLapsRebirthLoop = bool
+        if bool then
+        RebirthFarmCandy()
+            end
+end)
+ 
+ CandyWorld:NewSlider("Select Amount", "SliderInfo", 10000, 16, function(Value) -- 500 (MaxValue) | 0 (MinValue)
+        selectedAmountCandyRebirth = Value
+end)
+
+Cred:NewLabel("This script was made by Roblox_Gaming At Scriptblox.com")
+
+Cred:NewButton("Copy link", "Link to the website script", function()
+game:GetService("StarterGui"):SetCore("SendNotification",{
+			Title = "Copied",
+			Text = "you have copied the link pastebin",
+			Duration = 4
+		})
+		wait(0.5)
+         	setclipboard("https://scriptblox.com/script/Universal-Script-emptyness-hub-7276")
+
+end)
+
+misc:NewLabel("Yes there is an integrated anti-afk.")
+
+--anti afk
+repeat
+    wait()
+until game:IsLoaded()
+wait()
+
+if getconnections then
+    for _, v in next, getconnections(game:GetService("Players").LocalPlayer.Idled) do
+        v:Disable()
+    end
+end
+
+if not getconnections then
+    game:GetService("Players").LocalPlayer.Idled:connect(
+        function()
+            game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+        end
+    )
+    print("poopy exploit")
+end
+
+MainSection:NewToggle("Auto Buy Selected Egg", "Will glitch if you have high flight.", function(bool)
+  getgenv().AutoEgg = bool
+                while getgenv().AutoEgg and task.wait() do
+                local args = {
+                [1] = getgenv().SelectedEgg,
+                [2] = "Single"
+                }
+            game:GetService("ReplicatedStorage").RemoteEvents.EggOpened:InvokeServer(unpack(args))
+            end
+end)
+
+MainSection:NewDropdown("Select Egg", "You have to be next to the egg.", Eggs, function(Selected)
+         getgenv().SelectedEgg = Selected
+end)
+
+MainSection:NewLabel("You have to be next to the egg.")
