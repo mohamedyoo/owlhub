@@ -75,7 +75,6 @@ local close = Instance.new("ImageButton")
 	
 	ScreenGui.Parent = game.CoreGui
 	ScreenGui.Name = LibraryName
-	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 
 Main.Name = "Main"
