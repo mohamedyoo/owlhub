@@ -59,21 +59,21 @@ end
 function Library:Create(xHubName,xGameName)
 	local xHubName = xHubName or "UI Library"
 	local xGameName = xGameName or "By me"
-local ScreenGui = Instance.new("ScreenGui")
-local Main = Instance.new("Frame")
-local MainCorner = Instance.new("UICorner")
-local Sidebar = Instance.new("Frame")
-local SidebarCorner = Instance.new("UICorner")
-local Filler = Instance.new("Frame")
-local HubName = Instance.new("TextLabel")
-local GameName = Instance.new("TextLabel")
-local Line = Instance.new("Frame")
-local ActualSide = Instance.new("Frame")
-local ActualSideListLayout = Instance.new("UIListLayout")
-local SideLine = Instance.new("Frame")
-local PlaceID = Instance.new("TextLabel")
-local pages = Instance.new("Frame")
-local Tabs = Instance.new("Folder")
+	local ScreenGui = Instance.new("ScreenGui")
+	local Main = Instance.new("Frame")
+	local MainCorner = Instance.new("UICorner")
+	local Sidebar = Instance.new("Frame")
+	local SidebarCorner = Instance.new("UICorner")
+	local Filler = Instance.new("Frame")
+	local HubName = Instance.new("TextLabel")
+	local PlaceID = Instance.new("TextLabel")
+	local Line = Instance.new("Frame")
+	local ActualSide = Instance.new("ScrollingFrame")
+	local ActualSideListLayout = Instance.new("UIListLayout")
+	local SideLine = Instance.new("Frame")
+	local GameName = Instance.new("TextLabel")
+	local TabHolder = Instance.new("Frame")
+	local Tabs = Instance.new("Folder")
 local close = Instance.new("ImageButton")
 
 --Properties:
@@ -174,16 +174,16 @@ PlaceID.TextScaled = true
 PlaceID.TextSize = 16.000
 PlaceID.TextWrapped = true
 
-pages.Name = "pages"
-pages.Parent = Main
-pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	pages.BackgroundTransparency = 1.000
-	pages.BorderSizePixel = 0
-pages.Position = UDim2.new(0.296551734, 0, 0.0810810775, 0)
-pages.Size = UDim2.new(0, 404, 0, 340)
+	TabHolder.Name = "pages"
+	TabHolder.Parent = Main
+	TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TabHolder.BackgroundTransparency = 1.000
+	TabHolder.BorderSizePixel = 0
+	TabHolder.Position = UDim2.new(0.296551734, 0, 0.0810810775, 0)
+	TabHolder.Size = UDim2.new(0, 404, 0, 340)
 
 	Tabs.Name = "Pages"
-	Tabs.Parent = pages
+	Tabs.Parent = TabHolder
 
 close.Name = "close"
 close.Parent = Main
@@ -206,7 +206,7 @@ close.Size = UDim2.new(0, 38, 0, 35)
 	end)
 	
 	Library:Drag(Main)
-	
+
 	local xTabs = {}
 
 	function xTabs:Tab(Name,xVisible)
@@ -280,7 +280,7 @@ close.Size = UDim2.new(0, 38, 0, 35)
 				TextColor3 = Color3.fromRGB(255, 255, 255)
 			}):Play()
 		end)
-		
+
 		local Elements = {}
 
 		function Elements:Label(Name)
@@ -327,6 +327,7 @@ close.Size = UDim2.new(0, 38, 0, 35)
 			end
 			return LabelFunction
 		end
+
 		function Elements:Button(Name,Callback)
 			local Name = Name or "Button"
 			local ButtonFunction = {}
@@ -476,7 +477,7 @@ close.Size = UDim2.new(0, 38, 0, 35)
 				pcall(Callback,ToggleEnabled)
 			end)
 		end
-		
+
 		function Elements:Slider(Name,Min,Max,Callback)
 			local Name = Name or "Slider"
 			local Callback = Callback or function() end
