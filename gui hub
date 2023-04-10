@@ -179,8 +179,8 @@ PlaceID.TextWrapped = true
 	TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	TabHolder.BackgroundTransparency = 1.000
 	TabHolder.BorderSizePixel = 0
-	TabHolder.Position = UDim2.new(0.296551734, 0, 0.0810810775, 0)
-	TabHolder.Size = UDim2.new(0, 404, 0, 340)
+	TabHolder.Position = UDim2.new(0.282758594, 0, 0.100000001, 0)
+TabHolder.Size = UDim2.new(0, 416, 0, 338)
 
 	Tabs.Name = "Pages"
 	Tabs.Parent = TabHolder
