@@ -6,14 +6,6 @@ local Library = {}
 
 local LibraryName = tostring(math.random(100000,200000))..tostring(math.random(100000,200000))..tostring(math.random(100000,200000))
 
-function Emptyness:ToggleUI()
-	if game.CoreGui[LibraryName].Enabled then
-		game.CoreGui[LibraryName].Enabled = false
-	else
-		game.CoreGui[LibraryName].Enabled = true
-	end
-end
-
 function Library:Drag(obj)
 	local UserInputService = game:GetService("UserInputService")
 
