@@ -65,15 +65,15 @@ function Library:ToggleUI()
 end
 
 function Library:Create(xHubName,xGameName)
-
-table.insert(Emptyness, xHubName)
+	local xHubName = xHubName or "UI Library"
+	local xGameName = xGameName or "By me"
+	
+	table.insert(Emptyness, xHubName)
 	for i,v in pairs(game.CoreGui:GetChildren()) do
 		if v:IsA("ScreenGui") and v.Name == xHubName then
 			v:Destroy()
 		end
 	end
-	local xHubName = xHubName or "UI Library"
-	local xGameName = xGameName or "By me"
 	local ScreenGui = Instance.new("ScreenGui")
 	local Main = Instance.new("Frame")
 	local MainCorner = Instance.new("UICorner")
