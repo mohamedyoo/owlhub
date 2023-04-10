@@ -104,7 +104,8 @@ SidebarCorner.Parent = Sidebar
 
 Filler.Name = "Filler"
 Filler.Parent = Sidebar
-Filler.BackgroundColor3 = Color3.fromRGB(0, 42, 60)
+	Filler.BackgroundColor3 = Color3.fromRGB(0, 42, 60)
+	Filler.BorderSizePixel = 0
 Filler.Size = UDim2.new(0, 9, 0, 339)
 
 HubName.Name = "HubName"
@@ -135,16 +136,20 @@ GameName.TextWrapped = true
 
 Line.Name = "Line"
 Line.Parent = Sidebar
-Line.BackgroundColor3 = Color3.fromRGB(0, 75, 75)
+	Line.BackgroundColor3 = Color3.fromRGB(0, 75, 75)
+	Line.BorderSizePixel = 0
 Line.Position = UDim2.new(0, 0, 0.148648649, 0)
 Line.Size = UDim2.new(0, 142, 0, 2)
 
 ActualSide.Name = "ActualSide"
 ActualSide.Parent = Sidebar
 ActualSide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ActualSide.BackgroundTransparency = 1.000
+	ActualSide.BackgroundTransparency = 1.000
+	ActualSide.BorderSizePixel = 0
 ActualSide.Position = UDim2.new(0, 0, 0.193561167, 0)
-ActualSide.Size = UDim2.new(0, 166, 0, 279)
+	ActualSide.Size = UDim2.new(0, 166, 0, 279)
+	ActualSide.CanvasSize = UDim2.new(0,0,0,0)
+	ActualSide.ScrollBarThickness = 0
 
 ActualSideListLayout.Name = "ActualSideListLayout"
 ActualSideListLayout.Parent = ActualSide
@@ -152,7 +157,8 @@ ActualSideListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
 SideLine.Name = "SideLine"
 SideLine.Parent = Sidebar
-SideLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SideLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SideLine.BorderSizePixel = 0
 SideLine.Size = UDim2.new(0, 0, 0, 349)
 
 PlaceID.Name = "PlaceID"
@@ -171,7 +177,8 @@ PlaceID.TextWrapped = true
 pages.Name = "pages"
 pages.Parent = Main
 pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-pages.BackgroundTransparency = 1.000
+	pages.BackgroundTransparency = 1.000
+	pages.BorderSizePixel = 0
 pages.Position = UDim2.new(0.296551734, 0, 0.0810810775, 0)
 pages.Size = UDim2.new(0, 404, 0, 340)
 
@@ -261,7 +268,7 @@ close.Size = UDim2.new(0, 38, 0, 35)
 				end
 			end
 
-			for i,v in pairs(Pages:GetChildren()) do
+			for i,v in pairs(Tabs:GetChildren()) do
 				v.Visible = false
 			end
 
