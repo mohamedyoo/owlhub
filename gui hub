@@ -73,11 +73,14 @@ local ActualSideListLayout = Instance.new("UIListLayout")
 local SideLine = Instance.new("Frame")
 local PlaceID = Instance.new("TextLabel")
 local pages = Instance.new("Frame")
-local Pages = Instance.new("Folder")
+local Tabs = Instance.new("Folder")
 local close = Instance.new("ImageButton")
 
 --Properties:
-
+	function ScrollSize()
+		ActualSide.CanvasSize = UDim2.new(0, 0, 0, ActualSideListLayout.AbsoluteContentSize.Y)
+	end
+	
 	ScreenGui.Parent = game.CoreGui
 	ScreenGui.ResetOnSpawn = false 
 	ScreenGui.Name = LibraryName
@@ -172,8 +175,8 @@ pages.BackgroundTransparency = 1.000
 pages.Position = UDim2.new(0.296551734, 0, 0.0810810775, 0)
 pages.Size = UDim2.new(0, 404, 0, 340)
 
-Pages.Name = "Pages"
-Pages.Parent = pages
+	Tabs.Name = "Pages"
+	Tabs.Parent = pages
 
 close.Name = "close"
 close.Parent = Main
@@ -182,7 +185,6 @@ close.BackgroundTransparency = 1.000
 close.Position = UDim2.new(0.934482753, 0, 0, 0)
 close.Size = UDim2.new(0, 38, 0, 35)
 	close.Image = "rbxassetid://9487125340"
-	close.ImageRectSize = Vector2.new(24, 24)
 	close.MouseButton1Click:Connect(function()
 		game.TweenService:Create(close, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
 			ImageTransparency = 1
@@ -213,7 +215,7 @@ close.Size = UDim2.new(0, 38, 0, 35)
 		end
 
 		Tab.Name = "Tab"
-		Tab.Parent = Pages
+		Tab.Parent = Tabs
 		Tab.Active = true
 		Tab.Visible = xVisible
 		Tab.BackgroundColor3 = Color3.fromRGB(31, 30, 46)
