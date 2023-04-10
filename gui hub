@@ -56,7 +56,22 @@ function Library:Drag(obj)
 	end)
 end
 
+function Library:ToggleUI()
+	if game.CoreGui[LibraryName].Enabled then
+		game.CoreGui[LibraryName].Enabled = false
+	else
+		game.CoreGui[LibraryName].Enabled = true
+	end
+end
+
 function Library:Create(xHubName,xGameName)
+
+table.insert(Emptyness, xHubName)
+	for i,v in pairs(game.CoreGui:GetChildren()) do
+		if v:IsA("ScreenGui") and v.Name == xHubName then
+			v:Destroy()
+		end
+	end
 	local xHubName = xHubName or "UI Library"
 	local xGameName = xGameName or "By me"
 	local ScreenGui = Instance.new("ScreenGui")
