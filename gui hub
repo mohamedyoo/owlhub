@@ -51,7 +51,13 @@ function Library:Drag(obj)
 		end
 	end)
 end
-
+table.insert(Emptyness, xHubName)
+	for i,v in pairs(game.CoreGui:GetChildren()) do
+		if v:IsA("ScreenGui") and v.Name == xHubName then
+			v:Destroy()
+		end
+	end
+	
 function Library:Create(xHubName,xGameName)
 	local xHubName = xHubName or "UI Library"
 	local xGameName = xGameName or "By me"
@@ -78,8 +84,9 @@ local close = Instance.new("ImageButton")
 	end
 	
 	ScreenGui.Parent = game.CoreGui
-	ScreenGui.ResetOnSpawn = false 
-	ScreenGui.Name = xHubName
+	ScreenGui.Name = LibraryName
+	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	ScreenGui.ResetOnSpawn = false
 
 Main.Name = "Main"
 Main.Parent = ScreenGui
