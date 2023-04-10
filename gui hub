@@ -7,7 +7,7 @@ local Library = {}
 local LibraryName = tostring(math.random(100000,200000))..tostring(math.random(100000,200000))..tostring(math.random(100000,200000))
 
 if game.CoreGui:FindFirstChild(LibraryName) then
-    game.CoreGui.emptynessHub:Destroy()
+    game.CoreGui.LibraryName:Destroy()
 end
 
 function Library:Drag(obj)
@@ -55,6 +55,12 @@ end
 function Library:Create(xHubName,xGameName)
 	local xHubName = xHubName or "UI Library"
 	local xGameName = xGameName or "By me"
+	table.insert(Emptyness, LibraryName)
+	for i,v in pairs(game.CoreGui:GetChildren()) do
+		if v:IsA("ScreenGui") and v.Name == LibraryName then
+			v:Destroy()
+		end
+	end
 	local ScreenGui = Instance.new("ScreenGui")
 	local Main = Instance.new("Frame")
 	local MainCorner = Instance.new("UICorner")
