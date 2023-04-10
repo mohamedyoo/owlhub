@@ -6,8 +6,12 @@ local Library = {}
 
 local LibraryName = tostring(math.random(100000,200000))..tostring(math.random(100000,200000))..tostring(math.random(100000,200000))
 
-if game.CoreGui:FindFirstChild(LibraryName) then
-    game.CoreGui.LibraryName:Destroy()
+function Emptyness:ToggleUI()
+	if game.CoreGui[LibraryName].Enabled then
+		game.CoreGui[LibraryName].Enabled = false
+	else
+		game.CoreGui[LibraryName].Enabled = true
+	end
 end
 
 function Library:Drag(obj)
