@@ -1,0 +1,186 @@
+--// Variables \\--
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
+local PlayersTycoon = function()
+    for i,v in pairs(game.Workspace.TycoonDirectory:GetChildren()) do
+        if v.Name:find(game.Players.LocalPlayer.Name) then
+            return v
+        end
+    end
+end
+local Tycoon = PlayersTycoon()
+
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/New%20ui"))()
+local Window = Library.CreateLib("Ultra Power Tycoon", "Ocean")
+
+
+--// Tabs \\--
+local MainTab = Window:NewTab("Main")
+local PlayerTab = Window:NewTab("Player")
+local VisualsTab = Window:NewTab("Visuals")
+local MiscTab = Window:NewTab("Misc")
+
+
+--// Sections \\--
+local MainSection = MainTab:NewSection("Main")
+local PlayerSection = PlayerTab:NewSection("Player")
+local VisualsSection = VisualsTab:NewSection("Visuals")
+local MiscSection = MiscTab:NewSection("Misc")
+
+
+--// Main Functions \\--
+function UpgradeTycoon()
+    for i,v in pairs(Tycoon:GetDescendants()) do
+        if v.Name == "Button" and v:FindFirstChild("Touch") then
+            v.Touch.Error.Volume = 0
+            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Touch,0)
+            wait()
+            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Touch,1)
+        end
+    end
+end
+
+function CollectMoney()
+    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, Tycoon.BasicCollector.Touch,0)
+    wait()
+    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, Tycoon.BasicCollector.Touch,1)
+end
+
+local function disableLasers()
+ 
+    if not getgenv().player_tycoon then
+ 
+        getgenv().player_tycoon = getTycoonOwned()
+        return
+ 
+    end
+ 
+    for i, v in pairs(game.Workspace.Tycoons:GetChildren()) do
+ 
+        if v and v ~= getgenv().player_tycoon then
+ 
+            v.Door.ActDoor:Destroy()
+ 
+        end
+ 
+    end
+ 
+end
+
+--// Player Functions \\--
+function EnableClickTp()
+    local Plr = game:GetService("Players").LocalPlayer
+    local Mouse = Plr:GetMouse()
+
+    Mouse.Button1Down:connect(function()
+        if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
+        if not Mouse.Target then return end
+        Plr.Character:MoveTo(Mouse.Hit.p)
+    end)
+end
+
+
+--// Visual Functions \\--
+function FullLight()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Full%20Light", true))()
+end
+
+
+--// Misc Functions \\--
+function AntiAFK()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Anti%20AFK", true))()
+end
+
+function SpyChat()
+    loadstring(game:HttpGet("https://github.com/CosmoCircle/scripts/blob/main/Spy_Chat", true))()
+end
+
+
+--// Main Contents \\--
+MainSection:NewToggle("Auto Collect", "Auto collects cash", function(state)
+    local AutoCollect = true
+    if state then
+        AutoCollect = true
+        while AutoCollect == true do
+            wait(0.1)
+            CollectMoney()
+        end
+    else
+        AutoCollect = false
+    end
+end)
+MainSection:NewToggle("Auto Upgrade", "Auto collects cash", function(state)
+    local AutoCollect = true
+    if state then
+        AutoUpgrade = true
+        while AutoUpgrade == true do
+            wait(0.1)
+            UpgradeTycoon()
+        end
+    else
+        AutoUpgrade = false
+    end
+end)
+MainSection:NewButton("Grab All Weapons", "Grabs all weapons", function()
+    for i,v in pairs(game.Workspace:GetDescendants()) do
+        if v.Name == "BasicPowerSpawn" then
+            local TPBack = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.touchPart.CFrame
+            wait(0.2)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = TPBack
+        end
+    end
+end)
+MainSection:NewButton("Activate All Items", "Activates all your items guaranteed to kill the enemy", function()
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+        local tool = v
+        v.Parent = game.Players.LocalPlayer.Character
+
+        tool:Activate()
+    end
+end)
+
+
+--// Player Contents \\--
+PlayerSection:NewButton("CTRL-Click TP", "Enable ctrl click tp", function()
+    EnableClickTp()
+end)
+
+PlayerSection:NewSlider("Walk Speed", "Slide your walkspeed", 250, 16, function(s)
+    Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+PlayerSection:NewSlider("Jump Power", "Slide your jump power", 350, 50, function(s)
+    Players.LocalPlayer.Character.Humanoid.JumpPower = s
+    Players.LocalPlayer.Character.Humanoid.UseJumpPower = true
+end)
+
+PlayerSection:NewSlider("Hip Height", "Slide your hip height", 150, 0, function(s)
+    Players.LocalPlayer.Character.Humanoid.HipHeight = s
+end)
+
+
+--// Visual Contents \\--
+VisualsSection:NewButton("Full Light", "Reset lighting for more fps/to see better", function()
+    FullLight()
+end)
+
+
+--// Misc Contents \\--
+MiscSection:NewButton("Anti-AFK", "When you are afk, you won't be kicked.", function()
+    AntiAFK()
+end)
+
+MiscSection:NewButton("Perspective Watcher", "Switch to other players camera", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Gravity-0/CCAMERAv4.0/mainB/CCAMv5.0.lua'))()
+end)
+MiscSection:NewButton("Spy Chat", "See messages that are whispered", function()
+    SpyChat()
+end)
+
+MiscSection:NewButton("Disable All Lasers", "Requires an active tycoon!", function()
+    disableLasers()
+end)
