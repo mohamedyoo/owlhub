@@ -74,22 +74,31 @@ function Library:Drag(obj)
 	end)
 end
 
-function Library:Create(xHubName)
-local ScreenGui = Instance.new("ScreenGui")
-local Main = Instance.new("Frame")
-local Side = Instance.new("Frame")
-local UICorner = Instance.new("UICorner")
-local ICON = Instance.new("TextLabel")
-local UICorner_2 = Instance.new("UICorner")
-local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
-local title = Instance.new("TextLabel")
-	local TabFrame = Instance.new("ScrollingFrame")
-local tabListing = Instance.new("UIListLayout")
-local UICorner_3 = Instance.new("UICorner")
-local PlaceID = Instance.new("TextLabel")
-local UICorner_4 = Instance.new("UICorner")
-local pages = Instance.new("Frame")
-local Pages = Instance.new("Folder")
+function Library:Create(kavName)
+	kavName = kavName or "Library"
+	table.insert(Library, kavName)
+	for i,v in pairs(game.CoreGui:GetChildren()) do
+		if v:IsA("ScreenGui") and v.Name == kavName then
+			v:Destroy()
+		end
+	end
+	local ScreenGui = Instance.new("ScreenGui")
+	local Main = Instance.new("Frame")
+	local Side = Instance.new("Frame")
+	local UICorner = Instance.new("UICorner")
+	local ICON = Instance.new("TextLabel")
+	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+	local UICorner_2 = Instance.new("UICorner")
+	local title = Instance.new("TextLabel")
+	local TabFrame = Instance.new("Frame")
+	local tabListing = Instance.new("UIListLayout")
+	local UICorner_3 = Instance.new("UICorner")
+	local PlaceID = Instance.new("TextLabel")
+	local UICorner_4 = Instance.new("UICorner")
+	local pages = Instance.new("Frame")
+	local Pages = Instance.new("Folder")
+	local X = Instance.new("ImageButton")
+	local PlayerName = Instance.new("TextLabel")
 
 --Properties:
 
@@ -140,7 +149,7 @@ title.BorderSizePixel = 0
 title.Position = UDim2.new(0.246987969, 0, 0, 0)
 title.Size = UDim2.new(0, 129, 0, 40)
 	title.Font = Enum.Font.Gotham
-	title.Text = xHubName
+	title.Text = kavName
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
 title.TextSize = 14.000
 
@@ -160,6 +169,41 @@ title.TextSize = 14.000
 
 UICorner_3.Parent = Main
 
+	X.Name = "close"
+	X.Parent = Main
+	X.BackgroundTransparency = 1.000
+	X.Position = UDim2.new(0.872380972, 0, -0.00314465398, 0)
+	X.Size = UDim2.new(0, 67, 0, 25)
+	X.ZIndex = 2
+	X.Image = "rbxassetid://3926305904"
+	X.ImageRectOffset = Vector2.new(284, 4)
+	X.ImageRectSize = Vector2.new(24, 24)
+	X.MouseButton1Click:Connect(function()
+		game.TweenService:Create(X, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+			ImageTransparency = 1
+		}):Play()
+		wait()
+		game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+			Size = UDim2.new(0,0,0,0),
+			Position = UDim2.new(0, Main.AbsolutePosition.X + (Main.AbsoluteSize.X / 2), 0, Main.AbsolutePosition.Y + (Main.AbsoluteSize.Y / 2))
+		}):Play()
+		wait(1)
+		ScreenGui:Destroy()
+	end)
+	
+	PlayerName.Name = "PlayerName"
+	PlayerName.Parent = Main
+	PlayerName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	PlayerName.BackgroundTransparency = 1.000
+	PlayerName.Position = UDim2.new(0.331428558, 0, 0, 0)
+	PlayerName.Size = UDim2.new(0, 291, 0, 27)
+	PlayerName.Font = Enum.Font.SourceSans
+	PlayerName.Text = "Sup"..Player.Name.."!"
+	PlayerName.TextColor3 = Color3.fromRGB(255, 255, 255)
+	PlayerName.TextScaled = true
+	PlayerName.TextSize = 16.000
+	PlayerName.TextWrapped = true
+	
 PlaceID.Name = "PlaceID"
 PlaceID.Parent = Main
 PlaceID.BackgroundColor3 = Color3.fromRGB(21, 21, 21)
@@ -167,7 +211,7 @@ PlaceID.BackgroundTransparency = 1.000
 PlaceID.Position = UDim2.new(0, 0, 0.908805013, 0)
 PlaceID.Size = UDim2.new(0, 156, 0, 29)
 PlaceID.Font = Enum.Font.SourceSans
-PlaceID.Text = "PlaceID:"
+PlaceID.Text = "PlaceID:"..game.PlaceId.."!"
 PlaceID.TextColor3 = Color3.fromRGB(255, 255, 255)
 PlaceID.TextScaled = true
 PlaceID.TextSize = 22.000
@@ -190,7 +234,7 @@ Pages.Name = "Pages"
 	Library:Drag(Main)
 
 	local xTabs = {}
-
+	
 	function xTabs:Tab(Name,xVisible)
 		local Name = Name or "Tab"
 		local Tab = Instance.new("ScrollingFrame")
@@ -207,7 +251,7 @@ Pages.Name = "Pages"
 		Tab.Parent = Pages
 		Tab.Active = true
 		Tab.Visible = xVisible
-		Tab.BackgroundColor3 = Color3.fromRGB(31, 30, 46)
+		Tab.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
 		Tab.BorderSizePixel = 0
 		Tab.Size = UDim2.new(0, 438, 0, 352)
 		Tab.ScrollBarThickness = 5
