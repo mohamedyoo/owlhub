@@ -76,12 +76,7 @@ end
 
 function Library:Create(kavName)
 	kavName = kavName or "Library"
-	table.insert(Library, kavName)
-	for i,v in pairs(game.CoreGui:GetChildren()) do
-		if v:IsA("ScreenGui") and v.Name == kavName then
-			v:Destroy()
-		end
-	end	local ScreenGui = Instance.new("ScreenGui")
+local ScreenGui = Instance.new("ScreenGui")
 	local Main = Instance.new("Frame")
 	local Side = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
