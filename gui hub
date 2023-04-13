@@ -99,10 +99,7 @@ function Library:Create(kavName)
 	function ScrollSize()
 		TabFrame.CanvasSize = UDim2.new(0, 0, 0, tabListing.AbsoluteContentSize.Y)
 	end
-	
-	local Players = game:GetService("Players")
-	local Player = game:GetService("Players").LocalPlayer
-	
+		
 	ScreenGui.Parent = game.CoreGui
 	ScreenGui.ResetOnSpawn = false 
 	ScreenGui.Name = LibraryName
@@ -195,7 +192,7 @@ UICorner_3.Parent = Main
 	PlayerName.Position = UDim2.new(0.331428558, 0, 0, 0)
 	PlayerName.Size = UDim2.new(0, 291, 0, 27)
 	PlayerName.Font = Enum.Font.SourceSans
-	PlayerName.Text = "Sup"..Player.Name.."!"
+	PlayerName.Text = "Sup"..game:GetService("Players").LocalPlayer.Name.."!"
 	PlayerName.TextColor3 = Color3.fromRGB(255, 255, 255)
 	PlayerName.TextScaled = true
 	PlayerName.TextSize = 16.000
