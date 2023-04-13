@@ -76,7 +76,7 @@ end
 
 function Library:Create(kavName)
 	kavName = kavName or "Library"
-local ScreenGui = Instance.new("ScreenGui")
+	local ScreenGui = Instance.new("ScreenGui")
 	local Main = Instance.new("Frame")
 	local Side = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
