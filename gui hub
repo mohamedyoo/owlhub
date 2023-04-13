@@ -84,7 +84,7 @@ function Library:Create(kavName)
 	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 	local UICorner_2 = Instance.new("UICorner")
 	local title = Instance.new("TextLabel")
-	local TabFrame = Instance.new("Frame")
+	local TabFrame = Instance.new("ScrollingFrame")
 	local tabListing = Instance.new("UIListLayout")
 	local UICorner_3 = Instance.new("UICorner")
 	local PlaceID = Instance.new("TextLabel")
@@ -185,7 +185,18 @@ UICorner_3.Parent = Main
 		ScreenGui:Destroy()
 	end)
 	
-	
+	PlayerName.Name = "PlayerName"
+	PlayerName.Parent = Main
+	PlayerName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	PlayerName.BackgroundTransparency = 1.000
+	PlayerName.Position = UDim2.new(0.331428558, 0, 0, 0)
+	PlayerName.Size = UDim2.new(0, 291, 0, 27)
+	PlayerName.Font = Enum.Font.SourceSans
+	PlayerName.Text = "Sup"..game:GetService("Players").LocalPlayer.Name.."!"
+	PlayerName.TextColor3 = Color3.fromRGB(255, 255, 255)
+	PlayerName.TextScaled = true
+	PlayerName.TextSize = 16.000
+	PlayerName.TextWrapped = true
 	
 PlaceID.Name = "PlaceID"
 PlaceID.Parent = Main
