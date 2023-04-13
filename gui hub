@@ -86,7 +86,7 @@ function Library:Create(kavName)
 	local title = Instance.new("TextLabel")
 	local TabFrame = Instance.new("ScrollingFrame")
 	local tabListing = Instance.new("UIListLayout")
-	local UICorner_3 = Instance.new("UICorner")
+	local MainCorner = Instance.new("UICorner")
 	local PlaceID = Instance.new("TextLabel")
 	local UICorner_4 = Instance.new("UICorner")
 	local pages = Instance.new("Frame")
@@ -161,9 +161,11 @@ title.TextSize = 14.000
 	tabListing.Parent = TabFrame
 	tabListing.SortOrder = Enum.SortOrder.LayoutOrder
 
-UICorner_3.Parent = Main
-
-	X.Name = "close"
+	MainCorner.CornerRadius = UDim.new(0, 4)
+	MainCorner.Name = "MainCorner"
+	MainCorner.Parent = Main
+	
+	X.Name = "X"
 	X.Parent = Main
 	X.BackgroundTransparency = 1.000
 	X.Position = UDim2.new(0.872380972, 0, -0.00314465398, 0)
