@@ -191,13 +191,14 @@ title.TextSize = 14.000
 	PlayerName.Name = "PlayerName"
 	PlayerName.Parent = Main
 	PlayerName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	PlayerName.BackgroundTransparency = 1.00
 	PlayerName.Position = UDim2.new(0.331428558, 0, 0, 0)
 	PlayerName.Size = UDim2.new(0, 291, 0, 27)
 	PlayerName.Font = Enum.Font.SourceSans
 	PlayerName.Text = "Sup"..game:GetService("Players").LocalPlayer.Name.."!"
 	PlayerName.TextColor3 = Color3.fromRGB(255, 255, 255)
 	PlayerName.TextScaled = true
-	PlayerName.TextSize = 16.000
+	PlayerName.TextSize = 22.000
 	PlayerName.TextWrapped = true
 
 PlaceID.Name = "PlaceID"
