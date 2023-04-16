@@ -13,24 +13,6 @@ function Library:Toggle()
 		game.CoreGui:FindFirstChild(LibraryName).Enabled = true
 	end
 end
-local DarkLib = {RainbowColorValue = 0, HueSelectionPosition = 0}
-
-coroutine.wrap(
-	function()
-		while wait() do
-			DarkLib.RainbowColorValue = DarkLib.RainbowColorValue + 1 / 255
-			DarkLib.HueSelectionPosition = DarkLib.HueSelectionPosition + 1
-
-			if DarkLib.RainbowColorValue >= 1 then
-				DarkLib.RainbowColorValue = 0
-			end
-
-			if DarkLib.HueSelectionPosition == 93 then
-				DarkLib.HueSelectionPosition = 0
-			end
-		end
-	end
-)()
 
 function Library:Drag(obj)
 	local UserInputService = game:GetService("UserInputService")
@@ -74,164 +56,164 @@ function Library:Drag(obj)
 	end)
 end
 
-function Library:Create(kavName)
-	kavName = kavName or "Library"
-	local ScreenGui = Instance.new("ScreenGui")
-	local Main = Instance.new("Frame")
-	local Side = Instance.new("Frame")
-	local UICorner = Instance.new("UICorner")
-	local ICON = Instance.new("TextLabel")
-	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
-	local UICorner_2 = Instance.new("UICorner")
-	local title = Instance.new("TextLabel")
-	local TabFrame = Instance.new("ScrollingFrame")
-	local tabListing = Instance.new("UIListLayout")
-	local MainCorner = Instance.new("UICorner")
-	local PlaceID = Instance.new("TextLabel")
-	local UICorner_4 = Instance.new("UICorner")
-	local pages = Instance.new("Frame")
-	local Pages = Instance.new("Folder")
-	local X = Instance.new("ImageButton")
-	local PlayerName = Instance.new("TextLabel")
+function Library:Create(xHubName,xGameName)
+	local xHubName = xHubName or "UI Library"
+	local xGameName = xGameName or "By ROblox Game"
+local ScreenGui = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local MainCorner = Instance.new("UICorner")
+local Sidebar = Instance.new("Frame")
+local SidebarCorner = Instance.new("UICorner")
+local Filler = Instance.new("Frame")
+local Line = Instance.new("Frame")
+local ActualSide = Instance.new("ScrollingFrame")
+local ActualSideListLayout = Instance.new("UIListLayout")
+local SideLine = Instance.new("Frame")
+local HubName = Instance.new("TextLabel")
+local GameName = Instance.new("TextLabel")
+local TabHolder = Instance.new("Frame")
+local Tabs = Instance.new("Folder")
+local UserIcon = Instance.new("ImageButton")
+local UICorner = Instance.new("UICorner")
+local TextLabel = Instance.new("TextLabel")
 
---Properties:
+	--Properties:
+	Library:Drag(Main)
+	
+	
+local Players = game:GetService("Players")
+local Player = game:GetService("Players").LocalPlayer
 
-	function ScrollSize()
-		TabFrame.CanvasSize = UDim2.new(0, 0, 0, tabListing.AbsoluteContentSize.Y)
-	end
-		
-	ScreenGui.Parent = game.CoreGui
-	ScreenGui.ResetOnSpawn = false 
-	ScreenGui.Name = LibraryName
 
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Main.Name = "Main"
 Main.Parent = ScreenGui
-	Main.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
-	Main.ClipsDescendants = true
-Main.BorderColor3 = Color3.fromRGB(27, 42, 53)
-Main.Position = UDim2.new(0.0555555783, 0, 0.244897947, 0)
+Main.BackgroundColor3 = Color3.fromRGB(0, 30, 46)
+Main.Position = UDim2.new(0.0292825773, 0, 0.193532109, 0)
 Main.Size = UDim2.new(0, 525, 0, 318)
 
-Side.Name = "Side"
-Side.Parent = Main
-Side.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
-Side.BorderColor3 = Color3.fromRGB(27, 42, 53)
-Side.Size = UDim2.new(0, 174, 0, 284)
+MainCorner.CornerRadius = UDim.new(0, 12)
+MainCorner.Name = "MainCorner"
+MainCorner.Parent = Main
 
-UICorner.Parent = Side
+Sidebar.Name = "Sidebar"
+Sidebar.Parent = Main
+Sidebar.BackgroundColor3 = Color3.fromRGB(0, 42, 60)
+Sidebar.Position = UDim2.new(0, 0, 4.79836118e-08, 0)
+Sidebar.Size = UDim2.new(0, 180, 0, 291)
 
-ICON.Name = "ICON"
-ICON.Parent = Side
-ICON.BackgroundColor3 = Color3.fromRGB(8, 127, 200)
-ICON.Position = UDim2.new(-0.00262065232, 0, -0.00228925422, 0)
-ICON.Size = UDim2.new(0, 46, 0, 41)
-ICON.Font = Enum.Font.SourceSans
-ICON.Text = "GZ"
-ICON.TextColor3 = Color3.fromRGB(255, 255, 255)
-ICON.TextSize = 22.000
+SidebarCorner.Name = "SidebarCorner"
+SidebarCorner.Parent = Sidebar
 
-UICorner_2.CornerRadius = UDim.new(0, 9999999)
-UICorner_2.Parent = ICON
+Filler.Name = "Filler"
+Filler.Parent = Sidebar
+Filler.BackgroundColor3 = Color3.fromRGB(0, 42, 60)
+Filler.Size = UDim2.new(0, 9, 0, 312)
 
-UIAspectRatioConstraint.Parent = ICON
+Line.Name = "Line"
+Line.Parent = Sidebar
+Line.BackgroundColor3 = Color3.fromRGB(0, 75, 75)
+Line.BorderSizePixel = 0
+Line.Position = UDim2.new(0, 0, 0.148648649, 0)
+Line.Size = UDim2.new(0, 185, 0, 2)
 
-title.Name = "title"
-title.Parent = Side
-title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-title.BackgroundTransparency = 1.000
-title.BorderSizePixel = 0
-title.Position = UDim2.new(0.246987969, 0, 0, 0)
-title.Size = UDim2.new(0, 129, 0, 40)
-	title.Font = Enum.Font.Gotham
-	title.Text = kavName
-title.TextColor3 = Color3.fromRGB(255, 255, 255)
-title.TextSize = 14.000
+ActualSide.Name = "ActualSide"
+ActualSide.Parent = Sidebar
+ActualSide.Active = true
+ActualSide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ActualSide.BackgroundTransparency = 1.000
+ActualSide.BorderSizePixel = 0
+ActualSide.Position = UDim2.new(0, 0, 0.172972932, 0)
+ActualSide.Size = UDim2.new(0, 183, 0, 290)
 
-	TabFrame.Name = "ActualSide"
-	TabFrame.Parent = Side
-	TabFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TabFrame.BackgroundTransparency = 1.000
-	TabFrame.BorderSizePixel = 0
-	TabFrame.Position = UDim2.new(0, 0, 0.169014081, 0)
-	TabFrame.Size = UDim2.new(0, 170, 0, 231)
-	TabFrame.CanvasSize = UDim2.new(0,0,0,0)
-	TabFrame.ScrollBarThickness = 0
+ActualSideListLayout.Name = "ActualSideListLayout"
+ActualSideListLayout.Parent = ActualSide
+ActualSideListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-	tabListing.Name = "ActualSideListLayout"
-	tabListing.Parent = TabFrame
-	tabListing.SortOrder = Enum.SortOrder.LayoutOrder
+SideLine.Name = "SideLine"
+SideLine.Parent = Sidebar
+SideLine.BackgroundColor3 = Color3.fromRGB(0, 20, 20)
+SideLine.BorderSizePixel = 0
+SideLine.Size = UDim2.new(0, 0, 0, 265)
 
-	MainCorner.CornerRadius = UDim.new(0, 4)
-	MainCorner.Name = "MainCorner"
-	MainCorner.Parent = Main
+HubName.Name = "HubName"
+HubName.Parent = Sidebar
+HubName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+HubName.BackgroundTransparency = 1.000
+HubName.BorderSizePixel = 0
+HubName.Position = UDim2.new(0.326086968, 0, 0.0120413434, 0)
+HubName.Size = UDim2.new(0, 124, 0, 21)
+	HubName.Font = Enum.Font.SourceSans
+	HubName.Text = xHubName
+HubName.TextColor3 = Color3.fromRGB(190, 190, 190)
+HubName.TextScaled = true
+HubName.TextSize = 14.000
+HubName.TextWrapped = true
+
+GameName.Name = "GameName"
+GameName.Parent = Sidebar
+GameName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GameName.BackgroundTransparency = 1.000
+GameName.BorderSizePixel = 0
+GameName.Position = UDim2.new(0.326086938, 0, 0.0810810775, 0)
+GameName.Size = UDim2.new(0, 122, 0, 23)
+	GameName.Font = Enum.Font.SourceSans
+	GameName.Text = xGameName
+GameName.TextColor3 = Color3.fromRGB(190, 190, 190)
+GameName.TextScaled = true
+GameName.TextSize = 16.000
+GameName.TextWrapped = true
+
+TabHolder.Name = "TabHolder"
+TabHolder.Parent = Sidebar
+TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TabHolder.BackgroundTransparency = 1.000
+TabHolder.BorderSizePixel = 0
+TabHolder.Position = UDim2.new(1.02668178, 0, 0.0831242502, 0)
+TabHolder.Size = UDim2.new(0, 338, 0, 295)
+
+Tabs.Name = "Tabs"
+Tabs.Parent = TabHolder
+
+UserIcon.Name = "UserIcon"
+UserIcon.Parent = Sidebar
+UserIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UserIcon.BackgroundTransparency = 1.000
+UserIcon.Size = UDim2.new(0, 56, 0, 46)
+UserIcon.Image = "rbxassetid://9766672602"
+
+UICorner.CornerRadius = UDim.new(0.5, 0)
+UICorner.Parent = UserIcon
+
+TextLabel.Parent = Main
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextLabel.Position = UDim2.new(0, 0, 0.915094316, 0)
+TextLabel.Size = UDim2.new(0, 184, 0, 27)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Welcome"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 14.000
+
+local TweenService = game:GetService("TweenService")
+local userId = Player.UserId
+local thumbType = Enum.ThumbnailType.HeadShot
+local thumbSize = Enum.ThumbnailSize.Size420x420
+local content, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
+UserIcon.Image = content
+
+TextLabel.Text = "Welcome: "..Player.Name.."!"
+
+local UserIconTween = TweenService:Create(UserIcon, TweenInfo.new(1, Enum.EasingStyle.Quint), {
+	Position = UDim2.new(UserIcon.Position.X.Scale, 0, 0.348852545, 0)
+})
+UserIconTween:Play()
 	
-	X.Name = "X"
-	X.Parent = Main
-	X.BackgroundTransparency = 1.000
-	X.Position = UDim2.new(0.872380972, 0, -0.00314465398, 0)
-	X.Size = UDim2.new(0, 67, 0, 25)
-	X.ZIndex = 2
-	X.Image = "rbxassetid://3926305904"
-	X.ImageRectOffset = Vector2.new(284, 4)
-	X.ImageRectSize = Vector2.new(24, 24)
-	X.MouseButton1Click:Connect(function()
-		game.TweenService:Create(X, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
-			ImageTransparency = 1
-		}):Play()
-		wait()
-		game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-			Size = UDim2.new(0,0,0,0),
-			Position = UDim2.new(0, Main.AbsolutePosition.X + (Main.AbsoluteSize.X / 2), 0, Main.AbsolutePosition.Y + (Main.AbsoluteSize.Y / 2))
-		}):Play()
-		wait(1)
-		ScreenGui:Destroy()
-	end)
-	
-	PlayerName.Name = "PlayerName"
-	PlayerName.Parent = Main
-	PlayerName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	PlayerName.BackgroundTransparency = 1.000
-	PlayerName.Position = UDim2.new(0.331428558, 0, 0, 0)
-	PlayerName.Size = UDim2.new(0, 291, 0, 27)
-	PlayerName.Font = Enum.Font.SourceSans
-	PlayerName.Text = "Sup"..game:GetService("Players").LocalPlayer.Name.."!"
-	PlayerName.TextColor3 = Color3.fromRGB(255, 255, 255)
-	PlayerName.TextScaled = true
-	PlayerName.TextSize = 22.000
-	PlayerName.TextWrapped = true
-
-PlaceID.Name = "PlaceID"
-PlaceID.Parent = Main
-PlaceID.BackgroundColor3 = Color3.fromRGB(21, 21, 21)
-PlaceID.BackgroundTransparency = 1.000
-PlaceID.Position = UDim2.new(0, 0, 0.908805013, 0)
-PlaceID.Size = UDim2.new(0, 156, 0, 29)
-PlaceID.Font = Enum.Font.SourceSans
-PlaceID.Text = "PlaceID:"..game.PlaceId.."!"
-PlaceID.TextColor3 = Color3.fromRGB(255, 255, 255)
-PlaceID.TextScaled = true
-PlaceID.TextSize = 22.000
-PlaceID.TextWrapped = true
-
-UICorner_4.CornerRadius = UDim.new(0, 99)
-UICorner_4.Parent = PlaceID
-
-pages.Name = "pages"
-pages.Parent = Main
-pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-pages.BackgroundTransparency = 1.000
-pages.BorderSizePixel = 0
-pages.Position = UDim2.new(0.32571429, 0, 0.08176101, 0)
-pages.Size = UDim2.new(0, 354, 0, 292)
-
-Pages.Name = "Pages"
-	Pages.Parent = pages
-	
-	Library:Drag(Main)
-
 	local xTabs = {}
-	
+
 	function xTabs:Tab(Name,xVisible)
 		local Name = Name or "Tab"
 		local Tab = Instance.new("ScrollingFrame")
@@ -245,10 +227,10 @@ Pages.Name = "Pages"
 		end
 
 		Tab.Name = "Tab"
-		Tab.Parent = Pages
+		Tab.Parent = Tabs
 		Tab.Active = true
 		Tab.Visible = xVisible
-		Tab.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
+		Tab.BackgroundColor3 = Color3.fromRGB(31, 30, 46)
 		Tab.BorderSizePixel = 0
 		Tab.Size = UDim2.new(0, 438, 0, 352)
 		Tab.ScrollBarThickness = 5
@@ -260,7 +242,7 @@ Pages.Name = "Pages"
 		TabListLayout.Padding = UDim.new(0, 5)
 
 		TabButton.Name = "TabButton"
-		TabButton.Parent = TabFrame
+		TabButton.Parent = ActualSide
 		TabButton.BackgroundColor3 = Color3.fromRGB(55, 74, 251)
 		TabButton.BorderSizePixel = 0
 		TabButton.Size = UDim2.new(0, 139, 0, 35)
@@ -284,14 +266,14 @@ Pages.Name = "Pages"
 
 		TabButton.MouseButton1Down:Connect(function()
 			Size()
-			for i,v in pairs(TabFrame:GetChildren()) do 
+			for i,v in pairs(ActualSide:GetChildren()) do 
 				if v:IsA("TextButton") then 
 					v.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
 					v.TextColor3 = Color3.fromRGB(190, 190, 190)
 				end
 			end
 
-			for i,v in pairs(Pages:GetChildren()) do
+			for i,v in pairs(Tabs:GetChildren()) do
 				v.Visible = false
 			end
 
@@ -303,7 +285,7 @@ Pages.Name = "Pages"
 				TextColor3 = Color3.fromRGB(255, 255, 255)
 			}):Play()
 		end)
-		
+
 		local Elements = {}
 
 		function Elements:Label(Name)
@@ -350,7 +332,7 @@ Pages.Name = "Pages"
 			end
 			return LabelFunction
 		end
-		
+
 		function Elements:Button(Name,Callback)
 			local Name = Name or "Button"
 			local ButtonFunction = {}
@@ -621,9 +603,7 @@ Pages.Name = "Pages"
 				end)
 			end)
 		end
-		
-	
-		
+
 		function Elements:Textbox(Name,Default,Callback)
 			local Name = Name or "Textbox"
 			local Default = Default or ""
