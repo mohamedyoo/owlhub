@@ -211,6 +211,7 @@ function Emptyness.CreateLib(kavName, themeList)
 	local Pages = Instance.new("Folder")
 	local MainCorner = Instance.new("UICorner")
 	local ImageButtonK = Instance.new("ImageButton")
+	local ImageButtonKUI = Instance.new("UICorner")
 	local UICornerkey = Instance.new("UICorner")
 	local PlaceID = Instance.new("TextLabel")
 
@@ -221,7 +222,7 @@ function Emptyness.CreateLib(kavName, themeList)
 
 	local blurFrame = Instance.new("Frame")
 
-	Emptyness:DraggingEnabled(MainHeader, Main)
+	Emptyness:DraggingEnabled(MainHeader, Main, ImageButtonK)
 
 	blurFrame.Name = "blurFrame"
 	blurFrame.Parent = pages
@@ -231,6 +232,9 @@ function Emptyness.CreateLib(kavName, themeList)
 	blurFrame.Position = UDim2.new(-0.0222222228, 0, -0.0371747203, 0)
 	blurFrame.Size = UDim2.new(0, 376, 0, 289)
 	blurFrame.ZIndex = 999
+
+local Players = game:GetService("Players")
+local Player = game:GetService("Players").LocalPlayer
 
 	ScreenGui.Parent = game.CoreGui
 	ScreenGui.Name = LibName
@@ -282,6 +286,8 @@ function Emptyness.CreateLib(kavName, themeList)
 		end
 	end)
 
+ImageButtonKUI.CornerRadius = UDim.new(0.5, 0)
+ImageButtonKUI.Parent = UserIcon
 
 	title.Name = "title"
 	title.Parent = MainHeader
@@ -411,6 +417,19 @@ function Emptyness.CreateLib(kavName, themeList)
 			themeList.ElementColor = color
 		end
 	end
+	
+	local TweenService = game:GetService("TweenService")
+local userId = Player.UserId
+local thumbType = Enum.ThumbnailType.HeadShot
+local thumbSize = Enum.ThumbnailSize.Size420x420
+local content, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
+ImageButtonK.Image = content
+
+local UserIconTween = TweenService:Create(ImageButtonK, TweenInfo.new(1, Enum.EasingStyle.Quint), {
+	Position = UDim2.new(ImageButtonK.Position.X.Scale, 0, 0.348852545, 0)
+})
+UserIconTween:Play()
+
 	local Tabs = {}
 
 	local first = true
