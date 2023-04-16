@@ -233,6 +233,12 @@ function Emptyness.CreateLib(kavName, themeList)
 	blurFrame.Size = UDim2.new(0, 376, 0, 289)
 	blurFrame.ZIndex = 999
 
+game:GetService("StarterGui"):SetCore("SendNotification",{
+			Title = "Loaded",
+			Text = "THe Script Has Loaded",
+			Duration = 4
+		})
+		
 local Players = game:GetService("Players")
 local Player = game:GetService("Players").LocalPlayer
 
