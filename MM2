@@ -123,8 +123,8 @@ Jp = hookmetamethod(game, "__index", function(self, Value)
     return Jp(self, Value);
 end);
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("TITLE", "DarkTheme")
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/New%20ui"))()
+local Window = Library.CreateLib("MM2", "Sentinel")
 
 local Tab1 = Window:NewTab("Main")
 local Tab2 = Window:NewTab("Auto Farm")
