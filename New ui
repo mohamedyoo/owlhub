@@ -222,7 +222,7 @@ function Emptyness.CreateLib(kavName, themeList)
 
 	local blurFrame = Instance.new("Frame")
 
-	Emptyness:DraggingEnabled(MainHeader, Main, ImageButtonK)
+	Emptyness:DraggingEnabled(MainHeader, Main)
 
 	blurFrame.Name = "blurFrame"
 	blurFrame.Parent = pages
