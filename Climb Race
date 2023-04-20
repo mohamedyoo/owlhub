@@ -1,0 +1,80 @@
+Eggs = {}
+	for i,v in pairs(game:GetService("Workspace").Eggs:GetChildren()) do
+		if not table.find(Eggs, v.Name) then
+		table.insert(Eggs, v.Name)
+	end
+end
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Climb Race", "Ocean")
+    -- MAIN
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+
+MainSection:NewToggle("auto farm", "Make your player auto click", function(v)
+    getgenv().punch = v
+      while getgenv().punch == true do
+game:GetService("ReplicatedStorage").Remotes.Events.Game:FireServer("Game")
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+
+MainSection:NewButton("auto farm slow", "Make your player auto click", function(v)
+game:GetService("ReplicatedStorage").Remotes.Events.Settings:FireServer("Climb")
+   end)
+   
+MainSection:NewToggle("auto rebirth", "Make your player auto click", function(v)
+    getgenv().punch = v
+      while getgenv().punch == true do
+game:GetService("ReplicatedStorage").Remotes.Events.Rebirth:FireServer("Rebirth")
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+MainSection:NewToggle("Auto Buy Selected Egg", "Will glitch if you have high flight.", function(bool)
+  getgenv().AutoEgg = bool
+                while getgenv().AutoEgg and task.wait() do
+                local args = {
+                [1] = getgenv().SelectedEgg,
+                [2] = "Three"
+                }
+            game:GetService("ReplicatedStorage").Remotes.Functions.hatchEgg:InvokeServer(unpack(args))
+            end
+end)
+
+MainSection:NewDropdown("Select Egg", "You have to be next to the egg.", Eggs, function(Selected)
+         getgenv().SelectedEgg = Selected
+end)
+
+MainSection:NewLabel("You have to be next to the egg.")
+    --LOCAL PLAYER
+    local Player = Window:NewTab("Player")
+    local PlayerSection = Player:NewSection("Player")
+
+    PlayerSection:NewSlider("Walkspeed", "SPEED!!", 500, 16, function(s)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+    end)
+
+    PlayerSection:NewSlider("Jumppower", "JUMP HIGH!!", 550, 50, function(s)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+    end)
+
+    PlayerSection:NewButton("Reset WS/JP", "Resets to all defaults", function()
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    end)
+
+
+    --Other
+    local Other = Window:NewTab("Other")
+    local OtherSection = Other:NewSection("Other")
+
+    OtherSection:NewButton("Chat Spoofer", "Lets you chat for other people", function()
+        loadstring(game:HttpGet(('https://pastebin.com/raw/djBfk8Li'),true))()
+    end)
+
+    OtherSection:NewButton("Bypassed Fly", "bird mode", function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Nicuse/RobloxScripts/main/BypassedFly.lua"))() 
+
+        Fly(true)
+    end)
