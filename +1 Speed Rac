@@ -1,0 +1,237 @@
+   Eggs = {}
+	for i,v in pairs(game:GetService("Workspace").EggBillboards:GetChildren()) do
+		if not table.find(Eggs, v.Name) then
+		table.insert(Eggs, v.Name)
+	end
+end
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/New%20ui"))()
+local Window = Library.CreateLib("[+1 Speed Race 👟", "Serpent")
+
+local Main = Window:NewTab("Main")
+
+local Eggs = Window:NewTab("Eggs")
+
+local MainSection  = Main:NewSection("Main")
+
+local EggsSection  = Eggs:NewSection("Eggs")
+
+MainSection:NewToggle("Auto grab orbs", "ToggleInfo", function(v)
+    getgenv().speed = v
+      while getgenv().speed == true do
+local args = {
+    [1] = 1
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 1
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 1
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 1
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 3
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+local args = {
+    [1] = 2
+}
+ 
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteCalls"):WaitForChild("GameSpecific"):WaitForChild("Lobby"):WaitForChild("Collecting"):WaitForChild("CollectedSpeed"):FireServer(unpack(args))
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+MainSection:NewToggle("Finsh Lap!", "ToggleInfo", function()
+game:GetService("ReplicatedStorage").RemoteCalls.GameSpecific.Game.PassedDoor:FireServer(160,"Left")
+end)
+
+MainSection:NewButton("Vip tp", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6.35655737, 10.6999998, -24.8936462, -0.992244601, -3.24664882e-08, -0.124300607, -1.7676367e-08, 1, -1.20089567e-07, 0.124300607, -1.16961047e-07, -0.992244601)
+end)
+MainSection:NewButton("Vip exit", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(83.575737, 10.6999989, -23.9016533, 0.999000311, 2.6623578e-08, 0.0447028354, -2.73128133e-08, 1, 1.48073758e-08, -0.0447028354, -1.60135336e-08, 0.999000311)
+end)
+
+ MainSection:NewToggle("auto rebirth", "Make your player auto click", function(v)
+    getgenv().rebirth = v
+      while getgenv().rebirth == true do
+game:GetService("ReplicatedStorage").RemoteCalls.GameSpecific.Game.Rebirth:InvokeServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+
+
+   EggsSection:NewToggle("Auto Buy Selected Egg", "", function(bool)
+  getgenv().AutoEgg = bool
+                while getgenv().AutoEgg and task.wait() do
+                local args = {
+                [1] = getgenv().SelectedEgg,
+                [2] = "Single"
+                }
+            game:GetService("ReplicatedStorage").RemoteCalls.GameSpecific.Lobby.Eggs.BuyEgg:InvokeServer(unpack(args))
+            end
+end)
+
+EggsSection:NewDropdown("Select Egg", "You have to be next to the egg.", Eggs, function(Selected)
+         getgenv().SelectedEgg = Selected
+end)
+
+EggsSection:NewLabel("You have to be next to the egg.")
