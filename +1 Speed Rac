@@ -10,11 +10,7 @@ local Window = Library.CreateLib("[+1 Speed Race 👟", "Serpent")
 
 local Main = Window:NewTab("Main")
 
-local Eggs = Window:NewTab("Eggs")
-
 local MainSection  = Main:NewSection("Main")
-
-local EggsSection  = Eggs:NewSection("Eggs")
 
 MainSection:NewToggle("Auto grab orbs", "ToggleInfo", function(v)
     getgenv().speed = v
@@ -217,21 +213,3 @@ game:GetService("ReplicatedStorage").RemoteCalls.GameSpecific.Game.Rebirth:Invok
   end
    end)
    
-
-
-   EggsSection:NewToggle("Auto Buy Selected Egg", "", function(bool)
-  getgenv().AutoEgg = bool
-                while getgenv().AutoEgg and task.wait() do
-                local args = {
-                [1] = getgenv().SelectedEgg,
-                [2] = "Single"
-                }
-            game:GetService("ReplicatedStorage").RemoteCalls.GameSpecific.Lobby.Eggs.BuyEgg:InvokeServer(unpack(args))
-            end
-end)
-
-EggsSection:NewDropdown("Select Egg", "You have to be next to the egg.", Eggs, function(Selected)
-         getgenv().SelectedEgg = Selected
-end)
-
-EggsSection:NewLabel("You have to be next to the egg.")
