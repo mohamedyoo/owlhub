@@ -1598,8 +1598,8 @@ spawn(function()
 	local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
 
 Window = Library:Create({
-	Name = "Mythical Hub [Beta Edition]",
-	Footer = "By Bruh…..#8751",
+	Name = "Emptyness hub [Beta Edition]",
+	Footer = "roblox_gaming",
 	ToggleKey = Enum.KeyCode.RightShift,
 	LoadedCallback = function()
 		Window:TaskBarOnly(true)
