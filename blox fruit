@@ -1,5 +1,4 @@
 --Main World
-if placeId == 2753915549 then
 function Checklevel()
     local MyLevel = game.Players.localPlayer.Data.Level.Value
     if MyLevel == 1 or MyLevel <= 9 then -- Bandit
@@ -569,8 +568,6 @@ while wait() do
 end
 
 --Second sea
-if game.PlaceId == 4442272183 or placeId == 7449423635 then
-
 game.Players.LocalPlayer:Kick("Not finshed")
 
 
