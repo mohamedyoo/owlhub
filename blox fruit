@@ -569,7 +569,7 @@ while wait() do
 end
 
 --Second sea
-if game.PlaceId == 4442272183 then
+elseif game.PlaceId == 4442272183 then
 
 
 function CheckQuest()
