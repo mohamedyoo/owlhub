@@ -396,6 +396,26 @@ tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.Humanoid
             tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-5248.27197265625, 8.699088096618652, 8452.890625)}):Play()
         end)
         
+	TeleportSection:NewButton("Teleport To Sea 1" , "", function()
+		local args = {
+			[1] = "TravelMain" -- OLD WORLD to NEW WORLD
+		}
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+	end)
+	TeleportSection:NewButton("Teleport To Sea 2" , '', function()
+		local args = {
+			[1] = "TravelDressrosa" -- NEW WORLD to OLD WORLD
+		}
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+	end)
+	
+	TeleportSection:NewButton("Teleport To Sea 3" , '', function()
+		local args = {
+			[1] = "TravelZou" -- OLD WORLD to NEW WORLD
+		}
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+	end)
+	
           NpcSection:NewButton("Random Devil Fruit", "Teleport you there", function()
             tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(45, Enum.EasingStyle.Linear)
 tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-1436.19727, 61.8777695, 4.75247526, -0.557794094, 2.74216543e-08, 0.829979479, 5.83273234e-08, 1, 6.16037932e-09, -0.829979479, 5.18467118e-08, -0.557794094)}):Play()
