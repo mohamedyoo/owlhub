@@ -1,15 +1,13 @@
 
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/New%20ui"))()
-local Window = Library.CreateLib("[+1 Speed Race 👟", "Serpent")
+local Window = Library.CreateLib("[+1 Speed Race 👟 (Not mind!!)", "Serpent")
 
 local Main = Window:NewTab("Main")
 
 local MainSection  = Main:NewSection("Main")
 
-MainSection:NewToggle("Auto grab orbs", "ToggleInfo", function(v)
-    getgenv().speed = v
-      while getgenv().speed == true do
+MainSection:NewButton("Auto grab farm", "", function()
 local args = {
     [1] = 1
 }
