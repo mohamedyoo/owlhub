@@ -2498,6 +2498,14 @@ Section3:Toggle({
 	end
 })
 
+Section3:Toggle({
+	Name = "Destroy library",
+	Default = false,
+	Callback = function(value) 
+		Library:Destroy()
+		end
+})
+
 Section3:Slider({
 	Name = "Points",
 	Max = 100,
