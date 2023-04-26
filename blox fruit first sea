@@ -221,12 +221,23 @@ end
 
 --tween
 function TP(P)
-    local Distance = (P.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude 
-    local Speed = 350
-    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear)
-    tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = P})
-    tween:Play()
-end
+   Distance = (P.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+	 if Distance < 10 then
+		 Speed = 1000
+	 elseif Distance < 170 then
+		 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = P
+		 Speed = 350
+	 elseif Distance < 1000 then
+		 Speed = 350
+	 elseif Distance >= 1000 then
+		 Speed = 300
+	 end
+	 game:GetService("TweenService"):Create(
+		 game.Players.LocalPlayer.Character.HumanoidRootPart,
+		 TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
+		 {CFrame = P}
+	 ):Play()
+ end
 
 --Equip tool
 function Equip(ToolX)
