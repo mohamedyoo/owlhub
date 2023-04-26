@@ -1595,9 +1595,9 @@ spawn(function()
 		end
 	end)
 	
-	local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
+	local Flux = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
 
-Window = Library:Create({
+Window = Flux:Create({
 	Name = "Emptyness hub [Beta Edition]",
 	Footer = "roblox_gaming",
 	ToggleKey = Enum.KeyCode.RightShift,
