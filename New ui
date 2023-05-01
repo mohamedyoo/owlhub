@@ -537,7 +537,7 @@ UserIconTween:Play()
 
 
 		Nofitication.Name = "Nofitication"
-		Nofitication.Parent = Main
+		Nofitication.Parent = page
 		Nofitication.AnchorPoint = Vector2.new(0.5, 0.5)
 		Nofitication.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 		Nofitication.BackgroundTransparency = 1
