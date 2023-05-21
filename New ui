@@ -148,7 +148,7 @@ function Emptyness:ToggleUI()
 end
 
 function Emptyness:Destroy()
-	[LibName]:Destroy()
+	ScreenGui:Destroy()
 end
 
 function Emptyness.CreateLib(kavName, themeList)
