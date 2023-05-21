@@ -411,7 +411,7 @@ ImageButtonKUI.Parent = UserIcon
 
 function Emptyness:Destroy()
 	ScreenGui:Destroy()
-end
+end)
 
 	function Emptyness:ChangeColor(prope,color)
 		if prope == "Background" then
