@@ -204,7 +204,7 @@ game:GetService("ReplicatedStorage").Remote:FireServer("rebirthBoard",4,5)
             end
 end)
 
- creditSection:NewButton("Copy link", "Link to the website script", function()
+ local button = creditSection:NewButton("Copy link", "Link to the website script", function()
 game:GetService("StarterGui"):SetCore("SendNotification",{
 			Title = "Copied",
 			Text = "you have copied the link pastebin",
@@ -214,12 +214,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
          	setclipboard("https://scriptblox.com/script/Universal-Script-emptyness-hub-7276")
 
 end)
-
-creditSection:UpdateButton("By Roblox_Gaming")
-
- creditSection:NewButton("Destroy UI", "Destroy the Gui", function()
- Library:Destroy()
-end)
+creditSection:NewButton("By Roblox_Gaming")
 
 function gOrb()
 	while getgenv().grabOrb == true do wait(.2)
