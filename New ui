@@ -409,10 +409,6 @@ ImageButtonKUI.Parent = UserIcon
 		end
 	end)()
 
-function Emptyness:Destroy()
-	ScreenGui:Destroy()
-end)
-
 	function Emptyness:ChangeColor(prope,color)
 		if prope == "Background" then
 			themeList.Background = color
@@ -2811,4 +2807,9 @@ function Elements:NewNofity(Text)
 	end  
 	return Tabs
 end
+
+function Emptyness:Destroy()
+	ScreenGui:Destroy()
+end
+
 return Emptyness
