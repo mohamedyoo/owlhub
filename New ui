@@ -147,10 +147,6 @@ function Emptyness:ToggleUI()
 	end
 end
 
-function Emptyness:Destroy()
-	ScreenGui:Destroy()
-end
-
 function Emptyness.CreateLib(kavName, themeList)
 	if not themeList then
 		themeList = themes
@@ -413,6 +409,9 @@ ImageButtonKUI.Parent = UserIcon
 		end
 	end)()
 
+function Emptyness:Destroy()
+	ScreenGui:Destroy()
+end
 
 	function Emptyness:ChangeColor(prope,color)
 		if prope == "Background" then
