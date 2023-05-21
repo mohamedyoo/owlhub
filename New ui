@@ -2809,7 +2809,12 @@ function Elements:NewNofity(Text)
 end
 
 function Emptyness:Destroy()
-	ScreenGui:Destroy()
+	for i,v in pairs(game.CoreGui:GetDescendants()) do 
+-- idk if there is such a thing as "game.CoreGui"
+
+if v.Name == "Main" then
+v.Parent:Destroy()
+end
 end
 
 return Emptyness
