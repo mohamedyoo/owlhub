@@ -204,6 +204,23 @@ game:GetService("ReplicatedStorage").Remote:FireServer("rebirthBoard",4,5)
             end
 end)
 
+ creditSection:NewButton("Copy link", "Link to the website script", function()
+game:GetService("StarterGui"):SetCore("SendNotification",{
+			Title = "Copied",
+			Text = "you have copied the link pastebin",
+			Duration = 4
+		})
+		wait(0.5)
+         	setclipboard("https://scriptblox.com/script/Universal-Script-emptyness-hub-7276")
+
+end)
+
+creditSection:UpdateButton("By Roblox_Gaming")
+
+ creditSection:NewButton("Destroy UI", "Destroy the Gui", function()
+ Library:Destroy()
+end)
+
 function gOrb()
 	while getgenv().grabOrb == true do wait(.2)
 		for i,v in pairs (game:GetService("Workspace").Gems:GetDescendants()) do
