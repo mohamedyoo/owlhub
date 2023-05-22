@@ -125,9 +125,11 @@ else
 end
 DarkHubLib.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-function DarkLib:Window()
+function DarkLib:Window(xHubName,xGameName)
 	local firsttab = false
-local mainframe = Instance.new("Frame")
+	local xHubName = xHubName or "UI Library"
+	local xGameName = xGameName or "By ROblox Game"
+	local MainFrame = Instance.new("Frame")
 local MainFrameUICorner = Instance.new("UICorner")
 local TabHolderFrame = Instance.new("Frame")
 local TabHolderFrameUICorner = Instance.new("UICorner")
@@ -141,23 +143,23 @@ local Container = Instance.new("Frame")
 local Containers = Instance.new("Folder")
 local X = Instance.new("TextButton")
 local GameName = Instance.new("TextLabel")
-local GameName_2 = Instance.new("TextLabel")
+	local HubName = Instance.new("TextLabel")
 local Line = Instance.new("Frame")
 
 --Properties:
 
-mainframe.Name = "mainframe"
-mainframe.Parent = DarkHubLib
-mainframe.BackgroundColor3 = Color3.fromRGB(0, 29, 29)
-mainframe.Position = UDim2.new(0.133704752, 0, 0.238207132, 0)
-mainframe.Size = UDim2.new(0, 525, 0, 318)
+	MainFrame.Name = "mainframe"
+	MainFrame.Parent = DarkHubLib
+	MainFrame.BackgroundColor3 = Color3.fromRGB(0, 29, 29)
+	MainFrame.Position = UDim2.new(0.133704752, 0, 0.238207132, 0)
+	MainFrame.Size = UDim2.new(0, 525, 0, 318)
 
 MainFrameUICorner.CornerRadius = UDim.new(0, 11)
 MainFrameUICorner.Name = "MainFrameUICorner"
-MainFrameUICorner.Parent = mainframe
+	MainFrameUICorner.Parent = MainFrame
 
 TabHolderFrame.Name = "TabHolderFrame"
-TabHolderFrame.Parent = mainframe
+	TabHolderFrame.Parent = MainFrame
 TabHolderFrame.BackgroundColor3 = Color3.fromRGB(0, 33, 33)
 TabHolderFrame.Position = UDim2.new(0, 0, 0.165973976, 0)
 TabHolderFrame.Size = UDim2.new(0, 218, 0, 265)
@@ -180,7 +182,7 @@ Glow_2.ImageTransparency = 1.000
 Glow_2.ScaleType = Enum.ScaleType.Slice
 
 TabHolder.Name = "TabHolder"
-TabHolder.Parent = mainframe
+	TabHolder.Parent = MainFrame
 TabHolder.BackgroundColor3 = Color3.fromRGB(0, 33, 33)
 TabHolder.BackgroundTransparency = 1.000
 TabHolder.Position = UDim2.new(0, 0, 0.164222866, 0)
@@ -197,7 +199,7 @@ TabHolderPadding.PaddingLeft = UDim.new(0, 4)
 TabHolderPadding.PaddingTop = UDim.new(0, 4)
 
 Glow_3.Name = "Glow_3"
-Glow_3.Parent = mainframe
+	Glow_3.Parent = MainFrame
 Glow_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Glow_3.BackgroundTransparency = 1.000
 Glow_3.BorderSizePixel = 0
@@ -210,13 +212,13 @@ Glow_3.ImageTransparency = 1.000
 Glow_3.ScaleType = Enum.ScaleType.Slice
 
 DraggableFrame.Name = "DraggableFrame"
-DraggableFrame.Parent = mainframe
+	DraggableFrame.Parent = MainFrame
 DraggableFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 DraggableFrame.BackgroundTransparency = 1.000
 DraggableFrame.Size = UDim2.new(0, 547, 0, 59)
 
 Container.Name = "Container"
-Container.Parent = mainframe
+	Container.Parent = MainFrame
 Container.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Container.BackgroundTransparency = 1.000
 Container.Position = UDim2.new(0.288848221, 0, 0.120234601, 0)
@@ -226,7 +228,7 @@ Containers.Name = "Containers"
 Containers.Parent = Container
 
 X.Name = "X"
-X.Parent = mainframe
+	X.Parent = MainFrame
 X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 X.BackgroundTransparency = 1.000
 X.Position = UDim2.new(0.914076805, 0, -0.00293255132, 0)
@@ -243,33 +245,34 @@ X.TextSize = 14.000
 end)
 	
 GameName.Name = "GameName"
-GameName.Parent = mainframe
+	GameName.Parent = MainFrame
 GameName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 GameName.BackgroundTransparency = 1.000
 GameName.BorderSizePixel = 0
 GameName.Position = UDim2.new(0.00190474733, 0, 0, 0)
 GameName.Size = UDim2.new(0, 181, 0, 23)
-GameName.Font = Enum.Font.SourceSans
+	GameName.Font = Enum.Font.SourceSans
+	GameName.Text = xGameName
 GameName.TextColor3 = Color3.fromRGB(0, 190, 190)
 GameName.TextScaled = true
 GameName.TextSize = 16.000
 GameName.TextWrapped = true
 
-GameName_2.Name = "GameName"
-GameName_2.Parent = mainframe
-GameName_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-GameName_2.BackgroundTransparency = 1.000
-GameName_2.BorderSizePixel = 0
-GameName_2.Position = UDim2.new(0, 0, 0.0810810775, 0)
-GameName_2.Size = UDim2.new(0, 186, 0, 23)
-GameName_2.Font = Enum.Font.SourceSans
-GameName_2.TextColor3 = Color3.fromRGB(0, 190, 190)
-GameName_2.TextScaled = true
-GameName_2.TextSize = 16.000
-GameName_2.TextWrapped = true
+HubName.Name = "GameName"
+	HubName.Parent = MainFrame
+	HubName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	HubName.BackgroundTransparency = 1.000
+	HubName.BorderSizePixel = 0
+	HubName.Position = UDim2.new(0, 0, 0.0810810775, 0)
+	HubName.Size = UDim2.new(0, 186, 0, 23)
+	HubName.Font = Enum.Font.SourceSans
+	HubName.Text = xHubName
+	HubName.TextScaled = true
+	HubName.TextSize = 16.000
+	HubName.TextWrapped = true
 
 Line.Name = "Line"
-Line.Parent = mainframe
+	Line.Parent = MainFrame
 Line.BackgroundColor3 = Color3.fromRGB(0, 75, 75)
 Line.BorderSizePixel = 0
 Line.Position = UDim2.new(0, 0, 0.0786163509, 0)
@@ -360,6 +363,7 @@ Line.Position = UDim2.new(0, 0, 0.0786163509, 0)
 		local ItemHolder = Instance.new("ScrollingFrame")
 		local ItemHolderUIList = Instance.new("UIListLayout")
 		local Glow = Instance.new("ImageLabel")
+		
 		Tab.Name = text .. "Tab"
 		Tab.Parent = TabHolder
 		Tab.BackgroundColor3 = Color3.fromRGB(168, 168, 168)
