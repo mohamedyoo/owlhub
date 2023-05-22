@@ -1,0 +1,122 @@
+
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/New%20ui"))()
+local Window = Library.CreateLib("Knife Clicker Simulator Simple stuffs", "Sentinel")
+
+local Main = Window:NewTab("Main")
+
+local Eggs = Window:NewTab("Eggs / teleport")
+
+local Upgrade = Window:NewTab("upgrade")
+
+
+local Section = Main:NewSection("Main")
+
+local EggSection = Eggs:NewSection("Eggs")
+
+local TeleSection = Eggs:NewSection("Teleport")
+
+local UPSection = Upgrade:NewSection("upgrades")
+
+  Section:NewToggle("auto CLicker", "Make your player auto click", function(v)
+    getgenv().Click = v
+      while getgenv().Click == true do
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+game:GetService("ReplicatedStorage").Knives.Clicker.Default.Remotes.Click:InvokeServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+    Section:NewToggle("auto Rebirth", "l  l", function(v)
+    getgenv().Rebirth = v
+      while getgenv().Rebirth == true do
+game:GetService("ReplicatedStorage").Rebirths.Core.Default.Remotes.Rebirth:InvokeServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+    Section:NewToggle("Spam trade", "Make your player auto click", function(v)
+    getgenv().trade = v
+      while getgenv().trade == true do
+game:GetService("ReplicatedStorage").Trade.Core.Default.Remotes.Invite:InvokeServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+   Eggs = {}
+	for i,v in pairs(game:GetService("Workspace").Boxes:GetChildren()) do
+		if not table.find(Eggs, v.Name) then
+		table.insert(Eggs, v.Name)
+	end
+end
+
+   EggSection:NewToggle("Auto Buy Selected Egg", "auto open the egg you picked", function(bool)
+  getgenv().AutoEgg = bool
+                while getgenv().AutoEgg and task.wait() do
+                local args = {
+                [1] = getgenv().SelectedEgg,
+                [2] = "Single"
+                }
+            game:GetService("ReplicatedStorage").Boxes.Core.Default.Remotes.Buy:InvokeServer(unpack(args))
+            end
+end)
+
+EggSection:NewDropdown("Select Egg", "pick an egg to open", Eggs, function(Selected)
+         getgenv().SelectedEgg = Selected
+end)
+
+ EggSection:NewToggle("auto best", "IDK", function(v)
+    getgenv().Click = v
+      while getgenv().Click == true do
+game:GetService("ReplicatedStorage").Pets.Core.Default.Remotes.SelectBest:InvokeServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+   
+   local IslandNames = {}
+        for _,v in pairs(game:GetService("Workspace").Areas:GetChildren()) do
+            table.insert(IslandNames, v.Name)
+        end
+        
+TeleSection:NewDropdown("Select Arena", "pick an arena to go", IslandNames, function(selected)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Areas[selected].Position)
+
+end)
+
+ UPSection:NewToggle("auto upgrade Speed", "l  l", function(v)
+    getgenv().Speed = v
+      while getgenv().Speed == true do
+game:GetService("ReplicatedStorage").Upgrader.Core.Default.Remotes.Upgrade:InvokeServer("playerSpeed")
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+    UPSection:NewToggle("auto clicker speed upgrade", "l  l", function(v)
+    getgenv().auto = v
+      while getgenv().auto == true do
+game:GetService("ReplicatedStorage").Upgrader.Core.Default.Remotes.Upgrade:InvokeServer("autoClickSpeed")
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+    UPSection:NewToggle("auto upgrade gems", "l  l", function(v)
+    getgenv().auto = v
+      while getgenv().auto == true do
+game:GetService("ReplicatedStorage").Upgrader.Core.Default.Remotes.Upgrade:InvokeServer("gemsEarn")
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
