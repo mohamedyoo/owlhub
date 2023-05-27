@@ -1,0 +1,105 @@
+
+		
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/New%20ui"))()
+
+local Window = Library.CreateLib("super human training simulator", "Sentinel")
+
+local Main = Window:NewTab("auto farm")
+
+local Upgrade = Window:NewTab("auto Upgrade")
+
+local Teleport = Window:NewTab("Teleports")
+
+local Section = Main:NewSection("Main")
+
+local UPSection = Upgrade:NewSection("Select")
+
+local ZoneS = Teleport:NewSection("training Zone")
+
+Section:NewToggle("auto Strength", "", function(v)
+    getgenv().Strength = v
+      while getgenv().Strength == true do
+game:GetService("ReplicatedStorage").remotes.train:FireServer("Strength")
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+   Section:NewToggle("auto Endurance", "", function(v)
+    getgenv().Endurance = v
+      while getgenv().Endurance == true do
+game:GetService("ReplicatedStorage").remotes.train:FireServer("Endurance")
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+    Section:NewToggle("auto Psychic", "", function(v)
+    getgenv().Psychic = v
+      while getgenv().Psychic == true do
+game:GetService("ReplicatedStorage").remotes.train:FireServer("Psychic")
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+       Section:NewToggle("auto Rank Up", "", function(v)
+    getgenv().Rank = v
+      while getgenv().Rank == true do
+game:GetService("ReplicatedStorage").remotes.rankup:InvokeServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+      Section:NewToggle("auto Fuse", "", function(v)
+    getgenv().Fuse = v
+      while getgenv().Fuse == true do
+game:GetService("ReplicatedStorage").remotes.Fuse:InvokeServer()
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+    UPSection:NewToggle("auto Upgrade Endurance", "", function(v)
+    getgenv().UPEn = v
+      while getgenv().UPEn == true do
+game:GetService("ReplicatedStorage").remotes.multi:InvokeServer("Endurance")
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+   
+    UPSection:NewToggle("auto Upgrade Strength", "", function(v)
+    getgenv().UPST = v
+      while getgenv().UPST == true do
+game:GetService("ReplicatedStorage").remotes.multi:InvokeServer("Strength")
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+     UPSection:NewToggle("auto Upgrade Psychic", "", function(v)
+    getgenv().UPS = v
+      while getgenv().UPS == true do
+game:GetService("ReplicatedStorage").remotes.multi:InvokeServer("Psychic")
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
+     UPSection:NewToggle("auto Upgrade Agility", "", function(v)
+    getgenv().UPAG = v
+      while getgenv().UPAG == true do
+game:GetService("ReplicatedStorage").remotes.multi:InvokeServer("Agility")
+  game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+  
+   local SCPNames = {}
+    for _,v in pairs(workspace:WaitForChild("training zones").distance:GetChildren()) do
+if v:IsA('Part') or v:IsA("SpawnLocation") then
+        if not table.find(SCPNames, v.Name) then
+       table.insert(SCPNames, v.Name)
+        end
+    end
+end
+
+
+    ZoneS:NewDropdown("Teleport to training zone", "LOL", SCPNames, function(c) -- drop down for multiple options that go under the same catagory, ex. Aimbone (Head, UpperTorso, Legs)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace"):WaitForChild("training zones").distance[c].CFrame
+    end)
+    
