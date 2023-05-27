@@ -40,6 +40,14 @@ game:GetService("ReplicatedStorage").remotes.train:FireServer("Psychic")
   end
    end)
    
+    Section:NewToggle("auto Agility", "", function(v)
+    getgenv().Agility = v
+      while getgenv().Agility == true do
+game:GetService("ReplicatedStorage").remotes.train:FireServer("Agility")  
+game:GetService("RunService").Heartbeat:wait();
+  end
+   end)
+   
        Section:NewToggle("auto Rank Up", "", function(v)
     getgenv().Rank = v
       while getgenv().Rank == true do
