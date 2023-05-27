@@ -16,6 +16,10 @@ local UPSection = Upgrade:NewSection("Select")
 
 local ZoneS = Teleport:NewSection("training Zone")
 
+ Section:NewKeybind("Toggle UI", "KeybindInfo", Enum.KeyCode.F, function()
+	Library:ToggleUI()
+end)
+
 Section:NewToggle("auto Strength", "", function(v)
     getgenv().Strength = v
       while getgenv().Strength == true do
@@ -111,6 +115,3 @@ end
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace"):WaitForChild("training zones").distance[c].CFrame
     end)
     
-    ZoneS:NewKeybind("Toggle UI", "KeybindInfo", Enum.KeyCode.F, function()
-	Library:ToggleUI()
-end)
