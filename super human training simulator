@@ -111,3 +111,6 @@ end
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace"):WaitForChild("training zones").distance[c].CFrame
     end)
     
+    ZoneS:NewKeybind("Toggle UI", "KeybindInfo", Enum.KeyCode.F, function()
+	Library:ToggleUI()
+end)
