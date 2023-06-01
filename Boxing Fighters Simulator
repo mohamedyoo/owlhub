@@ -19,46 +19,66 @@ local creditSection = credit:NewSection("Main")
   Section:NewToggle("auto punch", "Make your player auto click", function(v)
     getgenv().punch = v
       while getgenv().punch == true do
-game:GetService("ReplicatedStorage").Network.Punch:FireServer()
-  game:GetService("RunService").Heartbeat:wait();
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer("Punch")  game:GetService("RunService").Heartbeat:wait();
   end
    end)
    
    Section:NewToggle("auto rebirth", "Make your player auto click", function(v)
     getgenv().rebirth = v
       while getgenv().rebirth == true do
-game:GetService("ReplicatedStorage").Network.Prestige:FireServer()
-  game:GetService("RunService").Heartbeat:wait();
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer("Prestige")  game:GetService("RunService").Heartbeat:wait();
   end
    end)
-   
-    Section:NewToggle("auto upgrade", "Make your player auto click", function(v)
-    getgenv().rebirth = v
-      while getgenv().rebirth == true do
-game:GetService("ReplicatedStorage").Network.BuyUpgrade:FireServer("Coins")
-game:GetService("ReplicatedStorage").Network.BuyUpgrade:FireServer("Strength")
-game:GetService("ReplicatedStorage").Network.BuyUpgrade:FireServer("Critical Chance")
-game:GetService("ReplicatedStorage").Network.BuyUpgrade:FireServer("Walkspeed")
- game:GetService("RunService").Heartbeat:wait();
-  end
-   end)
+  
    
       Section:NewToggle("buy all area", "Make your player auto click", function(v)
     getgenv().area = v
       while getgenv().area == true do
-game:GetService("ReplicatedStorage").Network.BuyLocation:FireServer()
-  game:GetService("RunService").Heartbeat:wait();
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer("BuyLocation","Abandoned Mines")  
+game:GetService("RunService").Heartbeat:wait();
   end
    end)
    
     Section:NewToggle("auto equip best glove", "Make your player auto click", function(v)
     getgenv().glove = v
       while getgenv().glove == true do
-game:GetService("ReplicatedStorage").Network.EquipBestGlove:FireServer()
-  game:GetService("RunService").Heartbeat:wait();
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer("EquipBestGlove")  game:GetService("RunService").Heartbeat:wait();
   end
    end)
    
+   Eggs = {}
+	for i,v in pairs(game:GetService("Workspace").Eggs:GetChildren()) do
+		if not table.find(Eggs, v.Name) then
+		table.insert(Eggs, v.Name)
+	end
+end
+
+Section:NewToggle("Auto Buy Selected Egg", "Will glitch if you have high flight.", function(bool)
+  getgenv().AutoEgg = bool
+                while getgenv().AutoEgg and task.wait() do
+                local args = {
+                [1] = getgenv().SelectedEgg,
+                [2] = "Single"
+                }
+            game:GetService("ReplicatedStorage").Network.OpenEgg:InvokeServer(unpack(args))
+            end
+end)
+
+Section:NewDropdown("Select Egg", "You have to be next to the egg.", Eggs, function(Selected)
+         getgenv().SelectedEgg = Selected
+end)
+
+Section:NewLabel("You have to be next to the egg.")
+
+ local IslandNames = {}
+        for _,v in pairs(game:GetService("Workspace").Teleporters:GetChildren()) do
+            table.insert(IslandNames, v.Name)
+        end
+
+    Section:NewDropdown("Teleport To Island", "LOL", IslandNames, function(c) -- drop down for multiple options that go under the same catagory, ex. Aimbone (Head, UpperTorso, Legs)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Teleporters[selected].Position)
+    end)
+    
   creditSection:NewButton("Copy link", "Link to the website script", function()
 game:GetService("StarterGui"):SetCore("SendNotification",{
 			Title = "Copied",
@@ -69,5 +89,3 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
          	setclipboard("https://scriptblox.com/script/Universal-Script-emptyness-hub-7276")
 
 end)
-
-creditSection:UpdateButton("By Roblox_Gaming")
