@@ -19,14 +19,16 @@ local creditSection = credit:NewSection("Main")
   Section:NewToggle("auto punch", "Make your player auto click", function(v)
     getgenv().punch = v
       while getgenv().punch == true do
-game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer("Punch")  game:GetService("RunService").Heartbeat:wait();
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer("Punch")
+game:GetService("RunService").Heartbeat:wait();
   end
    end)
    
    Section:NewToggle("auto rebirth", "Make your player auto click", function(v)
     getgenv().rebirth = v
       while getgenv().rebirth == true do
-game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer("Prestige")  game:GetService("RunService").Heartbeat:wait();
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer("Prestige")
+game:GetService("RunService").Heartbeat:wait();
   end
    end)
   
@@ -42,7 +44,8 @@ game:GetService("RunService").Heartbeat:wait();
     Section:NewToggle("auto equip best glove", "Make your player auto click", function(v)
     getgenv().glove = v
       while getgenv().glove == true do
-game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer("EquipBestGlove")  game:GetService("RunService").Heartbeat:wait();
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer("EquipBestGlove")
+game:GetService("RunService").Heartbeat:wait();
   end
    end)
    
