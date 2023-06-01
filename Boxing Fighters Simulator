@@ -75,7 +75,7 @@ Section:NewLabel("You have to be next to the egg.")
             table.insert(IslandNames, v.Name)
         end
 
-    Section:NewDropdown("Teleport To Island", "LOL", IslandNames, function(c) -- drop down for multiple options that go under the same catagory, ex. Aimbone (Head, UpperTorso, Legs)
+    Section:NewDropdown("Teleport To Island", "LOL", IslandNames, function(selected) -- drop down for multiple options that go under the same catagory, ex. Aimbone (Head, UpperTorso, Legs)
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Teleporters[selected].Position)
     end)
     
