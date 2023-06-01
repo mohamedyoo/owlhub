@@ -72,19 +72,6 @@ Section:NewDropdown("Select Egg", "You have to be next to the egg.", Eggs, funct
 end)
 
 Section:NewLabel("You have to be next to the egg.")
-
- local IslandNames = {}
-    for _,v in pairs(workspace.Teleporters:GetChildren()) do
-if v:IsA('Part') or v:IsA("SpawnLocation") then
-        if not table.find(SCPNames, v.Name) then
-       table.insert(SCPNames, v.Name)
-        end
-    end
-end
-
-    Section:NewDropdown("Teleport To Island", "LOL", IslandNames, function(selected) -- drop down for multiple options that go under the same catagory, ex. Aimbone (Head, UpperTorso, Legs)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Teleporters[selected].CFrame
-end)
     
   creditSection:NewButton("Copy link", "Link to the website script", function()
 game:GetService("StarterGui"):SetCore("SendNotification",{
