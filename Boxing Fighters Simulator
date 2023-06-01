@@ -76,8 +76,8 @@ Section:NewLabel("You have to be next to the egg.")
         end
 
     Section:NewDropdown("Teleport To Island", "LOL", IslandNames, function(selected) -- drop down for multiple options that go under the same catagory, ex. Aimbone (Head, UpperTorso, Legs)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Teleporters[selected].Position)
-    end)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Teleporters[selected].CFrame
+end)
     
   creditSection:NewButton("Copy link", "Link to the website script", function()
 game:GetService("StarterGui"):SetCore("SendNotification",{
