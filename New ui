@@ -147,6 +147,10 @@ function Emptyness:ToggleUI()
 	end
 end
 
+function Emptyness:Destroy()
+	ScreenGui:Destroy()
+end)
+
 function Emptyness.CreateLib(kavName, themeList)
 	if not themeList then
 		themeList = themes
@@ -2806,10 +2810,6 @@ function Elements:NewNofity(Text)
 		return Sections
 	end  
 	return Tabs
-end
-
-function Emptyness:Destroy()
-	ScreenGui:Destroy()
 end
 
 return Emptyness
