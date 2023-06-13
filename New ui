@@ -149,7 +149,7 @@ end
 
 function Emptyness:Destroy()
 	ScreenGui:Destroy()
-end)
+end
 
 function Emptyness.CreateLib(kavName, themeList)
 	if not themeList then
