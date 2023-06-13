@@ -118,7 +118,14 @@ local themeStyles = {
 		Header = Color3.fromRGB(22, 29, 31),
 		TextColor = Color3.fromRGB(255,255,255),
 		ElementColor = Color3.fromRGB(22, 29, 31)
-	}
+	},
+	 Kiwi = {
+        SchemeColor = Color3.fromRGB(17, 255, 13),
+        Background = Color3.fromRGB(23, 23, 22),
+        Header = Color3.fromRGB(23, 23, 22),
+        TextColor = Color3.fromRGB(255,255,255),
+        ElementColor = Color3.fromRGB(55, 59, 55)
+    }
 }
 local oldTheme = ""
 
@@ -173,6 +180,8 @@ function Emptyness.CreateLib(kavName, themeList)
 		themeList = themeStyles.Synapse
 	elseif themeList == "Serpent" then
 		themeList = themeStyles.Serpent
+		elseif themeList == "Kiwi" then
+        themeList = themeStyles.Kiwi
 	else
 		if themeList.SchemeColor == nil then
 			themeList.SchemeColor = Color3.fromRGB(74, 99, 135)
