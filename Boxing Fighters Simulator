@@ -1,11 +1,8 @@
-game:GetService("StarterGui"):SetCore("SendNotification",{
-			Title = "Info",
-			Text = "Used using turtle Spy",
-			Duration = 4
-		})
-		
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/mohamedyoo/owlhub/main/New%20ui"))()
 local Window = Library.CreateLib("Boxing Fighters Simulator Simple stuffs", "Sentinel")
+
+Library:Newnotify("Info" , "made using turtle Spy", 4)
 
 local Main = Window:NewTab("Main")
 
