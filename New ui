@@ -4,7 +4,6 @@ local tween = game:GetService("TweenService")
 local tweeninfo = TweenInfo.new
 local input = game:GetService("UserInputService")
 local run = game:GetService("RunService")
-
 local Utility = {}
 local Objects = {}
 function Emptyness:DraggingEnabled(frame, parent)
@@ -454,7 +453,7 @@ function Emptyness:Newnotify(Text , Description, Length)
    Frame.Parent = ScreenGui
     Frame.BackgroundColor3 = themeList.Background
     Frame.BorderColor3 = Color3.fromRGB(255, 255, 255)
-    Frame.BorderSizePixel = 4
+    Frame.BorderSizePixel = 2
     Frame.Position = UDim2.new(0.801588178, 0, 0.748129725, 0)
     Frame.Size = UDim2.new(0, 293, 0, 103)
     
@@ -464,7 +463,7 @@ function Emptyness:Newnotify(Text , Description, Length)
     TextLabel.Position = UDim2.new(0.194539249, 0, 0.411764711, 0)
     TextLabel.Size = UDim2.new(0, 200, 0, 50)
     TextLabel.Font = Enum.Font.SourceSans
-    TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.TextColor3 = themeList.TextColor
     TextLabel.TextSize = 24.000
     TextLabel.Text = Description
     TextLabel.TextStrokeColor3 = themeList.TextColor
@@ -481,7 +480,7 @@ function Emptyness:Newnotify(Text , Description, Length)
     TextLabel_2.TextColor3 = themeList.TextColor
     TextLabel_2.TextSize = 25.000
     TextLabel_2.Text = Text
-    TextLabel_2.TextStrokeColor3 = Color3.fromRGB(75, 75, 75)
+    TextLabel_2.TextStrokeColor3 = themeList.TextColor
     TextLabel_2.TextStrokeTransparency = 0.300
     TextLabel_2.TextWrapped = true
     local tween = game:GetService("TweenService")
