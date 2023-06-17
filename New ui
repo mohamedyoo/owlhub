@@ -245,11 +245,9 @@ function Emptyness.CreateLib(kavName, themeList)
 	blurFrame.Size = UDim2.new(0, 376, 0, 289)
 	blurFrame.ZIndex = 999
 
-		Emptyness:Newnotify("Loaded" , "The Script Has Loaded", 4)
-
 local Players = game:GetService("Players")
 local Player = game:GetService("Players").LocalPlayer
-
+		--Emptyness:Newnotify("Loaded" , "The Script Has Loaded", 4)
 	ScreenGui.Parent = game.CoreGui
 	ScreenGui.Name = LibName
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
