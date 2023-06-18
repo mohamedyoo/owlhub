@@ -170,13 +170,6 @@ end
 function Emptyness.CreateLib(HubName, HubGame)
 	local selectedTab 
 	HubName = HubName or "Library"
-	table.insert(Emptyness, HubName, HubGame)
-	for i,v in pairs(game.CoreGui:GetChildren()) do
-		if v:IsA("ScreenGui") and v.Name == HubName or v.Name == HubGame then
-			v:Destroy()
-		end
-	end
-
 local ScreenGui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
@@ -196,7 +189,9 @@ local ImageButtonK = Instance.new("ImageButton")
 
 	local Players = game:GetService("Players")
 	local Player = game:GetService("Players").LocalPlayer
+
 	--Emptyness:Newnotify("Loaded" , "The Script Has Loaded", 4)
+
 	ScreenGui.Parent = game.CoreGui
 	ScreenGui.Name = LibName
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
