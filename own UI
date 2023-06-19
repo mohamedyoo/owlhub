@@ -11,7 +11,7 @@ function Library:Toggle()
     end
 end
 
-function Library:Drag(obj)
+function Emptyness:Drag(obj)
     local UserInputService = game:GetService("UserInputService")
     
     local gui = obj
@@ -213,7 +213,7 @@ ImageButtonK.Image = "rbxassetid://9836076474"
 	})
 	UserIconTween:Play()
 
-    Library:Drag(MainFrame)
+    Emptyness:Drag(MainFrame)
 
 	--notify
 	
