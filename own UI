@@ -295,7 +295,7 @@ ImageButtonK.Image = "rbxassetid://9836076474"
 		TabListLayout.Padding = UDim.new(0, 5)
 
 		TabButton.Name = "TabButton"
-		TabButton.Parent = ActualSide
+		TabButton.Parent = tabFrames
 		TabButton.BackgroundColor3 = Color3.fromRGB(55, 74, 251)
 		TabButton.BorderSizePixel = 0
 		TabButton.Size = UDim2.new(0, 139, 0, 35)
@@ -319,7 +319,7 @@ ImageButtonK.Image = "rbxassetid://9836076474"
 
 		TabButton.MouseButton1Down:Connect(function()
 			Size()
-			for i,v in pairs(ActualSide:GetChildren()) do 
+			for i,v in pairs(tabFrames:GetChildren()) do 
 				if v:IsA("TextButton") then 
 					v.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
 					v.TextColor3 = Color3.fromRGB(190, 190, 190)
