@@ -225,7 +225,7 @@ function Emptyness.CreateLib(kavName, themeList)
 	local ImageButtonK = Instance.new("ImageButton")
 	local ImageButtonKUI = Instance.new("UICorner")
 	local UICorner = Instance.new("UICorner")
-	local PlaceID = Instance.new("TextButton")
+	local PlaceId = Instance.new("TextButton")
 
 
 
@@ -271,18 +271,19 @@ local Player = game:GetService("Players").LocalPlayer
 
 
 
-	PlaceID.Parent = Main
-	PlaceID.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	PlaceID.BackgroundTransparency = 1.000
-	PlaceID.Position = UDim2.new(0.0033968098, 0, 0.883647799, 0)
-	PlaceID.Size = UDim2.new(0, 162, 0, 37)
-	PlaceID.Font = Enum.Font.SourceSans
-	PlaceID.Text = "copy place id"
-	PlaceID.TextColor3 = Color3.fromRGB(255, 255, 255)
-	PlaceID.TextScaled = true
-	PlaceID.TextSize = 22.000
-	PlaceID.TextWrapped = true
-PlaceID.MouseButton1Click:Connect(function()
+	PlaceId.Name = "PlaceId"
+PlaceId.Parent = MainFrame
+PlaceId.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlaceId.BackgroundTransparency = 1.000
+PlaceId.Position = UDim2.new(0.0033968098, 0, 0.883647799, 0)
+PlaceId.Size = UDim2.new(0, 121, 0, 59)
+PlaceId.Font = Enum.Font.SourceSans
+PlaceId.Text = "Copy placeID"
+PlaceId.TextColor3 = Color3.fromRGB(255, 255, 255)
+PlaceId.TextScaled = true
+PlaceId.TextSize = 14.000
+PlaceId.TextWrapped = true
+PlaceId.MouseButton1Click:Connect(function()
 	game:GetService("StarterGui"):SetCore("SendNotification",{
 		Title = "Copied",
 		Text = "you have copied the placeID",
