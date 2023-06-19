@@ -79,7 +79,7 @@ local ImageButtonK = Instance.new("ImageButton")
 	--Emptyness:Newnotify("Loaded" , "The Script Has Loaded", 4)
 
 	ScreenGui.Parent = game.CoreGui
-	ScreenGui.Name = LibName
+	ScreenGui.Name = LibraryName
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 
