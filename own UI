@@ -53,9 +53,10 @@ function Emptyness:Drag(obj)
     end)
 end
 
-function Emptyness.CreateLib(HubGame,HubName)
-HubName = HubName or "Library"
-HubGame = HubGame or "HubGame idk"
+
+function Emptyness:Create(xHubName,xGameName)
+    local xHubName = xHubName or "UI Library"
+    local xGameName = xGameName or "By Mapple#3045"
 local ScreenGui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
@@ -63,7 +64,7 @@ local SideFrame = Instance.new("Frame")
 local gameHub = Instance.new("TextLabel")
 local HubName = Instance.new("TextLabel")
 local Line = Instance.new("Frame")
-local tabFrames = Instance.new("Frame")
+local tabFrames = Instance.new("ScrollingFrame")
 local tabListing = Instance.new("UIListLayout")
 local PlaceId = Instance.new("TextButton")
 local pages = Instance.new("Frame")
@@ -71,17 +72,20 @@ local Pages = Instance.new("Folder")
 local X = Instance.new("TextButton")
 local ImageButtonK = Instance.new("ImageButton")
 
+function ScrollSize()
+        tabFrames.CanvasSize = UDim2.new(0, 0, 0, tabListing.AbsoluteContentSize.Y)
+    end
 --Properties:
 
 	local Players = game:GetService("Players")
 	local Player = game:GetService("Players").LocalPlayer
 
 	--Emptyness:Newnotify("Loaded" , "The Script Has Loaded", 4)
-
-	ScreenGui.Parent = game.CoreGui
-	ScreenGui.Name = LibraryName
-	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-	ScreenGui.ResetOnSpawn = false
+    Emptyness:Drag(MainFrame)
+    
+	 ScreenGui.Parent = game.CoreGui
+    ScreenGui.ResetOnSpawn = false 
+    ScreenGui.Name = LibraryName
 
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
@@ -105,7 +109,7 @@ gameHub.BackgroundTransparency = 1.000
 gameHub.Position = UDim2.new(0, 0, 0.00295857992, 0)
 gameHub.Size = UDim2.new(0, 232, 0, 33)
 gameHub.Font = Enum.Font.SourceSans
-gameHub.Text = HubGame
+gameHub.Text = xGameName
 gameHub.TextColor3 = Color3.fromRGB(255, 255, 255)
 gameHub.TextScaled = true
 gameHub.TextSize = 14.000
@@ -119,7 +123,7 @@ HubName.BackgroundTransparency = 1.000
 HubName.Position = UDim2.new(0, 0, 0.109467454, 0)
 HubName.Size = UDim2.new(0, 232, 0, 29)
 HubName.Font = Enum.Font.SourceSans
-HubName.Text = HubName
+HubName.Text = xHubName
 HubName.TextColor3 = Color3.fromRGB(255, 255, 255)
 HubName.TextScaled = true
 HubName.TextSize = 14.000
@@ -131,12 +135,15 @@ Line.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
 Line.Position = UDim2.new(0, 0, 0.100591719, 0)
 Line.Size = UDim2.new(0, 232, 0, 3)
 
-tabFrames.Name = "tabFrames"
-tabFrames.Parent = SideFrame
-tabFrames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-tabFrames.BackgroundTransparency = 1.000
-tabFrames.Position = UDim2.new(0, 0, 0.195266232, 0)
-tabFrames.Size = UDim2.new(0, 233, 0, 244)
+ tabFrames.Name = "tabFrames"
+    tabFrames.Parent = SideFrame
+    tabFrames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    tabFrames.BackgroundTransparency = 1.000
+    tabFrames.BorderSizePixel = 0
+    tabFrames.Position = UDim2.new(0, 0, 0.172972977, 0)
+    tabFrames.Size = UDim2.new(0, 139, 0, 297)
+    tabFrames.CanvasSize = UDim2.new(0,0,0,0)
+    tabFrames.ScrollBarThickness = 0
 
 tabListing.Name = "tabListing"
 tabListing.Parent = tabFrames
@@ -146,7 +153,6 @@ PlaceId.Name = "PlaceId"
 PlaceId.Parent = MainFrame
 PlaceId.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 PlaceId.BackgroundTransparency = 1.000
-    PlaceId.BorderSizePixel = 0
 PlaceId.Position = UDim2.new(0, 0, 0.83606559, 0)
 PlaceId.Size = UDim2.new(0, 121, 0, 59)
 PlaceId.Font = Enum.Font.SourceSans
@@ -212,8 +218,6 @@ ImageButtonK.Image = "rbxassetid://9836076474"
 		Position = UDim2.new(ImageButtonK.Position.X.Scale, 0, 0.348852545, 0)
 	})
 	UserIconTween:Play()
-
-    Emptyness:Drag(MainFrame)
 
 	--notify
 	
