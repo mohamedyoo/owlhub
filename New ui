@@ -272,7 +272,7 @@ local Player = game:GetService("Players").LocalPlayer
 
 
 	PlaceId.Name = "PlaceId"
-PlaceId.Parent = MainFrame
+PlaceId.Parent = Main
 PlaceId.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 PlaceId.BackgroundTransparency = 1.000
 PlaceId.Position = UDim2.new(0.0033968098, 0, 0.883647799, 0)
