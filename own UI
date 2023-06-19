@@ -1,83 +1,60 @@
 local Emptyness = {}
 
-local tween = game:GetService("TweenService")
-local tweeninfo = TweenInfo.new
-local input = game:GetService("UserInputService")
-local run = game:GetService("RunService")
-local Utility = {}
-local Objects = {}
-function Emptyness:DraggingEnabled(frame, parent)
+-- Random UI Name
+local LibraryName = tostring(math.random(100000,200000))..tostring(math.random(100000,200000))..tostring(math.random(100000,200000))
 
-	parent = parent or frame
-
-	-- stolen from wally or kiriot, kek
-	local dragging = false
-	local dragInput, mousePos, framePos
-
-	frame.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			dragging = true
-			mousePos = input.Position
-			framePos = parent.Position
-
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragging = false
-				end
-			end)
-		end
-	end)
-
-	frame.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			dragInput = input
-		end
-	end)
-
-	input.InputChanged:Connect(function(input)
-		if input == dragInput and dragging then
-			local delta = input.Position - mousePos
-			parent.Position  = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
-		end
-	end)
+function Library:Toggle()
+    if game.CoreGui:FindFirstChild(LibraryName).Enabled then 
+        game.CoreGui:FindFirstChild(LibraryName).Enabled = false
+    else 
+        game.CoreGui:FindFirstChild(LibraryName).Enabled = true
+    end
 end
 
-function Utility:TweenObject(obj, properties, duration, ...)
-	tween:Create(obj, tweeninfo(duration, ...), properties):Play()
+function Library:Drag(obj)
+    local UserInputService = game:GetService("UserInputService")
+    
+    local gui = obj
+    
+    local dragging
+    local dragInput
+    local dragStart
+    local startPos
+    
+    local function update(input)
+        local delta = input.Position - dragStart
+        gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+    
+    gui.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = gui.Position
+    
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+    
+    gui.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+        end
+    end)
+    
+    UserInputService.InputChanged:Connect(function(input)
+        if input == dragInput and dragging then
+            update(input)
+        end
+    end)
 end
 
-local SettingsT = {
-
-}
-
-local Name = "EmptynessHub"
-
-pcall(function()
-
-	if not pcall(function() readfile(Name) end) then
-		writefile(Name, game:service'HttpService':JSONEncode(SettingsT))
-	end
-
-	Settings = game:service'HttpService':JSONEncode(readfile(Name))
-end)
-
-local LibName = tostring(math.random(1, 100))..tostring(math.random(1,50))..tostring(math.random(1, 100))
-
-function Emptyness:ToggleUI()
-	if game.CoreGui[LibName].Enabled then
-		game.CoreGui[LibName].Enabled = false
-	else
-		game.CoreGui[LibName].Enabled = true
-	end
-end
-
-function Emptyness:Destroy()
-	game.CoreGui[LibName]:Destroy()
-end
-
-function Emptyness.CreateLib(HubName, HubGame)
-	local selectedTab 
-	HubName = HubName or "Library"
+function Emptyness.CreateLib(HubGame,HubName)
+HubName = HubName or "Library"
 HubGame = HubGame or "HubGame idk"
 local ScreenGui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
@@ -100,7 +77,6 @@ local ImageButtonK = Instance.new("ImageButton")
 	local Player = game:GetService("Players").LocalPlayer
 
 	--Emptyness:Newnotify("Loaded" , "The Script Has Loaded", 4)
-Emptyness:DraggingEnabled(MainFrame)
 
 	ScreenGui.Parent = game.CoreGui
 	ScreenGui.Name = LibName
@@ -139,6 +115,7 @@ HubName.Name = "HubName"
 HubName.Parent = SideFrame
 HubName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 HubName.BackgroundTransparency = 1.000
+    HubName.BorderSizePixel = 0
 HubName.Position = UDim2.new(0, 0, 0.109467454, 0)
 HubName.Size = UDim2.new(0, 232, 0, 29)
 HubName.Font = Enum.Font.SourceSans
@@ -169,6 +146,7 @@ PlaceId.Name = "PlaceId"
 PlaceId.Parent = MainFrame
 PlaceId.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 PlaceId.BackgroundTransparency = 1.000
+    PlaceId.BorderSizePixel = 0
 PlaceId.Position = UDim2.new(0, 0, 0.83606559, 0)
 PlaceId.Size = UDim2.new(0, 121, 0, 59)
 PlaceId.Font = Enum.Font.SourceSans
@@ -192,6 +170,7 @@ pages.Name = "pages"
 pages.Parent = MainFrame
 pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 pages.BackgroundTransparency = 1.000
+    pages.BorderSizePixel = 0
 pages.Position = UDim2.new(0.400343657, 0, 0.0928961784, 0)
 pages.Size = UDim2.new(0, 347, 0, 330)
 
@@ -233,7 +212,9 @@ ImageButtonK.Image = "rbxassetid://9836076474"
 		Position = UDim2.new(ImageButtonK.Position.X.Scale, 0, 0.348852545, 0)
 	})
 	UserIconTween:Play()
-	
+
+    Library:Drag(MainFrame)
+
 	--notify
 	
 	function Emptyness:Newnotify(Text , Description, Length)
