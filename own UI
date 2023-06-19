@@ -78,6 +78,7 @@ end
 function Emptyness.CreateLib(HubName, HubGame)
 	local selectedTab 
 	HubName = HubName or "Library"
+HubGame = HubGame or "HubGame idk"
 local ScreenGui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
