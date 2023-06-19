@@ -50,6 +50,17 @@ local SettingsT = {
 
 }
 
+local Name = "EmptynessHub"
+
+pcall(function()
+
+	if not pcall(function() readfile(Name) end) then
+		writefile(Name, game:service'HttpService':JSONEncode(SettingsT))
+	end
+
+	Settings = game:service'HttpService':JSONEncode(readfile(Name))
+end)
+
 local LibName = tostring(math.random(1, 100))..tostring(math.random(1,50))..tostring(math.random(1, 100))
 
 function Emptyness:ToggleUI()
@@ -88,6 +99,7 @@ local ImageButtonK = Instance.new("ImageButton")
 	local Player = game:GetService("Players").LocalPlayer
 
 	--Emptyness:Newnotify("Loaded" , "The Script Has Loaded", 4)
+Emptyness:DraggingEnabled(MainFrame)
 
 	ScreenGui.Parent = game.CoreGui
 	ScreenGui.Name = LibName
