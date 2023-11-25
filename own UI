@@ -148,7 +148,17 @@ PlaceId.TextColor3 = Color3.fromRGB(255, 255, 255)
 PlaceId.TextScaled = true
 PlaceId.TextSize = 14.000
 PlaceId.TextWrapped = true
-
+	PlaceId.MouseButton1Click:Connect(function()
+		game:GetService("StarterGui"):SetCore("SendNotification",{
+			Title = "Copied",
+			Text = "you have copied the placeID",
+			Duration = 4
+		})
+		wait(0.5)
+		setclipboard("ID: "..game.PlaceId)
+	end)
+	
+	
 	TabHolder.Name = "TabHolder"
 	TabHolder.Parent = MainFrame
 	TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -170,7 +180,10 @@ X.TextColor3 = Color3.fromRGB(0, 0, 0)
 X.TextScaled = true
 X.TextSize = 14.000
 X.TextWrapped = true
-
+	X.MouseButton1Click:Connect(function()
+		ScreenGui:Destroy()
+	end)
+	
 UICorner_2.Parent = X
 
 UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(141, 88, 255)), ColorSequenceKeypoint.new(0.10, Color3.fromRGB(112, 143, 255)), ColorSequenceKeypoint.new(0.19, Color3.fromRGB(215, 67, 241)), ColorSequenceKeypoint.new(0.20, Color3.fromRGB(255, 16, 48)), ColorSequenceKeypoint.new(0.29, Color3.fromRGB(111, 18, 31)), ColorSequenceKeypoint.new(0.39, Color3.fromRGB(90, 60, 209)), ColorSequenceKeypoint.new(0.53, Color3.fromRGB(219, 79, 52)), ColorSequenceKeypoint.new(0.60, Color3.fromRGB(225, 79, 206)), ColorSequenceKeypoint.new(0.68, Color3.fromRGB(231, 88, 31)), ColorSequenceKeypoint.new(0.79, Color3.fromRGB(238, 141, 103)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
