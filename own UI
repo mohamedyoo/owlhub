@@ -269,6 +269,7 @@ UIGradient.Parent = X
 			game:GetService("TweenService"):Create(TabButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
 				TextColor3 = Color3.fromRGB(255, 255, 255),
 			}):Play()
+			return xTabs
 		end)
 	end
 
@@ -1018,7 +1019,5 @@ function Elements:Dropdown(Name,Listx,Callback)
 	return DropdownFunction
 end
 return Elements
-end
-return xTabs
 end
 return Library
