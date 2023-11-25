@@ -208,7 +208,7 @@ function xTabs:Tab(Name, xVisible)
 	end
 
 	Tab.Name = "Tab"
-	Tab.Parent = Tabs
+	Tab.Parent = tabFrames
 	Tab.Active = true
 	Tab.Visible = xVisible
 	Tab.BackgroundColor3 = Color3.fromRGB(31, 30, 46)
