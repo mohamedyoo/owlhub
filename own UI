@@ -70,7 +70,7 @@ local tabFrames = Instance.new("Frame")
 local tabListing = Instance.new("UIListLayout")
 local PlaceId = Instance.new("TextButton")
 local pages = Instance.new("Frame")
-local Tabs = Instance.new("Folder")
+local Page = Instance.new("Folder")
 local X = Instance.new("TextButton")
 local UICorner_2 = Instance.new("UICorner")
 local UIGradient = Instance.new("UIGradient")
@@ -171,8 +171,8 @@ pages.BackgroundTransparency = 1.000
 pages.Position = UDim2.new(0.400343657, 0, 0.0928961784, 0)
 pages.Size = UDim2.new(0.596219957, 0, 0.901639342, 0)
 
-Tabs.Name = "Pages"
-Tabs.Parent = pages
+Page.Name = "Pages"
+Page.Parent = pages
 
 X.Name = "X"
 X.Parent = MainFrame
@@ -249,15 +249,17 @@ function xTabs:Tab(Name, xVisible)
 
 	TabButton.MouseButton1Down:Connect(function()
 		Size()
-		for i, v in pairs(tabFrames:GetChildren()) do
+		for _, v in pairs(tabFrames:GetChildren()) do
 			if v:IsA("TextButton") then
 				v.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
 				v.TextColor3 = Color3.fromRGB(190, 190, 190)
 			end
 		end
 
-		for i, v in pairs(Tabs:GetChildren()) do
-			v.Visible = false
+		for _, v in pairs(tabFrames:GetChildren()) do
+			if v:IsA("Frame") then
+				v.Visible = false
+			end
 		end
 
 		Tab.Visible = true
@@ -266,8 +268,9 @@ function xTabs:Tab(Name, xVisible)
 		}):Play()
 		game:GetService("TweenService"):Create(TabButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
 			TextColor3 = Color3.fromRGB(255, 255, 255)
-			}):Play()
-		end)
+		}):Play()
+	end)
+end
 
         local Elements = {}
 
