@@ -2,7 +2,63 @@
 -- Version: 3.2
 
 -- Instances:
+local Library = {}
+-- Random UI Name
+local LibraryName = tostring(math.random(100000,200000))..tostring(math.random(100000,200000))..tostring(math.random(100000,200000))
 
+function Library:Toggle()
+	if game.CoreGui:FindFirstChild(LibraryName).Enabled then 
+		game.CoreGui:FindFirstChild(LibraryName).Enabled = false
+	else 
+		game.CoreGui:FindFirstChild(LibraryName).Enabled = true
+	end
+end
+
+function Library:Drag(obj)
+	local UserInputService = game:GetService("UserInputService")
+
+	local gui = obj
+
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+
+function Library:Create(xHubName,xGameName)
+	local xHubName = xHubName or "UI Library"
+	local xGameName = xGameName or "By Mapple#3045"
 local ScreenGui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
@@ -14,12 +70,15 @@ local tabFrames = Instance.new("Frame")
 local tabListing = Instance.new("UIListLayout")
 local PlaceId = Instance.new("TextButton")
 local pages = Instance.new("Frame")
-local Pages = Instance.new("Folder")
+local Tabs = Instance.new("Folder")
 local X = Instance.new("TextButton")
 local UICorner_2 = Instance.new("UICorner")
 local UIGradient = Instance.new("UIGradient")
 
 --Properties:
+function ScrollSize()
+	tabFrames.CanvasSize = UDim2.new(0, 0, 0, tabListing.AbsoluteContentSize.Y)
+end
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -45,7 +104,8 @@ gameHub.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 gameHub.BackgroundTransparency = 1.000
 gameHub.Position = UDim2.new(0, 0, 0.00295857992, 0)
 gameHub.Size = UDim2.new(0, 232, 0, 33)
-gameHub.Font = Enum.Font.SourceSans
+	gameHub.Font = Enum.Font.SourceSans
+	gameHub.Text = xGameName
 gameHub.TextColor3 = Color3.fromRGB(255, 255, 255)
 gameHub.TextScaled = true
 gameHub.TextSize = 14.000
@@ -57,7 +117,8 @@ HubName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 HubName.BackgroundTransparency = 1.000
 HubName.Position = UDim2.new(0, 0, 0.109467454, 0)
 HubName.Size = UDim2.new(0, 232, 0, 29)
-HubName.Font = Enum.Font.SourceSans
+	HubName.Font = Enum.Font.SourceSans
+	HubName.Text = xHubName
 HubName.TextColor3 = Color3.fromRGB(255, 255, 255)
 HubName.TextScaled = true
 HubName.TextSize = 14.000
@@ -109,8 +170,8 @@ pages.BackgroundTransparency = 1.000
 pages.Position = UDim2.new(0.400343657, 0, 0.0928961784, 0)
 pages.Size = UDim2.new(0.596219957, 0, 0.901639342, 0)
 
-Pages.Name = "Pages"
-Pages.Parent = pages
+Tabs.Name = "Pages"
+Tabs.Parent = pages
 
 X.Name = "X"
 X.Parent = MainFrame
@@ -136,13 +197,11 @@ local xTabs = {}
 
 function xTabs:Tab(Name, xVisible)
 	local Name = Name or "Tab"
-	local Tab = Instance.new("ScrollingFrame")
+	local Tab = Instance.new("Frame")
 	local TabListLayout = Instance.new("UIListLayout")
 	local TabButton = Instance.new("TextButton")
 
-	function ScrollSize()
-		-- Implement your ScrollSize function here
-	end
+	ScrollSize()
 
 	function Size()
 		Tab.CanvasSize = UDim2.new(0, 0, 0, TabListLayout.AbsoluteContentSize.Y)
@@ -155,7 +214,6 @@ function xTabs:Tab(Name, xVisible)
 	Tab.BackgroundColor3 = Color3.fromRGB(31, 30, 46)
 	Tab.BorderSizePixel = 0
 	Tab.Size = UDim2.new(0, 438, 0, 352)
-	Tab.ScrollBarThickness = 5
 
 	TabListLayout.Name = "TabListLayout"
 	TabListLayout.Parent = Tab
@@ -205,12 +263,8 @@ function xTabs:Tab(Name, xVisible)
 		}):Play()
 		game:GetService("TweenService"):Create(TabButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
 			TextColor3 = Color3.fromRGB(255, 255, 255)
-		}):Play()
-	end)
-	return xTabs
-end
+			}):Play()
+		end)
+		end
+	end
 
--- Example usage:
---xTabs:Tab("Tab 1", true)
---xTabs:Tab("Tab 2", false)
---xTabs:Tab("Tab 3", false)
