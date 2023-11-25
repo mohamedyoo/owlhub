@@ -80,8 +80,9 @@ function ScrollSize()
 	tabFrames.CanvasSize = UDim2.new(0, 0, 0, tabListing.AbsoluteContentSize.Y)
 end
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.Parent = game.CoreGui
+    ScreenGui.ResetOnSpawn = false 
+    ScreenGui.Name = LibraryName
 
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
@@ -193,6 +194,8 @@ UICorner_2.Parent = X
 UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(141, 88, 255)), ColorSequenceKeypoint.new(0.10, Color3.fromRGB(112, 143, 255)), ColorSequenceKeypoint.new(0.19, Color3.fromRGB(215, 67, 241)), ColorSequenceKeypoint.new(0.20, Color3.fromRGB(255, 16, 48)), ColorSequenceKeypoint.new(0.29, Color3.fromRGB(111, 18, 31)), ColorSequenceKeypoint.new(0.39, Color3.fromRGB(90, 60, 209)), ColorSequenceKeypoint.new(0.53, Color3.fromRGB(219, 79, 52)), ColorSequenceKeypoint.new(0.60, Color3.fromRGB(225, 79, 206)), ColorSequenceKeypoint.new(0.68, Color3.fromRGB(231, 88, 31)), ColorSequenceKeypoint.new(0.79, Color3.fromRGB(238, 141, 103)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
 UIGradient.Parent = X
 
+    Library:Drag(MainFrame)
+
 local xTabs = {}
 
 function xTabs:Tab(Name, xVisible)
@@ -267,4 +270,6 @@ function xTabs:Tab(Name, xVisible)
 		end)
 		end
 	end
-
+ return xTabs
+end
+return Library
