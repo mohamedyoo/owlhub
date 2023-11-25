@@ -67,8 +67,8 @@ local Line = Instance.new("Frame")
 local tabFrames = Instance.new("Frame")
 local tabListing = Instance.new("UIListLayout")
 local PlaceId = Instance.new("TextButton")
-local pages = Instance.new("Frame")
-local Pages = Instance.new("Folder")
+	local TabHolder = Instance.new("Frame")
+local Tab = Instance.new("Folder")
 local X = Instance.new("TextButton")
 local UICorner_2 = Instance.new("UICorner")
 local UIGradient = Instance.new("UIGradient")
@@ -149,15 +149,15 @@ PlaceId.TextScaled = true
 PlaceId.TextSize = 14.000
 PlaceId.TextWrapped = true
 
-pages.Name = "pages"
-pages.Parent = MainFrame
-pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-pages.BackgroundTransparency = 1.000
-pages.Position = UDim2.new(0.400343657, 0, 0.0928961784, 0)
-pages.Size = UDim2.new(0.596219957, 0, 0.901639342, 0)
+	TabHolder.Name = "TabHolder"
+	TabHolder.Parent = MainFrame
+	TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TabHolder.BackgroundTransparency = 1.000
+	TabHolder.Position = UDim2.new(0.400343657, 0, 0.0928961784, 0)
+	TabHolder.Size = UDim2.new(0.596219957, 0, 0.901639342, 0)
 
-Pages.Name = "Pages"
-Pages.Parent = pages
+Tab.Name = "Tabs"
+Tab.Parent = TabHolder
 
 X.Name = "X"
 X.Parent = MainFrame
@@ -195,14 +195,14 @@ function Tabs:NewTab(tabName)
 
 	local tabPage = Instance.new("Frame")
 	tabPage.Name = tabName
-	tabPage.Parent = Pages
+	tabPage.Parent = Tab
 	tabPage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	tabPage.BackgroundTransparency = 1
 	tabPage.Size = UDim2.new(1, 0, 1, 0)
 
 	tabButton.MouseButton1Click:Connect(function()
 		-- Show the selected tab page and hide others
-		for _, page in pairs(Pages:GetChildren()) do
+		for _, page in pairs(Tabs:GetChildren()) do
 			if page:IsA("Frame") then
 				page.Visible = (page.Name == tabName)
 			end
@@ -220,23 +220,50 @@ end
 local Elements = {}
 
 -- Function to create a label
-function Elements:Label(Name)
-	local label = Instance.new("TextLabel")
-	label.Name = Name
-	label.Parent = MainFrame
-	label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	label.BackgroundTransparency = 1.000
-	label.Position = UDim2.new(0, 0, 0, 0) -- You can adjust the position as needed
-	label.Size = UDim2.new(1, 0, 0, 30) -- You can adjust the size as needed
-	label.Font = Enum.Font.SourceSans
-	label.Text = Name
-	label.TextColor3 = Color3.fromRGB(255, 255, 255)
-	label.TextScaled = true
-	label.TextSize = 14.000
-	label.TextWrapped = true
+	function Elements:Label(Name)
+		local Name = Name or "Label"
+		local LabelFunction = {}
+		local LabelFrame = Instance.new("Frame")
+		local LabelFrameCorner = Instance.new("UICorner")
+		local Label = Instance.new("TextLabel")
 
-	return label
-end
+		LabelFrame.Name = tostring(Name).."_Label"
+		LabelFrame.Parent = Tabs
+		LabelFrame.BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+		LabelFrame.Position = UDim2.new(0.0456621014, 0, 0, 0)
+		LabelFrame.Size = UDim2.new(0, 408, 0, 35)
+
+		LabelFrameCorner.Name = "LabelFrameCorner"
+		LabelFrameCorner.Parent = LabelFrame
+
+		Label.Name = "Label"
+		Label.Parent = LabelFrame
+		Label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Label.BackgroundTransparency = 1.000
+		Label.BorderSizePixel = 0
+		Label.Size = UDim2.new(0, 408, 0, 35)
+		Label.Font = Enum.Font.Gotham
+		Label.Text = Name
+		Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+		Label.TextSize = 16.000
+
+		Label.MouseEnter:Connect(function()
+			game:GetService("TweenService"):Create(LabelFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+				BackgroundColor3 = Color3.fromRGB(63, 83, 255)
+			}):Play()
+		end)
+		Label.MouseLeave:Connect(function()
+			game:GetService("TweenService"):Create(LabelFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+				BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+			}):Play()
+		end)
+
+		function LabelFunction:UpdateLabel(Name)
+			Label.Text = Name
+			LabelHolder.Name = tostring(Name).."_Label"
+		end
+		return LabelFunction
+	end
 
 -- Example usage
 --Elements:Label("ExampleLabel")
@@ -249,7 +276,7 @@ function Elements:Toggle(Name, Callback)
 
 	local ToggleFrame = Instance.new("Frame")
 	ToggleFrame.Name = tostring(Name) .. "_Toggle"
-	ToggleFrame.Parent = Pages
+	ToggleFrame.Parent = Tabs
 	ToggleFrame.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
 	ToggleFrame.BorderSizePixel = 0
 	ToggleFrame.Size = UDim2.new(0, 408, 0, 35)
@@ -344,7 +371,7 @@ function Elements:Slider(Name, Min, Max, Callback)
 	local SliderValuePadding = Instance.new("UIPadding")
 
 	SliderFrame.Name = tostring(Name) .. "_Slider"
-	SliderFrame.Parent = pages -- Change 'pages' to the parent frame you want to use
+	SliderFrame.Parent = Tabs -- Change 'Tabs' to the parent frame you want to use
 	SliderFrame.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
 	SliderFrame.Size = UDim2.new(0, 408, 0, 50)
 
@@ -468,7 +495,7 @@ function Elements:Keybind(Name, xKey, Callback)
 	local KeybindButtonCorner = Instance.new("UICorner")
 
 	KeybindFrame.Name = tostring(Name) .. "_Keybind"
-	KeybindFrame.Parent = pages -- Change 'pages' to the parent frame you want to use
+	KeybindFrame.Parent = Tabs -- Change 'Tabs' to the parent frame you want to use
 	KeybindFrame.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
 	KeybindFrame.BorderSizePixel = 0
 	KeybindFrame.Size = UDim2.new(0, 408, 0, 35)
@@ -562,7 +589,7 @@ function Elements:Textbox(Name, Default, Callback)
 	local TextboxCorner = Instance.new("UICorner")
 
 	TextboxFrame.Name = tostring(Name).."_Textbox"
-	TextboxFrame.Parent = pages -- Change 'pages' to the parent frame you want to use
+	TextboxFrame.Parent = Tabs -- Change 'Tabs' to the parent frame you want to use
 	TextboxFrame.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
 	TextboxFrame.Size = UDim2.new(0, 408, 0, 35)
 
@@ -636,7 +663,7 @@ function Elements:Button(Name, Callback)
 	local ButtonPadding = Instance.new("UIPadding")
 
 	ButtonFrame.Name = tostring(Name).."_Button"
-	ButtonFrame.Parent = pages -- Change 'pages' to the parent frame you want to use
+	ButtonFrame.Parent = Tabs -- Change 'Tabs' to the parent frame you want to use
 	ButtonFrame.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
 	ButtonFrame.Size = UDim2.new(0, 408, 0, 35)
 
@@ -713,7 +740,7 @@ function Elements:Dropdown(Name,Listx,Callback)
 	local DropListLayout = Instance.new("UIListLayout")
 
 	DropdownFrame.Name = tostring(Name).."_Dropdown"
-	DropdownFrame.Parent = Pages
+	DropdownFrame.Parent = Tabs
 	DropdownFrame.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
 	DropdownFrame.BorderSizePixel = 0
 	DropdownFrame.Size = UDim2.new(0, 408, 0, 35)
@@ -776,7 +803,7 @@ function Elements:Dropdown(Name,Listx,Callback)
 	DropListLayout.Padding = UDim.new(0, 3)
 
 	DropListLayout.Changed:Connect(function()
-		Pages.CanvasSize = UDim2.new(0, 0, 0, DropListLayout.AbsoluteContentSize.Y)
+		Tabs.CanvasSize = UDim2.new(0, 0, 0, DropListLayout.AbsoluteContentSize.Y)
 	end)  
 
 	DropdownButton.MouseEnter:Connect(function()
@@ -791,7 +818,7 @@ function Elements:Dropdown(Name,Listx,Callback)
 	end)
 
 	local function DropElements(x)
-		for i,v in pairs(pages:GetChildren()) do 
+		for i,v in pairs(Tabs:GetChildren()) do 
 			if v:IsA("Frame") and v ~= DropdownFrame then 
 				v.Visible = x
 			end
@@ -813,12 +840,12 @@ function Elements:Dropdown(Name,Listx,Callback)
 			opened = true 
 			DropList.Visible = true
 			DropList:TweenSize(UDim2.new(0, 408, 0, DropListLayout.AbsoluteContentSize.Y), "InOut", "Linear", 0.1)
-			pages.CanvasSize = UDim2.new(0,0,0,DropListLayout.AbsoluteContentSize.Y + 100)
+			Tabs.CanvasSize = UDim2.new(0,0,0,DropListLayout.AbsoluteContentSize.Y + 100)
 			wait(0.1)
 			game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
 				ImageColor3 = Color3.fromRGB(55, 74, 251)
 			}):Play()
-			pages.CanvasSize = UDim2.new(0,0,0,DropListLayout.AbsoluteContentSize.Y + 100)
+			Tabs.CanvasSize = UDim2.new(0,0,0,DropListLayout.AbsoluteContentSize.Y + 100)
 		end 
 	end)  
 
