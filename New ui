@@ -2821,6 +2821,56 @@ function Elements:NewNofity(Text)
 				setcolor({h,s,v})
 			end
 
+function Elements:NewKey(Keyname, Pin, callback)
+    local keyButton = Instance.new("TextButton")
+    keyButton.Name = Keyname
+    keyButton.Parent = sectionInners
+    keyButton.BackgroundColor3 = themeList.ElementColor
+    keyButton.Position = UDim2.new(0, 0, 0, 0) -- Set the appropriate position
+    keyButton.Size = UDim2.new(0, 100, 0, 30) -- Set the appropriate size
+    keyButton.Font = Enum.Font.SourceSans
+    keyButton.Text = Keyname
+    keyButton.TextColor3 = themeList.TextColor
+    keyButton.TextSize = 14.000
+    keyButton.MouseButton1Click:Connect(callback)
+
+    -- Optionally, you can add a PIN verification
+    local pinVerification = Instance.new("TextBox")
+    pinVerification.Name = "PinVerification"
+    pinVerification.Parent = keyButton
+    pinVerification.BackgroundColor3 = themeList.SchemeColor
+    pinVerification.Position = UDim2.new(0, 0, 1, 0)
+    pinVerification.Size = UDim2.new(0, 100, 0, 20)
+    pinVerification.Font = Enum.Font.SourceSans
+    pinVerification.Text = ""
+    pinVerification.TextColor3 = themeList.TextColor
+    pinVerification.TextSize = 12.000
+    pinVerification.Visible = false
+
+    keyButton.MouseEnter:Connect(function()
+        pinVerification.Visible = true
+    end)
+
+    keyButton.MouseLeave:Connect(function()
+        pinVerification.Visible = false
+    end)
+
+    -- Add PIN verification logic
+    keyButton.MouseButton1Click:Connect(function()
+        local enteredPin = pinVerification.Text
+        if enteredPin == Pin then
+            -- Correct PIN, execute callback
+            callback()
+        else
+            -- Incorrect PIN, handle accordingly (show error message, etc.)
+            print("Incorrect PIN")
+        end
+    end)
+
+    return keyButton
+end
+
+
 			function Elements:NewLabel(title)
 				local labelFunctions = {}
 				local label = Instance.new("TextLabel")
