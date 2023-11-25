@@ -268,8 +268,146 @@ function xTabs:Tab(Name, xVisible)
 			TextColor3 = Color3.fromRGB(255, 255, 255)
 			}):Play()
 		end)
-		end
-	end
+
+        local Elements = {}
+
+function Elements:Dropdown(Name, List, Callback)
+    local Name = Name or "Dropdown"
+    local DropdownFunction = {}
+    local Callback = Callback or function() end
+    local DropSize = 35
+    local opened = false
+
+    -- UI components
+    local DropdownFrame = Instance.new("Frame")
+    local DropdownFrameCorner = Instance.new("UICorner")
+    local DropdownName = Instance.new("TextLabel")
+    local DropdownNamePadding = Instance.new("UIPadding")
+    local DropdownIcon = Instance.new("ImageButton")
+    local DropdownButton = Instance.new("TextButton")
+    local DropList = Instance.new("Frame")
+    local DropListLayout = Instance.new("UIListLayout")
+
+    -- Setting up DropdownFrame
+    DropdownFrame.Name = tostring(Name).."_Dropdown"
+    DropdownFrame.Parent = Tab
+    DropdownFrame.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+    DropdownFrame.BorderSizePixel = 0
+    DropdownFrame.Size = UDim2.new(0, 408, 0, 35)
+
+    -- ... (rest of the DropdownFrame setup)
+
+    -- Event handlers for DropdownButton
+    DropdownButton.MouseEnter:Connect(function()
+        TweenBackgroundColor(DropdownFrame, Color3.fromRGB(48, 51, 70))
+    end)
+
+    DropdownButton.MouseLeave:Connect(function()
+        TweenBackgroundColor(DropdownFrame, Color3.fromRGB(40, 42, 60))
+    end)
+
+    -- Function to handle dropdown opening/closing
+    DropdownButton.MouseButton1Down:Connect(function()
+        if opened then
+            CloseDropdown()
+        else
+            OpenDropdown()
+        end
+    end)
+
+    -- Iterating through List to create dropdown options
+    for _, v in pairs(List) do
+        CreateDropdownOption(v)
+    end
+
+    -- Function to update dropdown options
+    function DropdownFunction:UpdateDropdown(NewList)
+        for _, v in pairs(NewList) do
+            CreateDropdownOption(v)
+        end
+    end
+
+    -- Helper function to close the dropdown
+    function CloseDropdown()
+        opened = false
+        TweenDropdownSize(UDim2.new(0, 408, 0, 35))
+        game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+            ImageColor3 = Color3.fromRGB(255, 255, 255)
+        }):Play()
+        DropList.Visible = false
+        DropElements(true)
+        Size()
+    end
+
+    -- Helper function to open the dropdown
+    function OpenDropdown()
+        opened = true
+        DropList.Visible = true
+        TweenDropdownSize(UDim2.new(0, 408, 0, DropListLayout.AbsoluteContentSize.Y))
+        Tab.CanvasSize = UDim2.new(0, 0, 0, DropListLayout.AbsoluteContentSize.Y + 100)
+        game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+            ImageColor3 = Color3.fromRGB(55, 74, 251)
+        }):Play()
+        Tab.CanvasSize = UDim2.new(0, 0, 0, DropListLayout.AbsoluteContentSize.Y + 100)
+    end
+
+    -- Helper function to create a dropdown option
+    function CreateDropdownOption(value)
+        local Option = Instance.new("TextButton")
+        local OptionCorner = Instance.new("UICorner")
+
+        -- ... (rest of the Option setup)
+
+        -- Event handlers for Option
+        Option.MouseButton1Down:Connect(function()
+            Callback(value)
+            ResetOptionColors()
+            TweenTextColor(Option, Color3.fromRGB(55, 74, 251))
+            CloseDropdown()
+        end)
+
+        Option.MouseEnter:Connect(function()
+            TweenBackgroundColor(Option, Color3.fromRGB(48, 51, 70))
+        end)
+
+        Option.MouseLeave:Connect(function()
+            TweenBackgroundColor(Option, Color3.fromRGB(40, 42, 60))
+        end)
+    end
+
+    -- Helper function to reset text colors of all options
+    function ResetOptionColors()
+        for _, option in pairs(DropList:GetChildren()) do
+            if option:IsA("TextButton") then
+                option.TextColor3 = Color3.fromRGB(255, 255, 255)
+            end
+        end
+    end
+
+    -- Helper function for tweening background color
+    function TweenBackgroundColor(gui, targetColor)
+        game:GetService("TweenService"):Create(gui, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+            BackgroundColor3 = targetColor
+        }):Play()
+    end
+
+    -- Helper function for tweening text color
+    function TweenTextColor(gui, targetColor)
+        game:GetService("TweenService"):Create(gui, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+            TextColor3 = targetColor
+        }):Play()
+    end
+
+    -- Helper function for tweening dropdown size
+    function TweenDropdownSize(targetSize)
+        DropList:TweenSize(targetSize, "InOut", "Linear", 0.1)
+    end
+
+    return DropdownFunction
+end
+
  return xTabs
+end
+ return Elements
 end
 return Library
