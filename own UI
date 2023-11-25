@@ -60,357 +60,227 @@ function Library:Create(xHubName,xGameName)
 	local xHubName = xHubName or "UI Library"
 	local xGameName = xGameName or "By Mapple#3045"
 local ScreenGui = Instance.new("ScreenGui")
-local MainFrame = Instance.new("Frame")
-local UICorner = Instance.new("UICorner")
-local SideFrame = Instance.new("Frame")
-local gameHub = Instance.new("TextLabel")
+local Main = Instance.new("Frame")
+local MainCorner = Instance.new("UICorner")
+local Sidebar = Instance.new("Frame")
+local SidebarCorner = Instance.new("UICorner")
 local HubName = Instance.new("TextLabel")
+local Filler = Instance.new("Frame")
 local Line = Instance.new("Frame")
-local tabFrames = Instance.new("Frame")
-local tabListing = Instance.new("UIListLayout")
-local PlaceId = Instance.new("TextButton")
-local pages = Instance.new("Frame")
-local Page = Instance.new("Folder")
+local ActualSide = Instance.new("ScrollingFrame")
+local ActualSideListLayout = Instance.new("UIListLayout")
+local SideLine = Instance.new("Frame")
+local GameName = Instance.new("TextLabel")
+local TabHolder = Instance.new("Frame")
+local Tabs = Instance.new("Folder")
 local X = Instance.new("TextButton")
-local UICorner_2 = Instance.new("UICorner")
-local UIGradient = Instance.new("UIGradient")
 
 --Properties:
-function ScrollSize()
-	tabFrames.CanvasSize = UDim2.new(0, 0, 0, tabListing.AbsoluteContentSize.Y)
-end
 
-ScreenGui.Parent = game.CoreGui
-    ScreenGui.ResetOnSpawn = false 
-    ScreenGui.Name = LibraryName
+	function ScrollSize()
+		ActualSide.CanvasSize = UDim2.new(0, 0, 0, ActualSideListLayout.AbsoluteContentSize.Y)
+	end
 
-MainFrame.Name = "MainFrame"
-MainFrame.Parent = ScreenGui
-MainFrame.BackgroundColor3 = Color3.fromRGB(0, 29, 29)
-MainFrame.Position = UDim2.new(0.112565249, 0, 0.0602816977, 0)
-MainFrame.Size = UDim2.new(0.725324035, 0, 0.913173676, 0)
+	ScreenGui.Parent = game.CoreGui
+	ScreenGui.ResetOnSpawn = false 
+	ScreenGui.Name = LibraryName
+	
+Main.Name = "Main"
+Main.Parent = ScreenGui
+Main.BackgroundColor3 = Color3.fromRGB(0, 30, 46)
+Main.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.0361415744, 0, 0.279565513, 0)
+Main.Size = UDim2.new(0, 580, 0, 370)
 
-UICorner.CornerRadius = UDim.new(0, 11)
-UICorner.Parent = MainFrame
+MainCorner.CornerRadius = UDim.new(0, 12)
+MainCorner.Name = "MainCorner"
+MainCorner.Parent = Main
 
-SideFrame.Name = "SideFrame"
-SideFrame.Parent = MainFrame
-SideFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SideFrame.BackgroundTransparency = 1.000
-SideFrame.Size = UDim2.new(0.40206185, 0, 0.928961754, 0)
+Sidebar.Name = "Sidebar"
+Sidebar.Parent = Main
+Sidebar.BackgroundColor3 = Color3.fromRGB(0, 42, 60)
+Sidebar.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Sidebar.BorderSizePixel = 0
+Sidebar.Size = UDim2.new(0, 140, 0, 370)
 
-gameHub.Name = "gameHub"
-gameHub.Parent = SideFrame
-gameHub.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-gameHub.BackgroundTransparency = 1.000
-gameHub.Position = UDim2.new(0, 0, 0.00295857992, 0)
-gameHub.Size = UDim2.new(0, 232, 0, 33)
-	gameHub.Font = Enum.Font.SourceSans
-	gameHub.Text = xGameName
-gameHub.TextColor3 = Color3.fromRGB(255, 255, 255)
-gameHub.TextScaled = true
-gameHub.TextSize = 14.000
-gameHub.TextWrapped = true
+SidebarCorner.Name = "SidebarCorner"
+SidebarCorner.Parent = Sidebar
 
 HubName.Name = "HubName"
-HubName.Parent = SideFrame
+HubName.Parent = Sidebar
 HubName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 HubName.BackgroundTransparency = 1.000
-HubName.Position = UDim2.new(0, 0, 0.109467454, 0)
-HubName.Size = UDim2.new(0, 232, 0, 29)
-	HubName.Font = Enum.Font.SourceSans
+HubName.BorderColor3 = Color3.fromRGB(0, 0, 0)
+HubName.BorderSizePixel = 0
+HubName.Position = UDim2.new(0, 0, 0.024324324, 0)
+HubName.Size = UDim2.new(0, 140, 0, 21)
+	HubName.Font = Enum.Font.Gotham
 	HubName.Text = xHubName
-HubName.TextColor3 = Color3.fromRGB(255, 255, 255)
+HubName.TextColor3 = Color3.fromRGB(0, 255, 255)
 HubName.TextScaled = true
 HubName.TextSize = 14.000
 HubName.TextWrapped = true
 
+Filler.Name = "Filler"
+Filler.Parent = Sidebar
+Filler.BackgroundColor3 = Color3.fromRGB(0, 42, 60)
+Filler.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Filler.BorderSizePixel = 0
+Filler.Size = UDim2.new(0, 9, 0, 370)
+
 Line.Name = "Line"
-Line.Parent = SideFrame
-Line.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
-Line.Position = UDim2.new(0, 0, 0.100591719, 0)
-Line.Size = UDim2.new(0, 233, 0, 3)
+Line.Parent = Sidebar
+Line.BackgroundColor3 = Color3.fromRGB(0, 75, 75)
+Line.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Line.BorderSizePixel = 0
+Line.Position = UDim2.new(0, 0, 0.148648649, 0)
+Line.Size = UDim2.new(0, 121, 0, 2)
 
-tabFrames.Name = "tabFrames"
-tabFrames.Parent = SideFrame
-tabFrames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-tabFrames.BackgroundTransparency = 1.000
-tabFrames.Position = UDim2.new(0, 0, 0.195266277, 0)
-tabFrames.Size = UDim2.new(0, 233, 0, 272)
+ActualSide.Name = "ActualSide"
+ActualSide.Parent = Sidebar
+ActualSide.Active = true
+ActualSide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ActualSide.BackgroundTransparency = 1.000
+ActualSide.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ActualSide.BorderSizePixel = 0
+ActualSide.Position = UDim2.new(0, 0, 0.172972977, 0)
+ActualSide.Size = UDim2.new(0, 139, 0, 297)
+ActualSide.CanvasSize = UDim2.new(0, 0, 0, 0)
+ActualSide.ScrollBarThickness = 0
 
-tabListing.Name = "tabListing"
-tabListing.Parent = tabFrames
-tabListing.SortOrder = Enum.SortOrder.LayoutOrder
+ActualSideListLayout.Name = "ActualSideListLayout"
+ActualSideListLayout.Parent = ActualSide
+ActualSideListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-PlaceId.Name = "PlaceId"
-PlaceId.Parent = MainFrame
-PlaceId.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-PlaceId.BackgroundTransparency = 1.000
-PlaceId.Position = UDim2.new(1.31089255e-08, 0, 0.928961754, 0)
-PlaceId.Size = UDim2.new(0.400343657, 0, 0.0683060139, 0)
-PlaceId.Font = Enum.Font.SourceSans
-PlaceId.Text = "Copy place ID"
-PlaceId.TextColor3 = Color3.fromRGB(255, 255, 255)
-PlaceId.TextScaled = true
-PlaceId.TextSize = 14.000
-PlaceId.TextWrapped = true
-PlaceId.MouseButton1Click:Connect(function()
-	game:GetService("StarterGui"):SetCore("SendNotification",{
-		Title = "Copied",
-		Text = "you have copied the placeID",
-		Duration = 4
-	})
-	wait(0.5)
-	setclipboard("ID: "..game.PlaceId)
-end)
+SideLine.Name = "SideLine"
+SideLine.Parent = Sidebar
+SideLine.BackgroundColor3 = Color3.fromRGB(0, 20, 20)
+SideLine.BorderColor3 = Color3.fromRGB(0, 0, 0)
+SideLine.BorderSizePixel = 0
+SideLine.Size = UDim2.new(0, 2, 0, 370)
 
-pages.Name = "pages"
-pages.Parent = MainFrame
-pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-pages.BackgroundTransparency = 1.000
-pages.Position = UDim2.new(0.400343657, 0, 0.0928961784, 0)
-pages.Size = UDim2.new(0.596219957, 0, 0.901639342, 0)
+GameName.Name = "GameName"
+GameName.Parent = Sidebar
+GameName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GameName.BackgroundTransparency = 1.000
+GameName.BorderColor3 = Color3.fromRGB(0, 0, 0)
+GameName.BorderSizePixel = 0
+GameName.Position = UDim2.new(0, 0, 0.0810810775, 0)
+GameName.Size = UDim2.new(0, 141, 0, 25)
+	GameName.Font = Enum.Font.Gotham
+	GameName.Text = xGameName
+GameName.TextColor3 = Color3.fromRGB(0, 190, 190)
+GameName.TextScaled = true
+GameName.TextSize = 14.000
+GameName.TextWrapped = true
 
-Page.Name = "Pages"
-Page.Parent = pages
+TabHolder.Name = "TabHolder"
+TabHolder.Parent = Main
+TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TabHolder.BackgroundTransparency = 1.000
+TabHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TabHolder.BorderSizePixel = 0
+TabHolder.Position = UDim2.new(0.241379306, 0, 0.105405405, 0)
+TabHolder.Size = UDim2.new(0, 440, 0, 331)
+
+Tabs.Name = "Tabs"
+Tabs.Parent = TabHolder
 
 X.Name = "X"
-X.Parent = MainFrame
+X.Parent = Main
 X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-X.Position = UDim2.new(0.926116824, 0, 0, 0)
-X.Size = UDim2.new(0.0738831609, 0, 0.0819672123, 0)
+X.BackgroundTransparency = 1.000
+X.BorderColor3 = Color3.fromRGB(0, 0, 0)
+X.BorderSizePixel = 0
+X.Position = UDim2.new(0.906896532, 0, 0, 0)
+X.Size = UDim2.new(0, 54, 0, 39)
 X.Font = Enum.Font.SourceSans
 X.Text = "X"
-X.TextColor3 = Color3.fromRGB(0, 0, 0)
+X.TextColor3 = Color3.fromRGB(255, 255, 255)
 X.TextScaled = true
 X.TextSize = 14.000
-X.TextWrapped = true
-X.MouseButton1Click:Connect(function()
-	ScreenGui:Destroy()
-end)
+	X.TextWrapped = true
+	X.MouseButton1Click:Connect(function()
+		ScreenGui:Destroy()
+	end)
+	
+	Library:Drag(Main)
 
-UICorner_2.Parent = X
+	local xTabs = {}
 
-UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(141, 88, 255)), ColorSequenceKeypoint.new(0.10, Color3.fromRGB(112, 143, 255)), ColorSequenceKeypoint.new(0.19, Color3.fromRGB(215, 67, 241)), ColorSequenceKeypoint.new(0.20, Color3.fromRGB(255, 16, 48)), ColorSequenceKeypoint.new(0.29, Color3.fromRGB(111, 18, 31)), ColorSequenceKeypoint.new(0.39, Color3.fromRGB(90, 60, 209)), ColorSequenceKeypoint.new(0.53, Color3.fromRGB(219, 79, 52)), ColorSequenceKeypoint.new(0.60, Color3.fromRGB(225, 79, 206)), ColorSequenceKeypoint.new(0.68, Color3.fromRGB(231, 88, 31)), ColorSequenceKeypoint.new(0.79, Color3.fromRGB(238, 141, 103)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
-UIGradient.Parent = X
+	function xTabs:Tab(Name,xVisible)
+		local Name = Name or "Tab"
+		local Tab = Instance.new("ScrollingFrame")
+		local TabListLayout = Instance.new("UIListLayout")
+		local TabButton = Instance.new("TextButton")
 
-    Library:Drag(MainFrame)
+		ScrollSize()
 
-local xTabs = {}
-
-function xTabs:Tab(Name, xVisible)
-	local Name = Name or "Tab"
-	local Tab = Instance.new("Frame")
-	local TabListLayout = Instance.new("UIListLayout")
-	local TabButton = Instance.new("TextButton")
-
-	ScrollSize()
-
-	function Size()
-		Tab.CanvasSize = UDim2.new(0, 0, 0, TabListLayout.AbsoluteContentSize.Y)
-	end
-
-	Tab.Name = "Tab"
-	Tab.Parent = tabFrames
-	Tab.Active = true
-	Tab.Visible = xVisible
-	Tab.BackgroundColor3 = Color3.fromRGB(31, 30, 46)
-	Tab.BorderSizePixel = 0
-	Tab.Size = UDim2.new(0, 438, 0, 352)
-
-	TabListLayout.Name = "TabListLayout"
-	TabListLayout.Parent = Tab
-	TabListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-	TabListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-	TabListLayout.Padding = UDim.new(0, 5)
-
-	TabButton.Name = "TabButton"
-	TabButton.Parent = tabFrames
-	TabButton.BackgroundColor3 = Color3.fromRGB(55, 74, 251)
-	TabButton.BorderSizePixel = 0
-	TabButton.Size = UDim2.new(0, 139, 0, 35)
-	TabButton.Font = Enum.Font.Gotham
-	TabButton.Text = Name
-	TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-	TabButton.TextSize = 14.000
-	TabButton.ZIndex = 2
-
-	Size()
-	Tab.ChildAdded:Connect(Size)
-	Tab.ChildRemoved:Connect(Size)
-
-	if xVisible then
-		TabButton.BackgroundColor3 = Color3.fromRGB(55, 74, 251)
-		TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-	else
-		TabButton.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
-		TabButton.TextColor3 = Color3.fromRGB(190, 190, 190)
-	end
-
-	TabButton.MouseButton1Down:Connect(function()
-		Size()
-		for _, v in pairs(tabFrames:GetChildren()) do
-			if v:IsA("TextButton") then
-				v.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
-				v.TextColor3 = Color3.fromRGB(190, 190, 190)
-			end
+		function Size()
+			Tab.CanvasSize = UDim2.new(0, 0, 0, TabListLayout.AbsoluteContentSize.Y)
 		end
 
-		for _, v in pairs(tabFrames:GetChildren()) do
-			if v:IsA("Frame") then
+		Tab.Name = "Tab"
+		Tab.Parent = Tabs
+		Tab.Active = true
+		Tab.Visible = xVisible
+		Tab.BackgroundColor3 = Color3.fromRGB(31, 30, 46)
+		Tab.BorderSizePixel = 0
+		Tab.Size = UDim2.new(0, 438, 0, 352)
+		Tab.ScrollBarThickness = 5
+
+		TabListLayout.Name = "TabListLayout"
+		TabListLayout.Parent = Tab
+		TabListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		TabListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		TabListLayout.Padding = UDim.new(0, 5)
+
+		TabButton.Name = "TabButton"
+		TabButton.Parent = ActualSide
+		TabButton.BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+		TabButton.BorderSizePixel = 0
+		TabButton.Size = UDim2.new(0, 139, 0, 35)
+		TabButton.Font = Enum.Font.Gotham
+		TabButton.Text = Name
+		TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TabButton.TextSize = 14.000
+		TabButton.ZIndex = 2
+
+		Size()
+		Tab.ChildAdded:Connect(Size)
+		Tab.ChildRemoved:Connect(Size)
+
+		if xVisible then 
+			TabButton.BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+			TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+		else 
+			TabButton.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+			TabButton.TextColor3 = Color3.fromRGB(190, 190, 190)
+		end
+
+		TabButton.MouseButton1Down:Connect(function()
+			Size()
+			for i,v in pairs(ActualSide:GetChildren()) do 
+				if v:IsA("TextButton") then 
+					v.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+					v.TextColor3 = Color3.fromRGB(190, 190, 190)
+				end
+			end
+
+			for i,v in pairs(Tabs:GetChildren()) do
 				v.Visible = false
 			end
-		end
 
-		Tab.Visible = true
-		game:GetService("TweenService"):Create(TabButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-			BackgroundColor3 = Color3.fromRGB(55, 74, 251)
-		}):Play()
-		game:GetService("TweenService"):Create(TabButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-			TextColor3 = Color3.fromRGB(255, 255, 255)
-		}):Play()
-	end)
-end
-
-        local Elements = {}
-
-function Elements:Dropdown(Name, List, Callback)
-    local Name = Name or "Dropdown"
-    local DropdownFunction = {}
-    local Callback = Callback or function() end
-    local DropSize = 35
-    local opened = false
-
-    -- UI components
-    local DropdownFrame = Instance.new("Frame")
-    local DropdownFrameCorner = Instance.new("UICorner")
-    local DropdownName = Instance.new("TextLabel")
-    local DropdownNamePadding = Instance.new("UIPadding")
-    local DropdownIcon = Instance.new("ImageButton")
-    local DropdownButton = Instance.new("TextButton")
-    local DropList = Instance.new("Frame")
-    local DropListLayout = Instance.new("UIListLayout")
-
-    -- Setting up DropdownFrame
-    DropdownFrame.Name = tostring(Name).."_Dropdown"
-    DropdownFrame.Parent = Tab
-    DropdownFrame.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
-    DropdownFrame.BorderSizePixel = 0
-    DropdownFrame.Size = UDim2.new(0, 408, 0, 35)
-
-    -- ... (rest of the DropdownFrame setup)
-
-    -- Event handlers for DropdownButton
-    DropdownButton.MouseEnter:Connect(function()
-        TweenBackgroundColor(DropdownFrame, Color3.fromRGB(48, 51, 70))
-    end)
-
-    DropdownButton.MouseLeave:Connect(function()
-        TweenBackgroundColor(DropdownFrame, Color3.fromRGB(40, 42, 60))
-    end)
-
-    -- Function to handle dropdown opening/closing
-    DropdownButton.MouseButton1Down:Connect(function()
-        if opened then
-            CloseDropdown()
-        else
-            OpenDropdown()
-        end
-    end)
-
-    -- Iterating through List to create dropdown options
-    for _, v in pairs(List) do
-        CreateDropdownOption(v)
-    end
-
-    -- Function to update dropdown options
-    function DropdownFunction:UpdateDropdown(NewList)
-        for _, v in pairs(NewList) do
-            CreateDropdownOption(v)
-        end
-    end
-
-    -- Helper function to close the dropdown
-    function CloseDropdown()
-        opened = false
-        TweenDropdownSize(UDim2.new(0, 408, 0, 35))
-        game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-            ImageColor3 = Color3.fromRGB(255, 255, 255)
-        }):Play()
-        DropList.Visible = false
-        DropElements(true)
-        Size()
-    end
-
-    -- Helper function to open the dropdown
-    function OpenDropdown()
-        opened = true
-        DropList.Visible = true
-        TweenDropdownSize(UDim2.new(0, 408, 0, DropListLayout.AbsoluteContentSize.Y))
-        Tab.CanvasSize = UDim2.new(0, 0, 0, DropListLayout.AbsoluteContentSize.Y + 100)
-        game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-            ImageColor3 = Color3.fromRGB(55, 74, 251)
-        }):Play()
-        Tab.CanvasSize = UDim2.new(0, 0, 0, DropListLayout.AbsoluteContentSize.Y + 100)
-    end
-
-    -- Helper function to create a dropdown option
-    function CreateDropdownOption(value)
-        local Option = Instance.new("TextButton")
-        local OptionCorner = Instance.new("UICorner")
-
-        -- ... (rest of the Option setup)
-
-        -- Event handlers for Option
-        Option.MouseButton1Down:Connect(function()
-            Callback(value)
-            ResetOptionColors()
-            TweenTextColor(Option, Color3.fromRGB(55, 74, 251))
-            CloseDropdown()
-        end)
-
-        Option.MouseEnter:Connect(function()
-            TweenBackgroundColor(Option, Color3.fromRGB(48, 51, 70))
-        end)
-
-        Option.MouseLeave:Connect(function()
-            TweenBackgroundColor(Option, Color3.fromRGB(40, 42, 60))
-        end)
-    end
-
-    -- Helper function to reset text colors of all options
-    function ResetOptionColors()
-        for _, option in pairs(DropList:GetChildren()) do
-            if option:IsA("TextButton") then
-                option.TextColor3 = Color3.fromRGB(255, 255, 255)
-            end
-        end
-    end
-
-    -- Helper function for tweening background color
-    function TweenBackgroundColor(gui, targetColor)
-        game:GetService("TweenService"):Create(gui, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-            BackgroundColor3 = targetColor
-        }):Play()
-    end
-
-    -- Helper function for tweening text color
-    function TweenTextColor(gui, targetColor)
-        game:GetService("TweenService"):Create(gui, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-            TextColor3 = targetColor
-        }):Play()
-    end
-
-    -- Helper function for tweening dropdown size
-    function TweenDropdownSize(targetSize)
-        DropList:TweenSize(targetSize, "InOut", "Linear", 0.1)
-    end
-
-    return DropdownFunction
-end
-
- return xTabs
-end
- return Elements
+			Tab.Visible = true
+			game:GetService("TweenService"):Create(TabButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+				BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+			}):Play()
+			game:GetService("TweenService"):Create(TabButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+				TextColor3 = Color3.fromRGB(255, 255, 255)
+			}):Play()
+		end)
+	end
+	return xTabs
 end
 return Library
