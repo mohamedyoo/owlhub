@@ -57,6 +57,8 @@ function Library:Drag(obj)
 end
 
 function Library:Create(xHubName,xGameName)
+	local xHubName = xHubName or "UI Library"
+	local xGameName = xGameName or "By Mapple#3045"
 	local ScreenGui = Instance.new("ScreenGui")
 	local MainFrame = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
