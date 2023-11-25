@@ -281,6 +281,119 @@ X.TextSize = 14.000
 			}):Play()
 		end)
 	end
+	local Elements = {}
+
+	function Elements:Label(Name)
+		local Name = Name or "Label"
+		local LabelFunction = {}
+		local LabelFrame = Instance.new("Frame")
+		local LabelFrameCorner = Instance.new("UICorner")
+		local Label = Instance.new("TextLabel")
+
+		LabelFrame.Name = tostring(Name).."_Label"
+		LabelFrame.Parent = Tab
+		LabelFrame.BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+		LabelFrame.Position = UDim2.new(0.0456621014, 0, 0, 0)
+		LabelFrame.Size = UDim2.new(0, 408, 0, 35)
+
+		LabelFrameCorner.Name = "LabelFrameCorner"
+		LabelFrameCorner.Parent = LabelFrame
+
+		Label.Name = "Label"
+		Label.Parent = LabelFrame
+		Label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Label.BackgroundTransparency = 1.000
+		Label.BorderSizePixel = 0
+		Label.Size = UDim2.new(0, 408, 0, 35)
+		Label.Font = Enum.Font.Gotham
+		Label.Text = Name
+		Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+		Label.TextSize = 16.000
+
+		Label.MouseEnter:Connect(function()
+			game:GetService("TweenService"):Create(LabelFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+				BackgroundColor3 = Color3.fromRGB(63, 83, 255)
+			}):Play()
+		end)
+		Label.MouseLeave:Connect(function()
+			game:GetService("TweenService"):Create(LabelFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+				BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+			}):Play()
+		end)
+
+		function LabelFunction:UpdateLabel(Name)
+			Label.Text = Name
+			LabelHolder.Name = tostring(Name).."_Label"
+		end
+		return LabelFunction
+	end
+
+	function Elements:Button(Name,Callback)
+		local Name = Name or "Button"
+		local ButtonFunction = {}
+		local Callback = Callback or function () end
+		local ButtonFrame = Instance.new("Frame")
+		local ButtonFrameCorner = Instance.new("UICorner")
+		local Button = Instance.new("TextButton")
+		local ButtonCorner = Instance.new("UICorner")
+		local ButtonPadding = Instance.new("UIPadding")
+
+		ButtonFrame.Name = tostring(Name).."_Button"
+		ButtonFrame.Parent = Tab
+		ButtonFrame.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+		ButtonFrame.Size = UDim2.new(0, 408, 0, 35)
+
+		ButtonFrameCorner.Name = "ButtonFrameCorner"
+		ButtonFrameCorner.Parent = ButtonFrame
+
+		Button.Name = "Button"
+		Button.Parent = ButtonFrame
+		Button.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+		Button.Size = UDim2.new(0, 408, 0, 35)
+		Button.Font = Enum.Font.Gotham
+		Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+		Button.TextSize = 16.000
+		Button.Text = Name
+		Button.TextXAlignment = Enum.TextXAlignment.Left
+		Button.ZIndex = 2
+
+		ButtonCorner.Name = "ButtonCorner"
+		ButtonCorner.Parent = Button
+
+		ButtonPadding.Name = "ButtonPadding"
+		ButtonPadding.Parent = Button
+		ButtonPadding.PaddingLeft = UDim.new(0, 10)
+
+		Button.MouseButton1Down:Connect(function()
+			game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+				BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+			}):Play()
+			wait(0.1)
+			game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+				BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+			}):Play()
+			pcall(Callback)
+		end)
+
+		Button.MouseEnter:Connect(function()
+			game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+				BackgroundColor3 = Color3.fromRGB(48, 51, 70)
+			}):Play()
+		end)
+		Button.MouseLeave:Connect(function()
+			game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+				BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+			}):Play()
+		end)
+
+		function ButtonFunction:UpdateButton(Name)
+			Button.Text = Name
+			ButtonHolder.Name = tostring(Name).."_Button"
+		end
+		return ButtonFunction
+	end
 	return xTabs
+end
+return Elements
 end
 return Library
