@@ -67,13 +67,20 @@ local Line = Instance.new("Frame")
 local tabFrames = Instance.new("Frame")
 local tabListing = Instance.new("UIListLayout")
 local PlaceId = Instance.new("TextButton")
-	local TabHolder = Instance.new("Frame")
-local Tab = Instance.new("Folder")
+	local pages = Instance.new("Frame")
+	local Page = Instance.new("Folder")
 local X = Instance.new("TextButton")
 local UICorner_2 = Instance.new("UICorner")
 local UIGradient = Instance.new("UIGradient")
 
---Properties:
+	--Properties:
+	function ScrollSize()
+		tabListing.Parent.CanvasSize = UDim2.new(0, 0, 0, tabListing.AbsoluteContentSize.Y)
+	end
+
+	function Size()
+		pages.CanvasSize = UDim2.new(0, 0, 0, tabListing.AbsoluteContentSize.Y)
+	end
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -159,15 +166,15 @@ PlaceId.TextWrapped = true
 	end)
 	
 	
-	TabHolder.Name = "TabHolder"
-	TabHolder.Parent = MainFrame
-	TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TabHolder.BackgroundTransparency = 1.000
-	TabHolder.Position = UDim2.new(0.400343657, 0, 0.0928961784, 0)
-	TabHolder.Size = UDim2.new(0.596219957, 0, 0.901639342, 0)
+	pages.Name = "TabHolder"
+	pages.Parent = MainFrame
+	pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	pages.BackgroundTransparency = 1.000
+	pages.Position = UDim2.new(0.400343657, 0, 0.0928961784, 0)
+	pages.Size = UDim2.new(0.596219957, 0, 0.901639342, 0)
 
-Tab.Name = "Tabs"
-Tab.Parent = TabHolder
+Page.Name = "Tabs"
+	Page.Parent = pages
 
 X.Name = "X"
 X.Parent = MainFrame
@@ -192,41 +199,85 @@ UIGradient.Parent = X
 	Library:Drag(MainFrame, SideFrame)
 -- tab
 
-local Tabs = {}
+	local xTabs = {}
+	
+	function xTabs:Tab(Name, xVisible)
+		local Name = Name or "Tab"
+		local Tab = Instance.new("ScrollingFrame")
+		local TabListLayout = Instance.new("UIListLayout")
+		local TabButton = Instance.new("TextButton")
 
-function Tabs:NewTab(tabName)
-	local tabButton = Instance.new("TextButton")
-	tabButton.Name = "TabButton"
-	tabButton.Parent = tabFrames
-	tabButton.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
-	tabButton.BorderSizePixel = 0
-	tabButton.Size = UDim2.new(0, 233, 0, 30)
-	tabButton.Font = Enum.Font.SourceSans
-	tabButton.Text = tabName
-	tabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-	tabButton.TextSize = 16
-
-	local tabPage = Instance.new("Frame")
-	tabPage.Name = tabName
-	tabPage.Parent = Tab
-	tabPage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	tabPage.BackgroundTransparency = 1
-	tabPage.Size = UDim2.new(1, 0, 1, 0)
-
-	tabButton.MouseButton1Click:Connect(function()
-		-- Show the selected tab page and hide others
-		for _, page in pairs(Tabs:GetChildren()) do
-			if page:IsA("Frame") then
-				page.Visible = (page.Name == tabName)
-			end
+		function Size()
+			Tab.CanvasSize = UDim2.new(0, 0, 0, TabListLayout.AbsoluteContentSize.Y)
 		end
-	end)
-end
 
--- Example usage
---Tabs:NewTab("Tab 1")
---Tabs:NewTab("Tab 2")
---Tabs:NewTab("Tab 3")
+		Tab.Name = "Tab"
+		Tab.Parent = pages
+		Tab.Active = true
+		Tab.Visible = xVisible
+		Tab.BackgroundColor3 = Color3.fromRGB(31, 30, 46)
+		Tab.BorderSizePixel = 0
+		Tab.Size = UDim2.new(0, 438, 0, 352)
+		Tab.ScrollBarThickness = 5
+
+		TabListLayout.Name = "TabListLayout"
+		TabListLayout.Parent = Tab
+		TabListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		TabListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		TabListLayout.Padding = UDim.new(0, 5)
+
+		TabButton.Name = "TabButton"
+		TabButton.Parent = SideFrame
+		TabButton.BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+		TabButton.BorderSizePixel = 0
+		TabButton.Size = UDim2.new(0, 139, 0, 35)
+		TabButton.Font = Enum.Font.Gotham
+		TabButton.Text = Name
+		TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TabButton.TextSize = 14.000
+		TabButton.ZIndex = 2
+
+		Size()
+		Tab.ChildAdded:Connect(Size)
+		Tab.ChildRemoved:Connect(Size)
+
+		if xVisible then
+			TabButton.BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+			TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+		else
+			TabButton.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+			TabButton.TextColor3 = Color3.fromRGB(190, 190, 190)
+		end
+
+		TabButton.MouseButton1Down:Connect(function()
+			Size()
+			for _, v in pairs(SideFrame:GetChildren()) do
+				if v:IsA("TextButton") then
+					v.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+					v.TextColor3 = Color3.fromRGB(190, 190, 190)
+				end
+			end
+
+			for _, v in pairs(pages:GetChildren()) do
+				v.Visible = false
+			end
+
+			Tab.Visible = true
+			game:GetService("TweenService"):Create(TabButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+				BackgroundColor3 = Color3.fromRGB(55, 74, 251),
+			}):Play()
+			game:GetService("TweenService"):Create(TabButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+				TextColor3 = Color3.fromRGB(255, 255, 255),
+			}):Play()
+		end)
+	end
+
+	-- ... (rest of your code)
+
+	-- Example usage of xTabs:Tab
+	--xTabs:Tab("Tab1", true)
+	--xTabs:Tab("Tab2", false)
+
 
 -- label
 
@@ -967,5 +1018,7 @@ function Elements:Dropdown(Name,Listx,Callback)
 	return DropdownFunction
 end
 return Elements
+end
+return xTabs
 end
 return Library
