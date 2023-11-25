@@ -2852,11 +2852,13 @@ function Elements:NewKey(keyname, keypin, callback)
     checkButton.MouseButton1Click:Connect(function()
         local enteredKey = keyTextBox.Text
         if enteredKey == keypin then
+Library:Newnotify("correct Key" , "that is a correct Key", 4)
             -- Correct key, execute callback
             callback()
         else
             -- Incorrect key, handle accordingly (show error message, etc.)
             print("Incorrect Key")
+Library:Newnotify("Incorrect Key" , "that is a Incorrect Key", 4)
         end
     end)
 
