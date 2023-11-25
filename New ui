@@ -2821,53 +2821,46 @@ function Elements:NewNofity(Text)
 				setcolor({h,s,v})
 			end
 
-function Elements:NewKey(Keyname, Pin, callback)
-    local keyButton = Instance.new("TextButton")
-    keyButton.Name = Keyname
-    keyButton.Parent = sectionInners
-    keyButton.BackgroundColor3 = themeList.ElementColor
-    keyButton.Position = UDim2.new(0, 0, 0, 0) -- Set the appropriate position
-    keyButton.Size = UDim2.new(0, 100, 0, 30) -- Set the appropriate size
-    keyButton.Font = Enum.Font.SourceSans
-    keyButton.Text = Keyname
-    keyButton.TextColor3 = themeList.TextColor
-    keyButton.TextSize = 14.000
-    keyButton.MouseButton1Click:Connect(callback)
+function Elements:NewKey(keyname, keypin, callback)
+    local frame = Instance.new("Frame")
+    frame.Name = keyname
+    frame.Parent = sectionInners 
+    frame.Size = UDim2.new(0, 200, 0, 60)
+    frame.Position = UDim2.new(0, 0, 0, 0)
+    frame.BackgroundTransparency = 0.5
+    frame.BackgroundColor3 = Color3.new(0, 0, 0)
 
-    -- Optionally, you can add a PIN verification
-    local pinVerification = Instance.new("TextBox")
-    pinVerification.Name = "PinVerification"
-    pinVerification.Parent = keyButton
-    pinVerification.BackgroundColor3 = themeList.SchemeColor
-    pinVerification.Position = UDim2.new(0, 0, 1, 0)
-    pinVerification.Size = UDim2.new(0, 100, 0, 20)
-    pinVerification.Font = Enum.Font.SourceSans
-    pinVerification.Text = ""
-    pinVerification.TextColor3 = themeList.TextColor
-    pinVerification.TextSize = 12.000
-    pinVerification.Visible = false
+    local keyTextBox = Instance.new("TextBox")
+    keyTextBox.Name = "KeyTextBox"
+    keyTextBox.Parent = frame
+    keyTextBox.Size = UDim2.new(0, 150, 0, 30)
+    keyTextBox.Position = UDim2.new(0.5, -75, 0, 5)
+    keyTextBox.Font = Enum.Font.SourceSans
+    keyTextBox.Text = ""
+    keyTextBox.TextSize = 14
 
-    keyButton.MouseEnter:Connect(function()
-        pinVerification.Visible = true
-    end)
+    local checkButton = Instance.new("TextButton")
+    checkButton.Name = "CheckButton"
+    checkButton.Parent = frame
+    checkButton.Size = UDim2.new(0, 150, 0, 20)
+    checkButton.Position = UDim2.new(0.5, -75, 0, 40)
+    checkButton.Font = Enum.Font.SourceSans
+    checkButton.Text = "Check Key"
+    checkButton.TextSize = 14
 
-    keyButton.MouseLeave:Connect(function()
-        pinVerification.Visible = false
-    end)
-
-    -- Add PIN verification logic
-    keyButton.MouseButton1Click:Connect(function()
-        local enteredPin = pinVerification.Text
-        if enteredPin == Pin then
-            -- Correct PIN, execute callback
+    -- Add click event to check the key
+    checkButton.MouseButton1Click:Connect(function()
+        local enteredKey = keyTextBox.Text
+        if enteredKey == keypin then
+            -- Correct key, execute callback
             callback()
         else
-            -- Incorrect PIN, handle accordingly (show error message, etc.)
-            print("Incorrect PIN")
+            -- Incorrect key, handle accordingly (show error message, etc.)
+            print("Incorrect Key")
         end
     end)
 
-    return keyButton
+    return frame
 end
 
 
