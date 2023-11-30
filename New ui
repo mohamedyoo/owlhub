@@ -453,58 +453,60 @@ UserIconTween:Play()
 
 --notifcation
 
--- Gui to Lua
--- Version: 3.2
+local function Newnotify(Text, Description, Length)
+    local ScreenGui = Instance.new("ScreenGui")
+    ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
--- Instances:
-function Emptyness:Newnotify(Text, Description, Length)
-local FrameN = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
-local Description = Instance.new("TextLabel")
-local UICorner = Instance.new("UICorner")
+    local Frame = Instance.new("Frame")
+    local Title = Instance.new("TextLabel")
+    local DescLabel = Instance.new("TextLabel")
+    local UICorner = Instance.new("UICorner")
 
+    Frame.Parent = ScreenGui
+    Frame.BackgroundColor3 = themeList.Background
+    Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Frame.BorderSizePixel = 0
+    Frame.Position = UDim2.new(0.270833343, 0, 0.136019289, 0)
+    Frame.Size = UDim2.new(0, 419, 0, 137)
+    UICorner.Parent = Frame
 
-FrameN.Parent = ScreenGui
-FrameN.BackgroundColor3 = themeList.Background
-FrameN.BorderColor3 = Color3.fromRGB(0, 0, 0)
-FrameN.BorderSizePixel = 0
-FrameN.Position = UDim2.new(0.270833343, 0, 0.136019289, 0)
-FrameN.Size = UDim2.new(0, 419, 0, 137)
-UICorner.Parent = Frame
+    Title.Name = "Title"
+    Title.Parent = Frame
+    Title.BackgroundColor3 = themeList.Header
+    Title.BackgroundTransparency = 1.000
+    Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Title.BorderSizePixel = 0
+    Title.Size = UDim2.new(0, 406, 0, 50)
+    Title.Font = Enum.Font.SourceSans
+    Title.Text = Text
+    Title.TextColor3 = themeList.TextColor
+    Title.TextScaled = true
+    Title.TextSize = 14.000
+    Title.TextWrapped = true
 
-Title.Name = "Title"
-Title.Parent = FrameN
-Title.BackgroundColor3 = themeList.Header
-Title.BackgroundTransparency = 1.000
-Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Title.BorderSizePixel = 0
-Title.Size = UDim2.new(0, 406, 0, 50)
-Title.Font = Enum.Font.SourceSans
-Title.Text = Text
-Title.TextColor3 = themeList.TextColor
-Title.TextScaled = true
-Title.TextSize = 14.000
-Title.TextWrapped = true
+    DescLabel.Name = "Description"
+    DescLabel.Parent = Frame
+    DescLabel.BackgroundColor3 = themeList.Background
+    DescLabel.BackgroundTransparency = 1.000
+    DescLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    DescLabel.BorderSizePixel = 0
+    DescLabel.Position = UDim2.new(0, 0, 0.364963502, 0)
+    DescLabel.Size = UDim2.new(0, 419, 0, 87)
+    DescLabel.Font = Enum.Font.SourceSans
+    DescLabel.Text = Description
+    DescLabel.TextColor3 = themeList.TextColor
+    DescLabel.TextScaled = true
+    DescLabel.TextSize = 14.000
+    DescLabel.TextWrapped = true
 
-Description.Name = "Description"
-Description.Parent = FrameN
-Description.BackgroundColor3 = themeList.Background
-Description.BackgroundTransparency = 1.000
-Description.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Description.BorderSizePixel = 0
-Description.Position = UDim2.new(0, 0, 0.364963502, 0)
-Description.Size = UDim2.new(0, 419, 0, 87)
-Description.Font = Enum.Font.SourceSans
-Description.Text = Description
-Description.TextColor3 = themeList.TextColor
-Description.TextScaled = true
-Description.TextSize = 14.000
-Description.TextWrapped = true
-local tween = game:GetService("TweenService")
-    tween:Create(FrameN, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {Position = UDim2.new(0.802, 0,0.748, 0)}):Play()
+    local tween = game:GetService("TweenService")
+
+    tween:Create(Frame, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {Position = UDim2.new(0.802, 0,0.748, 0)}):Play()
     task.wait(Length)
-    tween:Create(FrameN, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Position = UDim2.new(1, 0,0.794, 0)}):Play()
-    FrameN:Destroy()     
+    tween:Create(Frame, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Position = UDim2.new(1, 0,0.794, 0)}):Play()
+
+    wait(Length) -- Adjust the wait time to allow the animation to finish before destroying the frame
+    Frame:Destroy()
 end
 
 	--Tab
