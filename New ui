@@ -499,7 +499,6 @@ local Frame = Instance.new("Frame")
     tween:Create(Frame, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Position = UDim2.new(1, 0,0.794, 0)}):Play()
     Frame:Destroy()
 end
-end
 
 	--Tab
 	
