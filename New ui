@@ -468,7 +468,7 @@ local Frame = Instance.new("Frame")
     Frame.Size = UDim2.new(0, 293, 0, 103)
     
     TextLabel.Parent = Frame
-    TextLabel.BackgroundColor3 = themeList.Header or Color3.fromRGB(255, 255, 255)
+    TextLabel.BackgroundColor3 = themeList.Header
     TextLabel.BackgroundTransparency = 1.000
     TextLabel.Position = UDim2.new(0.194539249, 0, 0.411764711, 0)
     TextLabel.Size = UDim2.new(0, 200, 0, 50)
@@ -476,12 +476,12 @@ local Frame = Instance.new("Frame")
     TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     TextLabel.TextSize = 24.000
     TextLabel.Text = Description
-    TextLabel.TextStrokeColor3 = themeList.TextColor or Color3.fromRGB(129, 129, 129)
+    TextLabel.TextStrokeColor3 = themeList.TextColor
     TextLabel.TextStrokeTransparency = 3.000
     TextLabel.TextWrapped = true
     
     TextLabel_2.Parent = Frame
-    TextLabel_2.BackgroundColor3 = themeList.Header or Color3.fromRGB(255, 255, 255)
+    TextLabel_2.BackgroundColor3 = themeList.Header
     TextLabel_2.BackgroundTransparency = 1.000
     TextLabel_2.BorderSizePixel = 0
     TextLabel_2.Position = UDim2.new(0.194539249, 0, 0, 0)
@@ -490,14 +490,15 @@ local Frame = Instance.new("Frame")
     TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
     TextLabel_2.TextSize = 25.000
     TextLabel_2.Text = Text
-    TextLabel_2.TextStrokeColor3 = themeList.TextColor or Color3.fromRGB(75, 75, 75)
+    TextLabel_2.TextStrokeColor3 = themeList.TextColor
     TextLabel_2.TextStrokeTransparency = 0.300
     TextLabel_2.TextWrapped = true
     local tween = game:GetService("TweenService")
     tween:Create(Frame, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {Position = UDim2.new(0.802, 0,0.748, 0)}):Play()
     task.wait(Length)
     tween:Create(Frame, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Position = UDim2.new(1, 0,0.794, 0)}):Play()
-    Frame:Destroy()     
+    Frame:Destroy()
+end
 end
 
 	--Tab
