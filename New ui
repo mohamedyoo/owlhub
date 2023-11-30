@@ -453,7 +453,7 @@ UserIconTween:Play()
 
 --notifcation
 
-local function Newnotify(Text, Description, Length)
+local function Emptyness:Newnotify(Text, Description, Length)
     local Frame = Instance.new("Frame")
     local Title = Instance.new("TextLabel")
     local DescLabel = Instance.new("TextLabel")
