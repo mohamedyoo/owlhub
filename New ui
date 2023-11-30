@@ -248,6 +248,7 @@ function Emptyness.CreateLib(kavName, themeList)
 local Players = game:GetService("Players")
 local Player = game:GetService("Players").LocalPlayer
 		--Emptyness:Newnotify("Loaded" , "The Script Has Loaded", 4)
+
 	ScreenGui.Parent = game.CoreGui
 	ScreenGui.Name = LibName
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -340,6 +341,7 @@ ImageButtonKUI.Parent = UserIcon
 	X.TextWrapped = true
 	X.MouseButton1Click:Connect(function()
 		ScreenGui:Destroy()
+ScreenGuiM:Destroy()
 	end)
 
 	MainHeader.Name = "MainHeader"
@@ -453,14 +455,19 @@ UserIconTween:Play()
 
 --notifcation
 function Emptyness:Newnotify(Text , Description, Length)
+	local ScreenGuiM = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
     local TextLabel = Instance.new("TextLabel")
     local TextLabel_2 = Instance.new("TextLabel")
     
     --Properties:
-    
-    
-    Frame.Parent = ScreenGui
+
+ScreenGuiM.Parent = game.CoreGui
+	ScreenGuiM.Name = "Notify"
+	ScreenGuiM.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	ScreenGuiM.ResetOnSpawn = false
+
+    Frame.Parent = ScreenGuiM
     Frame.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
     Frame.BorderColor3 = Color3.fromRGB(255, 255, 255)
     Frame.BorderSizePixel = 4
@@ -497,7 +504,7 @@ local Frame = Instance.new("Frame")
     tween:Create(Frame, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {Position = UDim2.new(0.802, 0,0.748, 0)}):Play()
     task.wait(Length)
     tween:Create(Frame, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Position = UDim2.new(1, 0,0.794, 0)}):Play()
-    Frame:Destroy()     
+    ScreenGuiM:Destroy()     
 end
 
 	--Tab
