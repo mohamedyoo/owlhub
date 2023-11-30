@@ -2821,50 +2821,6 @@ function Elements:NewNofity(Text)
 				setcolor({h,s,v})
 			end
 
-function Elements:NewKey(keyname, keypin, callback)
-    local frame = Instance.new("Frame")
-    frame.Name = keyname
-    frame.Parent = sectionInners 
-    frame.Size = UDim2.new(0, 200, 0, 60)
-    frame.Position = UDim2.new(0, 0, 0, 0)
-    frame.BackgroundTransparency = 0.5
-    frame.BackgroundColor3 = Color3.new(0, 0, 0)
-
-    local keyTextBox = Instance.new("TextBox")
-    keyTextBox.Name = "KeyTextBox"
-    keyTextBox.Parent = frame
-    keyTextBox.Size = UDim2.new(0, 150, 0, 30)
-    keyTextBox.Position = UDim2.new(0.5, -75, 0, 5)
-    keyTextBox.Font = Enum.Font.SourceSans
-    keyTextBox.Text = ""
-    keyTextBox.TextSize = 14
-
-    local checkButton = Instance.new("TextButton")
-    checkButton.Name = "CheckButton"
-    checkButton.Parent = frame
-    checkButton.Size = UDim2.new(0, 150, 0, 20)
-    checkButton.Position = UDim2.new(0.5, -75, 0, 40)
-    checkButton.Font = Enum.Font.SourceSans
-    checkButton.Text = "Check Key"
-    checkButton.TextSize = 14
-
-    -- Add click event to check the key
-    checkButton.MouseButton1Click:Connect(function()
-        local enteredKey = keyTextBox.Text
-        if enteredKey == keypin then
-Library:Newnotify("correct Key" , "that is a correct Key", 4)
-            -- Correct key, execute callback
-            callback()
-        else
-            -- Incorrect key, handle accordingly (show error message, etc.)
-            print("Incorrect Key")
-Library:Newnotify("Incorrect Key" , "that is a Incorrect Key", 4)
-        end
-    end)
-
-    return frame
-end
-
 
 			function Elements:NewLabel(title)
 				local labelFunctions = {}
