@@ -501,10 +501,10 @@ Description.TextScaled = true
 Description.TextSize = 14.000
 Description.TextWrapped = true
 local tween = game:GetService("TweenService")
-	tween:Create(Frame, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {Position = UDim2.new(0.802, 0,0.748, 0)}):Play()
-	task.wait(Length)
-	tween:Create(Frame, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Position = UDim2.new(1, 0,0.794, 0)}):Play()
-	Frame:Destroy()     
+    tween:Create(Frame, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {Position = UDim2.new(0.802, 0,0.748, 0)}):Play()
+    task.wait(Length)
+    tween:Create(Frame, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Position = UDim2.new(1, 0,0.794, 0)}):Play()
+    Frame:Destroy()     
 end
 
 	--Tab
