@@ -297,8 +297,8 @@ end)
 	ImageButtonK.Parent = ScreenGui
 	ImageButtonK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	ImageButtonK.BackgroundTransparency = 1.000
-	ImageButtonK.Position = UDim2.new(0.870967746, 0, 0.332653075, 0)
-	ImageButtonK.Size = UDim2.new(0, 100, 0, 100)
+	ImageButtonK.Position = UDim2.new(0.219957083, 0, 0.0619834736, 0)
+	ImageButtonK.Size = UDim2.new(0.0601549745, 0, 0.0826446265, 0)
 	ImageButtonK.Visible = true
 	ImageButtonK.Image = "rbxassetid://9836076474"
 	ImageButtonK.MouseButton1Click:Connect(function()
