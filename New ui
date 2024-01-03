@@ -1118,6 +1118,49 @@ end
                 end)()
             end 
 
+function Elements:NewSearchBar()
+                if Tab:FindFirstChild('SearchBar') then return end
+                local SearchBar = Instance.new("TextBox")
+                local UICorner_3 = Instance.new("UICorner")
+
+                SearchBar.Name = "SearchBar"
+                SearchBar.Parent = sectionInners
+                SearchBar.BackgroundColor3 = Color3.fromRGB(69, 69, 107)
+                SearchBar.Position = UDim2.new(0,12,0,21) --UDim2.new(0.0309039894, 0, 0.0229007639, 0)
+                SearchBar.BackgroundTransparency = 0.5
+                SearchBar.Size = UDim2.new(0, 396, 0, 34)
+                SearchBar.Font = Enum.Font.SourceSans
+                SearchBar.PlaceholderText = "search bar"
+                SearchBar.Text = ""
+                SearchBar.TextColor3 = Color3.fromRGB(255, 255, 255)
+                SearchBar.TextSize = 20.000
+
+                local searchicon = Instance.new("ImageLabel")
+
+                searchicon.Name = "searchicon"
+                searchicon.Parent = SearchBar
+                searchicon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                searchicon.BackgroundTransparency = 1.000
+                searchicon.Position = UDim2.new(0.0379999988, 0, 0.230000004, 0)
+                searchicon.Size = UDim2.new(0, 20, 0, 20)
+                searchicon.Image = "rbxassetid://2804603863"
+                
+                UICorner_3.CornerRadius = UDim.new(0, 5)
+                UICorner_3.Parent = SearchBar
+
+                SearchBar.Changed:Connect(function()
+					for _,v in pairs(ScrollingFrame:GetChildren()) do
+						if v:IsA("GuiObject") then
+							local Text = v.Name:lower()
+							if Text:match(SearchBar.Text:lower()) or SearchBar.Text == "" or Text == 'decoylmao' then -- or v == SearchBar then
+								v.Visible = true
+							else
+								v.Visible = false
+							end
+						end
+					end
+				end)
+            end
                 function Elements:NewToggle(tname, nTip, callback)
                     local TogFunction = {}
                     tname = tname or "Toggle"
